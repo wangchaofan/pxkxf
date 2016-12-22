@@ -109,6 +109,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+	background: #fff;
 }
 
 .production-classify-item {
@@ -144,6 +145,10 @@
 	border-bottom: 20px solid #f0f1f5;
 	background: #eee;	
 }
+
+.tab {
+	background: #fff;
+} 
 
 .tab-header {
 	height: 2.025rem;

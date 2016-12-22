@@ -470,6 +470,7 @@ html {
 }
 body {
   color: #333;
+  background: #fff;
 }
 *,
 *:before,
@@ -542,7 +543,7 @@ textarea {
   height: 3.15rem;
   padding-top: 0.65rem;
   font-size: 0.5rem;
-  background: #fff url('../image/footer_nav_bg.png') no-repeat;
+  background: url('../image/footer_nav_bg.png') no-repeat;
   background-size: cover;
 }
 
