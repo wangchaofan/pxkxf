@@ -571,6 +571,7 @@ textarea {
   top: 50%;
   transform: translate(-50%, -50%);
   margin-top: -0.5rem;
+  margin-left: -1px;
   padding-top: 0;
   width: 1.75rem;
   height: 1.75rem;
