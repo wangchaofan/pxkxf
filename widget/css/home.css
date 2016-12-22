@@ -77,6 +77,10 @@
 	background-size: cover;
 }
 
+.top-banner-bottom__right {
+	width: 3.75rem;
+}
+
 .top-banner-bottom .message-tip {
 	position: relative;
 	margin-left: 1.15rem;

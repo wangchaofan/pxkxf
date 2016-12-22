@@ -491,7 +491,8 @@ li {
   list-style: none;
 }
 .main-wrap {
-  width: 18rem;
+  width: 100%;
+  padding-bottom: 3.2rem;
   height:  100%;
 } 
 .display-flex {
@@ -534,12 +535,14 @@ textarea {
 }
 
 .footer-nav {
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   display: flex;
   height: 3.15rem;
   padding-top: 0.65rem;
   font-size: 0.5rem;
-  background: url('../image/footer_nav_bg.png');
+  background: #fff url('../image/footer_nav_bg.png') no-repeat;
   background-size: cover;
 }
 
