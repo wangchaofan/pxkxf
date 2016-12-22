@@ -1,6 +1,7 @@
 .top-banner {
 	position: relative;
 	background: url('../image/home_banner.jpg') no-repeat;
+	background-size: cover;
 	width: 100%;
 	height: 9rem;
 	overflow: hidden;
@@ -96,7 +97,6 @@
 	top: -0.15rem;
 	width: 0.55rem;
 	height: 0.55rem;
-	line-height: 0.55rem;
 	text-align: center;
 	font-size: 0.45rem;
 	color: #ec3c41;
@@ -140,7 +140,7 @@
 	background-size: 0.875rem 1.475rem;
 }
 
-.swiper-wrap {
+.swiper-container {
 	height: 6rem;
 	border-bottom: 20px solid #f0f1f5;
 	background: #eee;	
@@ -160,12 +160,12 @@
 .tab-header span {
 	padding: 0 1.125rem;
 	font-size: 0.8rem;
-	line-height: 1.675rem;
+	line-height: 1.725rem;
 }
 
 .tab-header span.current {
 	display: inline-block;
-	border-bottom: 2px solid #f94f2b;
+	border-bottom: 1px solid #f94f2b;
 }
 
 .remand-list {
@@ -215,8 +215,12 @@
 
 .user-info .good-like,
 .user-info .publish-number {
-	font-size: 0.4rem;
+	font-size: 0.5rem;
 	color: #999;
+}
+
+.user-info .publish-number {
+	margin-top: 0.1rem;
 }
 
 .user-roles {
@@ -225,6 +229,10 @@
 	width: 2.875rem;
 	justify-content: space-between;
 	align-items: flex-start;
+}
+
+.user-roles > span {
+	transform: scale(1.2);
 }
 
 .user-roles__type1 {
@@ -249,6 +257,7 @@
 }
 
 .user-roles__type4 {
+	margin-top: -1px;
 	width: 0.475rem;
 	height: 0.525rem;
 	background: url('../image/icon_auth_4.png') no-repeat;
@@ -286,10 +295,15 @@
 	margin-top: 0.45rem;
 }
 
+.remand-info strong {
+	font-weight: 400;
+	font-size: 1rem;
+}
+
 .remand-info__detail {
 	margin: 0.6rem 0 0.5rem;
 	padding: 0.3rem;
-	font-size: 0.6rem;
+	font-size: 0.7rem;
 	line-height: 0.8rem;
 	opacity: 0.8;
 	color: #666;
