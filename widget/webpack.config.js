@@ -27,6 +27,8 @@ let entry = globmaths.reduce((obj,file)=>{
   return obj
 },{})
 
+console.log(entry)
+
 module.exports = {
     entry:entry,
     output: {
