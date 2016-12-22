@@ -491,7 +491,7 @@ li {
   list-style: none;
 }
 .main-wrap {
-  width: 720px;
+  width: 18rem;
   height:  100%;
 } 
 .display-flex {
@@ -510,10 +510,10 @@ li {
   text-align: right;
 }
 .fs24 {
-  font-size: 24px;
+  font-size: 0.6rem;
 }
 .fs28 {
-  font-size: 28px;
+  font-size: 0.7rem;
 }
 .white {
   color: #fff;
@@ -536,15 +536,16 @@ textarea {
 .footer-nav {
   position: relative;
   display: flex;
-  height: 126px;
-  padding-top: 26px;
-  font-size: 20px;
+  height: 3.15rem;
+  padding-top: 0.65rem;
+  font-size: 0.5rem;
   background: url('../image/footer_nav_bg.png');
+  background-size: cover;
 }
 
 .footer-nav > a {
   display: block;
-  padding-top: 68px;
+  padding-top: 1.7rem;
   flex: 1;
   height: 100%;
   text-align: center;
@@ -555,35 +556,35 @@ textarea {
 }
 
 .footer-nav .footer-nav_home {
-  background: url('../image/icon_home.png') center 20px no-repeat; 
-  background-size: 38px 32px;
+  background: url('../image/icon_home.png') center 0.5rem no-repeat; 
+  background-size: 0.95rem 0.8rem;
 }
 
 .footer-nav .footer-nav_order {
-  background: url('../image/icon_order.png') center 20px no-repeat; 
-  background-size: 29px 31px;
-}
-
-.footer-nav .footer-nav_pub {
-  padding-top: 0;
+  background: url('../image/icon_order.png') center 0.5rem no-repeat; 
+  background-size: 0.725rem 0.775rem;
 }
 
 .footer-nav .circle-plus {
-  margin: -18px auto 16px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: -0.5rem;
   padding-top: 0;
-  width: 70px;
-  height: 70px;
+  width: 1.75rem;
+  height: 1.75rem;
   background: #ff8e08 url('../image/icon_plus.png') center no-repeat;
-  background-size: 25px;
+  background-size: 0.625rem;
   border-radius: 100%;
 }
 
 .footer-nav .footer-nav_zixun {
-  background: url('../image/icon_zixun.png') center 20px no-repeat; 
-  background-size: 43px 42px;
+  background: url('../image/icon_zixun.png') center 0.5rem no-repeat; 
+  background-size: 1.075rem 1.05rem;
 }
 
 .footer-nav .footer-nav_user {
-  background: url('../image/icon_user.png') center 20px no-repeat; 
-  background-size: 34px 33px;
+  background: url('../image/icon_user.png') center 0.5rem no-repeat; 
+  background-size: 0.85rem 0.825rem;
 }
