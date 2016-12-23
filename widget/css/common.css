@@ -526,6 +526,9 @@ li {
 .text-black {
   color: #000;
 }
+.text-blue {
+  color: #4abdff;
+}
 .flex-1 {
   flex: 1;
 }
@@ -544,7 +547,7 @@ textarea {
   display: flex;
   height: 3.15rem;
   padding-top: 0.65rem;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   background: url('../image/footer_nav_bg.png') no-repeat;
   background-size: 100% auto;
 }

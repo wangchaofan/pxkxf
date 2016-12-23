@@ -142,7 +142,7 @@
 
 .swiper-container {
 	height: 6rem;
-	border-bottom: 20px solid #f0f1f5;
+	border-bottom: 0.5rem solid #f0f1f5;
 	background: #eee;	
 }
 
