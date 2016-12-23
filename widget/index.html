@@ -6,162 +6,24 @@
   <title>首页</title>
   <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/swiper-3.4.1.min.css">
-  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/index.css">
   <script src="script/adapter.js"></script>
 </head>
 <body>
-<div class="main-wrap">
-  <div class="top-banner">
-    <div class="logo"></div>
-    <div class="top-banner-bottom">
-      <div class="select-location fs24 white">
-        <span>成都</span>
-        <select name="" id="" style="display:none;">
-          <option value="1">成都</option>
-        </select>
-      </div>
-      <div class="search-box ac">
-        <span class="icon-search"></span>
-        <input type="text" placeholder="请输入您要查询的内容">
-      </div>
-      <div class="top-banner-bottom__right">
-        <div class="message-tip">
-          <span class="message-tip-number">6</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="production-classify ac">
-    <div class="production-classify-item">
-      <div class="production-classify-icon"></div>
-      <div>消防设计</div>
-    </div>
-    <div class="production-classify-item">
-      <div class="production-classify-icon"></div>
-      <div>消防实工</div>
-    </div>
-    <div class="production-classify-item">
-      <div class="production-classify-icon"></div>
-      <div>消防产品</div>
-    </div>
-  </div>
-  <div id="swiper" class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="image/home_banner.jpg" alt="">
-      </div>
-      <div class="swiper-slide">
-        <img src="image/home_banner.jpg" alt="">
-      </div>
-      <div class="swiper-slide">
-        <img src="image/home_banner.jpg" alt="">
-      </div>
-    </div>
-    <!-- 如果需要分页器 -->
-    <div class="swiper-pagination"></div>
-  </div>
-  <div class="tab">
-    <div class="tab-header">
-      <span class="current">需求</span>
-      <span>供应</span>
-      <span>附近</span>
-    </div>
-    <div class="tab-content">
-      <div class="remand-list">
-        <ul>
-          <li>
-            <a class="display-flex" href="">
-              <div class="user-info">
-                <div class="user-avatar-wrap">
-                  <img class="user-avatar" src="./image/avatar_demo.png" alt="">
-                  <div class="p-tag">需求</div>
-                </div>
-                <div class="user-roles display-flex">
-                  <span class="user-roles__type1"></span>
-                  <span class="user-roles__type2"></span>
-                  <span class="user-roles__type3"></span>
-                  <span class="user-roles__type4"></span>
-                </div>
-                <div class="good-like">
-                  好评:
-                  <span class="icon-good"></span>
-                  <span class="icon-good"></span>
-                  <span class="icon-notgood"></span>
-                </div>
-                <div class="publish-number">发布数量:<span class="text-blue">12</span>条</div>
-              </div>
-              <div class="remand-info">
-                <div class="remand-info__title">
-                  他的需求：<span class="text-black">消防设备安装</span></div>
-                <div class="remand-info__price">愿付酬金：<strong class="text-warning">50</strong>元/套/天（酬金已担保）</div>
-                <div class="remand-info__persons">需求人数：<strong class="text-warning">5</strong>人</div>
-                <div class="remand-info__detail">
-                  需求详情：3层楼需要安装消防设备，共20套消防设备3层楼需要安装消防设备，共有20套消
-                </div>
-                <div class="remand-info__other">
-                  <div class="user-name">宿命</div>
-                  <div class="user-location">43KM</div>
-                  <div class="invite-number flex-1 ar"><span class="icon-check-ok"></span>30应邀</div>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a class="display-flex" href="">
-              <div class="user-info">
-                <div class="user-avatar-wrap">
-                  <img class="user-avatar" src="./image/avatar_demo.png" alt="">
-                  <div class="p-tag">需求</div>
-                </div>
-                <div class="user-roles display-flex">
-                  <span class="user-roles__type1"></span>
-                  <span class="user-roles__type2"></span>
-                  <span class="user-roles__type3"></span>
-                  <span class="user-roles__type4"></span>
-                </div>
-                <div class="good-like">
-                  好评:
-                  <span class="icon-good"></span>
-                  <span class="icon-good"></span>
-                  <span class="icon-notgood"></span>
-                </div>
-                <div class="publish-number">发布数量:<span class="text-blue">12</span>条</div>
-              </div>
-              <div class="remand-info">
-                <div class="remand-info__title">
-                  他的需求：<span class="text-black">消防设备安装</span></div>
-                <div class="remand-info__price">愿付酬金：<strong class="text-warning">50</strong>元/套/天（酬金已担保）</div>
-                <div class="remand-info__persons">需求人数：<strong class="text-warning">5</strong>人</div>
-                <div class="remand-info__detail">
-                  需求详情：3层楼需要安装消防设备，共20套消防设备3层楼需要安装消防设备，共有20套消
-                </div>
-                <div class="remand-info__other">
-                  <div class="user-name">宿命</div>
-                  <div class="user-location">43KM</div>
-                  <div class="invite-number flex-1 ar"><span class="icon-check-ok"></span>30应邀</div>
-                </div>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <footer class="footer-nav">
-    <a class="footer-nav_home current" href="/">首页</a>
-    <a class="footer-nav_order" href="html/order.html">订单</a>
-    <a class="footer-nav_pub" href="">
-      <div class="circle-plus"></div>
-      发布
-    </a>
-    <a class="footer-nav_zixun" href="html/consult">咨询</a>
-    <a class="footer-nav_user" href="html/usercenter.html">我的</a>
-  </footer>
+<div class="wrapper">
+  <div id="main"></div>
+  <!--<footer class="footer-nav">-->
+    <!--<a class="footer-nav_home current" href="/">首页</a>-->
+    <!--<a class="footer-nav_order" href="html/order.html">订单</a>-->
+    <!--<a class="footer-nav_pub" href="">-->
+      <!--<div class="circle-plus"></div>-->
+      <!--发布-->
+    <!--</a>-->
+    <!--<a class="footer-nav_zixun" href="html/consult">咨询</a>-->
+    <!--<a class="footer-nav_user" href="html/usercenter.html">我的</a>-->
+  <!--</footer>-->
 </div>
-<script src="script/lib/jquery-3.1.1.min.js"></script>
 <script src="script/lib/lodash.js"></script>
-<script src="script/lib/vue.min.js"></script>
-<script src="script/lib/swiper-3.4.1.jquery.min.js"></script>
 <script src="script/page/index.js"></script>
 </body>
 </html>
