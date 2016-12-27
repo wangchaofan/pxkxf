@@ -520,6 +520,9 @@ li {
 .white {
   color: #fff;
 }
+.bg-white {
+  background: #fff;
+}
 .text-warning {
   color: #ec3c41;
 }
@@ -594,4 +597,45 @@ textarea {
 .footer-nav .footer-nav_user {
   background: url('../image/nvtab/icon_user.png') center 0.5rem no-repeat;
   background-size: 0.85rem 0.825rem;
+}
+
+.wrapper {
+  padding-top: 88px;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  display: flex;
+  width: 100%;
+  height: 88px;
+  background: #e4353a;
+}
+.header-left,
+.header-right {
+  width: 88px;
+  line-height: 88px;
+  height: 100%;
+}
+.header-left .return-back {
+  margin-left: 24px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  background: url('../image/icon_arrow_left.png') no-repeat;
+}
+.header-center {
+  flex: 1;
+  padding: 20px 40px;
+  text-align: center;
+  overflow: hidden;
+}
+.header-center-text {
+  flex: 1;
+  font-size: 32px;
+  line-height: 48px;
+  text-align: center;
+  color: #fff;
 }

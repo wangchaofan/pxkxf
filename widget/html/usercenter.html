@@ -2,9 +2,54 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>个人中心</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/usercenter.css">
+  <script src="../script/adapter.js"></script>
 </head>
 <body>
-	用户中心
+	<div class="wrapper">
+		<header class="header">
+			<div class="header-left">
+				<span class="return-back"></span>
+			</div>
+			<div class="header-center">
+				<span class="header-center-text">个人中心</span>
+			</div>
+			<div class="header-right"></div>
+		</header>
+		<section class="user-center-top display-flex">
+			<div class="user-info">			
+				<div class="user-avatar" style="background-image: url('../image/avatar_demo.png')"></div>
+				<div class="user-info-tj">
+					<div class="user-name">YONGJIE123<span class="user-sex"></span></div>
+					<div class="online-status">在线</div>
+				</div>
+			</div>
+			<div class="barcode-scan">
+				
+			</div>
+		</section>
+		<div class="user-center-features">
+			<table cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="user-feature-mywallet">我的钱包</td>
+					<td class="user-feature-supply">我的供应</td>
+					<td class="user-feature-demand">我的需求</td>
+				</tr>
+				<tr>
+					<td class="user-feature-contact">联系人</td>
+					<td class="user-feature-dynamics">个人动态</td>
+					<td class="user-feature-invite">邀请注册</td>
+				</tr>
+				<tr>
+					<td class="user-feature-add">更多</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

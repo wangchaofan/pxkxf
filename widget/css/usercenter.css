@@ -1,0 +1,73 @@
+.user-center-top {
+	height: 190px;
+	padding: 30px;
+	background: #fff;
+}
+.user-info {
+	display: inline-flex;
+}
+.user-info .user-avatar {
+	margin-right: 20px;
+	width: 130px;
+	height: 130px;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.user-info .user-name {
+	margin-bottom: 10px;
+	font-size: 26px;
+}
+.user-info-tj {
+	font-size: 0;
+}
+.online-status {
+	display: inline-block;
+	border-radius: 3px;
+	font-size: 20px;
+	padding: 4px 8px;
+	color: #fff;
+	background: #ff9000;
+}
+.user-center-features {
+	margin-top: 20px;
+	background: #fff;
+}
+.user-center-features > table {
+	width: 100%;
+	border-collapse: collapse;
+	border: none;
+}
+.user-center-features > table td {
+	width: 33.33%;
+	height: 210px;
+	padding-top: 74px;
+	text-align: center;
+	font-size: 30px;
+	color: #000;
+	border: 1px solid #eee;
+	background-size: 60px 60px;
+	background-repeat: no-repeat;
+	background-position: center 54px;
+}
+.user-feature-mywallet {
+	background-image: url('../image/features/f1.png');
+}
+.user-feature-supply {
+	background-image: url('../image/features/f2.png');
+}
+.user-feature-demand {
+	background-image: url('../image/features/f3.png');
+}
+.user-feature-contact {
+	background-image: url('../image/features/f4.png');
+}
+.user-feature-dynamics {
+	background-image: url('../image/features/f5.png');
+}
+.user-feature-invite {
+	background-image: url('../image/features/f6.png');
+}
+.user-feature-add {
+	background-image: url('../image/features/f7.png');
+}

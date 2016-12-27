@@ -56,8 +56,8 @@ apiready = function() {
 				marginB: 12
 			},
 			iconRect: {
-				w: 40,
-				h: 40
+				w: 44,
+				h: 44
 			},
 			icon: {
 				normal: 'widget://image/nvtab/icon_add.png',
