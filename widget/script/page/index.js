@@ -11,7 +11,7 @@ apiready = function() {
 	NVTabBar.open({
 		styles: {
 			bg: '#fdfdfd',
-			h: 52,
+			h: 56,
 			dividingLine: {
 				width: 0.5,
 				color: '#ddd'
@@ -25,7 +25,7 @@ apiready = function() {
 		items: [{
 			w: nvTabBarWidth,
 			bg: {
-				marginB: 0
+				marginB: -2
 			},
 			iconRect: {
 				w: 21.0,
@@ -39,7 +39,7 @@ apiready = function() {
 		}, {
 			w: nvTabBarWidth,
 			bg: {
-				marginB: 0
+				marginB: -2
 			},
 			iconRect: {
 				w: 18,
@@ -68,7 +68,7 @@ apiready = function() {
 		}, {
 			w: api.winWidth / 5.0,
 			bg: {
-				marginB: -2
+				marginB: -4
 			},
 			iconRect: {
 				w: 24.0,
@@ -82,7 +82,7 @@ apiready = function() {
 		}, {
 			w: nvTabBarWidth,
 			bg: {
-				marginB: 0
+				marginB: -2
 			},
 			iconRect: {
 				w: 19.0,

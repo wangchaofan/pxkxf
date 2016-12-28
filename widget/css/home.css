@@ -32,6 +32,7 @@
 	position: absolute;
 	left: 0;
 	bottom: 0;
+	z-index: 11;
 	display: flex;
 	height: 2.2rem;
 	align-items: center;
@@ -39,10 +40,16 @@
 	background: rgba(236,60,60,0);
 }
 
+.top-banner-bottom.fixed {
+	position: fixed;
+	top: 0;
+	background: rgba(236,60,60,1);
+}
+
 .top-banner-bottom .search-box {
 	width: 11.25rem;
-	height: 1.4rem;
-	line-height: 1.4rem;
+	height: 1.5rem;
+	line-height: 1.5rem;
 	font-size: 0.6rem;
 	color: #9f9f9f;		
 	background: #fff;
@@ -55,10 +62,10 @@
 }
 
 .icon-search {
-	vertical-align: -0.1rem;
+	vertical-align: -2px;
 	display: inline-block;
-	width: 0.6rem;
-	height: 0.6rem;
+	width: 0.7rem;
+	height: 0.7rem;
 	background: url('../image/icon_search.png') no-repeat;
 	background-size: cover;
 }
@@ -277,8 +284,8 @@
 .icon-notgood {
 	display: inline-block;
 	vertical-align: text-top;
-	width: 0.45rem;
-	height: 0.4rem;
+	width: 0.6rem;
+	height: 0.6rem;
 }
 
 .icon-good {
