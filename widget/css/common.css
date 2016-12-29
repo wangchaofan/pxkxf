@@ -532,6 +532,12 @@ li {
 .text-blue {
   color: #4abdff;
 }
+.text-999 {
+  color: #999;
+}
+.text-666 {
+  color: #666;
+}
 .flex-1 {
   flex: 1;
 }

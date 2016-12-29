@@ -1,0 +1,64 @@
+body {
+    background: #f0f1f5;
+}
+.my-balance {
+    height: 450px;
+    padding-top: 95px;
+    background: #fff;
+    text-align: center;
+}
+.icon-my-balance {
+    margin: 0 auto 32px;
+    width: 142px;
+    height: 142px;
+    background: url('../image/icon_balance.jpg') center no-repeat;
+    background-size: 82px 82px;
+    border: 10px solid #f45156;
+    border-radius: 100%;
+}
+.my-balance-num {
+    font-size: 72px;
+}
+.recharge-withdraw {
+    display: flex;
+    padding: 50px 0;
+    height: 186px;
+    margin-bottom: 36px;
+    background: #ffeac6;
+}
+.recharge-withdraw-item {
+    flex: 1;
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-left: 30px;
+}
+.recharge-withdraw-value {
+    display: flex;
+    padding-right: 28px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 32px;
+}
+.recharge-withdraw-value .btn-view-record {
+    font-size: 24px;
+    padding-right: 22px;
+    background: url('../image/icon_angle_right_small.png') right center no-repeat;
+    background-size: 12px 18px;
+}
+.recharge-withdraw-item:last-child {
+    border-left: 1px solid #bcae96;
+}
+.btn-recharge,
+.btn-withdraw {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    font-size: 36px;
+}
+.btn-withdraw {
+    margin-top: 20px;
+    background: #fff;
+    color: #000;
+}
