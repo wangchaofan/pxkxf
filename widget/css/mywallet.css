@@ -2,28 +2,28 @@ body {
     background: #f0f1f5;
 }
 .my-balance {
-    height: 450px;
-    padding-top: 95px;
+    height: 11.25rem;
+    padding-top: 2.375rem;
     background: #fff;
     text-align: center;
 }
 .icon-my-balance {
-    margin: 0 auto 32px;
-    width: 142px;
-    height: 142px;
+    margin: 0 auto 0.8rem;
+    width: 3.55rem;
+    height: 3.55rem;
     background: url('../image/icon_balance.jpg') center no-repeat;
-    background-size: 82px 82px;
-    border: 10px solid #f45156;
+    background-size: 2.05rem 2.05rem;
+    border: 0.25rem solid #f45156;
     border-radius: 100%;
 }
 .my-balance-num {
-    font-size: 72px;
+    font-size: 1.8rem;
 }
 .recharge-withdraw {
     display: flex;
-    padding: 50px 0;
-    height: 186px;
-    margin-bottom: 36px;
+    padding: 1.25rem 0;
+    height: 4.65rem;
+    margin-bottom: 0.9rem;
     background: #ffeac6;
 }
 .recharge-withdraw-item {
@@ -31,20 +31,20 @@ body {
     display: inline-flex;
     justify-content: space-between;
     flex-direction: column;
-    padding-left: 30px;
+    padding-left: 0.75rem;
 }
 .recharge-withdraw-value {
     display: flex;
-    padding-right: 28px;
+    padding-right: 0.7rem;
     align-items: center;
     justify-content: space-between;
-    font-size: 32px;
+    font-size: 0.8rem;
 }
 .recharge-withdraw-value .btn-view-record {
-    font-size: 24px;
-    padding-right: 22px;
+    font-size: 0.6rem;
+    padding-right: 0.55rem;
     background: url('../image/icon_angle_right_small.png') right center no-repeat;
-    background-size: 12px 18px;
+    background-size: 0.3rem 0.45rem;
 }
 .recharge-withdraw-item:last-child {
     border-left: 1px solid #bcae96;
@@ -55,10 +55,10 @@ body {
     top: 0;
     left: 0;
     margin: 0 auto;
-    font-size: 36px;
+    font-size: 0.9rem;
 }
 .btn-withdraw {
-    margin-top: 20px;
+    margin-top: 0.5rem;
     background: #fff;
     color: #000;
 }

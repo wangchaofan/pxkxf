@@ -498,6 +498,8 @@ li {
 } 
 .display-flex {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .display-inline-block {
   display: inline-block;
@@ -708,9 +710,14 @@ header {
   line-height: 2.2rem;
   background: #e4353a;
   border-radius: 6px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-align: center;
   color: #fff;
+}
+
+.btn-submit[disabled] {
+  background: #e5e5e5;
+  color: #c8c8c8;
 }
 
 .input-row {

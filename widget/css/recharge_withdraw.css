@@ -1,0 +1,70 @@
+body {
+    background: #f0f1f5;
+}
+.input-recharge-num {
+    display: flex;
+    height: 88px;
+    align-items: center;
+    font-size: 28px;
+    padding: 0 30px;
+    background: #fff;
+}
+.input-recharge-num > input {
+    margin-left: 32px;
+    flex: 1;
+}
+.input-recharge-num > input::-webkit-input-placeholder {
+    color: #666;
+}
+.recharge-remind {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    padding: 0 30px;
+    font-size: 24px;
+    color: #999;
+    line-height: 1.3;
+}
+.recharge-remind-ts {
+    width: 90px;
+    flex-shrink: 0;
+}
+h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 30px;
+    font-size: 28px;
+    color: #000;
+    font-weight: 400;
+}
+.pay-way-wrap {
+    padding: 0 36px;
+    background: #fff;
+}
+.pay-way {
+    height: 88px;
+    line-height: 88px;
+    padding-left: 88px;
+}
+.zhifubao {
+    background: url('../image/zhibubao.png') left center no-repeat;
+    background-size: 44px 44px;
+    border-bottom: 1px solid #ddd;
+}
+.weichat {
+    background: url('../image/wechat.png') left center no-repeat;
+    background-size: 44px 44px;
+}
+.pay-way .icon-selected {
+    display: none;
+    width: 32px;
+    height: 32px;
+    background: url('../image/icon_selected_red.png') no-repeat;
+}
+.pay-way.selected .icon-selected {
+    display: block;
+}
+.btn-submit {
+    position: static;
+    margin: 40px auto 0;
+}
