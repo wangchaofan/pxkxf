@@ -1,0 +1,174 @@
+body {
+	background: #f0f1f5;
+}
+.user-center-top {
+	height: 4.75rem;
+	padding: 0.75rem;
+	justify-content: space-between;
+	background: #fff;
+}
+.user-info {
+	display: inline-flex;
+}
+.user-info .user-avatar {
+	margin-right: 0.5rem;
+	width: 3.25rem;
+	height: 3.25rem;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.user-info .user-name {
+	margin-bottom: 0.1rem;
+	font-size: 0.65rem;
+}
+.user-sex-man {
+	margin-left: 0.2rem;
+	display: inline-block;
+	width: 0.65rem;
+	height: 0.65rem;
+	background: url('../image/icon_sex_man.png') no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+.user-info-tj {
+	position: relative;
+	font-size: 0;
+}
+.online-status {
+	display: inline-block;
+	border-radius: 3px;
+	font-size: 0.5rem;
+	padding: 0.1rem 0.2rem;
+	color: #fff;
+	background: #ff9000;
+}
+.user-pingjia {
+	position: absolute;
+	bottom: 0;
+	font-size: 0.5rem;
+	line-height: 0.6rem;
+	color: #999;
+}
+.user-pingjia .icon-star {
+	vertical-align: top;
+	display: inline-block;
+	width: 0.6rem;
+	height: 0.6rem;
+	background: url('../image/icon_good.png') no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+.user-pingjia .icon-star.no {
+	background-image: url('../image/icon_nogood.png');
+}
+.user-info-rt {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.edit-avatar-button {
+	font-size: 0.5rem;
+	color: #999;
+	text-align: right;
+}
+.edit-avatar-button:after {
+	margin-left: 0.15rem;
+	display: inline-block;
+	content: '';
+	width: 0.3rem;
+	height: 0.45rem;
+	background: url('../image/icon_angle_right.png') no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+.user-info-rt {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+}
+.user-level {
+	display: flex;
+	align-items: center;
+	font-size: 0.5rem;
+	color: #999;
+}
+.user-level .qulification-name {
+	margin: 0 0.1rem;
+	width: 0.6rem;
+	height: 0.6rem;
+}
+.qulification-name.v1 {
+    background: url('../image/authicons/auth_v1_n.png') no-repeat;
+    background-size: cover;
+}
+.qulification-item.certified .v1 {
+    background-image: url('../image/authicons/auth_v1_y.png');
+}
+.qulification-name.v2 {
+	width: 0.65rem;
+	height: 0.65rem;
+    background: url('../image/authicons/auth_v2_n.png') no-repeat;
+    background-size: cover;
+}
+.qulification-item.certified .v2 {
+    background-image: url('../image/authicons/auth_v2_y.png');
+}
+.qulification-name.v3 {
+    background: url('../image/authicons/auth_v3_n.png') no-repeat;
+    background-size: cover;
+}
+.qulification-item.certified .v3 {
+    background-image: url('../image/authicons/auth_v3_y.png');
+}
+.qulification-name.v4 {
+    background: url('../image/authicons/auth_v4_n.png') no-repeat;
+    background-size: cover;
+}
+.qulification-item.certified .v4 {
+    background-image: url('../image/authicons/auth_v4_y.png');
+}
+.user-func {
+	margin-top: 0.6rem;
+	background: #fff;
+}
+.user-func-head {
+	height: 2.15rem;
+	padding: 0 0.75rem;
+	font-size: 0.75rem;
+	line-height: 2.15rem;
+	color: #000;
+	border-bottom: 1px solid #ddd;
+}
+.user-func-head .free-time {
+	display: inline-block;
+	float: right;
+	color: #666;
+}
+.user-func-container {
+	display: flex;
+	height: 5.25rem;
+}
+.user-func-item {
+	flex: 1;
+	padding-top: 3.25rem;
+	text-align: center;
+	font-size: 0.75rem;
+	color: #000;
+	background-position: center 1.35rem;
+	background-repeat: no-repeat;
+	-webkit-background-size: 1.5rem;
+	background-size: 1.5rem;
+}
+.user-func-item:nth-child(1) {
+	background-image: url('../image/phone.png');
+}
+.user-func-item:nth-child(2) {
+	background-image: url('../image/edit.png');
+}
+.user-func-item:nth-child(3) {
+	background-image: url('../image/centify.png');
+}
+.user-func-item:nth-child(4) {
+	background-image: url('../image/idcard.png');
+}
