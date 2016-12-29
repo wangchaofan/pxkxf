@@ -1,0 +1,29 @@
+.upload-title {
+    padding: 1.1rem 0.8rem;
+    font-size: 0.7rem;
+    color: #000;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+.upload-title span:last-child {
+    font-size: 0.6rem;
+    color: #666;
+}
+.upload-certificate-list {
+    padding: 0 1rem 3rem;
+    justify-content: space-between;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+.upload-certificate-list__item {
+    margin-bottom: 0.85rem;
+    width: 7.5rem;
+    height: 4.75rem;
+    border: 1px solid #ddd;
+}
+.upload-certificate-list .upload-box {
+    margin-bottom: 0.85rem;
+    margin: 0;
+}

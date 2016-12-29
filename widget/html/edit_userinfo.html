@@ -1,63 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>用户昵称</title>
+  <title>编辑我的资料</title>
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/edit_userinfo.css">
   <script src="../script/adapter.js"></script>
 </head>
 <body>
-	<div class="wrapper">
-		<header class="header">
-			<div class="header-left">
-				<span class="return-back"></span>
-			</div>
-			<div class="header-center">
-				<span class="header-center-text">用户昵称</span>
-			</div>
-			<div class="header-right"></div>
-		</header>
-		<section class="user-center-top display-flex">
-			<div class="user-info">			
-				<div class="user-avatar" style="background-image: url('../image/avatar_demo.png')"></div>
-				<div class="user-info-tj">
-					<div class="user-name"><span class="vam">YONGJIE123</span><span class="user-sex user-sex-man vam"></span></div>
-					<div class="online-status">在线</div>
-					<div class="user-pingjia">
-						<span class="vam">好评：</span>
-						<i class="icon-star"></i>
-						<i class="icon-star"></i>
-						<i class="icon-star no"></i>
-					</div>
-				</div>
-			</div>
-			<div class="user-info-rt">
-				<a class="edit-avatar-button" href="javascript:">修改头像</a>
-				<div class="user-level">
-					<div>用户等级：</div>
-					<div class="qulification display-flex">
-						<div class="qulification-name v1"></div>
-						<div class="qulification-name v2"></div>
-						<div class="qulification-name v3"></div>
-						<div class="qulification-name v4"></div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="user-func">
-			<div class="user-func-head">
-				<span>空闲时间</span>
-				<span class="free-time">周末</span>
-			</div>
-			<div class="user-func-container">
-				<div class="user-func-item">电话沟通</div>
-				<div class="user-func-item">编辑资料</div>
-				<div class="user-func-item">专业证书</div>
-				<div class="user-func-item">身份认证</div>
-			</div>
-		</div>
-	</div>
+<div class="wrapper">
+  <header class="header">
+    <div class="header-left">
+      <span class="return-back"></span>
+    </div>
+    <div class="header-center">
+      <span class="header-center-text">编辑我的资料</span>
+    </div>
+    <div class="header-right"></div>
+  </header>
+  <form id="userInfoForm" action="">
+    <div class="input-row">
+      <label for="">昵称</label>
+      <input type="text" placeholder="请输入">
+    </div>
+    <div class="input-row">
+      <label>性别</label>
+      <div class="px-radio-group">
+        <div class="px-radio">
+          <input name="sex" type="radio" checked>
+          <div class="px-radio-style"></div>
+          <label>男</label>
+        </div>
+        <div class="px-radio">
+          <input name="sex" type="radio">
+          <div class="px-radio-style"></div>
+          <label>女</label>
+        </div>
+      </div>
+    </div>
+    <div class="input-row">
+      <label for="">出生日期</label>
+      <select class="px-select" name="" placeholder="请选择">
+        <option value="">1991</option>
+        <option value="">1992</option>
+        <option value="">1993</option>
+      </select>
+    </div>
+    <div class="input-row">
+      <label for="">年龄</label>
+      <input type="text" placeholder="请输入年龄">
+    </div>
+    <div class="input-row">
+      <label for="">故乡</label>
+      <select class="px-select" name="">
+        <option value="请选择故乡"></option>
+      </select>
+    </div>
+    <div class="input-row">
+      <label for="">所在地</label>
+      <select class="px-select" name="" placeholder="请选择您的所在地">
+        <option value="请选择您的所在地"></option>
+      </select>
+    </div>
+    <div class="input-row">
+      <label for="">电子邮箱</label>
+      <input type="text" placeholder="请输入电子邮箱">
+    </div>
+    <div class="input-row">
+      <label for="">毕业院校</label>
+      <input type="text" placeholder="请填写毕业院校">
+    </div>
+    <div class="input-row">
+      <label for="">学历</label>
+      <input type="text" placeholder="请填写学历">
+    </div>
+    <div class="input-row">
+      <label for="">职业</label>
+      <input type="text" placeholder="请填写职业">
+    </div>
+    <div class="input-row">
+      <label for="">公司</label>
+      <input type="text" placeholder="请填写公司名称">
+    </div>
+    <div class="person-credentials">
+      <div class="person-credentials-title">
+        <span>个人资质</span>
+        <span>个人资质（最多8张）</span>
+      </div>
+      <div class="person-credentials-list">
+        <div class="person-credentials-image-wrap">
+          <div class="button-delete"></div>
+          <img src="../image/home_banner.jpg" alt="">
+        </div>
+        <div class="person-credentials-image-wrap">
+          <div class="button-delete"></div>
+          <img src="../image/home_banner.jpg" alt="">
+        </div>
+        <div class="upload-box">
+          <input type="file">
+        </div>
+      </div>
+    </div>
+    <div class="input-row">
+      <label for="">擅长技能</label>
+      <input type="text" placeholder="请填写擅长的技能">
+    </div>
+    <div class="input-row">
+      <label for="">空闲时间</label>
+      <input type="text" placeholder="请选择时间">
+    </div>
+    <div class="input-row">
+      <label for="">个人主页</label>
+      <input type="text" placeholder="请填写">
+    </div>
+    <div class="input-row">
+      <label for="">个性签名</label>
+      <input type="text" placeholder="请填写签名">
+    </div>
+  </form>
+  <div class="btn-submit">发布</div>
+</div>
 </body>
 </html>

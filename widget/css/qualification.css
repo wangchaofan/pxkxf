@@ -1,19 +1,19 @@
 .qualifications {
-    padding: 0 28px;
+    padding: 0 0.7rem;
 }
 .qulification-item {
     display: flex;
     justify-content: space-between;
-    height: 90px;
-    font-size: 24px;
-    line-height: 90px;
+    height: 2.25rem;
+    font-size: 0.6rem;
+    line-height: 2.25rem;
     border-bottom: 1px solid #ddd;
 }
 .qulification-item:last-child {
     border-bottom: none;
 }
 .qulification-name {
-    padding-left: 54px;
+    padding-left: 1.35rem;
     color: #000;
 }
 .qulification-status {
@@ -24,29 +24,29 @@
     color: #ff9000;
 }
 .qulification-name.v1 {
-    background: url('../image/authicons/auth_v1_n.png') 8px center no-repeat;
-    background-size: 36px 36px;
+    background: url('../image/authicons/auth_v1_n.png') 0.2rem center no-repeat;
+    background-size: 0.9rem 0.9rem;
 }
 .qulification-item.certified .v1 {
     background-image: url('../image/authicons/auth_v1_y.png');
 }
 .qulification-name.v2 {
-    background: url('../image/authicons/auth_v2_n.png') 8px center no-repeat;
-    background-size: 36px 36px;
+    background: url('../image/authicons/auth_v2_n.png') 0.2rem center no-repeat;
+    background-size: 0.9rem 0.9rem;
 }
 .qulification-item.certified .v2 {
     background-image: url('../image/authicons/auth_v2_y.png');
 }
 .qulification-name.v3 {
-    background: url('../image/authicons/auth_v3_n.png') 8px center no-repeat;
-    background-size: 36px 36px;
+    background: url('../image/authicons/auth_v3_n.png') 0.2rem center no-repeat;
+    background-size: 0.9rem 0.9rem;
 }
 .qulification-item.certified .v3 {
     background-image: url('../image/authicons/auth_v3_y.png');
 }
 .qulification-name.v4 {
-    background: url('../image/authicons/auth_v4_n.png') 8px center no-repeat;
-    background-size: 36px 36px;
+    background: url('../image/authicons/auth_v4_n.png') 0.2rem center no-repeat;
+    background-size: 0.9rem 0.9rem;
 }
 .qulification-item.certified .v4 {
     background-image: url('../image/authicons/auth_v4_y.png');
@@ -55,25 +55,18 @@
     border-top: 16px solid #f0f1f5;
 }
 .check-area {
-    padding-left: 30px;
-    height: 112px;
-    font-size: 28px;
-    line-height: 112px;
-}
-.my-checkbox {
-    float: right;
-    margin-top: 28px;
-    margin-right: 24px;
-    display: inline-block;
-    vertical-align: middle;
-    width: 90px;
-    height: 60px;
-    background: url('../image/checkbox_checked.png') no-repeat;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.75rem;
+    height: 2.8rem;
+    font-size: 0.7rem;
+    line-height: 2.8rem;
 }
 .check-invite-condition .remind {
-    padding: 20px 30px;
-    font-size: 26px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.65rem;
     color: #666;
-    line-height: 44px;
+    line-height: 1.1rem;
     background: #ffeac6;
 }

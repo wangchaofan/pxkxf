@@ -1,7 +1,15 @@
 .upload-wrap {
-    height: 480px;
+    margin-bottom: 0.5rem;
+    height: 12rem;
+    background: #fff;
+    overflow: hidden;
+    border-bottom: 0.5rem solid #f0f1f5;
 }
 .upload-wrap .upload-desc {
-    font-size: 28px;
-    padding-left: 36px;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    padding-left: 0.9rem;
+}
+.upload-wrap .text-warning {
+    margin-top: 0.75rem;
 }

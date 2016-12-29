@@ -1,0 +1,27 @@
+body {
+    background: #f0f1f5;
+}
+.setting-list {
+    padding: 0 0.75rem;
+    background: #fff;
+}
+.setting-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 2.15rem;
+    font-size: 0.7rem;
+    color: #000;
+    line-height: 1.15rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+}
+.setting-list-item:last-child {
+    border-bottom: none;
+}
+.phone-remind {
+    padding: 0.5rem;
+    font-size: 0.6rem;
+    color: #999;
+    line-height: 0.9rem;
+}
