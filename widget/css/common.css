@@ -613,6 +613,9 @@ textarea {
 .wrapper {
   padding-top: 2.2rem;
 }
+.container {
+  padding: 0 0.75rem;
+}
 header {
   position: fixed;
   top: 0;

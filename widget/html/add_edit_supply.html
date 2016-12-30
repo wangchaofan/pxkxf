@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>编辑供应</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/mysupply.css">
+  <link rel="stylesheet" href="../css/edit_userinfo.css">
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <header class="header">
+    <div class="header-left">
+      <span class="return-back"></span>
+    </div>
+    <div class="header-center">
+      <span class="header-center-text">编辑供应</span>
+    </div>
+    <div class="header-right"></div>
+  </header>
+  <form class="supply-form" action="">
+    <div class="input-row">
+      <label for="">供应名称</label>
+      <input type="text" placeholder="填写或选择您可以赚钱的技能（10字内）">
+    </div>
+    <div class="input-row supply-detail">
+      <label for="">供应详情</label>
+      <textarea class="px-textarea" name="" id="" cols="30" rows="10" placeholder="对此技能的描述"></textarea>
+    </div>
+    <div class="input-row">
+      <label for="">分类</label>
+      <select class="px-select" name="">
+        <option value="">请选择</option>
+        <option value="">1991</option>
+        <option value="">1992</option>
+        <option value="">1993</option>
+      </select>
+    </div>
+    <div class="input-row">
+      <label for="">有效时间</label>
+      <select class="px-select">
+        <option value="">请选择时间</option>
+      </select>
+    </div>
+    <div class="input-row">
+      <label for="">地区</label>
+      <select class="px-select" name="">
+        <option value="请选择地区"></option>
+      </select>
+    </div>
+    <div class="input-row">
+      <label for="">价格</label>
+      <input type="text" placeholder="请写合适的费用">
+    </div>
+    <div class="person-credentials">
+      <div class="person-credentials-title">
+        <span>附件</span>
+        <span>作品、证书、自拍美照等（最多8张）</span>
+      </div>
+      <div class="person-credentials-list">
+        <div class="person-credentials-image-wrap">
+          <div class="button-delete"></div>
+          <img src="../image/home_banner.jpg" alt="">
+        </div>
+        <div class="person-credentials-image-wrap">
+          <div class="button-delete"></div>
+          <img src="../image/home_banner.jpg" alt="">
+        </div>
+        <div class="upload-box">
+          <input type="file">
+        </div>
+      </div>
+    </div>
+    <div class="input-row" style="border-bottom: none;">
+      <label for="">备注</label>
+      <div>你希望他在下单时注意的一些事项</div>
+    </div>
+  </form>
+  <div class="btn-submit">发布</div>
+</div>
+</body>
+</html>

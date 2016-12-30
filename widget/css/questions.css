@@ -1,0 +1,31 @@
+body {
+    background: #f0f1f5;
+}
+.container {
+    background: #fff;
+}
+.question-list li {
+    display: flex;
+    padding-right: 0.7rem;
+    align-items: center;
+    justify-content: space-between;
+    height: 2.5rem;
+    border-bottom: 1px solid #ddd;
+    background: url('../image/icon_angle_right.png') right center no-repeat;
+    background-size: 0.4rem 0.7rem;
+}
+.question-list li:last-child {
+    border-bottom: none;
+}
+.question-list li .answer-status {
+    height: 0.75rem;
+    padding-left: 0.85rem;
+    font-size: 0.6rem;
+    line-height: 0.75rem;
+    color: #666;
+    background: url('../image/icon_interrogation.png') left center no-repeat;
+    background-size: 0.75rem 0.75rem;
+}
+.question-list li .answer-status.answered {
+    background-image: url('../image/icon_ok.png');
+}

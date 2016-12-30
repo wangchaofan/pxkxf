@@ -1,0 +1,147 @@
+.wrapper {
+    padding-bottom: 3rem;
+}
+.header-right {
+    width: 3.5rem;
+    text-align: right;
+    padding-right: 0.75rem;
+}
+.header-left {
+    width: 3.5rem;
+}
+.supply-list {
+    padding: 0 0.75rem;
+}
+.supply-list-item {
+    display: flex;
+    padding-top: 0.9rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+.supply-list-item__left {
+    margin-right: 0.5rem;
+    width: 2.85rem;
+    flex-shrink: 0;
+}
+.supply-list-item__left > img {
+    width: 2.85rem;
+    height: 2.85rem;
+}
+.supply-list-item__right {
+    position: relative;
+    flex: 1;
+    font-size: 0.7rem;
+    color: #999;
+}
+.supply-list-item__param {
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    padding-right: 0.9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.supply-item-desc {
+    font-size: 0.6rem;
+    color: #666;
+    padding: 0.3rem;
+    line-height: 0.8rem;
+    background: #eee;
+}
+.button-edit {
+    position: absolute;
+    right: 0;
+    width: 0.65rem;
+    height: 0.65rem;
+    background: url('../image/icon_edit.png') no-repeat;
+    background-size: cover;
+}
+.button-edit.disabled {
+    filter: grayscale(100%);
+}
+.supply-status.online {
+    color: #25d8bf;
+}
+.supply-status.taked {
+    color: #ff8e08;
+}
+.supply-form {
+    padding: 0 0.75rem;
+}
+.supply-form .supply-detail {
+    align-items: flex-start;
+    padding-top: 0.7rem;
+    padding-bottom: 0.4rem;
+    height: 4.2rem;
+}
+.px-textarea {
+    flex: 1;
+    border: none;
+    outline: none;
+    height: 100%;
+    resize: none;
+    padding: 0;
+}
+.remand-header {
+    display: flex;
+    margin-top: -0.1rem;
+    width: 8.75rem;
+    height: 1.4rem;
+    border: 1px solid #fff;
+    border-radius: 6px;
+}
+.remand-header > span {
+    flex: 1;
+    font-size: 0.65rem;
+    color: #e4353a;
+    background: #fff;
+    line-height: 1.35rem;
+}
+.remand-header > span.selected {
+    color: #fff;
+    background: none;
+}
+.dynamic-handle {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    margin-top: 0.4rem;
+}
+.dynamic-handle-good-share {
+    display: inline-flex;
+}
+.dynamic-handle-good-share .zan {
+    padding-left: 0.85rem;
+    background: url('../image/zan.png') left center no-repeat;
+    background-size: 0.75rem 0.75rem;
+}
+.dynamic-handle-good-share .share {
+    margin-left: 0.5rem;
+    padding-left: 0.85rem;
+    background: url('../image/icon_share.png') left center no-repeat;
+    background-size: 0.75rem 0.75rem;
+}
+.button-commnet {
+    padding-left: 0.85rem;
+    background: url('../image/icon_comment.png') left center no-repeat;
+    background-size: 0.75rem 0.75rem;
+}
+.dynamic-detail {
+    height: 13rem;
+    padding: 0.75rem;
+    background: #fff;
+}
+.dynamic-detail > textarea {
+    width: 100%;
+    height: 100%;
+}
+.dynamic-images {
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0.75rem;
+    background: #fff;
+}
+.dynamic-images .upload-box {
+    margin: 0;
+    width: 3.75rem;
+    height: 3.75rem;
+}
