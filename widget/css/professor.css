@@ -85,3 +85,49 @@
     background: #fff;
     border-top: 1px solid #eee;
 }
+.add-question-form .input-area {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0.6rem;
+    height: 15rem;
+}
+.input-area > textarea {
+    flex: 1;
+    height: 13.5rem;
+}
+.professor-part h4 {
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+    padding-left: 0.9rem;
+    font-size: 0.7rem;
+}
+.professor-part .professors {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.great-professor h4 {
+    margin-top: 0;
+}
+.consult-list {
+    padding: 0 0.9rem;
+}
+.consult-list h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0.55rem;
+    font-size: 0.7rem;
+    line-height: 1;
+    border-bottom: 1px solid #ddd;
+}
+.consult-list ul li {
+    line-height: 2.25rem;
+    font-size: 0.7rem;
+    color: #666;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.newest {
+    margin-bottom: 1.1rem;
+}
