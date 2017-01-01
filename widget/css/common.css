@@ -737,6 +737,9 @@ header {
   font-size: 0.7rem;
   border-bottom: 1px solid #ddd;
 }
+.input-row:last-child {
+  border-bottom: none;
+}
 .input-row > label {
   width: 3.85rem;
   color: #000;
