@@ -1,12 +1,41 @@
 /**
  * Created by chaofanw on 2016/12/23.
  */
+function initPage() {
+  var vm = new Vue({
+    el: 'body',
+    created: function() {
+      this.getDemandList()
+    },
+    data: function() {
+      return {
+        demandList: [],
+        currentTab: 'remand'
+      }
+    },
+    methods: {
+      getDemandList: function() {
+        var self = this
+        $.ajax({
+          type: 'POST',
+          dataType: 'jsonp',
+          url: BaseService.apiUrl + 'getdemaorder',
+          success: function(res) {
+            self.demandList = JSON.parse(Helper.xmlToJson(res).string['#text'])
+            console.log(self.demandList)
+          },
+          error: function(err) {
+            alert(JSON.stringify(err))
+          }
+        })
+      }
+    }
+  })
+}
 $(function() {
   var mySwiper = new Swiper('.swiper-container', {
     loop: true,
     autoplay: 3000,
-
-    // 如果需要分页器
     pagination: '.swiper-pagination'
   })
 
@@ -21,36 +50,9 @@ $(function() {
   	}
   })
 
-  apiready = function(){
-    var vm = new Vue({
-	  	el: 'body',
-	  	created: function() {
-	  		// api.ajax({
-	  		//     url: 'http://120.26.116.143:809/WebServer/userServer.asmx/getSkill',
-	  		//     method: 'post',
-	  		//     dataType: 'json'
-	  		// },function(ret, err){
-	  		//     if (ret) {
-	  		//         alert( JSON.stringify( ret ) );
-	  		//     } else {
-	  		//         alert( JSON.stringify( err ) );
-	  		//     }
-	  		// });
-	  		// $.ajax({
-	  		// 	type: 'POST',
-	  		// 	dataType: 'json',
-	  		// 	url: 'http://120.26.116.143:809/WebServer/userServer.asmx/getSkill',
-	  		// 	success: function(res) {
-	  		// 		alert(1)
-	  		// 		alert(res)
-	  		// 		// alert(JSON.stringify(res))
-	  		// 	},
-	  		// 	error: function(err) {
-	  		// 		alert(2)
-	  		// 		alert(JSON.stringify(err))
-	  		// 	}
-	  		// })
-	  	}
-	  })
-  }
+  initPage()
 })
+
+apiready = function(){
+  initPage()
+}

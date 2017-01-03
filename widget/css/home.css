@@ -198,6 +198,10 @@
 	border-bottom: none;
 }
 
+.remand-list li > a {
+	align-items: flex-start;
+}
+
 .user-info {
 	position: relative;
 	width: 3.5rem;

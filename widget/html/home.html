@@ -67,47 +67,10 @@
       <span>附近</span>
     </div>
     <div class="tab-content">
-      <div class="remand-list">
+      <div class="remand-list" v-if="currentTab === 'remand'">
         <ul>
           <li>
-            <a class="display-flex" href="">
-              <div class="user-info">
-                <div class="user-avatar-wrap">
-                  <img class="user-avatar" src="../image/avatar_demo.png" alt="">
-                  <div class="p-tag">需求</div>
-                </div>
-                <div class="user-roles display-flex">
-                  <span class="user-roles__type1"></span>
-                  <span class="user-roles__type2"></span>
-                  <span class="user-roles__type3"></span>
-                  <span class="user-roles__type4"></span>
-                </div>
-                <div class="good-like">
-                  好评:
-                  <span class="icon-good"></span>
-                  <span class="icon-good"></span>
-                  <span class="icon-notgood"></span>
-                </div>
-                <div class="publish-number">发布数量:<span class="text-blue">12</span>条</div>
-              </div>
-              <div class="remand-info">
-                <div class="remand-info__title">
-                  他的需求：<span class="text-black">消防设备安装</span></div>
-                <div class="remand-info__price">愿付酬金：<strong class="text-warning">50</strong>元/套/天（酬金已担保）</div>
-                <div class="remand-info__persons">需求人数：<strong class="text-warning">5</strong>人</div>
-                <div class="remand-info__detail">
-                  需求详情：3层楼需要安装消防设备，共20套消防设备3层楼需要安装消防设备，共有20套消
-                </div>
-                <div class="remand-info__other">
-                  <div class="user-name">宿命</div>
-                  <div class="user-location">43KM</div>
-                  <div class="invite-number flex-1 ar"><span class="icon-check-ok"></span>30应邀</div>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a class="display-flex" href="">
+            <a class="display-flex" v-for="item in remandList">
               <div class="user-info">
                 <div class="user-avatar-wrap">
                   <img class="user-avatar" src="../image/avatar_demo.png" alt="">
@@ -152,6 +115,7 @@
 <script src="../script/lib/lodash.js"></script>
 <script src="../script/lib/vue.min.js"></script>
 <script src="../script/lib/swiper-3.4.1.jquery.min.js"></script>
+<script src="../script/helper.js"></script>
 <script src="../script/page/home.js"></script>
 </body>
 </html>
