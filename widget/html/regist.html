@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>注册</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/login_regist.css">
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <header class="header">
+    <div class="header-left">
+      <span class="return-back"></span>
+    </div>
+    <div class="header-center">
+      <span class="header-center-text">注册</span>
+    </div>
+    <div class="header-right">
+    </div>
+  </header>
+  <div class="container bg-white">
+    <div class="input-row">
+      <label for="">手机号</label>
+      <input type="text" maxlength="11" placeholder="请输入手机号">
+      <div class="btn-get-code">获取验证码</div>
+    </div>
+    <div class="input-row">
+      <label for="">验证码</label>
+      <div class="input-row-with-code">
+        <input type="text" placeholder="请输入收到的验证码">
+      </div>
+    </div>
+    <div class="input-row">
+      <label for="">密码</label>
+      <input type="text" placeholder="请输入密码">
+    </div>
+    <div class="input-row">
+      <label for="">确认密码</label>
+      <input type="text" placeholder="请再次输入密码">
+    </div>
+  </div>
+  <div id="nextStepButton" class="btn-submit ac">下一步</div>
+  <!--<div id="buttonSubmit" class="btn-submit ac">现在去登录</div>-->
+</div>
+</body>
+</html>

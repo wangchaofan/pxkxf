@@ -17,12 +17,12 @@ function initPage() {
       getDemandList: function() {
         var self = this
         $.ajax({
-          type: 'POST',
-          dataType: 'jsonp',
           url: BaseService.apiUrl + 'getdemaorder',
           success: function(res) {
-            self.demandList = JSON.parse(Helper.xmlToJson(res).string['#text'])
-            console.log(self.demandList)
+            res = JSON.parse(res)
+            self.demandList = JSON.parse(res.data)
+            console.log(JSON.parse(res.data))
+
           },
           error: function(err) {
             alert(JSON.stringify(err))

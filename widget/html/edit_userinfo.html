@@ -9,7 +9,7 @@
   <script src="../script/adapter.js"></script>
 </head>
 <body>
-<div class="wrapper">
+<div id="mainPage" class="wrapper" v-cloak>
   <header class="header">
     <div class="header-left">
       <span class="return-back"></span>
@@ -22,18 +22,18 @@
   <form id="userInfoForm" action="">
     <div class="input-row">
       <label for="">昵称</label>
-      <input type="text" placeholder="请输入">
+      <input type="text" v-model="userInfo.nickname" placeholder="请输入">
     </div>
     <div class="input-row">
       <label>性别</label>
       <div class="px-radio-group">
         <div class="px-radio">
-          <input name="sex" type="radio" checked>
+          <input name="sex" type="radio" value="man" v-model="userInfo.sex">
           <div class="px-radio-style"></div>
           <label>男</label>
         </div>
         <div class="px-radio">
-          <input name="sex" type="radio">
+          <input name="sex" type="radio" value="woman" v-model="userInfo.sex">
           <div class="px-radio-style"></div>
           <label>女</label>
         </div>
@@ -41,15 +41,15 @@
     </div>
     <div class="input-row">
       <label for="">出生日期</label>
-      <select class="px-select" name="" placeholder="请选择">
-        <option value="">1991</option>
-        <option value="">1992</option>
-        <option value="">1993</option>
+      <select class="px-select" v-model="userInfo.birthDate" placeholder="请选择">
+        <option value="1991">1991</option>
+        <option value="1992">1992</option>
+        <option value="1993">1993</option>
       </select>
     </div>
     <div class="input-row">
       <label for="">年龄</label>
-      <input type="text" placeholder="请输入年龄">
+      <input type="text" v-model="userInfo.age" placeholder="请输入年龄">
     </div>
     <div class="input-row">
       <label for="">故乡</label>
@@ -64,24 +64,28 @@
       </select>
     </div>
     <div class="input-row">
+      <label for="">联系手机</label>
+      <input type="text" v-model="userInfo.phoneNumber" placeholder="请输入手机号">
+    </div>
+    <div class="input-row">
       <label for="">电子邮箱</label>
-      <input type="text" placeholder="请输入电子邮箱">
+      <input type="text" v-model="userInfo.email" placeholder="请输入电子邮箱">
     </div>
     <div class="input-row">
       <label for="">毕业院校</label>
-      <input type="text" placeholder="请填写毕业院校">
+      <input type="text" v-model="userInfo.graduateSchool" placeholder="请填写毕业院校">
     </div>
     <div class="input-row">
       <label for="">学历</label>
-      <input type="text" placeholder="请填写学历">
+      <input type="text" v-model="userInfo.education" placeholder="请填写学历">
     </div>
     <div class="input-row">
       <label for="">职业</label>
-      <input type="text" placeholder="请填写职业">
+      <input type="text" v-model="userInfo.occupation" placeholder="请填写职业">
     </div>
     <div class="input-row">
       <label for="">公司</label>
-      <input type="text" placeholder="请填写公司名称">
+      <input type="text" v-model="userInfo.company" placeholder="请填写公司名称">
     </div>
     <div class="person-credentials">
       <div class="person-credentials-title">
@@ -104,22 +108,27 @@
     </div>
     <div class="input-row">
       <label for="">擅长技能</label>
-      <input type="text" placeholder="请填写擅长的技能">
+      <input type="text" v-model="userInfo.Skill" placeholder="请填写擅长的技能">
     </div>
     <div class="input-row">
       <label for="">空闲时间</label>
-      <input type="text" placeholder="请选择时间">
+      <input type="text" v-model="userInfo.freeTime" placeholder="请选择时间">
     </div>
     <div class="input-row">
       <label for="">个人主页</label>
-      <input type="text" placeholder="请填写">
+      <input type="text" v-model="userInfo.phomepage" placeholder="请填写">
     </div>
     <div class="input-row">
       <label for="">个性签名</label>
-      <input type="text" placeholder="请填写签名">
+      <input type="text" v-model="userInfo.pautograph" placeholder="请填写签名">
     </div>
   </form>
-  <div class="btn-submit">发布</div>
+  <div class="btn-submit" @click="onSubmit">提交</div>
 </div>
+  <script src="../script/lib/jquery-3.1.1.min.js"></script>  
+  <script src="../script/lib/lodash.js"></script>
+  <script src="../script/lib/vue.min.js"></script>
+  <script src="../script/helper.js"></script>
+  <script src="../script/page/edit_userinfo.js"></script>
 </body>
 </html>
