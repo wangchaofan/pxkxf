@@ -1,0 +1,144 @@
+body {
+	background: #f0f1f5;
+}
+.login-form {
+	padding: 1.1rem 0.75rem;
+}
+.login-form-input {
+	border: 1px solid #e0e1e2;
+	border-radius: 6px;
+	overflow: hidden;
+}
+.login-form-input > input {
+	height: 2.5rem;
+	width: 100%;
+	border: none;
+	font-size: 0.8rem;
+	padding-left: 2.4rem;
+}
+.login-form-input > input::-webkit-input-placeholder {
+	color: #999;
+}
+.login-form-input .login-form__username {
+	background: #fff url('../image/icon_loginuser.jpg') 0.9rem no-repeat;
+	background-size: 1rem 1rem;
+	border-bottom: 1px solid #e0e1e2;
+}
+.login-form-input .login-form__password {
+	background: #fff url('../image/icon_loginpassword.jpg') 0.8rem no-repeat;
+	background-size: 1.25rem 1.25rem;
+}
+.login-form__submit-button,
+.regist-button {
+	margin-top: 0.7rem;
+	height: 2.2rem;
+	line-height: 2.2rem;
+	font-size: 0.9rem;
+	color: #fff;
+	text-align: center;
+	background: #e4353a;
+	border-radius: 6px;
+}
+.regist-button {
+	margin: 1.1rem auto;
+	width: 16.5rem;
+	background: #f9b568;
+}
+.login-form__forget-pass {
+	margin-top: 0.45rem;
+	font-size: 0.6rem;
+	color: #e4353a;
+	text-align: right;
+}
+.login-by-weixin {
+	position: fixed;
+	left: 50%;
+	bottom: 1.5rem;
+	margin-left: -3.375rem;
+	width: 6.75rem;
+	height: 1.75rem;
+	background: url('../image/login_wx.png') no-repeat;
+	background-size: cover;
+}
+.btn-get-code {
+	width: 3.45rem;
+	height: 1.5rem;
+	font-size: 0.6rem;
+	line-height: 1.5rem;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	background: #e4353a;
+}
+#nextStepButton {
+	position: static;
+	margin: 0.75rem auto;
+}
+.upload-avatar {
+	height: 9.75rem;
+	padding-top: 2.2rem;
+}
+.upload-icon {
+	display: inline-block;
+	width: 3.9rem;
+	height: 3.75rem;	
+	background: #e4353a url('../image/icon_camera.png') center no-repeat;
+	background-size: 1.75rem 1.75rem;
+	border-radius: 100%;
+}
+.upload-text {
+	margin-top: 0.8rem;
+	font-size: 0.7rem;
+	color: #666;
+}
+.select-sex {
+	height: 2rem;
+	background-color: #fff;
+}
+.select-sex > span {
+	flex: 1;
+	font-size: 0.7rem;
+	text-align: center;
+	line-height: 2rem;
+	border-top: 1px solid #ddd;
+}
+.select-sex__woman .icon {
+	margin-right: 0.2rem;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 0.6rem;
+	width: 0.5rem;
+	height: 0.8rem;
+	background: url('../image/icon_woman.png') center no-repeat;
+	background-size: cover;
+}
+.select-sex__woman[checked] {
+	background-color: #f992c0;
+	color: #fff;
+	border-top: none;
+}
+.select-sex__woman[checked] .icon {
+	background-image: url('../image/icon_woman_select.png');
+}
+.select-sex__man .icon {
+	margin-right: 0.2rem;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 0.7rem;
+	width: 0.65rem;
+	height: 0.65rem;
+	background: url('../image/icon_man.png') center no-repeat;
+	background-size: cover;
+}
+.select-sex__man[checked] {
+	border-top: none;
+	background-color: #2bd0f9;
+	color: #fff;
+}
+.select-sex__man[checked] .icon {
+	background-image: url('../image/icon_man_select.png');
+}
+.btn-complete {
+	position: static;
+	margin: 1.425rem auto 0;
+}
