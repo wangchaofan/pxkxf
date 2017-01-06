@@ -45,3 +45,7 @@ function xmlToJson(xml) {
   }
   return obj;
 }
+
+function ImagePreview(file) {
+
+}

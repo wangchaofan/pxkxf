@@ -740,12 +740,12 @@ header {
 .input-row:last-child {
   border-bottom: none;
 }
-.input-row > label {
+.input-row label {
   width: 3.85rem;
   color: #000;
 }
 
-.input-row > input {
+.input-row input {
   border: none;
   outline: none;
   color: #333;

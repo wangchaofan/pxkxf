@@ -10,7 +10,7 @@
   <script src="../script/adapter.js"></script>
 </head>
 <body style="background: #f0f1f5;">
-<div class="wrapper">
+<div id="mainPage" class="wrapper">
   <header class="header">
     <div class="header-left">
       <span class="return-back"></span>
@@ -21,16 +21,17 @@
     <div class="header-right"></div>
   </header>
   <section class="dynamic-detail">
-    <textarea class="px-textarea fs28 text-666" name="" id="" cols="30" rows="10" placeholder="请输入动态详情"></textarea>
+    <textarea class="px-textarea fs28 text-666" v-model="dynamic_detail" placeholder="请输入动态详情"></textarea>
   </section>
   <section class="dynamic-images display-flex">
     <div class="upload-box">
-      <input type="file">
+      <input type="file" accept="image/jpeg, image/png" @change="onFileChange($event)">
     </div>
   </section>
   <div class="remind ac fs24">提示</div>
-  <div class="btn-submit">发布</div>
+  <div class="btn-submit" @click="onSubmit">发布</div>
 </div>
 <script src="../script/lib/vue.min.js"></script>
+<script src="../script/page/add_dynamic.js"></script>
 </body>
 </html>
