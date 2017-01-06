@@ -3,26 +3,48 @@
  */
 function initPage() {
   var vm = new Vue({
-    el: 'body',
+    el: '#mainPage',
     created: function() {
-      this.getDemandList()
+      this.getList('demandList', 'getdemaorder')
     },
     data: function() {
       return {
         demandList: [],
-        currentTab: 'remand'
+        supplyList: [],
+        nearByList: [],
+        currentTab: 'demand',
+        city: '成都'
       }
     },
     methods: {
-      getDemandList: function() {
+      onClickTabHead: function(tabId) {
+        this.currentTab = tabId
+        if (tabId === 'demand') {
+          this.getList('demandList', 'getdemaorder')
+        } else if (tabId === 'supply') {
+          this.getList('supplyList', 'getSkill')
+        } else {
+          this.getList('nearByList', 'getSkill')
+        }
+      },
+      onSelectCity: function() {
+        var self = this;
+        var citySelector = api.require('citySelector');
+        citySelector.open({
+          y: api.frameHeight / 1.6 + 50
+        }, function(ret, err) {
+          self.city = ret.city;
+        });
+      },
+      getList: function(listId, uri) {
         var self = this
+        if (self[listId].length > 0) return
         $.ajax({
           type: 'POST',
-          dataType: 'jsonp',
-          url: BaseService.apiUrl + 'getdemaorder',
+          dataType: 'xml',
+          url: BaseService.apiUrl + uri,
           success: function(res) {
-            self.demandList = JSON.parse(Helper.xmlToJson(res).string['#text'])
-            console.log(self.demandList)
+            self[listId] = JSON.parse(Helper.xmlToJson(res).string['#text'])
           },
           error: function(err) {
             alert(JSON.stringify(err))
@@ -32,7 +54,10 @@ function initPage() {
     }
   })
 }
-$(function() {
+
+apiready = function(){
+  initPage()
+
   var mySwiper = new Swiper('.swiper-container', {
     loop: true,
     autoplay: 3000,
@@ -43,16 +68,10 @@ $(function() {
   var ScorllTop = 272 * window.innerWidth / 720
 
   $(window).on('scroll', function() {
-  	if (window.scrollY >= ScorllTop) {
-  		$header.addClass('fixed')
-  	} else {
-  		$header.removeClass('fixed')
-  	}
+    if (window.scrollY >= ScorllTop) {
+      $header.addClass('fixed')
+    } else {
+      $header.removeClass('fixed')
+    }
   })
-
-  initPage()
-})
-
-apiready = function(){
-  initPage()
 }

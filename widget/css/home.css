@@ -174,13 +174,14 @@
 }
 
 .tab-header span {
+	display: inline-block;
 	padding: 0 0.8rem;
 	font-size: 0.8rem;
-	line-height: 1.725rem;
+	line-height: 1.7rem;
+	border-bottom: 1px solid #ddd;
 }
 
 .tab-header span.current {
-	display: inline-block;
 	border-bottom: 1px solid #f94f2b;
 }
 

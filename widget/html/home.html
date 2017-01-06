@@ -10,12 +10,12 @@
   <script src="../script/adapter.js"></script>
 </head>
 <body>
-<div class="main-wrap">
+<div id="mainPage" class="main-wrap">
   <div class="top-banner">
     <div class="logo"></div>
     <div class="top-banner-bottom">
-      <div class="select-location fs24 white">
-        <span>成都</span>
+      <div class="select-location fs24 white" @click="onSelectCity">
+        <span>{{city}}</span>
         <select name="" id="" style="display:none;">
           <option value="1">成都</option>
         </select>
@@ -62,15 +62,15 @@
   </div>
   <div class="tab">
     <div class="tab-header">
-      <span class="current">需求</span>
-      <span>供应</span>
-      <span>附近</span>
+      <span v-bind:class="{current: currentTab === 'demand'}" @click="onClickTabHead('demand')">需求</span>
+      <span v-bind:class="{current: currentTab === 'supply'}" @click="onClickTabHead('supply')">供应</span>
+      <span v-bind:class="{current: currentTab === 'nearby'}" @click="onClickTabHead('nearby')">附近</span>
     </div>
     <div class="tab-content">
-      <div class="remand-list" v-if="currentTab === 'remand'">
+      <div class="remand-list" v-if="currentTab === 'demand'">
         <ul>
-          <li>
-            <a class="display-flex" v-for="item in remandList">
+          <li v-for="item in demandList">
+            <a class="display-flex">
               <div class="user-info">
                 <div class="user-avatar-wrap">
                   <img class="user-avatar" src="../image/avatar_demo.png" alt="">
@@ -92,15 +92,97 @@
               </div>
               <div class="remand-info">
                 <div class="remand-info__title">
-                  他的需求：<span class="text-black">消防设备安装</span></div>
-                <div class="remand-info__price">愿付酬金：<strong class="text-warning">50</strong>元/套/天（酬金已担保）</div>
-                <div class="remand-info__persons">需求人数：<strong class="text-warning">5</strong>人</div>
+                  他的需求：<span class="text-black">{{item.demandTitle}}</span></div>
+                <div class="remand-info__price">愿付酬金：<strong class="text-warning">{{item.dmoney}}</strong>元/套/天（酬金已担保）</div>
+                <div class="remand-info__persons">需求人数：<strong class="text-warning">{{item.demandNum}}</strong>人</div>
                 <div class="remand-info__detail">
-                  需求详情：3层楼需要安装消防设备，共20套消防设备3层楼需要安装消防设备，共有20套消
+                  需求详情：{{item.ddetails}}
                 </div>
                 <div class="remand-info__other">
                   <div class="user-name">宿命</div>
-                  <div class="user-location">43KM</div>
+                  <div class="user-location">{{item.daddress}}</div>
+                  <div class="invite-number flex-1 ar"><span class="icon-check-ok"></span>30应邀</div>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="remand-list" v-if="currentTab === 'supply'">
+        <ul>
+          <li v-for="item in supplyList">
+            <a class="display-flex">
+              <div class="user-info">
+                <div class="user-avatar-wrap">
+                  <img class="user-avatar" src="../image/avatar_demo.png" alt="">
+                  <div class="p-tag">供应</div>
+                </div>
+                <div class="user-roles display-flex">
+                  <span class="user-roles__type1"></span>
+                  <span class="user-roles__type2"></span>
+                  <span class="user-roles__type3"></span>
+                  <span class="user-roles__type4"></span>
+                </div>
+                <div class="good-like">
+                  好评:
+                  <span class="icon-good"></span>
+                  <span class="icon-good"></span>
+                  <span class="icon-notgood"></span>
+                </div>
+                <div class="publish-number">发布数量:<span class="text-blue">12</span>条</div>
+              </div>
+              <div class="remand-info">
+                <div class="remand-info__title">
+                  他的供应：<span class="text-black">{{item.skillName}}</span></div>
+                <div class="remand-info__price">愿付酬金：<strong class="text-warning">{{item.smoney}}</strong>{{item.smoneytype}}（酬金已担保）</div>
+                <div class="remand-info__persons">需求人数：<strong class="text-warning">{{item.servertime}}</strong></div>
+                <div class="remand-info__detail">
+                  需求详情：{{item.skilldetails}}
+                </div>
+                <div class="remand-info__other">
+                  <div class="user-name">宿命</div>
+                  <div class="user-location">{{item.daddress}}</div>
+                  <div class="invite-number flex-1 ar"><span class="icon-check-ok"></span>30应邀</div>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="remand-list" v-if="currentTab === 'nearby'">
+        <ul>
+          <li v-for="item in nearByList">
+            <a class="display-flex">
+              <div class="user-info">
+                <div class="user-avatar-wrap">
+                  <img class="user-avatar" src="../image/avatar_demo.png" alt="">
+                  <div class="p-tag">需求</div>
+                </div>
+                <div class="user-roles display-flex">
+                  <span class="user-roles__type1"></span>
+                  <span class="user-roles__type2"></span>
+                  <span class="user-roles__type3"></span>
+                  <span class="user-roles__type4"></span>
+                </div>
+                <div class="good-like">
+                  好评:
+                  <span class="icon-good"></span>
+                  <span class="icon-good"></span>
+                  <span class="icon-notgood"></span>
+                </div>
+                <div class="publish-number">发布数量:<span class="text-blue">12</span>条</div>
+              </div>
+              <div class="remand-info">
+                <div class="remand-info__title">
+                  他的需求：<span class="text-black">{{item.demandTitle}}</span></div>
+                <div class="remand-info__price">愿付酬金：<strong class="text-warning">{{item.dmoney}}</strong>元/套/天（酬金已担保）</div>
+                <div class="remand-info__persons">需求人数：<strong class="text-warning">{{item.demandNum}}</strong>人</div>
+                <div class="remand-info__detail">
+                  需求详情：{{item.ddetails}}
+                </div>
+                <div class="remand-info__other">
+                  <div class="user-name">宿命</div>
+                  <div class="user-location">{{item.daddress}}</div>
                   <div class="invite-number flex-1 ar"><span class="icon-check-ok"></span>30应邀</div>
                 </div>
               </div>

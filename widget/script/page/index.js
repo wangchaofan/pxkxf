@@ -13,7 +13,7 @@ apiready = function() {
 			bg: '#fdfdfd',
 			h: 56,
 			dividingLine: {
-				width: 0.5,
+				width: 1,
 				color: '#ddd'
 			},
 			badge: {
@@ -126,7 +126,7 @@ apiready = function() {
 			url: 'html/order.html'
 		}, {
 			name: 'consult',
-			url: 'html/consult.html'
+			url: 'html/professor_question.html'
 		}, {
 			name: 'usercenter',
 			url: 'html/usercenter.html'
