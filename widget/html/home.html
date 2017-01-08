@@ -66,14 +66,14 @@
       <span v-bind:class="{current: currentTab === 'supply'}" @click="onClickTabHead('supply')">供应</span>
       <span v-bind:class="{current: currentTab === 'nearby'}" @click="onClickTabHead('nearby')">附近</span>
     </div>
-    <div class="tab-content">
+    <div class="tab-content" v-cloak>
       <div class="remand-list" v-if="currentTab === 'demand'">
         <ul>
           <li v-for="item in demandList">
             <a class="display-flex">
               <div class="user-info">
                 <div class="user-avatar-wrap">
-                  <img class="user-avatar" src="../image/avatar_demo.png" alt="">
+                  <img class="user-avatar" v-bind:src="item.Usermodel[0].pheadimgUrl" alt="">
                   <div class="p-tag">需求</div>
                 </div>
                 <div class="user-roles display-flex">
@@ -84,9 +84,11 @@
                 </div>
                 <div class="good-like">
                   好评:
-                  <span class="icon-good"></span>
-                  <span class="icon-good"></span>
-                  <span class="icon-notgood"></span>
+                  <div class="good-like-pl">
+                    <span class="icon-good"></span>
+                    <span class="icon-good"></span>
+                    <span class="icon-notgood"></span>
+                  </div>
                 </div>
                 <div class="publish-number">发布数量:<span class="text-blue">12</span>条</div>
               </div>
@@ -114,7 +116,7 @@
             <a class="display-flex">
               <div class="user-info">
                 <div class="user-avatar-wrap">
-                  <img class="user-avatar" src="../image/avatar_demo.png" alt="">
+                  <img class="user-avatar" v-bind:src="item.sUsermodel[0].pheadimgUrl" alt="">
                   <div class="p-tag">供应</div>
                 </div>
                 <div class="user-roles display-flex">
@@ -125,9 +127,11 @@
                 </div>
                 <div class="good-like">
                   好评:
-                  <span class="icon-good"></span>
-                  <span class="icon-good"></span>
-                  <span class="icon-notgood"></span>
+                  <div class="good-like-pl">
+                    <span class="icon-good"></span>
+                    <span class="icon-good"></span>
+                    <span class="icon-notgood"></span>
+                  </div>
                 </div>
                 <div class="publish-number">发布数量:<span class="text-blue">12</span>条</div>
               </div>
@@ -135,9 +139,9 @@
                 <div class="remand-info__title">
                   他的供应：<span class="text-black">{{item.skillName}}</span></div>
                 <div class="remand-info__price">愿付酬金：<strong class="text-warning">{{item.smoney}}</strong>{{item.smoneytype}}（酬金已担保）</div>
-                <div class="remand-info__persons">需求人数：<strong class="text-warning">{{item.servertime}}</strong></div>
+                <div class="remand-info__persons">供应数：<strong class="text-warning">{{item.servertime}}</strong></div>
                 <div class="remand-info__detail">
-                  需求详情：{{item.skilldetails}}
+                  供应详情：{{item.skilldetails}}
                 </div>
                 <div class="remand-info__other">
                   <div class="user-name">宿命</div>
@@ -166,9 +170,11 @@
                 </div>
                 <div class="good-like">
                   好评:
-                  <span class="icon-good"></span>
-                  <span class="icon-good"></span>
-                  <span class="icon-notgood"></span>
+                  <div class="good-like-pl">
+                    <span class="icon-good"></span>
+                    <span class="icon-good"></span>
+                    <span class="icon-notgood"></span>
+                  </div>
                 </div>
                 <div class="publish-number">发布数量:<span class="text-blue">12</span>条</div>
               </div>

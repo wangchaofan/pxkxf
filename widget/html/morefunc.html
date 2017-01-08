@@ -9,7 +9,7 @@
   <script src="../script/adapter.js"></script>
 </head>
 <body>
-<div class="wrapper">
+<div id="mainPage" class="wrapper">
   <header class="header">
     <div class="header-left">
       <span class="return-back"></span>
@@ -22,21 +22,26 @@
   </header>
   <div class="more-func-list container">
     <ul>
-      <li>
-        <span>修改密码</span>
+      <li @click="goPage('editPwd')">
+        <span >修改密码</span>
       </li>
-      <li>
+      <li @click="goPage('suggestion')">
         <span>意见反馈</span>
       </li>
-      <li>
+      <li @click="goPage('question')">
         <span>常见问题</span>
       </li>
-      <li>
+      <li @click="checkUpdate">
         <span>检测更新</span>
       </li>
     </ul>
   </div>
-  <div class="button-logout ac">注销当前账号</div>
+  <div class="button-logout ac" @click="logout">注销当前账号</div>
 </div>
+  <script src="../script/lib/jquery-3.1.1.min.js"></script>  
+  <script src="../script/lib/lodash.js"></script>
+  <script src="../script/lib/vue.min.js"></script>
+  <script src="../script/helper.js"></script>
+  <script src="../script/page/morefunc.js"></script>
 </body>
 </html>

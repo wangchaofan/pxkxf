@@ -21,7 +21,10 @@
     </div>
   </header>
   <div class="upload-avatar ac">
-  	<div class="upload-icon"></div>
+  	<div class="upload-icon">
+     <input type="file" accept="image/jpg,image/png" @change="onUpload"> 
+     <img v-if="avatarImg" v-bind:src="avatarImg" alt="">
+    </div>
   	<div class="upload-text">上传头像</div>
   </div>
   <div class="container bg-white">
@@ -42,6 +45,11 @@
   	<span class="select-sex__man"><span class="icon"></span>男</span>
   </div>
   <div class="btn-submit btn-complete ac">完成</div>
+  <script src="../script/lib/jquery-3.1.1.min.js"></script>  
+  <script src="../script/lib/lodash.js"></script>
+  <script src="../script/lib/vue.min.js"></script>
+  <script src="../script/helper.js"></script>
+  <script src="../script/page/edit_basicinfo.js"></script>
 </div>
 </body>
 </html>

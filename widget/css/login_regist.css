@@ -70,6 +70,9 @@ body {
 	border-radius: 6px;
 	background: #e4353a;
 }
+.btn-get-code.disabled {
+	background-color: #ddd;
+}
 #nextStepButton {
 	position: static;
 	margin: 0.75rem auto;
@@ -79,12 +82,27 @@ body {
 	padding-top: 2.2rem;
 }
 .upload-icon {
+	position: relative;
 	display: inline-block;
 	width: 3.9rem;
 	height: 3.75rem;	
 	background: #e4353a url('../image/icon_camera.png') center no-repeat;
 	background-size: 1.75rem 1.75rem;
 	border-radius: 100%;
+	overflow: hidden;
+}
+.upload-icon > img {
+	width: 100%;
+	height: 100%;
+}
+.upload-icon > input[type="file"] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0;
 }
 .upload-text {
 	margin-top: 0.8rem;

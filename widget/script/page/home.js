@@ -40,20 +40,22 @@ function initPage() {
         var self = this
         if (self[listId].length > 0) return
         $.ajax({
-          type: 'POST',
-          dataType: 'xml',
           url: BaseService.apiUrl + uri,
           success: function(res) {
-            self[listId] = JSON.parse(Helper.xmlToJson(res).string['#text'])
+            res = JSON.parse(res)
+            self[listId] = JSON.parse(res.data)
+            console.log(JSON.parse(res.data))
           },
           error: function(err) {
-            alert(JSON.stringify(err))
+            // alert(JSON.stringify(err))
           }
         })
       }
     }
   })
 }
+
+initPage()
 
 apiready = function(){
   initPage()

@@ -206,13 +206,12 @@
 .user-info {
 	position: relative;
 	width: 3.5rem;
+	margin-right: 0.5rem;
 	text-align: left;
 }
 
 .user-avatar-wrap {
-	position: relative;
-	width: 2.875rem;
-	height: 2.875rem;
+	position: relative;	
 }
 .user-avatar-wrap .user-avatar {
 	width: 100%;	
@@ -239,6 +238,11 @@
 	font-size: 0.5rem;
 	color: #999;
 }
+.good-like-pl {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 0;
+}
 
 .user-info .publish-number {
 	margin-top: 0.1rem;
@@ -247,7 +251,8 @@
 .user-roles {
 	margin-top: 0.25rem;
 	margin-bottom: 0.25rem;
-	width: 2.875rem;
+	width: 3.2rem;
+	padding-left: 0.1rem;
 	justify-content: space-between;
 	align-items: flex-start;
 }
@@ -288,6 +293,7 @@
 .icon-good,
 .icon-notgood {
 	display: inline-block;
+	margin-right: 1px;
 	vertical-align: text-top;
 	width: 0.6rem;
 	height: 0.6rem;

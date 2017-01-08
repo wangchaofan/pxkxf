@@ -10,6 +10,10 @@ var Helper = {
   xmlToJson: xmlToJson
 }
 
+var MockData = {
+	userid: 'A17DB629-52B6-4B6A-A904-E6C1721E3A05'
+}
+
 $.ajaxSetup({
   type: 'post',
   dataType: 'text',
