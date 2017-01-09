@@ -19,11 +19,35 @@ var MockData = {
 	userid: 'A17DB629-52B6-4B6A-A904-E6C1721E3A05'
 }
 
+Vue.component('my-header', {
+  template: '<header class="header">' +
+            ' <div class="header-left">' +
+            '   <span class="return-back" @click="returnBack"></span>' +
+            ' </div>' +
+            ' <div class="header-center">' +
+            '   <span class="header-center-text">{{title}}</span>' +
+            ' </div>' +
+            ' <div class="header-right">' +
+            '   <slot name="headerRight"></slot>' +
+            ' </div>' +
+            '</header>',
+  props: ['title'],
+  data: function() {
+    return {}
+  },
+  methods: {
+    returnBack: function() {
+      api.closeWin()
+    }
+  }
+})
+
 $.ajaxSetup({
   type: 'post',
   dataType: 'text',
   dataFilter: function(res) {
     console.log(res)
+    console.log(XmlToJson(res))
     return JSON.parse(XmlToJson(res))
   }
 })

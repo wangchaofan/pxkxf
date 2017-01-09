@@ -10,25 +10,16 @@
 </head>
 <body>
 <div id="mainPage" class="wrapper">
-  <header class="header">
-    <div class="header-left">
-      <span class="return-back"></span>
-    </div>
-    <div class="header-center">
-      <span class="header-center-text">更多功能</span>
-    </div>
-    <div class="header-right">
-    </div>
-  </header>
+  <my-header title="更多功能"></my-header>
   <div class="more-func-list container">
     <ul>
-      <li @click="goPage('editPwd')">
+      <li @click="goPage('edit_password')">
         <span >修改密码</span>
       </li>
-      <li @click="goPage('suggestion')">
+      <li @click="goPage('')">
         <span>意见反馈</span>
       </li>
-      <li @click="goPage('question')">
+      <li @click="goPage('questions')">
         <span>常见问题</span>
       </li>
       <li @click="checkUpdate">

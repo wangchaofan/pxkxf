@@ -42,9 +42,8 @@ function initPage() {
         $.ajax({
           url: BaseService.apiUrl + uri,
           success: function(res) {
-            res = JSON.parse(res)
+            console.log(res)
             self[listId] = JSON.parse(res.data)
-            console.log(JSON.parse(res.data))
           },
           error: function(err) {
             // alert(JSON.stringify(err))
@@ -55,9 +54,7 @@ function initPage() {
   })
 }
 
-initPage()
-
-apiready = function(){
+apiready = function() {
   initPage()
 
   var mySwiper = new Swiper('.swiper-container', {

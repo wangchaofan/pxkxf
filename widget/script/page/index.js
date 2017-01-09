@@ -8,12 +8,13 @@ apiready = function() {
 	}
 	var nvTabBarWidth = api.winWidth / 5.0
 	var NVTabBar = api.require('NVTabBar')
+	var currentIndex = 1
 	NVTabBar.open({
 		styles: {
 			bg: '#fdfdfd',
 			h: 56,
 			dividingLine: {
-				width: 1,
+				width: 0.5,
 				color: '#ddd'
 			},
 			badge: {
@@ -100,7 +101,42 @@ apiready = function() {
 			if (ret.index < 2) {
 				switchFrame(ret.index)
 			} else if (ret.index === 2) {
-
+				api.actionSheet({
+			    cancelTitle: '取消',
+			    buttons: ['发布供应', '发布需求', '发布动态'],
+			    style: {
+		    		itemNormalColor: '#fafafa',
+		    		fontNormalColor: '#4abdff',
+		    		fontPressColor: '#e4353a'
+			    }
+				}, function(ret, err) {
+			    var index = ret.buttonIndex;
+			    if (index === 1) {
+			    	api.openWin({
+		    	    name: 'add_edit_supply',
+		    	    url: 'widget://html/add_edit_supply.html',
+		    	    pageParam: {
+		    	        type: 'add'
+		    	    }
+			    	})
+			    } else if (index === 2) {
+			    	api.openWin({
+		    	    name: 'add_edit_supply',
+		    	    url: 'widget://html/add_edit_demand.html',
+		    	    pageParam: {
+		    	      type: 'add'
+		    	    }
+			    	})
+			    } else if (index === 3) {
+			    	api.openWin({
+		    	    name: 'page1',
+		    	    url: 'widget://html/add_dynamic.html'
+			    	})
+			    }
+			    NVTabBar.setSelect({
+				    index: currentIndex
+					})
+				})
 			} else {
 				switchFrame(ret.index - 1)
 			}
@@ -123,7 +159,7 @@ apiready = function() {
 			url: 'html/home.html'
 		}, {
 			name: 'order',
-			url: 'html/order.html'
+			url: 'html/mydemand.html'
 		}, {
 			name: 'consult',
 			url: 'html/professor_question.html'
@@ -136,6 +172,7 @@ apiready = function() {
 	})
 
 	function switchFrame(index) {
+		currentIndex = index
 		api.setFrameGroupIndex({ name: 'group', index: index })
 	}
 }

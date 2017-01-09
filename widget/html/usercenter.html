@@ -19,7 +19,7 @@
 			</div>
 			<div class="header-right"></div>
 		</header>
-		<section class="user-center-top display-flex" v-cloak="">
+		<section class="user-center-top display-flex" v-cloak @click="goPage('user_avatar')">
 			<div class="user-info">			
 				<div class="user-avatar" v-bind:style="avatarStyle"></div>
 				<div class="user-info-tj">
@@ -35,17 +35,17 @@
 		<div class="user-center-features">
 			<table cellpadding="0" cellspacing="0">
 				<tr>
-					<td class="user-feature-mywallet">我的钱包</td>
-					<td class="user-feature-supply">我的供应</td>
-					<td class="user-feature-demand">我的需求</td>
+					<td class="user-feature-mywallet" @click="goPage('mywallet')">我的钱包</td>
+					<td class="user-feature-supply" @click="goPage('mysupply')">我的供应</td>
+					<td class="user-feature-demand" @click="goPage('mydemand')">我的需求</td>
 				</tr>
 				<tr>
-					<td class="user-feature-contact">联系人</td>
-					<td class="user-feature-dynamics">个人动态</td>
+					<td class="user-feature-contact" @click="goPage('contacter')">联系人</td>
+					<td class="user-feature-dynamics" @click="goPage('mydynamics')">个人动态</td>
 					<td class="user-feature-invite">邀请注册</td>
 				</tr>
 				<tr>
-					<td class="user-feature-add">更多</td>
+					<td class="user-feature-add" @click="goPage('morefunc')">更多</td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -54,8 +54,8 @@
 	</div>
 	<script src="../script/lib/jquery-3.1.1.min.js"></script>
 	<script src="../script/lib/lodash.js"></script>
-	<script src="../script/helper.js"></script>
 	<script src="../script/lib/vue.min.js"></script>
+	<script src="../script/helper.js"></script>
 	<script src="../script/page/usercenter.js"></script>
 </body>
 </html>

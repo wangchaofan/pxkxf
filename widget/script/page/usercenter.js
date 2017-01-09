@@ -18,6 +18,15 @@ function initPage() {
       }
     },
     methods: {
+      goPage: function(pageName) {
+        api.openWin({
+          name: pageName,
+          url: 'widget://html/' + pageName + '.html',
+          pageParam: {
+
+          }
+        });
+      },
       getUserInfo: function() {
         var self = this
         $.ajax({

@@ -495,6 +495,9 @@ ul, ol {
 li {
   list-style: none;
 }
+a {
+  -webkit-tap-highlight-color: transparent;
+}
 [v-cloak] {
   display: none !important;
 }
