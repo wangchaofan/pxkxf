@@ -9,21 +9,21 @@
   <script src="../script/adapter.js"></script>
 </head>
 <body>
-	<div class="main">
-		<!-- <header class="header">
+	<div class="main wrapper">
+		<header class="header">
 			<div class="header-left">
-				<span class="return-back"></span>
+				<!--<span class="return-back"></span>-->
 			</div>
 			<div class="header-center">
 				<span class="header-center-text">个人中心</span>
 			</div>
 			<div class="header-right"></div>
-		</header> -->
-		<section class="user-center-top display-flex">
+		</header>
+		<section class="user-center-top display-flex" v-cloak="">
 			<div class="user-info">			
-				<div class="user-avatar" style="background-image: url('../image/avatar_demo.png')"></div>
+				<div class="user-avatar" v-bind:style="avatarStyle"></div>
 				<div class="user-info-tj">
-					<div class="user-name"><span class="vam">YONGJIE123</span><span class="user-sex user-sex-man vam"></span></div>
+					<div class="user-name"><span class="vam">{{userInfo.pnickname}}</span><span class="user-sex user-sex-man vam"></span></div>
 					<div class="online-status">在线</div>
 				</div>
 			</div>
@@ -52,5 +52,10 @@
 			</table>
 		</div>
 	</div>
+	<script src="../script/lib/jquery-3.1.1.min.js"></script>
+	<script src="../script/lib/lodash.js"></script>
+	<script src="../script/helper.js"></script>
+	<script src="../script/lib/vue.min.js"></script>
+	<script src="../script/page/usercenter.js"></script>
 </body>
 </html>

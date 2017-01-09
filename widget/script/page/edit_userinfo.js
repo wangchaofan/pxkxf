@@ -1,6 +1,9 @@
 function initPage() {
 	var vm = new Vue({
 		el: '#mainPage',
+		created: function() {
+			this.getUserInfo()
+		},
 		data: function() {
 			return {
 				userInfo: {
@@ -31,20 +34,20 @@ function initPage() {
 				submiting: false
 			}
 		},
-		computed: {
-			submitButtonText: function() {
-				return this.submiting ? '正在登录...' : '登录'
-			}
-		},
 		methods: {
-			forgetPassword: function() {
-
-			},
-			toRegist: function() {
-
-			},
-			loginByWx: function() {
-				// todo: login by weixin
+			getUserInfo: function() {
+				var self = this
+				$.ajax({
+					url: BaseService.apiUrl + 'getperuserinfo',
+					data: { uid: MockData.userid }
+				}).then(function(res) {
+					res = ParseJson(res.data)[0]
+					if (_.isArray(res.pQualifications)) {
+						res.pQualifications = []
+					}
+					self.userInfo = res
+					console.log(res)
+				})
 			},
 			validate: function() {
 				var dtd = $.Deferred()

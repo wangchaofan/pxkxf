@@ -28,12 +28,12 @@
       <label>性别</label>
       <div class="px-radio-group">
         <div class="px-radio">
-          <input name="sex" type="radio" value="man" v-model="userInfo.sex">
+          <input name="sex" type="radio" value="男" v-model="userInfo.sex">
           <div class="px-radio-style"></div>
           <label>男</label>
         </div>
         <div class="px-radio">
-          <input name="sex" type="radio" value="woman" v-model="userInfo.sex">
+          <input name="sex" type="radio" value="女" v-model="userInfo.sex">
           <div class="px-radio-style"></div>
           <label>女</label>
         </div>
@@ -93,13 +93,9 @@
         <span>个人资质（最多8张）</span>
       </div>
       <div class="person-credentials-list">
-        <div class="person-credentials-image-wrap">
+        <div class="person-credentials-image-wrap" v-for="(img, index) in userInfo.pQualifications">
           <div class="button-delete"></div>
-          <img src="../image/home_banner.jpg" alt="">
-        </div>
-        <div class="person-credentials-image-wrap">
-          <div class="button-delete"></div>
-          <img src="../image/home_banner.jpg" alt="">
+          <img :src="img" alt="">
         </div>
         <div class="upload-box">
           <input type="file">

@@ -19,23 +19,23 @@
     </div>
     <div class="header-right"></div>
   </header>
-  <section class="my-balance">
+  <section class="my-balance" v-cloak="">
     <div class="icon-my-balance"></div>
     <p class="fs28 text-666">账户余额</p>
-    <div class="my-balance-num text-black">¥888.00</div>
+    <div class="my-balance-num text-black">¥{{walletInfo.accountBalance | currency}}</div>
   </section>
-  <section class="recharge-withdraw">
+  <section class="recharge-withdraw" v-cloak="">
     <div class="recharge-withdraw-item">
       <div class="recharge-withdraw-title fs28">累计充值（元）</div>
       <div class="recharge-withdraw-value">
-        <span>0.00</span>
+        <span>{{walletInfo.Cumulativecz | currency}}</span>
         <span class="btn-view-record">充值记录</span>
       </div>
     </div>
     <div class="recharge-withdraw-item">
       <div class="recharge-withdraw-title fs28">累计提现（元）</div>
       <div class="recharge-withdraw-value">
-        <span>0.00</span>
+        <span>{{walletInfo.Cumulativetx | currency}}</span>
         <span class="btn-view-record">提现记录</span>
       </div>
     </div>
@@ -43,5 +43,10 @@
   <div class="btn-submit btn-recharge">充值</div>
   <div class="btn-submit btn-withdraw">提现</div>
 </div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/page/mywallet.js"></script>
 </body>
 </html>

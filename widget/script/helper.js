@@ -11,7 +11,8 @@ var BaseService = {
 var Helper = {
   xmlToJson: XmlToJson,
   imagePreview: ImagePreview,
-  uploadImg: UploadImg
+  uploadImg: UploadImg,
+  transformImageData: TransformImageData
 }
 
 var MockData = {
@@ -77,6 +78,10 @@ function ImagePreview(file) {
   }
   reader.readAsDataURL(file)
   return dtd
+}
+
+function TransformImageData(imgData) {
+  return imgData.replace(/^.+\,/, '')
 }
 
 function UploadImg(userid, imgData) {

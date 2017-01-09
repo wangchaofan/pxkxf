@@ -60,17 +60,13 @@
         <span>附件</span>
         <span>作品、证书、自拍美照等（最多8张）</span>
       </div>
-      <div class="person-credentials-list">
-        <div class="person-credentials-image-wrap">
+      <div class="person-credentials-list" v-cloak>
+        <div class="person-credentials-image-wrap" v-for="(img, index) in images">
           <div class="button-delete"></div>
-          <img src="../image/home_banner.jpg" alt="">
-        </div>
-        <div class="person-credentials-image-wrap">
-          <div class="button-delete"></div>
-          <img src="../image/home_banner.jpg" alt="">
+          <img :src="img"  alt="">
         </div>
         <div class="upload-box">
-          <input type="file">
+          <input type="file" accept="image/jpg,image/png" @change="onFileChange">
         </div>
       </div>
     </div>
@@ -80,7 +76,7 @@
     </div>
   </form>
   <div class="fixed-bottom">
-    <div class="btn-submit">发布</div>
+    <div class="btn-submit" @click="onSubmit">发布</div>
   </div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>  

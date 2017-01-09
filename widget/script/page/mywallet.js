@@ -1,3 +1,10 @@
+/**
+ * Created by chaofanw on 2017/1/9.
+ */
+Vue.filter('currency', function(val) {
+  console.log(val)
+  return parseFloat(val).toFixed(2)
+})
 function initPage() {
   var vm = new Vue({
     el: '.wrapper',
@@ -6,22 +13,26 @@ function initPage() {
     },
     data: function() {
       return {
-        list: []
+        walletInfo: {}
       }
     },
     methods: {
       getData: function() {
         var self = this
         $.ajax({
-          url: BaseService.apiUrl + 'getCollection',
+          url: BaseService.apiUrl + 'getwallet',
           data: { userid: MockData.userid }
-        }).done(function(res) {
-          self.list = ParseJson(res.data)
+        }).then(function(res) {
+          if (res.key === 'true') {
+            self.walletInfo = ParseJson(res.data)[0]
+            console.log(ParseJson(res.data))
+          }
         })
       }
     }
   })
 }
+
 /* === 测试使用 === */
 setTimeout(function() {
   if (!window.api) {

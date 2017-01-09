@@ -14,34 +14,18 @@ function initPage() {
           alert('请输入动态详情')
           return
         }
-        Promise.all(_.map(this.imgarr, function(img) {
-            return Helper.uploadImg(MockData.userid, img)
-          }))
-          .then(function(images) {
-            return _.map(images, function(v) {
-              v = JSON.parse(v)
-              if (v.key === 'true') {
-                return v.data
-              }
-            })
-          }, function(err) {
-            alert('上传失败')
-          })
-          .then(function(imgarr) {
-            $.ajax({
-              url: BaseService.apiUrl + 'addDynamics',
-              data: {
-                userid: MockData.userid,
-                dynamicContent: self.dynamicContent,
-                imgarr: imgarr
-              }
-            }).then(function(res) {
-              res = JSON.parse(res)
-              console.log(res)
-            }, function(err) {
-              alert('添加失败')
-            })
-          })
+        $.ajax({
+          url: BaseService.apiUrl + 'addDynamics',
+          data: {
+            userid: MockData.userid,
+            dynamicContent: self.dynamicContent,
+            imgarr: _.map(self.imgarr, TransformImageData)
+          }
+        }).then(function(res) {
+          console.log(res)
+        }, function(err) {
+          alert('添加失败')
+        })
 			},
 			deleteImage: function(index) {
 				this.imgarr.splice(index, 1)
