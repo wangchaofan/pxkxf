@@ -2,12 +2,16 @@
  * Created by chaofanw on 2017/1/3.
  */
 
+var ParseJson = JSON.parse
+
 var BaseService = {
   apiUrl: 'http://120.26.116.143:809/WebServer/userServer.asmx/'
 }
 
 var Helper = {
-  xmlToJson: xmlToJson
+  xmlToJson: XmlToJson,
+  imagePreview: ImagePreview,
+  uploadImg: UploadImg
 }
 
 var MockData = {
@@ -18,11 +22,12 @@ $.ajaxSetup({
   type: 'post',
   dataType: 'text',
   dataFilter: function(res) {
-    return xmlToJson(res)
+    console.log(res)
+    return JSON.parse(XmlToJson(res))
   }
 })
 
-function xmlToJson(xml) {
+function XmlToJson(xml) {
   var r = /<string.+?>(.+)<\/string>/
   return r.exec(xml)[1]
 }
@@ -64,5 +69,23 @@ function xmlToJson(xml) {
 // }
 
 function ImagePreview(file) {
+  var dtd = $.Deferred()
+  var reader = new FileReader()
+  reader.onload = function() {
+    var url = reader.result
+    dtd.resolve(url)
+  }
+  reader.readAsDataURL(file)
+  return dtd
+}
 
+function UploadImg(userid, imgData) {
+  imgData = imgData.replace(/^.+\,/, '')
+  return $.ajax({
+    url: BaseService.apiUrl + 'saveimg',
+    data: {
+      userid: userid,
+      fileNameurl: imgData
+    }
+  })
 }

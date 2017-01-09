@@ -25,8 +25,7 @@ function initPage() {
 				reader.readAsDataURL(file)
 			},
 			uploadImg: function(data) {
-				console.log(data)
-				data = data.replace(/^.+\;/, '')
+				data = data.replace(/^.+\,/, '')
 				$.ajax({
 					url: BaseService.apiUrl + 'saveimg',
 					data: {
@@ -71,6 +70,7 @@ function initPage() {
 					.then(function(res) {
 						res = JSON.parse(res)
 						console.log(res)
+						// todo: 跳转到下一步
 					})
 					.fail(function(err) {
 						alert(err)

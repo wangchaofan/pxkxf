@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>我的需求</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/mysupply.css">
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <header class="header">
+    <div class="header-left">
+      <span class="return-back"></span>
+    </div>
+    <div class="header-center">
+      <div class="remand-header">
+        <span :class="{selected: currentPage === 'demand'}" @click="onClickNav('demand')">我的需求</span>
+        <span :class="{selected: currentPage === 'invite'}" @click="onClickNav('invite')">我的应邀</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="fs24 white"></span>
+    </div>
+  </header>
+  <div class="supply-list" v-if="currentPage === 'demand'" v-cloak>
+    <div class="none-text" v-if="demandList.length === 0" v-cloak>暂时没有应邀~</div>
+    <ul v-else>
+      <list-item v-for="item in demandList" :my-data="item"></list-item>
+    </ul>
+  </div>
+  <div class="supply-list" v-else>
+    <div class="none-text" v-if="inviteList.length === 0" v-cloak>暂时没有应邀~</div>
+    <ul v-else>
+      <list-item v-for="item in demandList" :my-data="item"></list-item>
+    </ul>
+  </div>
+  <div class="remind fs24 ac" v-show="currentPage === 'demand'">定标后，可在我的订单中与中标者联系</div>
+</div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/page/mydemand.js"></script>
+</body>
+</html>

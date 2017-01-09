@@ -6,6 +6,7 @@
   <title>联系人</title>
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/morefunc.css">
+  <link rel="stylesheet" href="../css/password.css">
   <script src="../script/adapter.js"></script>
 </head>
 <body>
@@ -21,13 +22,18 @@
     </div>
   </header>
   <div class="container book-skill bg-white">
-    <div class="link-row">收藏的技能</div>
+    <div class="link-row" @click="goPage('book_skill')">收藏的技能</div>
   </div>
   <div class="container bg-white">
-    <div class="link-row">关注</div>
-    <div class="link-row">粉丝</div>
-    <div class="link-row">好友</div>
+    <div class="link-row" @click="goPage('focus')">关注</div>
+    <div class="link-row" @click="goPage('follower')">粉丝</div>
+    <div class="link-row" @click="goPage('friend')">好友</div>
   </div>
 </div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/page/contact.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>编辑供应</title>
+  <title>发布供应</title>
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/mysupply.css">
   <link rel="stylesheet" href="../css/edit_userinfo.css">
@@ -16,22 +16,22 @@
       <span class="return-back"></span>
     </div>
     <div class="header-center">
-      <span class="header-center-text">编辑供应</span>
+      <span class="header-center-text">发布供应</span>
     </div>
     <div class="header-right"></div>
   </header>
   <form class="supply-form" action="">
     <div class="input-row">
-      <label for="">供应名称</label>
-      <input type="text" placeholder="填写或选择您可以赚钱的技能（10字内）">
+      <label for="skillname">供应名称</label>
+      <input id="skillname" type="text" v-model="skill.skillname" placeholder="填写或选择您可以赚钱的技能（10字内）">
     </div>
     <div class="input-row supply-detail">
-      <label for="">供应详情</label>
-      <textarea class="px-textarea" name="" id="" cols="30" rows="10" placeholder="对此技能的描述"></textarea>
+      <label for="skilldetails">供应详情</label>
+      <textarea class="px-textarea" id="skilldetails" v-model="skill.skilldetails" placeholder="对此技能的描述"></textarea>
     </div>
     <div class="input-row">
-      <label for="">分类</label>
-      <select class="px-select" name="">
+      <label for="skilltype">分类</label>
+      <select id="skilltype" class="px-select" v-model="skill.skilltype">
         <option value="">请选择</option>
         <option value="">1991</option>
         <option value="">1992</option>
@@ -39,20 +39,21 @@
       </select>
     </div>
     <div class="input-row">
-      <label for="">有效时间</label>
-      <select class="px-select">
+      <label for="servertime">有效时间</label>
+      <select class="px-select" id="servertime" v-model="skill.servertime">
         <option value="">请选择时间</option>
       </select>
     </div>
     <div class="input-row">
       <label for="">地区</label>
-      <select class="px-select" name="">
-        <option value="请选择地区"></option>
-      </select>
+      <span>请选择地区</span>
+      <!--<select class="px-select" name="">-->
+        <!--<option value="请选择地区"></option>-->
+      <!--</select>-->
     </div>
     <div class="input-row">
-      <label for="">价格</label>
-      <input type="text" placeholder="请写合适的费用">
+      <label for="money">价格</label>
+      <input id="money" type="text" v-model="skill.money" placeholder="请写合适的费用">
     </div>
     <div class="person-credentials">
       <div class="person-credentials-title">
@@ -73,12 +74,19 @@
         </div>
       </div>
     </div>
-    <div class="input-row" style="border-bottom: none;">
-      <label for="">备注</label>
-      <div>你希望他在下单时注意的一些事项</div>
+    <div class="input-row supply-detail">
+      <label for="Remark">备注</label>
+      <textarea id="Remark" class="px-textarea" v-model="skill.Remark" placeholder="你希望他在下单时注意的一些事项"></textarea>
     </div>
   </form>
-  <div class="btn-submit">发布</div>
+  <div class="fixed-bottom">
+    <div class="btn-submit">发布</div>
+  </div>
 </div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>  
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/page/add_edit_supply.js"></script>
 </body>
 </html>

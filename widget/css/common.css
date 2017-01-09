@@ -496,7 +496,7 @@ li {
   list-style: none;
 }
 [v-cloak] {
-  display: none;
+  display: none !important;
 }
 .main-wrap {
   width: 100%;
@@ -538,6 +538,12 @@ li {
 .text-black {
   color: #000;
 }
+.none-text {
+  height: 80px;
+  text-align: center;
+  font-size: .7rem;
+  line-height: 80px;
+}
 .text-blue {
   color: #4abdff;
 }
@@ -560,6 +566,17 @@ input,
 select,
 textarea {
   outline: none;
+}
+
+.fixed-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 9;
+  width: 100%;
+  height: 3.7rem;
+  background: #fff;
+  border-top: 1px solid #eee;
 }
 
 .footer-nav {
@@ -622,6 +639,7 @@ textarea {
 
 .wrapper {
   padding-top: 2.2rem;
+  padding-bottom: 4.2rem;
 }
 .container {
   padding: 0 0.75rem;
@@ -713,11 +731,7 @@ header {
 }
 
 .btn-submit {
-  position: fixed;
-  bottom: 0.75rem;
-  left: 50%;
-  margin-left: -8.25rem;
-  z-index: 2;
+  margin: 0.8rem auto;
   width: 16.5rem;
   height: 2.2rem;
   line-height: 2.2rem;

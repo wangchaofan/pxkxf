@@ -21,16 +21,25 @@
     <div class="header-right"></div>
   </header>
   <section class="dynamic-detail">
-    <textarea class="px-textarea fs28 text-666" v-model="dynamic_detail" placeholder="请输入动态详情"></textarea>
+    <textarea class="px-textarea fs28 text-666" v-model="dynamicContent" placeholder="请输入动态详情"></textarea>
   </section>
   <section class="dynamic-images display-flex">
+    <div class="person-credentials-image-wrap" v-for="(img, index) in imgarr">
+      <div class="button-delete" @click="deleteImage(index)"></div>
+      <img :src="img" alt="">
+    </div>
     <div class="upload-box">
       <input type="file" accept="image/jpeg, image/png" @change="onFileChange($event)">
     </div>
   </section>
   <div class="remind ac fs24">提示</div>
-  <div class="btn-submit" @click="onSubmit">发布</div>
+  <div class="fixed-bottom">
+    <div class="btn-submit" @click="onSubmit">发布</div>
+  </div>
 </div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>  
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/helper.js"></script>
 <script src="../script/lib/vue.min.js"></script>
 <script src="../script/page/add_dynamic.js"></script>
 </body>

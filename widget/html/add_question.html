@@ -22,12 +22,12 @@
   </header>
   <div class="add-question-form container">
     <div class="input-row">
-      <label for="">问题标题</label>
-      <input type="text" placeholder="请填写标题">
+      <label for="twtitle">问题标题</label>
+      <input id="twtitle" v-model="twtitle" type="text" placeholder="请填写标题">
     </div>
     <div class="input-row input-area">
-      <label for="">问题内容</label>
-      <textarea name="" placeholder="请填写问题内容"></textarea>
+      <label for="twcontent">问题内容</label>
+      <textarea id="twcontent" v-model="twcontent" placeholder="请填写问题内容"></textarea>
     </div>
     <div class="person-credentials">
       <div class="person-credentials-title">
@@ -50,8 +50,13 @@
     </div>
   </div>
   <div class="fixed-bottom">
-    <div class="btn-submit">提交问题</div>
+    <div class="btn-submit" @click="onSubmit">提交问题</div>
   </div>
 </div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/page/add_edit_supply.js"></script>
 </body>
 </html>
