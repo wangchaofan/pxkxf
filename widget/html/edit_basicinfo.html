@@ -20,22 +20,24 @@
   </div>
   <div class="container bg-white">
     <div class="input-row">
-      <label for="">昵称</label>
-      <input type="text" maxlength="11" placeholder="请输入昵称">
+      <label for="pnkname">昵称</label>
+      <input id="pnkname" type="text" v-model="userInfo.pnkname" maxlength="11" placeholder="请输入昵称">
     </div>
     <div class="input-row">
-      <label for="">年龄</label>
+      <label for="age">年龄</label>
       <div class="input-row-with-code">
-        <input type="text" placeholder="请输入年龄">
+        <input id="age" type="number" v-model.number="userInfo.age" placeholder="请输入年龄">
       </div>
     </div>
   </div>
   <div class="display-flex select-sex">
-  	<span class="select-sex__woman" checked>
+  	<span class="select-sex__woman" v-bind:class="{checked: userInfo.sex === '女'}" @click="selectSex('女')"> 
   		<span class="icon"></span>女</span>
-  	<span class="select-sex__man"><span class="icon"></span>男</span>
+  	<span class="select-sex__man" v-bind:class="{checked: userInfo.sex === '男'}" @click="selectSex('男')">
+      <span class="icon"></span>男
+    </span>
   </div>
-  <div class="btn-submit btn-complete ac">完成</div>
+  <div class="btn-submit btn-complete ac" @click="onSubmit">完成</div>
   <script src="../script/api.js"></script>
   <script src="../script/lib/jquery-3.1.1.min.js"></script>  
   <script src="../script/lib/lodash.js"></script>

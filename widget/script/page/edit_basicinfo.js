@@ -3,47 +3,39 @@ function initPage() {
 		el: '.wrapper',
 		data: function() {
 			return {
+				userInfo: {
+					userid: MockData.userid,
+					imgarr: '',
+					pnkname: '',
+					age: '',
+					sex: '女'
+				},
 				avatarImg: '',
 				submiting: false
 			}
-		},
+	},
 		methods: {
-			onUpload: function(e) {
-				var self = this
-				var file = e.target.files[0]
-				var reader = new FileReader()
-				reader.onload = function() {
-					var url = reader.result
-					self.avatarImg = url
-					self.uploadImg(url)
-				}
-				reader.readAsDataURL(file)
+			selectSex: function(v) {
+				this.userInfo.sex = v
 			},
-			uploadImg: function(data) {
-				data = data.replace(/^.+\,/, '')
-				$.ajax({
-					url: BaseService.apiUrl + 'saveimg',
-					data: {
-						userid: MockData.userid,
-						fileNameurl: data
-					}
-				})
-				.done(function(res) {
-					res = JSON.parse(res)
-					if (res.key === 'false') {
-						alert(res.mage)
-					}
-				})
-				.fail(function(err) {
-					console.log(err)
-				})
+			onUpload: function(e) {
+				var file = e.target.files[0]
+				var self = this
+				if (file) {
+					Helper.imagePreview(file).then(function(url) {
+						self.avatarImg = url
+					})
+				}
 			},
 			validate: function() {
 				var dtd = $.Deferred()
-				if (_.trim(this.phone).length === 0) {
-					dtd.reject('用户名不能为空')
-				} else if (_.trim(this.pwd).length === 0) {
-					dtd.reject('密码不能为空')
+				var userInfo = this.userInfo
+				if (!this.avatarImg) {
+					dtd.reject('请选择头像')
+				} else if (_.trim(userInfo.pnkname).length === 0) {
+					dtd.reject('请输入昵称')
+				} else if (!_.isNumber(userInfo.age)) {
+					dtd.reject('请输入正确的年龄')
 				} else {
 					dtd.resolve()
 				}
@@ -51,18 +43,24 @@ function initPage() {
 			},
 			onSubmit: function() {
 				var self = this
+				if (this.submiting) return
 				this.validate()
 					.then(function() {
 						this.submiting = true
+						self.userInfo.imgarr = Helper.transformImageData(self.avatarImg)
 						return $.ajax({
-							url: BaseService.apiUrl + 'getloginrz',
-							data: _.pick(self, ['phone', 'pwd', 'appip']),
+							url: BaseService.apiUrl + 'userjc',
+							data: self.userInfo
 						})
 					})
 					.then(function(res) {
-						res = JSON.parse(res)
-						console.log(res)
-						// todo: 跳转到下一步
+						if (res.key === 'true') {
+							api.closeWin()
+						} else {
+							api.toast({
+							    msg: res.mage
+							});
+						}
 					})
 					.fail(function(err) {
 						alert(err)

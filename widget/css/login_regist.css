@@ -112,6 +112,7 @@ body {
 }
 .select-sex > span {
 	flex: 1;
+	height: 2rem;
 	font-size: 0.7rem;
 	text-align: center;
 	line-height: 2rem;
@@ -127,12 +128,12 @@ body {
 	background: url('../image/icon_woman.png') center no-repeat;
 	background-size: cover;
 }
-.select-sex__woman[checked] {
+.select-sex__woman.checked {
 	background-color: #f992c0;
 	color: #fff;
 	border-top: none;
 }
-.select-sex__woman[checked] .icon {
+.select-sex__woman.checked .icon {
 	background-image: url('../image/icon_woman_select.png');
 }
 .select-sex__man .icon {
@@ -145,12 +146,12 @@ body {
 	background: url('../image/icon_man.png') center no-repeat;
 	background-size: cover;
 }
-.select-sex__man[checked] {
+.select-sex__man.checked {
 	border-top: none;
 	background-color: #2bd0f9;
 	color: #fff;
 }
-.select-sex__man[checked] .icon {
+.select-sex__man.checked .icon {
 	background-image: url('../image/icon_man_select.png');
 }
 .btn-complete {
