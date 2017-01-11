@@ -10,52 +10,9 @@
 </head>
 <body>
 <div class="wrapper">
-  <header class="header">
-    <div class="header-left">
-      <span class="return-back"></span>
-    </div>
-    <div class="header-center">
-      <span class="header-center-text">专家列表</span>
-    </div>
-    <div class="header-right"></div>
-  </header>
+  <my-header title="专家列表"></my-header>
   <section class="professors">
-    <div class="professor-box">
-      <div class="professor-avatar">
-        <img src="../image/home_banner.jpg" alt="">
-      </div>
-      <div class="professor-info ac">
-        <div class="professor-name">王某某</div>
-        <div class="professor-title">
-          <span class="text-999">专家职称：</span>
-          <span>消防</span>
-        </div>
-      </div>
-    </div>
-    <div class="professor-box">
-      <div class="professor-avatar">
-        <img src="../image/home_banner.jpg" alt="">
-      </div>
-      <div class="professor-info ac">
-        <div class="professor-name">王某某</div>
-        <div class="professor-title">
-          <span class="text-999">专家职称：</span>
-          <span>消防</span>
-        </div>
-      </div>
-    </div>
-    <div class="professor-box">
-      <div class="professor-avatar">
-        <img src="../image/home_banner.jpg" alt="">
-      </div>
-      <div class="professor-info ac">
-        <div class="professor-name">王某某</div>
-        <div class="professor-title">
-          <span class="text-999">专家职称：</span>
-          <span>消防</span>
-        </div>
-      </div>
-    </div>
+    <professor-box v-for="item in list" :professor="item"></professor-box>
   </section>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>

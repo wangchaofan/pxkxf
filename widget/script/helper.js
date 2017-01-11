@@ -50,6 +50,22 @@ Vue.component('user-box', {
   }
 })
 
+Vue.component('professor-box', {
+  template: '<div class="professor-box">' +
+            '<div class="professor-avatar">' +
+            '  <img :src="professor.ephtourl" alt="">' +
+            '</div>' +
+            '<div class="professor-info ac">' +
+            '  <div class="professor-name">{{professor.eName}}</div>' +
+            '  <div class="professor-title">' +
+            '    <span class="text-999">专家职称：</span>' +
+            '    <span>{{professor.ezyname}}</span>' +
+            '  </div>' +
+            '</div>' +
+            '</div>',
+  props: ['professor']
+})
+
 Vue.filter('date', function(val, fmt) {
   console.log(val)
   if (typeof val === 'string') {
@@ -149,5 +165,8 @@ function UploadImg(userid, imgData) {
 }
 
 function getUserId() {
-  return api.getPrefs({key: 'userid', sync: true})
+  if (window.api) {
+    return api.getPrefs({key: 'userid', sync: true})
+  }
+  return MockData.userid
 }

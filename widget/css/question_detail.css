@@ -20,9 +20,9 @@ body {
     width: 0;
     font-size: 0.5rem;
     color: #fff;
-    border-left: 64px solid transparent;
-    border-right: 64px solid transparent;
-    border-top: 64px solid #2bd0f9;
+    border-left: 1.6rem solid transparent;
+    border-right: 1.6rem solid transparent;
+    border-top: 1.6rem solid #2bd0f9;
     transform: rotate(135deg);
 }
 .question-tag > span {
@@ -70,12 +70,16 @@ body {
     vertical-align: middle;
 }
 .is-focus .icon-love {
-    margin-right: 0.2rem;
+    margin-right: 0.1rem;
     vertical-align: middle;
     display: inline-block;
     width: 0.6rem;
     height: 0.55rem;
-    background: url('../image/icon_love.png') no-repeat;
+    background: url('../image/icon_love_n.png') no-repeat;
+    background-size: cover;
+}
+.is-focus.yes .icon-love {
+    background-image: url('../image/icon_love.png');
 }
 .question-comment-list {
     padding: 0 0.6rem;

@@ -10,29 +10,10 @@
 </head>
 <body style="background: #f0f1f5;">
 <div class="wrapper">
-  <header class="header">
-    <div class="header-left">
-      <span class="return-back"></span>
-    </div>
-    <div class="header-center">
-      <span class="header-center-text">专家详情</span>
-    </div>
-    <div class="header-right"></div>
-  </header>
+  <my-header title="专家详情"></my-header>
   <div class="professor-detail-page">
     <div class="professor-box-wrap bg-white">
-      <div class="professor-box">
-        <div class="professor-avatar">
-          <img src="../image/home_banner.jpg" alt="">
-        </div>
-        <div class="professor-info ac">
-          <div class="professor-name">王某某</div>
-          <div class="professor-title">
-            <span class="text-999">专家职称：</span>
-            <span>消防</span>
-          </div>
-        </div>
-      </div>
+      <professor-box :professor="info"></professor-box>
     </div>
     <div class="professor-info-selections bg-white">
       <div class="professor-info-selections-1">

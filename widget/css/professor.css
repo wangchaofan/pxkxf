@@ -18,6 +18,7 @@
 }
 .professor-avatar > img {
     height: 100%;
+    width: 100%;
 }
 .professor-info {
     height: 100%;

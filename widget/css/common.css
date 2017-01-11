@@ -571,6 +571,11 @@ textarea {
   outline: none;
   -webkit-appearance: none;
 }
+.text-overflow-es {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 .fixed-bottom {
   position: fixed;

@@ -10,60 +10,40 @@
 </head>
 <body>
 <div class="wrapper">
-  <header class="header">
-    <div class="header-left">
-      <span class="return-back"></span>
-    </div>
-    <div class="header-center">
-      <span class="header-center-text">专家咨询</span>
-    </div>
-    <div class="header-right"></div>
-  </header>
-  <section class="question">
+  <my-header title="问题详情"></my-header>
+  <section class="question" v-cloak v-if="question">
     <div class="question-tag"><span>问题</span></div>
-    <h3 class="question-title">外资10月份净卖出美国国债635亿美元？</h3>
+    <h3 class="question-title">{{question.twtitle}}</h3>
     <div class="question-info">
-      <span class="question-date">2016-10-10</span>
-      <span class="question-publisher">北塘</span>
+      <span class="question-date">{{question.twtime | date('yyyy-MM-dd')}}</span>
+      <span class="question-publisher">{{question.usermodel[0].pnickname}}</span>
     </div>
-    <div class="question-content">由于中国动用外汇储备支撑人民币汇率，日本减持美国国债速度略缓，也由此取代中国，成为美国最大的外国债主。由于中国动用外汇储备支撑人民币汇率，日本减持美国国债速度略缓，也由此取代中国，成为美国最大的外国债主。</div>
-    <div class="is-focus">
-      <i class="icon-love"></i>已关注
+    <div class="question-content">{{question.twcontent}}</div>
+    <div class="is-focus" :class="{yes: isFocus}">
+      <span @click="onFocus">
+        <i class="icon-love"></i>
+        {{focusText}}
+      </span>
     </div>
   </section>
-  <section class="question-comment-list bg-white">
-    <div class="question-comment-item">
+  <section class="question-comment-list bg-white" v-cloak v-if="expertTWHDmodel">
+    <div class="question-comment-item" v-for="item in expertTWHDmodel">
       <div class="question-comment-item__left">
-        <img src="" alt="">
+        <img :src="item.usermodel[0].pheadimgUrl" alt="">
       </div>
       <div class="question-comment-item__right">
-        <div class="user-name">王某某</div>
-        <div class="comment-date">2016-10-10</div>
+        <div class="user-name">{{item.usermodel[0].pnickname}}</div>
+        <div class="comment-date">{{item.hdtime | date('yyyy-MM-dd')}}</div>
         <div class="comment-content fs24">
-          由于中国动用外汇储备支撑人民币汇率，日本减持美国国债速度略缓，也由此取代中国
-        </div>
-      </div>
-    </div>
-    <div class="question-comment-item">
-      <div class="question-comment-item__left">
-        <img src="" alt="">
-      </div>
-      <div class="question-comment-item__right">
-        <div class="user-name">王某某</div>
-        <div class="comment-date">2016-10-10</div>
-        <div class="comment-content fs24">
-          由于中国动用外汇储备支撑人民币汇率，日本减持美国国债速度略缓，也由此取代中国
+          {{item.hdcontent}}
         </div>
       </div>
     </div>
   </section>
-  <div class="relate-question-wrap container bg-white">
+  <div class="relate-question-wrap container bg-white" v-if="relateQuestion" v-cloak>
     <h3>相关问题</h3>
-    <div class="relate-question">
-      外资10月份净卖出美国国债635亿美元？
-    </div>
-    <div class="relate-question">
-      外资10月份净卖出美国国债635亿美元？
+    <div class="relate-question" v-for="item in relateQuestion" @click="viewQuestion(item)">
+      {{item.twtitle}}
     </div>
   </div>
 </div>
