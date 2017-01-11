@@ -10,89 +10,33 @@
 </head>
 <body>
 <div class="wrapper">
-  <header class="header">
-    <div class="header-left">
-      <!--<span class="return-back"></span>-->
-    </div>
-    <div class="header-center">
-      <span class="header-center-text">专家咨询</span>
-    </div>
-    <div class="header-right"></div>
-  </header>
+  <my-header title="专家咨询"></my-header>
   <div class="professor-part">
     <h4>专家排期</h4>
-    <div class="professors">
-      <div class="professor-box">
-        <div class="professor-avatar">
-          <img src="../image/home_banner.jpg" alt="">
-        </div>
-        <div class="professor-info ac">
-          <div class="professor-name">王某某</div>
-          <div class="professor-title">
-            <span class="text-999">专家职称：</span>
-            <span>消防</span>
-          </div>
-        </div>
-      </div>
-      <div class="professor-box">
-        <div class="professor-avatar">
-          <img src="../image/home_banner.jpg" alt="">
-        </div>
-        <div class="professor-info ac">
-          <div class="professor-name">王某某</div>
-          <div class="professor-title">
-            <span class="text-999">专家职称：</span>
-            <span>消防</span>
-          </div>
-        </div>
+    <div class="professors" v-cloak>
+      <div v-for="item in freeProfessors" @click="viewProfessorDetail(item)">
+        <professor-box  :professor="item"></professor-box>
       </div>
     </div>
   </div>
   <div class="professor-part great-professor">
     <h4>资深专家</h4>
     <div class="professors">
-      <div class="professor-box">
-        <div class="professor-avatar">
-          <img src="../image/home_banner.jpg" alt="">
-        </div>
-        <div class="professor-info ac">
-          <div class="professor-name">王某某</div>
-          <div class="professor-title">
-            <span class="text-999">专家职称：</span>
-            <span>消防</span>
-          </div>
-        </div>
-      </div>
-      <div class="professor-box">
-        <div class="professor-avatar">
-          <img src="../image/home_banner.jpg" alt="">
-        </div>
-        <div class="professor-info ac">
-          <div class="professor-name">王某某</div>
-          <div class="professor-title">
-            <span class="text-999">专家职称：</span>
-            <span>消防</span>
-          </div>
-        </div>
+      <div v-for="item in bestProfessors" @click="viewProfessorDetail(item)">
+        <professor-box  :professor="item"></professor-box>
       </div>
     </div>
   </div>
-  <div class="consult-list newest">
+  <div class="consult-list newest" v-cloak>
     <h4>最新咨询</h4>
     <ul>
-      <li>外资10月份净卖出美国国债635亿美元外资10月份净卖出美国国债635亿美元？</li>
-      <li>外资10月份净卖出美国国债635亿美元？</li>
-      <li>外资10月份净卖出美国国债635亿美元？</li>
-      <li>外资10月份净卖出美国国债635亿美元？</li>
+      <li v-for="q in newQuestions" @click="viewQuestionDetail(q)">{{q.twtitle}}</li>
     </ul>
   </div>
-  <div class="consult-list">
+  <div class="consult-list" v-cloak>
     <h4>热门咨询</h4>
     <ul>
-      <li>外资10月份净卖出美国国债635亿美元？</li>
-      <li>外资10月份净卖出美国国债635亿美元？</li>
-      <li>外资10月份净卖出美国国债635亿美元？</li>
-      <li>外资10月份净卖出美国国债635亿美元？</li>
+      <li v-for="q in hotQuestions" @click="viewQuestionDetail(q)">{{q.twtitle}}</li>
     </ul>
   </div>
 </div>
