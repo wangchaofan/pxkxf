@@ -10,6 +10,13 @@ function initPage() {
       }
     },
     methods: {
+      toAdd: function() {
+        api.openWin({
+          name: 'add_question',
+          url: 'widget://html/add_question.html',
+          realod: true
+        });
+      },
       goQuestionDetail: function(item) {
         api.openWin({
           name: 'question_detail',

@@ -7,7 +7,13 @@ function initPage() {
       }
     },
     methods: {
-
+      toAdd: function() {
+        api.openWin({
+          name: 'add_dynamic',
+          url: 'widget://html/add_dynamic.html',
+          realod: true
+        });
+      }
     }
   })
 }

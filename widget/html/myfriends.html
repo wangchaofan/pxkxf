@@ -15,15 +15,7 @@
 </head>
 <body>
 <div class="wrapper">
-  <header class="header">
-    <div class="header-left">
-      <span class="return-back"></span>
-    </div>
-    <div class="header-center">
-      <span class="header-center-text">我的好友</span>
-    </div>
-    <div class="header-right"></div>
-  </header>
+  <my-header title="我的好友"></my-header>
   <div class="my-friends" v-cloak>
     <div class="user-center-top display-flex" v-for="item in list">
       <div class="user-info">
@@ -52,6 +44,7 @@
         </div>
       </div>
     </div>
+    <div class="none-text" v-if="list.length === 0">暂时没有好友~</div>
   </div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>

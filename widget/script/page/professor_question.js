@@ -17,8 +17,30 @@ function initPage() {
       }
     },
     methods: {
+      viewMoreProfessor: function() {
+        api.openWin({
+          name: 'professor_list',
+          url: 'widget://html/professor_list.html',
+          reload: true
+        });
+      },
+      viewMoreQuestion: function() {
+        api.openWin({
+          name: 'questions',
+          url: 'widget://html/questions.html',
+          reload: true
+        });
+      },
       viewProfessorDetail: function(pf) {
         console.log(pf)
+        api.openWin({
+          name: 'professor_detail',
+          url: 'widget://html/professor_detail.html',
+          reload: true,
+          pageParam: {
+              id: pf.expertId
+          }
+        });
       },
       viewQuestionDetail: function(qt) {
         console.log(qt)

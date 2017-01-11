@@ -10,9 +10,20 @@
 </head>
 <body>
 <div class="wrapper">
-  <my-header title="专家咨询"></my-header>
+  <header class="header">
+    <div class="header-left">
+      <!--<span class="return-back"></span>-->
+    </div>
+    <div class="header-center">
+      <span class="header-center-text">专家咨询</span>
+    </div>
+    <div class="header-right"></div>
+  </header>
   <div class="professor-part">
-    <h4>专家排期</h4>
+    <div class="display-flex">
+      <h4>专家排期</h4>
+      <span class="button-more-professor text-666" @click="viewMoreProfessor">更多</span>
+    </div>
     <div class="professors" v-cloak>
       <div v-for="item in freeProfessors" @click="viewProfessorDetail(item)">
         <professor-box  :professor="item"></professor-box>
@@ -28,13 +39,19 @@
     </div>
   </div>
   <div class="consult-list newest" v-cloak>
-    <h4>最新咨询</h4>
+    <div class="consult-list-head display-flex">
+      <h4>最新咨询</h4>
+      <span class="fs24 text-666" @click="viewMoreQuestion">更多</span>
+    </div>
     <ul>
       <li v-for="q in newQuestions" @click="viewQuestionDetail(q)">{{q.twtitle}}</li>
     </ul>
   </div>
   <div class="consult-list" v-cloak>
-    <h4>热门咨询</h4>
+    <div class="consult-list-head display-flex">
+      <h4>热门咨询</h4>
+      <span class="fs24 text-666" @click="viewMoreQuestion">更多</span>
+    </div>
     <ul>
       <li v-for="q in hotQuestions" @click="viewQuestionDetail(q)">{{q.twtitle}}</li>
     </ul>

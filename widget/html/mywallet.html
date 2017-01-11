@@ -10,15 +10,7 @@
 </head>
 <body>
 <div class="wrapper">
-  <header class="header">
-    <div class="header-left">
-      <span class="return-back"></span>
-    </div>
-    <div class="header-center">
-      <span class="header-center-text">我的钱包</span>
-    </div>
-    <div class="header-right"></div>
-  </header>
+  <my-header title="我的钱包"></my-header>
   <section class="my-balance" v-cloak="">
     <div class="icon-my-balance"></div>
     <p class="fs28 text-666">账户余额</p>
@@ -29,7 +21,7 @@
       <div class="recharge-withdraw-title fs28">累计充值（元）</div>
       <div class="recharge-withdraw-value">
         <span>{{walletInfo.Cumulativecz | currency}}</span>
-        <span class="btn-view-record">充值记录</span>
+        <span class="btn-view-record" @click="goPage('recharge_record')">充值记录</span>
       </div>
     </div>
     <div class="recharge-withdraw-item">
@@ -40,8 +32,8 @@
       </div>
     </div>
   </section>
-  <div class="btn-submit btn-recharge">充值</div>
-  <div class="btn-submit btn-withdraw">提现</div>
+  <div class="btn-submit btn-recharge" @click="goPage('recharge')">充值</div>
+  <div class="btn-submit btn-withdraw" @click="goPage('withdraw')">提现</div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>
 <script src="../script/lib/lodash.js"></script>

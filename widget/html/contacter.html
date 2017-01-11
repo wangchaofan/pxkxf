@@ -11,23 +11,14 @@
 </head>
 <body>
 <div class="wrapper">
-  <header class="header">
-    <div class="header-left">
-      <span class="return-back"></span>
-    </div>
-    <div class="header-center">
-      <span class="header-center-text">联系人</span>
-    </div>
-    <div class="header-right">
-    </div>
-  </header>
+  <my-header title="联系人"></my-header>
   <div class="container book-skill bg-white">
-    <div class="link-row" @click="goPage('book_skill')">收藏的技能</div>
+    <div class="link-row" @click="goPage('mybook')">收藏的技能</div>
   </div>
   <div class="container bg-white">
     <div class="link-row" @click="goPage('focus')">关注</div>
     <div class="link-row" @click="goPage('follower')">粉丝</div>
-    <div class="link-row" @click="goPage('friend')">好友</div>
+    <div class="link-row" @click="goPage('myfriends')">好友</div>
   </div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>
