@@ -11,35 +11,33 @@
 <body>
   <div class="wrapper">
     <header class="header search-header">
-      <div class="header-left">
+      <div class="header-left" @click="returnBack">
         <span class="return-back"></span>
       </div>
       <div class="header-center">
         <div class="search-input">
-          <input type="text" placeholder="请输入您要查询的内容">
+          <input id="searchInput" type="text" v-model="searchContent" placeholder="请输入您要查询的内容" autofocus>
         </div>
       </div>
-      <div class="header-right">
+      <div class="header-right" @click="onSearch">
         <span>搜索</span>
       </div>
     </header>
-    <div class="search-history">
+    <div class="search-history" v-cloak>
       <ul>
-        <li>
+        <li v-for="item in filterSearchHistory" @click="onSearch(item)">
           <span class="icon-search"></span>
-          <span class="search-history-content">号全合成机油号全合成机油</span>
-        </li>
-        <li>
-          <span class="icon-search"></span>
-          <span class="search-history-content">号全合成机油号全合成机油号全合成机油号全合成机油号全合成机油号全合成机油</span>
-        </li>
-        <li>
-          <span class="icon-search"></span>
-          <span class="search-history-content">号全合成机油号全合成机油</span>
+          <span class="search-history-content">{{item}}</span>
         </li>
       </ul>
-      <div class="clear-search-history ac">清空搜索历史</div>
+      <div class="clear-search-history ac" v-if="filterSearchHistory.length > 0" @click="clearSearchHistory">清空搜索历史</div>
     </div>
   </div>
+  <script src="../script/lib/jquery-3.1.1.min.js"></script>
+  <script src="../script/lib/lodash.js"></script>
+  <script src="../script/lib/vue.min.js"></script>
+  <script src="../script/lib/swiper-3.4.1.jquery.min.js"></script>
+  <script src="../script/helper.js"></script>
+  <script src="../script/page/search.js"></script>
 </body>
 </html>

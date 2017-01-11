@@ -20,9 +20,9 @@
           <option value="1">成都</option>
         </select>
       </div>
-      <div class="search-box ac">
+      <div class="search-box ac" @click="onClickSearchButton">
         <span class="icon-search"></span>
-        <input type="text" placeholder="请输入您要查询的内容">
+        <span>请输入您要查询的内容</span>
       </div>
       <div class="top-banner-bottom__right">
         <div class="message-tip">
@@ -69,7 +69,7 @@
     <div class="tab-content" v-cloak>
       <div class="remand-list" v-if="currentTab === 'demand'">
         <ul>
-          <li v-for="item in demandList">
+          <li v-for="item in demandList" @click="viewDemandDetail(item)">
             <a class="display-flex">
               <div class="user-info">
                 <div class="user-avatar-wrap">
@@ -112,7 +112,7 @@
       </div>
       <div class="remand-list" v-if="currentTab === 'supply'">
         <ul>
-          <li v-for="item in supplyList">
+          <li v-for="item in supplyList" @click="viewSupplyDetail(item)">
             <a class="display-flex">
               <div class="user-info">
                 <div class="user-avatar-wrap">

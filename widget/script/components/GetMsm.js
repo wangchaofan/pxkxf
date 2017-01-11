@@ -17,7 +17,7 @@ Vue.component('get-msm-button', {
 	},
 	methods: {
 		getMsm: function() { 
-			console.log(this.phone)
+			var self = this
 			if (!/^1\d{10}$/.test(this.phone)) {
 				alert('请输入正确的手机号')
 				return
@@ -34,7 +34,6 @@ Vue.component('get-msm-button', {
 				context: this
 			})
 			.done(function(res) {
-				res = JSON.parse(res)
 				if (res.key === 'true') {
 					this.$emit('send-success', res)
 				} else {
@@ -46,7 +45,9 @@ Vue.component('get-msm-button', {
 		getMsmFail: function() {
 			this.sending = false
 			this.time = 60
-			alert('获取验证码失败，请重新获取')
+			api.toast({
+			    msg: '获取验证码失败，请重新获取'
+			});
 			this.$emit('send-error', err)
 		},
 		counter: function() {

@@ -17,6 +17,15 @@ function initPage() {
       }
     },
     methods: {
+      onClickSearchButton: function() {
+        api.openWin({
+            name: 'search',
+            url: 'widget://html/search.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      },
       onClickTabHead: function(tabId) {
         this.currentTab = tabId
         if (tabId === 'demand') {
@@ -34,6 +43,24 @@ function initPage() {
           y: api.frameHeight / 1.6 + 50
         }, function(ret, err) {
           self.city = ret.city;
+        });
+      },
+      viewDemandDetail: function(data) {
+        api.openWin({
+            name: 'demand_detail',
+            url: 'widget://html/demand_detail.html',
+            pageParam: {
+              id: data.demandorderId
+            }
+        });
+      },
+      viewSupplyDetail: function(data) {
+        api.openWin({
+            name: 'supply_detail',
+            url: 'widget://html/supply_detail.html',
+            pageParam: {
+              id: data.skillID
+            }
         });
       },
       getList: function(listId, uri) {

@@ -5,7 +5,7 @@ function initPage() {
 			return {
 				phone: '',
 				pwd: '',
-				appip: '121.22.11.22',
+				appip: '192.168.0.102',
 				submiting: false
 			}
 		},
@@ -16,10 +16,21 @@ function initPage() {
 		},
 		methods: {
 			forgetPassword: function() {
-
+				api.openWin({
+				    name: 'findPassword',
+				    url: 'widget://html/findPassword.html',
+				    pageParam: {
+				    }
+				})
 			},
 			toRegist: function() {
-
+				api.openWin({
+				    name: 'regist',
+				    url: 'widget://html/regist.html',
+				    pageParam: {
+				        name: 'value'
+				    }
+				});
 			},
 			loginByWx: function() {
 				// todo: login by weixin
@@ -46,8 +57,23 @@ function initPage() {
 						})
 					})
 					.then(function(res) {
-						res = JSON.parse(res)
-						console.log(res)
+						if (res.key === 'true') {
+							api.toast({
+							    msg: '登录成功'
+							});
+							api.setPrefs({
+							    key: 'userid',
+							    value: res.data
+							});
+							api.sendEvent({
+								name: 'loginSuccess'
+							})
+							api.closeWin()
+						} else {
+							api.toast({
+							    msg: res.mage
+							});
+						}
 					})
 					.fail(function(err) {
 						alert(err)

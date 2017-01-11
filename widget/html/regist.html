@@ -10,16 +10,7 @@
 </head>
 <body>
 <div class="wrapper">
-  <header class="header">
-    <div class="header-left">
-      <span class="return-back"></span>
-    </div>
-    <div class="header-center">
-      <span class="header-center-text">注册</span>
-    </div>
-    <div class="header-right">
-    </div>
-  </header>
+  <my-header title="注册"></my-header>
   <div class="container bg-white">
     <div class="input-row">
       <label for="regphone">手机号</label>
@@ -29,19 +20,20 @@
     <div class="input-row">
       <label id="msm" for="">验证码</label>
       <div class="input-row-with-code">
-        <input id="msm" type="text" v-model="msm" placeholder="请输入收到的验证码">
+        <input id="msm" type="text" v-model="msm" maxlength="4" placeholder="请输入收到的验证码">
       </div>
     </div>
     <div class="input-row">
       <label for="pwd">密码</label>
-      <input id="pwd" type="text" v-model="pwd" placeholder="请输入密码">
+      <input id="pwd" type="password" v-model="pwd" placeholder="请输入密码">
     </div>
     <div class="input-row">
       <label for="repwd">确认密码</label>
-      <input id="repwd" type="text" v-model="repwd" placeholder="请再次输入密码">
+      <input id="repwd" type="password" v-model="qrpwd" placeholder="请再次输入密码">
     </div>
   </div>
-  <div id="nextStepButton" class="btn-submit ac" @click="onSubmit">下一步</div>
+  <div id="nextStepButton" class="btn-submit ac" @click="onSubmit">{{submitButtonText}}</div>
+  <script src="../script/api.js"></script>
   <script src="../script/lib/jquery-3.1.1.min.js"></script>  
   <script src="../script/lib/lodash.js"></script>
   <script src="../script/lib/vue.min.js"></script>

@@ -7,11 +7,6 @@ function initPage() {
 				submiting: false
 			}
 		},
-		computed: {
-			submitButtonText: function() {
-				return this.submiting ? '正在登录...' : '登录'
-			}
-		},
 		methods: {
 			onUpload: function(e) {
 				var self = this
@@ -42,9 +37,6 @@ function initPage() {
 				.fail(function(err) {
 					console.log(err)
 				})
-			},
-			loginByWx: function() {
-				// todo: login by weixin
 			},
 			validate: function() {
 				var dtd = $.Deferred()

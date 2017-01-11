@@ -22,12 +22,13 @@
 		<section class="user-center-top display-flex" v-cloak @click="goPage('user_avatar')">
 			<div class="user-info">			
 				<div class="user-avatar" v-bind:style="avatarStyle"></div>
-				<div class="user-info-tj">
+				<div class="user-info-tj" v-if="userid">
 					<div class="user-name"><span class="vam">{{userInfo.pnickname}}</span><span class="user-sex user-sex-man vam"></span></div>
 					<div class="online-status">在线</div>
 				</div>
+				<div class="please-login" v-else>请登录</div>
 			</div>
-			<div class="barcode-scan display-flex">
+			<div class="barcode-scan display-flex" v-if="userid">
 				<div class="icon-barcode"></div>
 				<div class="icon-angle-right"></div>
 			</div>
@@ -52,6 +53,7 @@
 			</table>
 		</div>
 	</div>
+	<script src="../script/api.js"></script>
 	<script src="../script/lib/jquery-3.1.1.min.js"></script>
 	<script src="../script/lib/lodash.js"></script>
 	<script src="../script/lib/vue.min.js"></script>

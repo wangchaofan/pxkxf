@@ -5,11 +5,16 @@ function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     created: function() {
-      this.getUserInfo()
+      if (this.userid) {
+        this.getUserInfo()
+      }
     },
     data: function() {
       return {
-        userInfo: {},
+        userid: Helper.getUserId(),
+        userInfo: {
+          pheadimgUrl: '../image/default_avatar.png'
+        }
       }
     },
     computed: {
@@ -19,26 +24,38 @@ function initPage() {
     },
     methods: {
       goPage: function(pageName) {
+        if (!this.userid) {
+          pageName = 'login'
+        }
         api.openWin({
           name: pageName,
           url: 'widget://html/' + pageName + '.html',
           pageParam: {
 
           }
-        });
+        })
       },
       getUserInfo: function() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getuserinfo',
-          data: { uid: MockData.userid }
+          data: { uid: self.userid }
         }).then(function(res) {
           self.userInfo = ParseJson(res.data)[0]
-          console.log(ParseJson(res.data)[0])
         })
       }
     }
   })
+
+  api.addEventListener({
+      name: 'loginSuccess'
+  }, function(ret, err) {
+      if (ret) {
+        vm.getUserInfo()
+        vm.userid =  Helper.getUserId()
+      } else {
+      }
+  });
 }
 
 /* === 测试使用 === */

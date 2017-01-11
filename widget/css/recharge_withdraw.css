@@ -68,3 +68,40 @@ h3 {
     position: static;
     margin: 40px auto 0;
 }
+.recharge-record-list__head {
+    display: flex;
+    height: 70px;
+    font-size: 24px;
+    line-height: 70px;
+}
+.recharge-record-list__head > span {
+    flex: 1;
+}
+.recharge-record-list__content {
+    background-color: #fff;
+    padding: 0 30px;
+    font-size: 24px;
+}
+.recharge-record-list__item {
+    display: flex;
+    height: 72px;
+    line-height: 72px;
+    border-bottom: 1px solid #ddd;
+}
+.recharge-record-list__item:last-child {
+    border-bottom: none;
+}
+.recharge-record-list__item > span {
+    flex: 1;
+}
+.recharge-record-status.complete {
+    color: #e4353a;
+}
+.no-more {
+    margin-top: 20px;
+    height: 70px;
+    background-color: #eee;
+    font-size: 24px;
+    line-height: 70px;
+    text-align: center; 
+}

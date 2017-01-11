@@ -569,6 +569,7 @@ input,
 select,
 textarea {
   outline: none;
+  -webkit-appearance: none;
 }
 
 .fixed-bottom {

@@ -12,7 +12,8 @@ var Helper = {
   xmlToJson: XmlToJson,
   imagePreview: ImagePreview,
   uploadImg: UploadImg,
-  transformImageData: TransformImageData
+  transformImageData: TransformImageData,
+  getUserId: getUserId
 }
 
 var MockData = {
@@ -42,11 +43,39 @@ Vue.component('my-header', {
   }
 })
 
+Vue.component('user-box', {
+  template: '',
+  data: function() {
+    return {}
+  }
+})
+
+Vue.filter('date', function(val, fmt) {
+  console.log(val)
+  if (typeof val === 'string') {
+    val = parseInt(val.match(/\d+/)[0])
+  }
+  var date = new Date(val)
+  console.log(date)
+  var o = {
+    "M+": date.getMonth() + 1, //月份 
+    "d+": date.getDate(), //日 
+    "h+": date.getHours(), //小时 
+    "m+": date.getMinutes(), //分 
+    "s+": date.getSeconds(), //秒 
+    "q+": Math.floor((date.getMonth() + 3) / 3), //季度 
+    "S": date.getMilliseconds() //毫秒 
+  };
+  if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+  for (var k in o)
+  if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+  return fmt;
+})
+
 $.ajaxSetup({
   type: 'post',
   dataType: 'text',
   dataFilter: function(res) {
-    console.log(res)
     console.log(XmlToJson(res))
     return JSON.parse(XmlToJson(res))
   }
@@ -117,4 +146,8 @@ function UploadImg(userid, imgData) {
       fileNameurl: imgData
     }
   })
+}
+
+function getUserId() {
+  return api.getPrefs({key: 'userid', sync: true})
 }

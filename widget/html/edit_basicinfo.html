@@ -3,23 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>注册</title>
+  <title>基本信息</title>
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/login_regist.css">
   <script src="../script/adapter.js"></script>
 </head>
 <body>
 <div class="wrapper">
-  <header class="header">
-    <div class="header-left">
-      <span class="return-back"></span>
-    </div>
-    <div class="header-center">
-      <span class="header-center-text">注册</span>
-    </div>
-    <div class="header-right">
-    </div>
-  </header>
+  <my-header title="基本信息"></my-header>
   <div class="upload-avatar ac">
   	<div class="upload-icon">
      <input type="file" accept="image/jpg,image/png" @change="onUpload"> 
@@ -45,6 +36,7 @@
   	<span class="select-sex__man"><span class="icon"></span>男</span>
   </div>
   <div class="btn-submit btn-complete ac">完成</div>
+  <script src="../script/api.js"></script>
   <script src="../script/lib/jquery-3.1.1.min.js"></script>  
   <script src="../script/lib/lodash.js"></script>
   <script src="../script/lib/vue.min.js"></script>

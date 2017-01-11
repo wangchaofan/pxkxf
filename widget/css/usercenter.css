@@ -10,6 +10,10 @@ body {
 .user-info {
 	display: inline-flex;
 }
+.user-info .please-login {
+	font-size: 0.8rem;
+	line-height: 3.25rem;
+}
 .user-info .user-avatar {
 	margin-right: 0.5rem;
 	width: 3.25rem;

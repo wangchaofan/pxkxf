@@ -43,6 +43,10 @@ body {
 	color: #fff;
 	background: #ff9000;
 }
+.online-status.off-line {
+	background-color: #ddd;
+	color: #fff;
+}
 .user-pingjia {
 	position: absolute;
 	bottom: 0;
