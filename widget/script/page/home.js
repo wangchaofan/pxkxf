@@ -28,12 +28,14 @@ function initPage() {
       },
       onClickTabHead: function(tabId) {
         this.currentTab = tabId
+        console.log(tabId)
         if (tabId === 'demand') {
           this.getList('demandList', 'getdemaorder')
         } else if (tabId === 'supply') {
           this.getList('supplyList', 'getSkill')
         } else {
-          this.getList('nearByList', 'getSkill')
+          this.nearByList = _.clone(this.demandList)
+          // this.getList('nearByList', 'getSkill')
         }
       },
       onSelectCity: function() {
@@ -66,10 +68,10 @@ function initPage() {
       getList: function(listId, uri) {
         var self = this
         if (self[listId].length > 0) return
+        console.log(2)
         $.ajax({
           url: BaseService.apiUrl + uri,
           success: function(res) {
-            console.log(res)
             self[listId] = JSON.parse(res.data)
           },
           error: function(err) {
@@ -80,7 +82,6 @@ function initPage() {
     }
   })
 }
-
 apiready = function() {
   initPage()
 

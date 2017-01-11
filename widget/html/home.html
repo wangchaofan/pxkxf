@@ -67,7 +67,7 @@
       <span v-bind:class="{current: currentTab === 'nearby'}" @click="onClickTabHead('nearby')">附近</span>
     </div>
     <div class="tab-content" v-cloak>
-      <div class="remand-list" v-if="currentTab === 'demand'">
+      <div class="remand-list" v-show="currentTab === 'demand'">
         <ul>
           <li v-for="item in demandList" @click="viewDemandDetail(item)">
             <a class="display-flex">
@@ -110,7 +110,7 @@
           </li>
         </ul>
       </div>
-      <div class="remand-list" v-if="currentTab === 'supply'">
+      <div class="remand-list" v-show="currentTab === 'supply'">
         <ul>
           <li v-for="item in supplyList" @click="viewSupplyDetail(item)">
             <a class="display-flex">
@@ -153,13 +153,13 @@
           </li>
         </ul>
       </div>
-      <div class="remand-list" v-if="currentTab === 'nearby'">
+      <div class="remand-list" v-show="currentTab === 'nearby'">
         <ul>
           <li v-for="item in nearByList">
             <a class="display-flex">
               <div class="user-info">
                 <div class="user-avatar-wrap">
-                  <img class="user-avatar" src="../image/avatar_demo.png" alt="">
+                  <img class="user-avatar" src="item.sUsermodel[0].pheadimgUrl" alt="">
                   <div class="p-tag">需求</div>
                 </div>
                 <div class="user-roles display-flex">

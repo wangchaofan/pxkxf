@@ -4,7 +4,7 @@ function initPage() {
 		data: function() {
 			return {
 				userInfo: {
-					userid: MockData.userid,
+					userid: Helper.getUserId(),
 					imgarr: '',
 					pnkname: '',
 					age: '',

@@ -24,17 +24,14 @@
     <div class="input-row">
       <label for="skilltype">分类</label>
       <select id="skilltype" class="px-select" v-model="skill.skilltype">
-        <option value="">请选择</option>
-        <option value="">1991</option>
-        <option value="">1992</option>
-        <option value="">1993</option>
+        <option value="消费设计">消费设计</option>
+        <option value="消费施工">消费施工</option>
+        <option value="消费产品">消费产品</option>
       </select>
     </div>
     <div class="input-row">
       <label for="servertime">有效时间</label>
-      <select class="px-select" id="servertime" v-model="skill.servertime">
-        <option value="">请选择时间</option>
-      </select>
+      <input type="text" id="servertime" v-model="skill.servertime" />
     </div>
     <div class="input-row">
       <label for="">地区</label>

@@ -92,7 +92,7 @@ $.ajaxSetup({
   type: 'post',
   dataType: 'text',
   dataFilter: function(res) {
-    console.log(XmlToJson(res))
+    // console.log(XmlToJson(res))
     return JSON.parse(XmlToJson(res))
   }
 })

@@ -1,5 +1,5 @@
 var ListItem = {
-  template: '<li class="supply-list-item">' +
+  template: '<li class="supply-list-item" @click="viewDetail">' +
             '  <div class="supply-list-item__left">' +
             '    <img :src="avatar" alt="">' +
             '  </div>' +
@@ -27,6 +27,16 @@ var ListItem = {
     }
   },
   methods: {
+    viewDetail: function() {
+      var self = this
+      api.openWin({
+        name: 'demand_detail',
+        url: 'widget://html/demand_detail.html',
+        pageParam: {
+          id: this.myData.demandorderId
+        }
+      });
+    },
     onClickEdit: function() {
 
     }
@@ -66,7 +76,7 @@ function initPage() {
         if (this.currentPage === 'demand') {
           $.ajax({
             url: BaseService.apiUrl + 'getDemandOrder',
-            data: { userid: MockData.userid }
+            data: { userid: Helper.getUserId() }
           }).then(function(res) {
             if (res.key === 'true') {
               self.demandList = ParseJson(res.data)
@@ -76,7 +86,7 @@ function initPage() {
         } else {
           $.ajax({
             url: BaseService.apiUrl + 'getXQInvited',
-            data: { userid: MockData.userid }
+            data: { userid: Helper.getUserId() }
           }).then(function(res) {
             self.inviteList = ParseJson(res.data)
             console.log(self.inviteList)
@@ -85,6 +95,12 @@ function initPage() {
       }
     }
   })
+  api.addEventListener({
+    name: 'refreshMyDemand'
+  }, function(ret, err) {
+    vm.getData('demand')
+    vm.getData()
+  });
 }
 /* === 测试使用 === */
 setTimeout(function() {

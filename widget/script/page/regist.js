@@ -3,10 +3,10 @@ function initPage() {
 		el: '.wrapper',
 		data: function() {
 			return {
-				regphone: '18502341173',
-				pwd: '123456',
+				regphone: '',
+				pwd: '',
 				msm: '',
-				qrpwd: '123456',
+				qrpwd: '',
 				appip: '192.168.0.104',
 				submiting: false
 			}

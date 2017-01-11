@@ -20,7 +20,7 @@ function initPage() {
       goQuestionDetail: function(item) {
         api.openWin({
           name: 'question_detail',
-          url: 'widget://html/question_detail.html',
+          url: 'widget://html/questions_detail.html',
           reload: true,
           pageParam: {
             id: item.expertTWId

@@ -32,7 +32,6 @@ function initPage() {
         });
       },
       viewProfessorDetail: function(pf) {
-        console.log(pf)
         api.openWin({
           name: 'professor_detail',
           url: 'widget://html/professor_detail.html',
@@ -43,7 +42,14 @@ function initPage() {
         });
       },
       viewQuestionDetail: function(qt) {
-        console.log(qt)
+        api.openWin({
+          name: 'question_detail',
+          url: 'widget://html/questions_detail.html',
+          reload: true,
+          pageParam: {
+            id: qt.expertTWId
+          }
+        });
       },
       getQuestions: function() {
         var self = this

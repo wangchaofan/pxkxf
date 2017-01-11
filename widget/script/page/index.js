@@ -8,7 +8,7 @@ apiready = function() {
 	}
 	var nvTabBarWidth = api.winWidth / 5.0
 	var NVTabBar = api.require('NVTabBar')
-	var currentIndex = 1
+	var currentIndex = 0
 	NVTabBar.open({
 		styles: {
 			bg: '#fdfdfd',
@@ -101,6 +101,13 @@ apiready = function() {
 			if (ret.index < 2) {
 				switchFrame(ret.index)
 			} else if (ret.index === 2) {
+				if (!api.getPrefs({key: 'userid', sync: true})) {
+					api.openWin({
+					    name: 'login',
+					    url: 'widget://html/login.html'
+					});
+					return false
+				}
 				api.actionSheet({
 			    cancelTitle: '取消',
 			    buttons: ['发布供应', '发布需求', '发布动态'],

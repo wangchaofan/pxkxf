@@ -4,20 +4,86 @@
 function initPage() {
   var vm = new Vue({
     el: '.wrapper',
+    created: function() {
+      this.getData()
+    },
     data: function() {
       return {
-
+        userInfo: {}
+      }
+    },
+    computed: {
+      avatarStyle: function() {
+        return {
+          'background-image': 'url(' + this.userInfo.pheadimgUrl + ')'
+        }
       }
     },
     methods: {
+      getData: function() {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'getuserinfo',
+          data: {uid: Helper.getUserId()}
+        }).then(function(res) {
+          self.userInfo = ParseJson(res.data)[0]
+          self.userInfo.evaluate = parseInt(self.userInfo.evaluate, 10)
+          console.log(ParseJson(res.data)[0])
+        })
+      },
+      editAvatar: function() {
+        var self = this
+        api.actionSheet({
+          buttons: ['拍照','从相册选择']
+        }, function(ret, err) {
+          if (ret.buttonIndex === 1) {
+            self.selectImage('camera')
+          } else {
+            self.selectImage('library')
+          }
+        });
+      },
+      selectImage: function(sourceType) {
+        var self = this
+        api.getPicture({
+          sourceType: sourceType,
+          encodingType: 'jpg',
+          mediaValue: 'pic',
+          destinationType: 'base64',
+          allowEdit: true,
+          quality: 50,
+          targetWidth: 200,
+          targetHeight: 200,
+          saveToPhotoAlbum: true
+        }, function(ret, err) { 
+          self.uploadAvatar(ret.base64Data)
+        })
+      },
+      uploadAvatar: function(image) {
+        $.ajax({
+          url: BaseService.apiUrl + 'saveimg',
+          data: {userid: Helper.getUserId(), fileNameurl: Helper.transformImageData(image)}
+        }).done(function(res) {
+          if (res.key === 'true') {
+            api.toast({
+              msg: '修改成功'
+            });
+            self.userInfo.pheadimgUrl = image
+          } else {
+            api.toast({
+              msg: res.mage
+            });
+          }
+        })
+      },
       goPage: function(pageName) {
         api.openWin({
-            name: pageName,
-            url: 'widget://html/' + pageName + '.html',
-            pageParam: {
-                name: 'value'
-            }
-        });
+          name: pageName,
+          url: 'widget://html/' + pageName + '.html',
+          pageParam: {
+              name: 'value'
+          }
+        })
       }
     }
   })
