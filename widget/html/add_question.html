@@ -15,28 +15,24 @@
   <div class="add-question-form container">
     <div class="input-row">
       <label for="twtitle">问题标题</label>
-      <input id="twtitle" v-model="twtitle" type="text" placeholder="请填写标题">
+      <input id="twtitle" v-model="question.title" type="text" placeholder="请填写标题">
     </div>
     <div class="input-row input-area">
       <label for="twcontent">问题内容</label>
-      <textarea id="twcontent" v-model="twcontent" placeholder="请填写问题内容"></textarea>
+      <textarea id="twcontent" v-model="question.content" placeholder="请填写问题内容"></textarea>
     </div>
     <div class="person-credentials">
       <div class="person-credentials-title">
         <span>上传附件</span>
         <span>作品、证书、自拍美照等（最多8张）</span>
       </div>
-      <div class="person-credentials-list">
-        <div class="person-credentials-image-wrap">
-          <div class="button-delete"></div>
-          <img src="../image/home_banner.jpg" alt="">
+      <div class="person-credentials-list" v-cloak>
+        <div class="person-credentials-image-wrap" v-for="(img, index) in images">
+          <div class="button-delete" @click="deleteImage(index)"></div>
+          <img :src="img" alt="">
         </div>
-        <div class="person-credentials-image-wrap">
-          <div class="button-delete"></div>
-          <img src="../image/home_banner.jpg" alt="">
-        </div>
-        <div class="upload-box">
-          <input type="file">
+        <div class="upload-box" @change="onSelectImage">
+          <input type="file" accept="image/jpeg,image/png">
         </div>
       </div>
     </div>
@@ -49,6 +45,6 @@
 <script src="../script/lib/lodash.js"></script>
 <script src="../script/lib/vue.min.js"></script>
 <script src="../script/helper.js"></script>
-<script src="../script/page/add_edit_supply.js"></script>
+<script src="../script/page/add_question.js"></script>
 </body>
 </html>
