@@ -10,24 +10,17 @@
 </head>
 <body>
 <div class="wrapper">
-  <header class="header">
-    <div class="header-left">
-      <span class="return-back"></span>
-    </div>
-    <div class="header-center">
-      <span class="header-center-text">我的供应</span>
-    </div>
-    <div class="header-right">
-      <span class="fs24 white">等级特权</span>
-    </div>
-  </header>
+  <my-header title="我的供应">
+    <div class="fs24 white" slot="headerRight">等级特权</div>
+  </my-header>
   <div class="supply-list">
-    <div class="none-text" v-if="list.length === 0" v-cloak>暂时没有应邀~</div>
+    <div class="none-text" v-if="list.length === 0" v-cloak>暂时没有供应~</div>
     <ul v-else>
       <list-item v-for="item in list" :my-data="item"></list-item>
     </ul>
   </div>
 </div>
+<!-- 0已关闭， 1审核中，2通过，3不通过 -->
 <script src="../script/lib/jquery-3.1.1.min.js"></script>
 <script src="../script/lib/lodash.js"></script>
 <script src="../script/lib/vue.min.js"></script>

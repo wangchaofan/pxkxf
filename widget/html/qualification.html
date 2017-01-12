@@ -11,22 +11,22 @@
 <body>
   <div class="wrapper">
     <my-header title="我的认证"></my-header>
-    <section class="qualifications bg-white">
-      <div class="qulification-item certified">
+    <section class="qualifications bg-white" v-cloak>
+      <div class="qulification-item" :class="{certified: level > 0}">
         <div class="qulification-name v1">V1手机认证</div>
-        <div class="qulification-status">已认证</div>
+        <div class="qulification-status">{{level > 0 ? '已认证' : '未认证'}}</div>
       </div>
-      <div class="qulification-item">
+      <div class="qulification-item" :class="{certified: level > 1}">
         <div class="qulification-name v2">V2身份认证</div>
-        <div class="qulification-status">已认证</div>
+        <div class="qulification-status">{{level > 1 ? '已认证' : '未认证'}}</div>
       </div>
-      <div class="qulification-item">
+      <div class="qulification-item" :class="{certified: level > 2}">
         <div class="qulification-name v3">V3专业用户</div>
-        <div class="qulification-status">已认证</div>
+        <div class="qulification-status">{{level > 2 ? '已认证' : '未认证'}}</div>
       </div>
-      <div class="qulification-item">
+      <div class="qulification-item" :class="{certified: level > 3}">
         <div class="qulification-name v4">V4专家用户</div>
-        <div class="qulification-status">已认证</div>
+        <div class="qulification-status">{{level > 3 ? '已认证' : '未认证'}}</div>
       </div>
     </section>
     <section class="check-invite-condition">

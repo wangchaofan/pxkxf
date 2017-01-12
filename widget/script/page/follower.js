@@ -6,20 +6,23 @@ function initPage() {
     },
     data: function() {
       return {
-        list: []
+        list: [],
+        posting: true
       }
     },
     methods: {
       getData: function () {
         var self = this
         $.ajax({
-          url: BaseService.apiUrl + 'getFriends',
+          url: BaseService.apiUrl + 'getFans',
           data: {
             userid: Helper.getUserId()
           }
         }).then(function(res) {
           if (res.key === 'true') {
             self.list = ParseJson(res.data)
+            console.log(ParseJson(res.data))
+            self.posting = false
           }
         })
       }

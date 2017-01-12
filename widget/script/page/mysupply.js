@@ -55,7 +55,7 @@ function initPage() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getuserSkill',
-          data: { userid: MockData.userid }
+          data: { userid: Helper.getUserId() }
         }).then(function(res) {
           if (res.key === 'true') {
             self.list = ParseJson(res.data)

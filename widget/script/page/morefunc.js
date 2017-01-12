@@ -68,12 +68,18 @@ function initPage() {
 			},
 			logout: function() {
 				$.ajax({
-					url: BaseService.apiUrl + '',
+					url: BaseService.apiUrl + 'getlogtc',
+          data: {userid: Helper.getUserId()}
 				})
 				.then(function(res) {
-					res = JSON.parse(res)
 					if (res.key === 'true') {
-						// todo: 清除uid
+            api.removePrefs({
+                key: 'userid'
+            });
+            api.sendEvent({
+              name: 'logoutSuccess'
+            })
+            api.closeWin()
 					}
 				}, function(err) {
 

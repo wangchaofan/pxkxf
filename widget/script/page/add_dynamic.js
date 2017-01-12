@@ -17,12 +17,21 @@ function initPage() {
         $.ajax({
           url: BaseService.apiUrl + 'addDynamics',
           data: {
-            userid: MockData.userid,
+            userid: Helper.getUserId(),
             dynamicContent: self.dynamicContent,
-            imgarr: _.map(self.imgarr, TransformImageData)
+            imgarr: _.map(self.imgarr, TransformImageData).join(',')
           }
         }).then(function(res) {
-          console.log(res)
+        	if (res.key === 'true') {
+        		api.toast({
+        		    msg: '添加成功'
+        		});
+        		api.closeWin()
+        	} else {
+        		api.toast({
+        		    msg: res.mage
+        		});
+        	}
         }, function(err) {
           alert('添加失败')
         })

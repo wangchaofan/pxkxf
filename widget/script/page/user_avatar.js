@@ -38,7 +38,7 @@ function initPage() {
         }, function(ret, err) {
           if (ret.buttonIndex === 1) {
             self.selectImage('camera')
-          } else {
+          } else if (ret.buttonIndex === 2) {
             self.selectImage('library')
           }
         });
@@ -80,6 +80,8 @@ function initPage() {
         api.openWin({
           name: pageName,
           url: 'widget://html/' + pageName + '.html',
+          softInputMode: '',
+          reload: true,
           pageParam: {
               name: 'value'
           }

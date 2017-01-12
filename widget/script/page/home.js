@@ -13,10 +13,16 @@ function initPage() {
         supplyList: [],
         nearByList: [],
         currentTab: 'demand',
-        city: '成都'
+        city: '成都',
+        type: ''
       }
     },
     methods: {
+      onClickType: function(t) {
+        this.type = t
+        this.getList('supplyList', 'getSkill', true)
+        this.getList('demandList', 'getdemaorder', true)
+      },
       onClickSearchButton: function() {
         api.openWin({
             name: 'search',
@@ -45,7 +51,7 @@ function initPage() {
           y: api.frameHeight / 1.6 + 50
         }, function(ret, err) {
           self.city = ret.city;
-        });
+        })
       },
       viewDemandDetail: function(data) {
         api.openWin({
@@ -65,14 +71,15 @@ function initPage() {
             }
         });
       },
-      getList: function(listId, uri) {
+      getList: function(listId, uri, refresh) {
         var self = this
-        if (self[listId].length > 0) return
-        console.log(2)
+        if (self[listId].length > 0 && !refresh) return
         $.ajax({
           url: BaseService.apiUrl + uri,
+          data: {type: self.type},
           success: function(res) {
             self[listId] = JSON.parse(res.data)
+            console.log(JSON.parse(res.data))
           },
           error: function(err) {
             // alert(JSON.stringify(err))
@@ -82,6 +89,14 @@ function initPage() {
     }
   })
 }
+
+/* === 测试使用 === */
+setTimeout(function() {
+  if (!window.api) {
+    initPage()
+  }
+}, 500)
+
 apiready = function() {
   initPage()
 

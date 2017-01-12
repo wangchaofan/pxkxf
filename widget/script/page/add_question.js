@@ -28,12 +28,20 @@ function initPage() {
       },
       onSubmit: function() {
         var self = this
-        this.question.imgarr = _.map(this.images, Helper.transformImageData)
+        this.question.imgarr = _.map(this.images, Helper.transformImageData).join(',')
         $.ajax({
           url: BaseService.apiUrl + 'addtwinfo',
           data: this.question 
         }).then(function(res) {
-          console.log(res)
+          if (res.key === 'true') {
+            api.toast({
+                msg: '添加成功'
+            })
+          } else {
+            api.toast({
+                msg: res.mage
+            })
+          }
         })
       }
     }

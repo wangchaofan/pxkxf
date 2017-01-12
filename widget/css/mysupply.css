@@ -159,3 +159,9 @@
 .dynamic-images .person-credentials-image-wrap:nth-child(4n+4) {
     margin-right: 0;
 }
+.supply-item-images > img {
+    margin-top: 0.25rem;
+    margin-right: 0.25rem;
+    width: 3rem;
+    height: 3rem;
+}

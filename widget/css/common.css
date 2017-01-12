@@ -569,7 +569,9 @@ input,
 select,
 textarea {
   outline: none;
+  border: none;
   -webkit-appearance: none;
+  background-color: #fff;
 }
 .text-overflow-es {
   overflow: hidden;

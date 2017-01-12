@@ -10,17 +10,7 @@
 </head>
 <body>
 <div class="wrapper">
-  <header class="header">
-    <div class="header-left">
-      <span class="return-back"></span>
-    </div>
-    <div class="header-center">
-      <div class="header-center-text">收藏的技能</div>
-    </div>
-    <div class="header-right">
-      <span class="fs24 white"></span>
-    </div>
-  </header>
+  <my-header title="收藏的技能"></my-header>
   <div class="supply-list" v-cloak>
     <div class="none-text" v-if="list.length === 0">你还没有收藏技能~</div>
     <ul v-else>

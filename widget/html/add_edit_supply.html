@@ -31,14 +31,12 @@
     </div>
     <div class="input-row">
       <label for="servertime">有效时间</label>
-      <input type="text" id="servertime" v-model="skill.servertime" />
+      <input type="date" id="servertime" v-model="skill.servertime" />
     </div>
-    <div class="input-row">
+    <div class="fs24 text-warning" style="margin-top: 0.35rem;">提示：若不填有效时间则默认为长期供应</div>
+    <div class="input-row" @click="selectDistrict">
       <label for="">地区</label>
-      <span>请选择地区</span>
-      <!--<select class="px-select" name="">-->
-        <!--<option value="请选择地区"></option>-->
-      <!--</select>-->
+      <span :class="{'text-999': !skill.Province}">{{zoneText}}</span>
     </div>
     <div class="input-row">
       <label for="money">价格</label>

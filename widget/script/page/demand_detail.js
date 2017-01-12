@@ -27,7 +27,7 @@ function initPage() {
     		var self = this
     		$.ajax({
     			url: BaseService.apiUrl + 'getxqinfo',
-    			data: { xqid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00' } // 'a17db629-52b6-4b6a-a904-e6c1721e3a00'
+    			data: { xqid: api.pageParam.id } // 'a17db629-52b6-4b6a-a904-e6c1721e3a00'
     		}).done(function(res) {
     			self.demandInfo = ParseJson(res.data)[0]
     			console.log(ParseJson(res.data)[0])

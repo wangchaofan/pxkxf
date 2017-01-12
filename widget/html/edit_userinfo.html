@@ -14,7 +14,7 @@
   <form id="userInfoForm" action="">
     <div class="input-row">
       <label for="">昵称</label>
-      <input type="text" v-model="userInfo.nickname" placeholder="请输入">
+      <input type="text" v-model="userInfo.pnckname" placeholder="请输入">
     </div>
     <div class="input-row">
       <label>性别</label>
@@ -33,11 +33,7 @@
     </div>
     <div class="input-row">
       <label for="">出生日期</label>
-      <select class="px-select" v-model="userInfo.birthDate" placeholder="请选择">
-        <option value="1991">1991</option>
-        <option value="1992">1992</option>
-        <option value="1993">1993</option>
-      </select>
+      <input type="date" v-model="userInfo.birthDate" placeholder="请选择">
     </div>
     <div class="input-row">
       <label for="">年龄</label>
@@ -45,23 +41,19 @@
     </div>
     <div class="input-row">
       <label for="">故乡</label>
-      <select class="px-select" name="">
-        <option value="请选择故乡"></option>
-      </select>
+      <input type="text" v-model="homeZone" @click="selectZone('home')" readonly>
     </div>
     <div class="input-row">
       <label for="">所在地</label>
-      <select class="px-select" name="" placeholder="请选择您的所在地">
-        <option value="请选择您的所在地"></option>
-      </select>
+      <input type="text" v-model="nowZone" @click="selectZone('now')" readonly>
     </div>
     <div class="input-row">
       <label for="">联系手机</label>
-      <input type="text" v-model="userInfo.phoneNumber" placeholder="请输入手机号">
+      <input type="number" maxlength="11" v-model="userInfo.phoneNumber" placeholder="请输入手机号">
     </div>
     <div class="input-row">
       <label for="">电子邮箱</label>
-      <input type="text" v-model="userInfo.email" placeholder="请输入电子邮箱">
+      <input type="email" v-model="userInfo.email" placeholder="请输入电子邮箱">
     </div>
     <div class="input-row">
       <label for="">毕业院校</label>
@@ -79,28 +71,30 @@
       <label for="">公司</label>
       <input type="text" v-model="userInfo.company" placeholder="请填写公司名称">
     </div>
-    <div class="person-credentials">
-      <div class="person-credentials-title">
-        <span>个人资质</span>
-        <span>个人资质（最多8张）</span>
-      </div>
-      <div class="person-credentials-list">
-        <div class="person-credentials-image-wrap" v-for="(img, index) in userInfo.pQualifications">
-          <div class="button-delete"></div>
-          <img :src="img" alt="">
-        </div>
-        <div class="upload-box">
-          <input type="file">
-        </div>
-      </div>
+    <div class="input-row">
+      <label for="">个人资质</label>
+      <input type="text" class="flex-1" v-model="userInfo.pQualifications" placeholder="请选择个人资质" readonly @click="selectQualifications"/>
     </div>
     <div class="input-row">
       <label for="">擅长技能</label>
-      <input type="text" v-model="userInfo.Skill" placeholder="请填写擅长的技能">
+      <select class="px-select" v-model="userInfo.Skill">
+        <option value="消防设计">消防设计</option>
+        <option value="消防施工">消防施工</option>
+        <option value="消防产品">消防产品</option>
+      </select>
+    </div>
+    <div class="input-row">
+      <label for="">个人荣誉</label>
+      <input type="text" v-model="userInfo.pHonor" max-length="100" placeholder="请填写个人荣誉">
     </div>
     <div class="input-row">
       <label for="">空闲时间</label>
-      <input type="text" v-model="userInfo.freeTime" placeholder="请选择时间">
+      <select class="px-select" v-model="userInfo.freeTime">
+        <option value="晚上">晚上</option>
+        <option value="周末">周末</option>
+        <option value="随时">随时</option>
+        <option value="不定">不定</option>
+      </select>
     </div>
     <div class="input-row">
       <label for="">个人主页</label>
@@ -111,7 +105,9 @@
       <input type="text" v-model="userInfo.pautograph" placeholder="请填写签名">
     </div>
   </form>
-  <div class="btn-submit" @click="onSubmit">提交</div>
+  <div class="fixed-bottom">
+    <div class="btn-submit" @click="onSubmit">提交</div>
+  </div>
 </div>
   <script src="../script/lib/jquery-3.1.1.min.js"></script>  
   <script src="../script/lib/lodash.js"></script>

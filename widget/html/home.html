@@ -32,15 +32,15 @@
     </div>
   </div>
   <div class="production-classify ac">
-    <div class="production-classify-item">
+    <div class="production-classify-item" @click="onClickType('消防设计')">
       <div class="production-classify-icon"></div>
       <div>消防设计</div>
     </div>
-    <div class="production-classify-item">
+    <div class="production-classify-item" @click="onClickType('消防实工')">
       <div class="production-classify-icon"></div>
       <div>消防实工</div>
     </div>
-    <div class="production-classify-item">
+    <div class="production-classify-item" @click="onClickType('消防产品')">
       <div class="production-classify-icon"></div>
       <div>消防产品</div>
     </div>
@@ -101,8 +101,8 @@
                   需求详情：{{item.ddetails}}
                 </div>
                 <div class="remand-info__other">
-                  <div class="user-name">宿命</div>
-                  <div class="user-location">{{item.daddress}}</div>
+                  <div class="user-name">{{item.Usermodel[0].pnickname}}</div>
+                  <div class="user-location">{{item.addressprovince + ' ' + item.addressCity + ' ' + item.addressdistrct}}</div>
                   <!-- <div class="invite-number flex-1 ar"><span class="icon-check-ok"></span>30应邀</div> -->
                 </div>
               </div>
@@ -138,15 +138,15 @@
               <div class="remand-info">
                 <div class="remand-info__title">
                   他的供应：<span class="text-black">{{item.skillName}}</span></div>
-                <div class="remand-info__price">价格：<strong class="text-warning">{{item.smoney}}</strong>{{item.smoneytype}}（酬金已担保）</div>
-                <div class="remand-info__persons">服务时间：<strong class="text-warning">{{item.servertime}}</strong></div>
+                <div class="remand-info__price">价格：<strong class="text-warning">{{item.smoney}}</strong>{{item.smoneytype}}</div>
+                <div class="remand-info__persons">服务时间：<strong class="text-warning">{{item.servertime | date('yyyy-MM-dd')}}</strong></div>
                 <div class="remand-info__detail">
                   供应详情：{{item.skilldetails}}
                 </div>
                 <div class="remand-info__other">
-                  <div class="user-name">宿命</div>
-                  <div class="user-location">{{item.daddress}}</div>
-                  <div class="invite-number flex-1 ar"><span class="icon-check-ok"></span>30应邀</div>
+                  <div class="user-name">{{item.sUsermodel[0].pnickname}}</div>
+                  <div class="user-location">{{item.addressprovincese + ' ' + item.addressCityse + ' ' + item.addressdistrctse}}</div>
+                  <!-- <div class="invite-number flex-1 ar"><span class="icon-check-ok"></span>30应邀</div> -->
                 </div>
               </div>
             </a>
@@ -159,7 +159,7 @@
             <a class="display-flex">
               <div class="user-info">
                 <div class="user-avatar-wrap">
-                  <img class="user-avatar" src="item.sUsermodel[0].pheadimgUrl" alt="">
+                  <img class="user-avatar" src="item.Usermodel[0].pheadimgUrl" alt="">
                   <div class="p-tag">需求</div>
                 </div>
                 <div class="user-roles display-flex">
@@ -187,9 +187,9 @@
                   需求详情：{{item.ddetails}}
                 </div>
                 <div class="remand-info__other">
-                  <div class="user-name">宿命</div>
+                  <div class="user-name">{{item.Usermodel[0].pnickname}}</div>
                   <div class="user-location">{{item.daddress}}</div>
-                  <div class="invite-number flex-1 ar"><span class="icon-check-ok"></span>30应邀</div>
+                  <!-- <div class="invite-number flex-1 ar"><span class="icon-check-ok"></span>30应邀</div> -->
                 </div>
               </div>
             </a>

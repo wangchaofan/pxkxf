@@ -48,13 +48,18 @@ function initPage() {
   })
 
   api.addEventListener({
-      name: 'loginSuccess'
+    name: 'loginSuccess'
   }, function(ret, err) {
-      if (ret) {
-        vm.getUserInfo()
-        vm.userid =  Helper.getUserId()
-      } else {
-      }
+    if (ret) {
+      vm.userid =  Helper.getUserId()
+      vm.getUserInfo()
+    }
+  })
+  api.addEventListener({
+    name: 'logoutSuccess'
+  }, function(ret, err) {
+    vm.userid =  Helper.getUserId()
+    vm.userInfo.pheadimgUrl = '../image/default_avatar.png'
   });
 }
 

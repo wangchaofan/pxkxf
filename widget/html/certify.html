@@ -9,40 +9,43 @@
   <script src="../script/adapter.js"></script>
 </head>
 <body>
-  <div class="wrapper">
+  <div class="wrapper" v-cloak>
     <my-header title="用户认证"></my-header>
-    <section class="upload-wrap">
-      <div class="upload-desc">请您上传您的身份证照片：</div>
-      <div class="upload-box">
-        <img :src="Idzm" alt="" v-if="!!Idzm" v-cloak>
-        <div class="upload-box-name" v-else>上传身份证正面</div>
-        <input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'Idzm')">
+    <div class="has-renzheng" v-if="holdCarId">已认证</div>
+    <div v-else>
+      <section class="upload-wrap">
+        <div class="upload-desc">请您上传您的身份证照片：</div>
+        <div class="upload-box">
+          <img :src="Idzm" alt="" v-if="!!Idzm" v-cloak>
+          <div class="upload-box-name" v-else>上传身份证正面</div>
+          <input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'Idzm')">
+        </div>
+        <div class="fs24 ac text-warning">请保证所有信息真实有效而且清晰可见</div>
+      </section>
+      <section class="upload-wrap">
+        <div class="upload-desc">请您上传您的身份证照片：</div>
+        <div class="upload-box">
+          <img :src="Idbm" alt="" v-if="!!Idbm" v-cloak>
+          <div class="upload-box-name" v-else>上传身份证反面</div>
+          <input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'Idbm')">
+        </div>
+        <div class="fs24 ac text-warning">请保证所有信息真实有效而且清晰可见</div>
+      </section>
+      <section class="upload-wrap">
+        <div class="upload-desc">请上传您的手持身份证照片：</div>
+        <div class="upload-box">
+          <img :src="scId" alt="" v-if="!!scId" v-cloak>
+          <div class="upload-box-name" v-else>上传手持身份证</div>
+          <input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'scId')">
+        </div>
+        <div class="fs24 ac text-warning">请保证持件人的五官真实有效而且清晰可见</div>
+      </section>
+      <section class="remind fs24 ac">
+        <p>我们承诺上传的身份证仅供系统信息审核使用，任何人不可见</p>
+      </section>
+      <div class="fixed-bottom">
+        <div class="btn-submit" @click="onSubmit">提交</div>
       </div>
-      <div class="fs24 ac text-warning">请保证所有信息真实有效而且清晰可见</div>
-    </section>
-    <section class="upload-wrap">
-      <div class="upload-desc">请您上传您的身份证照片：</div>
-      <div class="upload-box">
-        <img :src="Idbm" alt="" v-if="!!Idbm" v-cloak>
-        <div class="upload-box-name" v-else>上传身份证反面</div>
-        <input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'Idbm')">
-      </div>
-      <div class="fs24 ac text-warning">请保证所有信息真实有效而且清晰可见</div>
-    </section>
-    <section class="upload-wrap">
-      <div class="upload-desc">请您上传您的身份证照片：</div>
-      <div class="upload-box">
-        <img :src="scId" alt="" v-if="!!scId" v-cloak>
-        <div class="upload-box-name" v-else>上传手持身份证</div>
-        <input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'scId')">
-      </div>
-      <div class="fs24 ac text-warning">请保证所有信息真实有效而且清晰可见</div>
-    </section>
-    <section class="remind fs24 ac">
-      <p>我们承诺上传的身份证仅供系统信息审核使用，任何人不可见</p>
-    </section>
-    <div class="fixed-bottom">
-      <div class="btn-submit" @click="onSubmit">提交</div>
     </div>
   </div>
   <script src="../script/lib/jquery-3.1.1.min.js"></script>
