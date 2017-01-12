@@ -1,0 +1,93 @@
+.location-byme {
+    padding-left: 0.7rem;
+    background: url('../image/icon_location_blue.png') left center no-repeat;
+    background-size: 0.55rem 0.65rem;
+}
+.user-info {
+    flex: 1;
+}
+.user-info .user-avatar {
+    flex-shrink: 0;
+}
+.user-info .user-info-tj {
+    width: 100%;
+    overflow: hidden;
+}
+.demand-price {
+    position: absolute;
+    bottom: 0;
+    font-size: 0.5rem;
+    width: 100%;
+    color: #999;
+    line-height: 0.8rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.demand-price .warrant {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding-left: 0.7rem;
+    background: url('../image/icon_danbao.png') left center no-repeat;
+    background-size: 0.75rem 0.75rem;
+}
+.remand-detail .row {
+    display: flex;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #ddd;
+    line-height: 1rem;
+    font-size: 0.7rem;
+}
+.remand-detail .row:last-child {
+    border-bottom: none;
+}
+.remand-detail .content {
+    color: #666;
+    flex: 1;
+}
+.remand-detail .row-label {
+    flex-shrink: 0;
+    margin-right: 1rem;
+}
+.invited-number {
+    padding-left: 1rem;
+    font-size: 0.6rem;
+    color: #666;
+    background: url('../image/check_ok.png') left center no-repeat;
+    background-size: 0.85rem 0.65rem;
+}
+.has-invited-person {
+    margin-top: 0.5rem;
+}
+.deman-detail-bottom {
+    justify-content: space-around;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+.button-chat,
+.button-invite,
+.button-invite-noname {
+    padding-top: 1.35rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid #ffb657;
+    border-radius: 100%;
+    font-size: 0.5rem;
+    color: #666;
+    text-align: center;
+}
+.button-chat {
+    background: url(../image/icon_chat2.png) center 0.5rem no-repeat;
+    background-size: 0.75rem 0.75rem;
+}
+.button-invite {
+    color: #fff;
+    border-color: #ff9000;
+    background: #ff9000 url('../image/icon_invite.png') center 0.5rem no-repeat;
+    background-size: 0.8rem 0.8rem;
+}
+.button-invite-noname {
+    background: url('../image/icon_invite2.png') center 0.5rem no-repeat;
+    background-size: 0.8rem 0.8rem;
+}

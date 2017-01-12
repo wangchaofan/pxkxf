@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>我的粉丝</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/user_avatar.css">
+  <style type="text/css">
+    .my-friends .user-center-top {
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <my-header title="我的粉丝"></my-header>
+  <div class="my-friends" v-cloak>
+    <div class="user-center-top display-flex" v-for="item in list">
+      <div class="user-info">
+        <div class="user-avatar" style="overflow: hidden;">
+          <img :src="item.usermodel[0].pheadimgUrl" alt="" style="width: 100%;height: 100%;">
+        </div>
+        <div class="user-info-tj">
+          <div class="user-name"><span class="vam">{{item.usermodel[0].pnickname}}</span><span class="user-sex user-sex-man vam"></span></div>
+          <div class="online-status" :class="{'off-line': item.usermodel[0].onlineState === 2}">{{item.usermodel[0].onlineState === 1 ? '在线' : '离线'}}</div>
+          <div class="user-pingjia">
+            <span class="vam">好评：</span>
+            <i class="icon-star"  v-for="i in parseInt(item.usermodel[0].evaluate)"></i>
+          </div>
+        </div>
+      </div>
+      <div class="user-info-rt">
+        <div></div>
+        <div class="user-level">
+          <div>用户等级：</div>
+          <div class="qulification display-flex">
+            <div class="qulification-name v1"></div>
+            <div class="qulification-name v2"></div>
+            <div class="qulification-name v3"></div>
+            <div class="qulification-name v4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="none-text" v-if="list.length === 0">{{posting ? '加载中...' : '暂时没有粉丝~'}}</div>
+  </div>
+</div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/page/follower.js"></script>
+</body>
+</html>

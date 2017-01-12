@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>用户认证</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/certify.css">
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+  <div class="wrapper" v-cloak>
+    <my-header title="专家认证"></my-header>
+    <!-- <div class="has-renzheng" v-if="holdCarId">已认证</div> -->
+    <div class="">
+      <div class="upload-desc">请您上传您的身份证照片：<span>最多10张</span></div>
+      <section class="upload-wrap some-images display-flex">
+        <img src="" v-cloak>
+        <img src="" v-cloak>
+        <img src="" v-cloak>
+        <div class="upload-box">
+          <div class="upload-box-name">上传证书</div>
+          <input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'Idzm')">
+        </div>
+      </section>
+    </div>
+    <div class="fixed-bottom">
+      <div class="btn-submit" @click="onSubmit">提交</div>
+    </div>
+  </div>
+  <script src="../script/lib/jquery-3.1.1.min.js"></script>
+  <script src="../script/lib/lodash.js"></script>
+  <script src="../script/lib/vue.min.js"></script>
+  <script src="../script/helper.js"></script>
+  <script src="../script/page/certify.js"></script>
+</body>
+</html>

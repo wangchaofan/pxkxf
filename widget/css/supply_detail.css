@@ -1,0 +1,45 @@
+.supply-detail {
+	overflow: hidden;
+}
+.user-info-tj {
+	width: 5rem;
+}
+.supply-detail__images > img {
+	margin-top: 0.75rem;
+	width: 100%;
+}
+.supply-detail__name {
+	margin-top: 0.8rem;
+	margin-bottom: 0.4rem;
+}
+.supply-detail-buttons {
+	margin-top: 1.05rem;
+	margin-bottom: 0.8rem;
+}
+.supply-detail__button {
+	width: 8rem;
+	height: 1.8rem;
+	border-radius: 0.15rem;
+	font-size: 0.6rem;
+	text-align: center;
+	line-height: 1.75rem;
+	color: #ff9000;
+	border: 1px solid #ff9000;
+}
+.user-center-top {
+	margin-top: 0.5rem;
+}
+.button-chat {
+	margin-right: 0.4rem;
+	width: 3rem;
+	height: 2.2rem;
+	background: #ff9000 url('../image/icon_chat.png') center no-repeat;
+	background-size: 1.35rem 1.35rem;
+	border-radius: 0.15rem;
+}
+.fixed-bottom {
+	padding: 0 0.75rem;
+}
+.button-book {
+	font-size: 0.7rem;
+}

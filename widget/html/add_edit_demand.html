@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>发起需求</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/mysupply.css">
+  <link rel="stylesheet" href="../css/edit_userinfo.css">
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <my-header title="发起需求"></my-header>
+  <form class="supply-form" action="">
+    <div class="input-row">
+      <label for="demandTitle">我的需求</label>
+      <input id="demandTitle" type="text" v-model="demand.xqname" placeholder="填写或选择您可以赚钱的技能（10字内）">
+    </div>
+    <div class="input-row">
+      <label for="">分类</label>
+      <select class="px-select" v-model="demand.xqtype" name="">
+        <option value="消费设计">消费设计</option>
+        <option value="消费施工">消费施工</option>
+        <option value="消费产品">消费产品</option>
+      </select>
+    </div>
+    <div class="input-row">
+      <label for="demandNum">需求人数</label>
+      <input type="number" v-model.number="demand.rnum" placeholder="请写合适的费用">
+      <span>人</span>
+    </div>
+    <div class="input-row">
+      <label for="effectiveTime">有效期限</label>
+      <input type="text" v-model="demand.timenum">
+    </div>
+    <div class="input-row supply-detail">
+      <label for="ddetails">详情描述</label>
+      <textarea class="px-textarea" id="ddetails" v-model="demand.xqdetails" placeholder="说的越详细，应邀的人更多，更精准！"></textarea>
+    </div>
+    <div class="input-row" @click="onSelectZone">
+      <label for="daddress">地区</label>
+      <input v-model="zone" placeholder="请选择地区" readonly>
+    </div>
+    <div class="input-row" style="border-bottom: none;">
+      <label for="dmoney">愿付酬金</label>
+      <input id="dmoney" type="text" v-model="demand.money" placeholder="1元以上">
+      <span>元/人</span>
+    </div>
+  </form>
+  <div class="btn-submit" @click="onSubmit">发布</div>
+</div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>  
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/page/add_edit_demand.js"></script>
+</body>
+</html>

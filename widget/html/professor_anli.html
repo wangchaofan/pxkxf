@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>专家案例</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/certify.css">
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+  <div class="wrapper" v-cloak>
+    <my-header title="专家案例"></my-header>
+    <!-- <div class="has-renzheng" v-if="holdCarId">已认证</div> -->
+    <div class="case-list">
+      <div class="case-item" v-for="item in list">
+        <div class="display-flex">
+          <div class="fs28">{{item.alName}}</div>
+          <div class="case-tiem__date">{{item.altime | date('yyyy-MM-dd')}}</div>
+        </div>
+        <div class="case-content">{{item.aldetails}}</div>
+      </div>
+    </div>
+  </div>
+  <script src="../script/lib/jquery-3.1.1.min.js"></script>
+  <script src="../script/lib/lodash.js"></script>
+  <script src="../script/lib/vue.min.js"></script>
+  <script src="../script/helper.js"></script>
+  <script src="../script/page/professor_anli.js"></script>
+</body>
+</html>

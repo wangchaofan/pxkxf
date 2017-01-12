@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>需求详情</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/user_avatar.css">
+  <link rel="stylesheet" href="../css/demand_detail.css">
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<my-header title="需求详情">
+			<div class="fs24 white ac" slot="headerRight">分享</div>
+		</my-header>
+		<section class="user-center-top display-flex" v-cloak>
+			<div class="user-info" v-if="userModel && demandInfo">			
+				<div class="user-avatar" :style="userModel.avatarStyle"></div>
+				<div class="user-info-tj">
+					<div class="user-name"><span class="vam">{{userModel.pnickname}}</span><span class="user-sex user-sex-man vam"></span></div>
+					<div class="online-status">在线</div>
+					<div class="demand-price fs24">愿付酬金：<span class="text-warning">{{demandInfo.dmoney}}</span>元/人 <span class="warrant">(酬金已担保)</span></div>
+				</div>
+			</div>
+			<div class="user-info-rt">
+				<a class="location-byme fs24 text-999" href="javascript:">5km</a>
+			</div>
+		</section>
+		<div class="remand-detail bg-white container" v-if="demandInfo" v-cloak>
+			<div class="row">
+				<span class="row-label">他的需求</span>
+				<span class="content">{{demandInfo.demandTitle}}</span>
+			</div>
+			<div class="row">
+				<span class="row-label">需求人数</span>
+				<span class="content">{{demandInfo.demandNum}}人</span>
+				<span class="fs24 text-warning">已选0人</span>
+			</div>
+			<div class="row">
+				<span class="row-label">有效期限</span>
+				<span class="content">{{demandInfo.effectiveTime}}</span>
+			</div>
+			<div class="row">
+				<span class="row-label">截止日期</span>
+				<span class="content">{{demandInfo.dtime | date('yyyy-MM-dd')}}</span>
+			</div>
+			<div class="row">
+				<span class="row-label">邀约地点</span>
+				<span class="content">{{demandInfo.addressprovince}}{{demandInfo.addressCity}} {{demandInfo.addressdistrct}}</span>
+			</div>
+			<div class="row">
+				<span class="row-label">详情描述</span>
+				<span class="content">{{demandInfo.ddetails}}</span>
+			</div>
+			<div class="row">
+				<span class="row-label invited-number">{{demandInfo.yynum}}应邀</span>
+			</div>
+		</div>
+		<div class="has-invited-person" v-if="demandInfo" v-cloak>
+			<div class="user-center-top display-flex" v-for="item in demandInfo.XQInvitedmodel">
+				<div class="user-info">
+					<div class="user-avatar" :style="{'background-image': 'url(' + item.usermodel[0].pheadimgUrl + ')'}"></div>
+					<div class="user-info-tj">
+						<div class="user-name"><span class="vam">{{item.usermodel[0].pnickname}}</span><span class="user-sex user-sex-man vam"></span></div>
+						<div class="online-status">在线</div>
+						<div class="demand-price fs24">技能描述：{{item.skillms}}</div>
+					</div>
+				</div>
+				<div class="user-info-rt">
+					<a class="location-byme fs24 text-999" href="javascript:">5km</a>
+				</div>
+			</div>
+		</div>
+		<div class="fixed-bottom deman-detail-bottom display-flex">
+			<div class="button-chat" @click="goChat">聊一聊</div>
+			<div class="button-invite" @click="goInvite">应邀</div>
+			<div class="button-invite-noname" @click="goInviteNoname">匿名应邀</div>
+		</div>
+	</div>
+	<script src="../script/lib/jquery-3.1.1.min.js"></script>
+	<script src="../script/lib/lodash.js"></script>
+	<script src="../script/lib/vue.min.js"></script>
+	<script src="../script/helper.js"></script>
+	<script src="../script/page/demand_detail.js"></script>
+</body>
+</html>

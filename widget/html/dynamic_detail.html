@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>需求详情</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/user_avatar.css">
+  <link rel="stylesheet" href="../css/dynamic_detail.css">
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<my-header title="动态详情">
+			<div class="fs24 white ac" slot="headerRight">分享</div>
+		</my-header>
+		<div class="dynamic-detail bg-white" v-cloak>
+			<div class="dynamic-detail-user display-flex">
+				<div class="dynamic-detail-user__avatar">
+					<img :src="user.pheadimgUrl" alt="">
+				</div>
+				<div class="flex-1">
+					<div class="dynamic-detail-user__name">{{user.pnickname}}</div>
+					<div class="icon-sex" :class="{woman: user.sex === '女'}"></div>
+				</div>
+				<div class="dynamic-detail__date">{{dyInfo.dynamicTime | date('yyyy-MM-dd')}}</div>
+			</div>
+			<div class="dynamic-detail-content">
+				<p class="dynamic-detail-content__text">
+					{{dyInfo.dynamicContent}}
+				</p>
+				<div class="dynamic-detail-content__images">
+					<img v-for="item in images" :src="item.imgurl">
+				</div>
+			</div>
+			<div class="dynamic-detail-sl display-flex ac">
+				<div class="dynamic-detail-sl__zan flex-1" @click="onClickZan">
+					<i class="icon-zan"></i>
+					<span>{{dyInfo.dznum}}</span>
+				</div>
+				<div class="line-left"></div>
+				<div class="dynamic-detail-sl__comment flex-1">
+					<i class="icon-comment"></i>
+					<span>{{dyInfo.plnum}}</span>
+				</div>
+				<div class="line-right"></div>
+				<div class="dynamic-detail-sl__share flex-1">
+					<i class="icon-share"></i>
+					<span></span>
+				</div>
+			</div>
+		</div>
+		<div class="comment-list bg-white">
+			<div class="comment-list-select">
+				<span :class="{'current': currentSee == 'all'}" @click="changeSee('all')">全部评论</span>
+				<span :class="{'current': currentSee == 'me'}" @click="changeSee('me')">只看我({{myComments.length}})</span>
+			</div>
+			<ul v-show="currentSee == 'all'" v-cloak>
+				<li v-for="item in comments">
+					<div class="comment-list-item">
+						<div class="comment-list-item__avatar">
+							<img :src="item.usermodel[0].pheadimgUrl" alt="">
+						</div>
+						<div class="comment-list-item__content">
+							<div class="comment-list-item__user-name">
+								<span>{{item.usermodel[0].pnickname}}</span>
+								<span class="icon-sex woman"></span>
+							</div>
+							<div class="comment-list-item__text">
+								{{item.commentContent}}
+							</div>
+							<!--<div class="comment-list-item__reword">-->
+								<!--<span class="keyword">哦哦哦：</span>恢复-->
+								<!--<span class="keyword">打败的：</span>-->
+								 <!--33层楼需要安装消防设备共20套消防设备3层楼需要安装消防设备共有202套消描述3层楼需要安装消防设备20套消-->
+							<!--</div>-->
+						</div>
+					</div>
+				</li>
+			</ul>
+			<ul v-show="currentSee == 'me'" v-cloak>
+				<li v-for="item in myComments">
+					<div class="comment-list-item">
+						<div class="comment-list-item__avatar">
+							<img :src="item.usermodel[0].pheadimgUrl" alt="">
+						</div>
+						<div class="comment-list-item__content">
+							<div class="comment-list-item__user-name">
+								<span>{{item.usermodel[0].pnickname}}</span>
+								<span class="icon-sex woman"></span>
+							</div>
+							<div class="comment-list-item__text">
+								{{item.commentContent}}
+							</div>
+							<!--<div class="comment-list-item__reword">-->
+								<!--<span class="keyword">哦哦哦：</span>恢复-->
+								<!--<span class="keyword">打败的：</span>-->
+								 <!--33层楼需要安装消防设备共20套消防设备3层楼需要安装消防设备共有202套消描述3层楼需要安装消防设备20套消-->
+							<!--</div>-->
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="fixed-bottom send-comment">
+			<input class="send-comment-input" type="text" v-model="commentContent" placeholder="请输入评论内容">
+			<div class="btn-send" @click="sendComment">发送</div>
+		</div>
+	</div>
+	<script src="../script/lib/jquery-3.1.1.min.js"></script>
+	<script src="../script/lib/lodash.js"></script>
+	<script src="../script/lib/vue.min.js"></script>
+	<script src="../script/helper.js"></script>
+	<script src="../script/page/dynamic_detail.js"></script>
+</body>
+</html>
