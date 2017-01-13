@@ -60,6 +60,7 @@ function initPage() {
         })
       },
       uploadAvatar: function(image) {
+        var self = this
         $.ajax({
           url: BaseService.apiUrl + 'saveimg',
           data: {userid: Helper.getUserId(), fileNameurl: Helper.transformImageData(image)}
@@ -67,8 +68,14 @@ function initPage() {
           if (res.key === 'true') {
             api.toast({
               msg: '修改成功'
-            });
+            })
             self.userInfo.pheadimgUrl = image
+            api.sendEvent({
+                name: 'editAvatarSuccess',
+                extra: {
+                  avatar: image, 
+                }
+            });
           } else {
             api.toast({
               msg: res.mage

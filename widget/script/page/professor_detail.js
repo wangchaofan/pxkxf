@@ -9,7 +9,8 @@ function initPage() {
     },
     data: function() {
       return {
-        info: null
+        info: null,
+        focused: false
       }
     },
     methods: {
@@ -18,12 +19,35 @@ function initPage() {
         $.ajax({
           url: BaseService.apiUrl + 'getexpertuserinfo',
           data: {
-            exuserid: api.pageParam.id || '073cb677-da3b-45ad-8536-9030e3ac5375'
+            // exuserid: api.pageParam.id
+            exuserid: '073cb677-da3b-45ad-8536-9030e3ac5375'
           }
         }).then(function(res) {
           if (res.key === 'true') {
             self.info = ParseJson(res.data)[0]
             console.log(ParseJson(res.data)[0])
+          }
+        })
+      },
+      onClickFocus: function() {
+        var self = this
+        if (this.focused) return
+        $.ajax({
+          url: BaseService.apiUrl + 'addFriends',
+          data: {
+            userid: Helper.getUserId(),
+            hyuserid: self.info.userID
+          }
+        }).then(function(res) {
+          if (res.key === 'true') {
+            api.toast({
+                msg: '关注成功'
+            })
+            self.focused = true
+          } else {
+            api.toast({
+                msg: res.mage
+            });
           }
         })
       },

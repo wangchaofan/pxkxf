@@ -18,6 +18,15 @@ function initPage() {
       }
     },
     methods: {
+      goViewMessage: function() {
+        api.openWin({
+            name: 'message',
+            url: 'widget://html/message.html',
+            pageParam: {
+
+            }
+        });
+      },
       onClickType: function(t) {
         this.type = t
         this.getList('supplyList', 'getSkill', true)

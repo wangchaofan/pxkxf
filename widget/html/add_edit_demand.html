@@ -27,12 +27,12 @@
     </div>
     <div class="input-row">
       <label for="demandNum">需求人数</label>
-      <input type="number" v-model.number="demand.rnum" placeholder="请写合适的费用">
+      <input type="number" v-model.number="demand.rnum" placeholder="请填写需求人数">
       <span>人</span>
     </div>
     <div class="input-row">
       <label for="effectiveTime">有效期限</label>
-      <input type="text" v-model="demand.timenum">
+      <input type="date" v-model="demand.timenum">
     </div>
     <div class="input-row supply-detail">
       <label for="ddetails">详情描述</label>
@@ -48,7 +48,9 @@
       <span>元/人</span>
     </div>
   </form>
-  <div class="btn-submit" @click="onSubmit">发布</div>
+  <div class="fixed-bottom">
+    <div class="btn-submit" @click="onSubmit">发布</div>
+  </div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>  
 <script src="../script/lib/lodash.js"></script>

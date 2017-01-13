@@ -166,7 +166,7 @@ apiready = function() {
 			url: 'html/home.html'
 		}, {
 			name: 'order',
-			url: 'html/mydemand.html'
+			url: 'html/order.html'
 		}, {
 			name: 'consult',
 			url: 'html/professor_question.html'

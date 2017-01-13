@@ -73,7 +73,7 @@ function initPage() {
 					data.District = data.City
 					data.City = data.Province
 				}
-				alert(JSON.stringify(data))
+				// alert(JSON.stringify(data))
 				$.ajax({
 					url: BaseService.apiUrl + 'addSkill',
 					data: data
@@ -84,7 +84,7 @@ function initPage() {
 						})
 						setTimeout(function() {
 							api.closeWin()
-						}, 2000)
+						}, 3000)
 					} else {
 						api.toast({
 						    msg: res.mage

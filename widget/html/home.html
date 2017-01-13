@@ -13,6 +13,10 @@
 <div id="mainPage" class="main-wrap">
   <div class="top-banner">
     <div class="logo"></div>
+    <div class="weather">
+      <div><strong>12℃</strong>晴</div>
+      <div class="ar">空气良</div>
+    </div>
     <div class="top-banner-bottom">
       <div class="select-location fs24 white" @click="onSelectCity">
         <span>{{city}}</span>
@@ -25,7 +29,7 @@
         <span>请输入您要查询的内容</span>
       </div>
       <div class="top-banner-bottom__right">
-        <div class="message-tip">
+        <div class="message-tip" @click="goViewMessage">
           <div class="message-tip-number"><i>6</i></div>
         </div>
       </div>
@@ -76,21 +80,9 @@
                   <img class="user-avatar" v-bind:src="item.Usermodel[0].pheadimgUrl" alt="">
                   <div class="p-tag">需求</div>
                 </div>
-                <div class="user-roles display-flex">
-                  <span class="user-roles__type1"></span>
-                  <span class="user-roles__type2"></span>
-                  <span class="user-roles__type3"></span>
-                  <span class="user-roles__type4"></span>
-                </div>
-                <div class="good-like">
-                  好评:
-                  <div class="good-like-pl">
-                    <span class="icon-good"></span>
-                    <span class="icon-good"></span>
-                    <span class="icon-notgood"></span>
-                  </div>
-                </div>
-                <div class="publish-number">发布数量:<span class="text-blue">12</span>条</div>
+                <user-roles :role="item.level"></user-roles>
+                <user-good-level :good-level="item.Usermodel[0].evaluate"></user-good-level>
+                <div class="publish-number">发布数量:<span class="text-blue">{{item.fbnum}}</span>条</div>
               </div>
               <div class="remand-info">
                 <div class="remand-info__title">
@@ -119,21 +111,9 @@
                   <img class="user-avatar" v-bind:src="item.sUsermodel[0].pheadimgUrl" alt="">
                   <div class="p-tag">供应</div>
                 </div>
-                <div class="user-roles display-flex">
-                  <span class="user-roles__type1"></span>
-                  <span class="user-roles__type2"></span>
-                  <span class="user-roles__type3"></span>
-                  <span class="user-roles__type4"></span>
-                </div>
-                <div class="good-like">
-                  好评:
-                  <div class="good-like-pl">
-                    <span class="icon-good"></span>
-                    <span class="icon-good"></span>
-                    <span class="icon-notgood"></span>
-                  </div>
-                </div>
-                <div class="publish-number">发布数量:<span class="text-blue">12</span>条</div>
+                <user-roles :role="item.level"></user-roles>
+                <user-good-level :good-level="item.sUsermodel[0].evaluate"></user-good-level>
+                <div class="publish-number">发布数量:<span class="text-blue">{{item.fbnum}}</span>条</div>
               </div>
               <div class="remand-info">
                 <div class="remand-info__title">
@@ -155,11 +135,11 @@
       </div>
       <div class="remand-list" v-show="currentTab === 'nearby'">
         <ul>
-          <li v-for="item in nearByList">
+          <li v-for="item in nearByList" @click="viewDemandDetail(item)">
             <a class="display-flex">
               <div class="user-info">
                 <div class="user-avatar-wrap">
-                  <img class="user-avatar" src="item.Usermodel[0].pheadimgUrl" alt="">
+                  <img class="user-avatar" :src="item.Usermodel[0].pheadimgUrl" alt="">
                   <div class="p-tag">需求</div>
                 </div>
                 <div class="user-roles display-flex">
@@ -168,15 +148,8 @@
                   <span class="user-roles__type3"></span>
                   <span class="user-roles__type4"></span>
                 </div>
-                <div class="good-like">
-                  好评:
-                  <div class="good-like-pl">
-                    <span class="icon-good"></span>
-                    <span class="icon-good"></span>
-                    <span class="icon-notgood"></span>
-                  </div>
-                </div>
-                <div class="publish-number">发布数量:<span class="text-blue">12</span>条</div>
+                <user-good-level :good-level="item.Usermodel[0].evaluate"></user-good-level>
+                <div class="publish-number">发布数量:<span class="text-blue">{{item.fbnum}}</span>条</div>
               </div>
               <div class="remand-info">
                 <div class="remand-info__title">

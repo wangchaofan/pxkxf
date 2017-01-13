@@ -266,30 +266,44 @@
 .user-roles__type1 {
 	width: 0.475rem;
 	height: 0.475rem;
-	background: url('../image/icon_auth_1.png') no-repeat;
+	background: url('../image/icon_noauth_1.png') no-repeat;
 	background-size: cover;
+}
+.user-roles__type1.done {
+	background-image: url('../image/icon_auth_1.png');
 }
 
 .user-roles__type2 {
 	width: 0.525rem;
 	height: 0.525rem;
-	background: url('../image/icon_auth_3.png') no-repeat;
+	background: url('../image/icon_noauth_3.png') no-repeat;
 	background-size: cover;
+}
+
+.user-roles__type2.done {
+	background-image: url('../image/icon_auth_3.png');
 }
 
 .user-roles__type3 {
 	width: 0.525rem;
 	height: 0.475rem;
-	background: url('../image/icon_auth_2.png') no-repeat;
+	background: url('../image/icon_noauth_2.png') no-repeat;
 	background-size: cover;
+}
+
+.user-roles__type3.done {
+	background-image: url('../image/icon_auth_2.png');
 }
 
 .user-roles__type4 {
 	margin-top: -1px;
 	width: 0.475rem;
 	height: 0.525rem;
-	background: url('../image/icon_auth_4.png') no-repeat;
+	background: url('../image/icon_noauth_4.png') no-repeat;
 	background-size: cover;
+}
+.user-roles__type4.done {
+	background-image: url('../image/icon_auth_4.png');
 }
 
 .icon-good,

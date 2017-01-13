@@ -71,6 +71,9 @@ function initPage() {
       onClickNav: function(page) {
         this.currentPage = page
       },
+      returnBack: function() {
+        api.closeWin()
+      },
       getData: function() {
         var self = this
         if (this.currentPage === 'demand') {

@@ -11,7 +11,7 @@ var ListItem = {
   '      供应名称：<span class="supply-status">{{skill.skillName}}</span>' +
   '    </div>' +
   '    <div class="supply-list-item__param">' +
-  '      付款金额：<strong class="text-warning">{{skill.smoney}}</strong>元' +
+  '      付款金额：<strong class="text-warning">{{myData.mmoney}}</strong>元' +
   '    </div>' +
   '    <div class="supply-list-item__param">' +
   '      邀约时间：{{myData.mtime | date("yyyy-MM-dd")}}' +

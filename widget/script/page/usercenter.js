@@ -60,6 +60,13 @@ function initPage() {
   }, function(ret, err) {
     vm.userid =  Helper.getUserId()
     vm.userInfo.pheadimgUrl = '../image/default_avatar.png'
+  })
+  api.addEventListener({
+      name: 'editAvatarSuccess'
+  }, function(ret, err) {
+      if (ret) {  
+        vm.userInfo.pheadimgUrl = ret.value.avatar
+      }
   });
 }
 

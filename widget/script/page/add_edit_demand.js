@@ -10,8 +10,8 @@ function initPage() {
 					userid: Helper.getUserId(),
 					xqname: '',
 					rnum: '',
-					timenum: Date.now(),
-					xqdetails: Date.now(),
+					timenum: '',
+					xqdetails: '',
 					money: '',
 					perid: '', // 省
 					cid: '', // 市
@@ -36,10 +36,11 @@ function initPage() {
 		methods: {
 			onSubmit: function() {
 				var self = this
-				return
+				var data = _.clone(this.demand)
+				data.timenum = new Date(data.timenum).getTime()
 				$.ajax({
 					url: BaseService.apiUrl + 'getaddDemandOrder',
-					data: self.demand
+					data: data
 				}).then(function(res) {
 					if (res.key === 'true') {
 						api.toast({
@@ -47,7 +48,10 @@ function initPage() {
 						})
 						api.sendEvent({
 					    name: 'refreshMyDemand'
-						});
+						})
+						setTimeout(function() {
+							api.closeWin()
+						}, 3000)
 					} else {
 						api.toast({
 						    msg: res.mage

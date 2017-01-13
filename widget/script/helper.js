@@ -67,6 +67,50 @@ Vue.component('professor-box', {
   props: ['professor']
 })
 
+Vue.component('user-good-level', {
+  template: '<div class="good-like">' +
+            '  好评:' +
+            ' <div class="good-like-pl">' +
+            '   <span v-for="i in 3" :class="getClass(i)"></span>' +
+            ' </div>' +
+            '</div>',
+  props: ['goodLevel'],
+  data: function() {
+    return {
+      level: parseInt(this.goodLevel) > 3 ? 3 : parseInt(this.goodLevel)
+    }
+  },
+  methods: {
+    getClass: function(n) {
+      return n <= this.level ? 'icon-good' : 'icon-notgood'
+    }
+  }
+})
+
+Vue.component('user-roles', {
+  template: '<div class="user-roles display-flex">' +
+            '  <span class="user-roles__type1" :class="{done: roleIndex >= 1}"></span>' +
+            '  <span class="user-roles__type2" :class="{done: roleIndex >= 2}"></span>' +
+            '  <span class="user-roles__type3" :class="{done: roleIndex >= 3}"></span>' +
+            '  <span class="user-roles__type4" :class="{done: roleIndex >= 4}"></span>' +
+            '</div>',
+  props: ['role'],
+  computed: {
+    roleIndex: function() {
+      if (this.role === '实名用户') {
+        return 2
+      } else if (this.role === '普通用户') {
+        return 1
+      } else if (this.role === '专业用户') {
+        return 3
+      } else if (this.role === '专家用户') {
+        return 4
+      }
+      return 0
+    }
+  }
+})
+
 Vue.filter('date', function(val, fmt) {
   return dateFormat(val, fmt)
 })

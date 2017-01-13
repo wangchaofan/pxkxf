@@ -7,7 +7,7 @@ function initPage() {
     data: function() {
       return {
         question: {
-          twuserid: Helper.getUserId,
+          twuserid: Helper.getUserId(),
           title: '',
           content: '',
           imgarr: []
@@ -37,6 +37,9 @@ function initPage() {
             api.toast({
                 msg: '添加成功'
             })
+            setTimeout(function() {
+              api.closeWin()
+            }, 3000)
           } else {
             api.toast({
                 msg: res.mage

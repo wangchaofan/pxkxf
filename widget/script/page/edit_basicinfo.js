@@ -59,7 +59,7 @@ function initPage() {
 						} else {
 							api.toast({
 							    msg: res.mage
-							});
+							})
 						}
 					})
 					.fail(function(err) {
