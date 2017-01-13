@@ -1,6 +1,9 @@
 body {
     background: #f0f1f5;
 }
+.bordered {
+    border-bottom: 1px solid #ddd;
+}
 .input-recharge-num {
     display: flex;
     height: 2.2rem;
@@ -9,7 +12,16 @@ body {
     padding: 0 0.75rem;
     background: #fff;
 }
+.input-recharge-num .input-text {
+    width: 3.5rem;
+}
 .input-recharge-num > input {
+    margin-left: 0.8rem;
+    flex: 1;
+    outline: none;
+    border: none;
+}
+.input-recharge-num select {
     margin-left: 0.8rem;
     flex: 1;
     outline: none;

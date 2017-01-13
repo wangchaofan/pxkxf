@@ -11,20 +11,36 @@
 <body>
 <div class="wrapper">
   <my-header title="提现"></my-header>
-  <div class="input-recharge-num text-black">
-    <span style="width: 140px;">到帐银行卡</span>
-    <input type="text" placeholder="输入您想充入的金额">
+  <div class="input-recharge-num text-black bordered">
+    <span class="input-text">提现方式</span>
+    <select id="" v-model="type">
+      <option value="银行卡号">银行卡</option>
+      <option value="支付宝">支付宝</option>
+      <option value="微信">微信</option>
+    </select>
+  </div>
+  <div class="input-recharge-num text-black bordered">
+    <span class="input-text">账户名称</span>
+    <input type="text" v-model="accountName" placeholder="请输入账户名称">
+  </div>
+  <div class="input-recharge-num text-black"  v-cloak>
+    <span class="input-text">{{wlabel}}</span>
+    <input type="text" v-model="waccount" v-bind:placeholder="wplaceholder">
+  </div>
+  <div class="input-recharge-num text-black" style="border-top: 1px solid #ddd;" v-show="type === '银行卡号'">
+    <span class="input-text">开户行</span>
+    <input type="text" v-model="bankcardKHH" placeholder="请输入银行卡开户行">
   </div>
   <div class="recharge-remind">
     <div class="recharge-remind-ts">提示</div>
     <p>提示提示提示提示提示提示提示提示提示提示提示提示提示提示提示</p>
   </div>
   <div class="input-recharge-num text-black">
-    <span style="width: 140px;">提现金额</span>
-    <input type="text" placeholder="输入您想充入的金额">
+    <span class="input-text">提现金额</span>
+    <input type="number" v-model.number="money" placeholder="输入您想充入的金额">
     <span class="unit">元</span>
   </div>
-  <div class="btn-submit" disabled>提现</div>
+  <div class="btn-submit" :disabled="!canSubmit" v-cloak @click="onSubmit">{{submiting ? '正在提交...' : '提现'}}</div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>
 <script src="../script/lib/lodash.js"></script>

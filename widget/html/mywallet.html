@@ -28,7 +28,7 @@
       <div class="recharge-withdraw-title fs28">累计提现（元）</div>
       <div class="recharge-withdraw-value">
         <span>{{walletInfo.Cumulativetx | currency}}</span>
-        <span class="btn-view-record">提现记录</span>
+        <span class="btn-view-record" @click="goPage('withdraw_record')">提现记录</span>
       </div>
     </div>
   </section>
