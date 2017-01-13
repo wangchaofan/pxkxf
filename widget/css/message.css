@@ -1,0 +1,42 @@
+body {
+    background: #f0f1f5;
+}
+.message-date {
+    margin: 0.75rem 0;
+    font-size: 0;
+    text-align: center;
+}
+.message-date span {
+    display: inline-block;
+    padding: 0.25rem;
+    font-size: 0.5rem;
+    line-height: 0.5rem;
+    color: #999;
+    border-radius: 6px;
+    background: #ddd;
+}
+.message-box {
+    margin: 0 auto 0.65rem;
+    padding: 0 0.45rem;
+    width: 15.85rem;
+    background: #fff;
+}
+.message-title {
+    font-size:0.75rem;
+    height: 1.75rem;
+    line-height: 1.75rem;
+}
+.message-content {
+    color: #666;
+    font-size: 0.6rem;
+    line-height: 1.5;
+    padding: 0.25rem 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.message-button {
+    height: 1.6rem;
+    line-height: 1.6rem;
+    font-size: 0.6rem;
+    text-align: center;
+}

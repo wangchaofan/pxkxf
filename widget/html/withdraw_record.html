@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>提现记录</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/recharge_withdraw.css">
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <my-header title="提现记录"></my-header>
+  <div class="withdraw-record-list">
+    <div class="withdraw-record-list__content" v-cloak>
+      <div class="withdraw-record-list__item display-flex" v-for="item in list">
+        <div class="withdraw-record-info flex-1">
+          <div class="withdraw-record__account">
+            <span class="withdraw-record__account-name">{{item.accountName}} | {{item.waccount}}</span>
+            <span class="withdraw-record__status" :class="{complete: item.wState === 2}">{{item.wState === 1 ? '处理中' : '已处理'}}</span>
+          </div>
+          <div class="withdraw-record__time text-999 fs24">{{item.wtime | date('yyyy-MM-dd')}}</div>
+          <div class="display-flex withdraw-record__money-wrap">
+            <span class="withdraw-record__money fs24">¥{{item.wmoney | currency}}</span>
+            <span class="withdraw-record__bank">{{item.bankcardKHH}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="no-more" v-cloak>{{ list.length === 0 ? '暂时没有充值记录' : '没有更多内容了'}}</div>
+  </div>
+</div>
+<script src="../script/api.js"></script>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/page/withdraw_record.js"></script>
+</body>
+</html>

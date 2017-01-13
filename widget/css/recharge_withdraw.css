@@ -106,5 +106,46 @@ h3 {
     background-color: #eee;
     font-size: 0.6rem;
     line-height: 1.75rem;
-    text-align: center; 
+    text-align: center;
+}
+.withdraw-record-list__content {
+    background: #fff;
+    padding: 0 0.75rem;
+}
+.withdraw-record-list__item {
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 0;
+}
+.withdraw-record-list__item:last-child {
+    border-bottom: none;
+}
+.withdraw-record__account-name {
+    color: #333;
+}
+.withdraw-record-info {
+    height: 100%;
+}
+.withdraw-record__money {
+    font-size: 0.8rem;
+}
+.withdraw-record__account {
+    justify-content: space-between;
+    display: flex;
+    font-size: 0.8rem;
+}
+.withdraw-record__status {
+    font-size: 0.6rem;
+    color: #999;
+}
+.withdraw-record__status.complete {
+    color: green;
+}
+.withdraw-record__bank {
+    font-size: 0.7rem;
+    color: #666;
+}
+.withdraw-record__time {
+    font-size: 0.65rem;
+    margin-top: 0.1rem;
+    margin-bottom: 0.3rem;
 }

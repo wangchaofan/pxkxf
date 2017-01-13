@@ -91,3 +91,77 @@
     background: url('../image/icon_invite2.png') center 0.5rem no-repeat;
     background-size: 0.8rem 0.8rem;
 }
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.4);
+}
+.yy-dialog {
+    position: absolute;
+    left: 50%;
+    top: 3.5rem;
+    transform: translateX(-50%);
+    width: 16.5rem;
+    height: 20.65rem;
+    background: #fff;
+}
+.dialog-head {
+    height: 2rem;
+    background: #eee;
+    font-size: 0.65rem;
+    line-height: 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #666;
+    padding: 0 0.65rem;
+}
+.dialog-content {
+    padding: 0 0.65rem;
+}
+.dialog-content .user-center-top {
+    padding: 0.75rem 0;
+}
+.dialog-demand-content .row {
+    height: 1.75rem;
+    line-height: 1.75rem;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.6rem;
+}
+.dialog-demand-content .row > span:first-child {
+    width: 3.9rem;
+}
+.dialog-demand-content .row > span:last-child {
+    color: #666;
+}
+#describe {
+    width: 100%;
+    height: 5.4rem;
+    padding: 10px;
+    font-size:0.6rem;
+    border: 1px solid #ddd;
+}
+.dialog-buttons {
+    margin-top: 0.3rem;
+}
+.dialog-buttons .btn-cancel,
+.dialog-buttons .btn-ok {
+    width: 7.5rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    text-align: center;
+    font-size: 0.7rem;
+    border-radius: 4px;
+}
+.dialog-buttons .btn-cancel {
+    background: #fff;
+    border: 1px solid #ddd;
+}
+.dialog-buttons .btn-ok {
+    background: #e4353a;
+    color: #fff;
+}

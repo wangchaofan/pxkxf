@@ -1,7 +1,6 @@
 /**
  * Created by chaofanw on 2017/1/9.
  */
-console.log(111)
 function initPage() {
   var vm = new Vue({
     el: '.wrapper',

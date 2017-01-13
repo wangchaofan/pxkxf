@@ -75,7 +75,51 @@
 		<div class="fixed-bottom deman-detail-bottom display-flex">
 			<div class="button-chat" @click="goChat">聊一聊</div>
 			<div class="button-invite" @click="goInvite">应邀</div>
-			<div class="button-invite-noname" @click="goInviteNoname">匿名应邀</div>
+			<!--<div class="button-invite-noname" @click="goInviteNoname">匿名应邀</div>-->
+		</div>
+		<div class="mask" v-show="showDialog" v-if="demandInfo" v-cloak>
+			<div class="yy-dialog">
+				<div class="dialog-head">
+					<div>
+						<span class="text-black">{{userModel.pnickname}}</span>
+						需求拥有<span class="text-warning">{{demandInfo.demandTitle}}</span>技能的人
+					</div>
+				</div>
+				<div class="dialog-content">
+					<div class="user-center-top display-flex" v-cloak>
+						<div class="user-info" v-if="userModel && demandInfo">
+							<div class="user-avatar" :style="userModel.avatarStyle"></div>
+							<div class="user-info-tj">
+								<div class="user-name"><span class="vam">{{userModel.pnickname}}</span><span class="user-sex user-sex-man vam"></span></div>
+								<div class="online-status">在线</div>
+								<div class="demand-price fs24">愿付酬金：<span class="text-warning">{{demandInfo.dmoney}}</span>元/人 <span class="warrant">(酬金已担保)</span></div>
+							</div>
+						</div>
+						<div class="user-info-rt">
+							<a class="location-byme fs24 text-999" href="javascript:">5km</a>
+						</div>
+					</div>
+					<div class="dialog-demand-content">
+						<div class="row">
+							<span class="row-label">有效期限</span>
+							<span class="content">{{demandInfo.effectiveTime}}</span>
+						</div>
+						<div class="row">
+							<span class="row-label">截止日期</span>
+							<span class="content">{{demandInfo.dtime | date('yyyy-MM-dd')}}</span>
+						</div>
+						<div class="row" style="border-bottom: none;">
+							<span class="row-label">邀约地点</span>
+							<span class="content">{{demandInfo.addressprovince}}{{demandInfo.addressCity}} {{demandInfo.addressdistrct}}</span>
+						</div>
+						<textarea id="describe" v-model="describe" placeholder="相信填写您的技能优势，增加您的应邀成功率"></textarea>
+					</div>
+					<div class="dialog-buttons display-flex">
+						<div class="btn-cancel" @click="onClickCancel">取消</div>
+						<div class="btn-ok" @click="onClickSubmit">确定</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script src="../script/lib/jquery-3.1.1.min.js"></script>
