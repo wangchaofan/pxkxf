@@ -165,3 +165,20 @@
     width: 3rem;
     height: 3rem;
 }
+.type-select {
+    display: flex;
+    padding: 0 1.5rem;
+    height: 2.2rem;
+    line-height: 2.25rem;
+    font-size: 0.7rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.type-select > span {
+    height: 100%;
+    box-sizing: content-box;
+}
+.type-select > span.current {
+    border-bottom: 1px solid #e4353a;
+    color: #e4353a;
+}
