@@ -31,7 +31,7 @@
     <div class="supply-list" v-show="state === 3">
         <div class="none-text" v-if="cancelList.length === 0" v-cloak>暂时没有订单~</div>
         <ul v-else>
-            <list-item v-for="cancelList in list" :my-data="item"></list-item>
+            <list-item v-for="item in cancelList" :my-data="item"></list-item>
         </ul>
     </div>
 </div>

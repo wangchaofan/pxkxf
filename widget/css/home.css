@@ -205,6 +205,7 @@
 
 .user-info {
 	position: relative;
+	display: block;
 	width: 3.5rem;
 	margin-right: 0.5rem;
 	text-align: left;
@@ -237,6 +238,7 @@
 
 .user-info .good-like,
 .user-info .publish-number {
+	position: relative;
 	font-size: 0.5rem;
 	color: #999;
 }
@@ -254,56 +256,28 @@
 	margin-top: 0.25rem;
 	margin-bottom: 0.25rem;
 	width: 3.2rem;
-	padding-left: 0.1rem;
+	padding-left: 0;
 	justify-content: space-between;
 	align-items: flex-start;
 }
 
 .user-roles > span {
-	transform: scale(1.2);
+	width: 0.5rem;
+	height: 0.5rem;
 }
 
-.user-roles__type1 {
-	width: 0.475rem;
-	height: 0.475rem;
-	background: url('../image/icon_noauth_1.png') no-repeat;
-	background-size: cover;
-}
-.user-roles__type1.done {
-	background-image: url('../image/icon_auth_1.png');
+.user-roles .user-roles-title {
+	display: none;
 }
 
-.user-roles__type2 {
-	width: 0.525rem;
-	height: 0.525rem;
-	background: url('../image/icon_noauth_3.png') no-repeat;
-	background-size: cover;
+.user-roles .user-roles__type2 {
+	width: 0.55rem;
+	height: 0.55rem;
+	background-position: center 0;
 }
 
-.user-roles__type2.done {
-	background-image: url('../image/icon_auth_3.png');
-}
-
-.user-roles__type3 {
-	width: 0.525rem;
-	height: 0.475rem;
-	background: url('../image/icon_noauth_2.png') no-repeat;
-	background-size: cover;
-}
-
-.user-roles__type3.done {
-	background-image: url('../image/icon_auth_2.png');
-}
-
-.user-roles__type4 {
-	margin-top: -1px;
-	width: 0.475rem;
-	height: 0.525rem;
-	background: url('../image/icon_noauth_4.png') no-repeat;
-	background-size: cover;
-}
-.user-roles__type4.done {
-	background-image: url('../image/icon_auth_4.png');
+.user-roles .user-roles__type3 {
+	background-position: center 0;
 }
 
 .icon-good,

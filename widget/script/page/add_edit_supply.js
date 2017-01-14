@@ -3,7 +3,7 @@ function initPage() {
 		el: '.wrapper',
 		created: function() {
 			// this.skill = {
-			// 	userid: MockData.userid,
+			// 	userid: Helper.getUserId(),
 			// 	skillname: '测试',
 			// 	skilldetails: '测试详情',
 			// 	skilltype: '',
@@ -68,12 +68,11 @@ function initPage() {
 				var self = this
 				this.skill.imgarr = _.map(this.images, Helper.transformImageData).join(',')
 				var data = _.clone(this.skill)
-				data.servertime = new Date(data.servertime).getTime()
+				data.servertime = data.servertime ? new Date(data.servertime).getTime() : ''
 				if (!data.District) {
 					data.District = data.City
 					data.City = data.Province
 				}
-				// alert(JSON.stringify(data))
 				$.ajax({
 					url: BaseService.apiUrl + 'addSkill',
 					data: data
@@ -83,7 +82,17 @@ function initPage() {
 						    msg: '发布成功'
 						})
 						setTimeout(function() {
-							api.closeWin()
+							api.openWin({
+						    name: 'pay',
+						    url: 'widget://html/pay.html',
+						    pageParam: {
+					        mmoney: self.skill.money,
+					        orderId: res.data
+						    }
+							})
+							setTimeout(function() {
+								api.closeWin()
+							}, 2000)
 						}, 3000)
 					} else {
 						api.toast({

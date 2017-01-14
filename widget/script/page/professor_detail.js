@@ -19,8 +19,8 @@ function initPage() {
         $.ajax({
           url: BaseService.apiUrl + 'getexpertuserinfo',
           data: {
-            // exuserid: api.pageParam.id
-            exuserid: '073cb677-da3b-45ad-8536-9030e3ac5375'
+            exuserid: api.pageParam.id
+            // exuserid: '073cb677-da3b-45ad-8536-9030e3ac5375'
           }
         }).then(function(res) {
           if (res.key === 'true') {
@@ -53,13 +53,17 @@ function initPage() {
       },
       goPage: function(pageName) {
         if (!this.info) return
+        var pageParam = {
+          id: this.info.expertId
+        }
+        if (pageName === 'professor_intro') {
+          pageParam.intro = this.info.eintroduce
+        }
         api.openWin({
-            name: pageName,
-            url: 'widget://html/' + pageName + '.html'  ,
-            pageParam: {
-                id: this.info.expertId
-            }
-        });
+          name: pageName,
+          url: 'widget://html/' + pageName + '.html'  ,
+          pageParam: pageParam
+        })
       }
     }
   })

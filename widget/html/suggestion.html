@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>意见反馈</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <style type="text/css">
+        textarea {
+            width: 100%;
+            height: 10rem;
+            font-size: 0.7rem;
+            border-bottom: 1px solid #ddd;
+            padding: 0.5rem 0.75rem;
+        }
+    </style>
+    <script src="../script/adapter.js"></script>
+</head>
+<body>
+<div class="wrapper" v-cloak>
+    <my-header title="意见反馈"></my-header>
+    <div class="">
+        <textarea v-model="content" placeholder="请输入您的意见"></textarea>
+    </div>
+    <div class="btn-submit" @click="onSubmit">提交</div>
+</div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/page/suggestion.js">
+</script>
+</body>
+</html>

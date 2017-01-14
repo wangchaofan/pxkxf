@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>订单详情</title>
+  <title>发起订单</title>
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/user_avatar.css">
   <link rel="stylesheet" href="../css/order_detail.css">
@@ -11,37 +11,35 @@
 </head>
 <body>
 <div class="wrapper">
-  <my-header title="订单详情"></my-header>
+  <my-header title="发起订单"></my-header>
   <user-box :user="userModel"></user-box>
-  <div class="order-info bg-white">
+  <div class="order-info bg-white" v-cloak>
     <div class="input-row">
       <span>邀约技能</span>
-      <span>{{order.Skillmodel[0].skillName}}</span>
+      <span>{{order.skillName}}</span>
     </div>
     <div class="input-row">
       <span>邀约时间</span>
-      <span>{{order.yytime}}</span>
+      <input type="date" v-model="formData.yydate" placeholder="请选择邀约时间">
     </div>
     <div class="input-row">
       <span>邀约地点</span>
-      <span>{{order.yyaddress}}</span>
+      <input type="text" v-model="formData.yyaddress" placeholder="请填写邀约地点"/>
     </div>
     <div class="input-row">
       <span>邀约价格</span>
-      <span class="flex-1">{{order.Skillmodel[0].smoney}}</span>
+      <span class="flex-1 ar">{{order.smoney}}</span>
       <span>元</span>
     </div>
   </div>
   <div class="fixed-bottom display-flex">
-    <div class="button-chat" @click="onClickChat"></div>
-    <div class="button-book btn-submit" @click="toPay">去付款</div>
-    <div class="button-cancel btn-submit" @click="onCancel">取消邀约</div>
+    <div class="btn-submit" @click="onSubmit">发起订单</div>
   </div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>
 <script src="../script/lib/lodash.js"></script>
 <script src="../script/lib/vue.min.js"></script>
 <script src="../script/helper.js"></script>
-<script src="../script/page/order_detail.js"></script>
+<script src="../script/page/add_order.js"></script>
 </body>
 </html>

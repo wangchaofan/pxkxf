@@ -2,66 +2,53 @@ function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     created: function() {
-      this.getData()
+      this.getUserData()
     },
     data: function() {
       return {
-        order: {
-          Skillmodel: [{}]
-        },
-        userModel: {
-        },
-        reason: ''
+        accountBalance: 0,
+        // mmoney: 100,
+        submiting: false
+        mmoney: api.pageParam.mmoney
       }
     },
     methods: {
-      onClickChat: function() {
-
-      },
-      toPay: function () {
-
-      },
-      onCancel: function () {
-        api.prompt({
-          buttons: ['确定', '取消']
-        }, function(ret, err) {
-          var index = ret.buttonIndex;
-          var text = ret.text;
-          alert(ret.text)
-        })
-        return
+      getUserData: function() {
         var self = this
         $.ajax({
-          url: BaseService.apiUrl + 'qxyydd',
+          url: BaseService.apiUrl + 'getuserinfo',
+          data: {
+            uid: Helper.getUserId()
+          }
+        }).then(function(res) {
+          self.accountBalance = ParseJson(res.data)[0].accountBalance
+        })
+      },
+      onSubmit: function() {
+        if (this.submiting) return
+        var self = this
+        this.submiting = true
+        $.ajax({
+          url: BaseService.apiUrl + 'gyddcz',
           data: {
             userid: Helper.getUserId(),
-            ddid: 'a17db629-52b6-4b6a-a904-e6c1721e3a02',
-            reason: ''
+            ddid: api.pageParam.orderId
           }
-        }).then(function(res) {
+        }).done(function(res) {
           if (res.key === 'true') {
-            var data = ParseJson(res.data)
-            self.order = data[0]
-            self.userModel = data[0].usermodel[0]
-            console.log(ParseJson(res.data))
+            api.toast({
+                msg: '支付成功'
+            })
+            setTimeout(function() {
+              api.closeWin()
+            }, 4000)
+          } else {
+            api.toast({
+                msg: res.mage 
+            });
           }
-        })
-      },
-      getData: function () {
-        var self = this
-        $.ajax({
-          url: BaseService.apiUrl + 'yyskillddinfo',
-          data: {
-            // skillddid: 'a17db629-52b6-4b6a-a904-e6c1721e3a02'
-            skillddid: api.pageParam.id
-          }
-        }).then(function(res) {
-          if (res.key === 'true') {
-            var data = ParseJson(res.data)
-            self.order = data[0]
-            self.userModel = data[0].usermodel[0]
-            console.log(ParseJson(res.data))
-          }
+        }).always(function() {
+          self.submiting = false
         })
       }
     }

@@ -30,7 +30,7 @@ function initPage() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getwallet',
-          data: { userid: MockData.userid }
+          data: { userid: Helper.getUserId() }
         }).then(function(res) {
           if (res.key === 'true') {
             self.walletInfo = ParseJson(res.data)[0]

@@ -86,6 +86,12 @@ function initPage() {
       }
     }
   })
+
+  api.addEventListener({
+    name: 'refreshOrder'
+  }, function(ret, err) {
+    vm.getData()
+  })
 }
 /* === 测试使用 === */
 setTimeout(function() {

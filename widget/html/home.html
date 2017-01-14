@@ -6,6 +6,7 @@
   <title>首页</title>
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/swiper-3.4.1.min.css">
+  <link rel="stylesheet" href="../css/user_avatar.css">
   <link rel="stylesheet" href="../css/home.css">
   <script src="../script/adapter.js"></script>
 </head>
@@ -30,7 +31,7 @@
       </div>
       <div class="top-banner-bottom__right">
         <div class="message-tip" @click="goViewMessage">
-          <div class="message-tip-number"><i>6</i></div>
+          <div class="message-tip-number"><i v-cloak>{{messageCount}}</i></div>
         </div>
       </div>
     </div>

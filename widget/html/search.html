@@ -25,7 +25,7 @@
     </header>
     <div class="search-history" v-cloak>
       <ul>
-        <li v-for="item in filterSearchHistory" @click="onSearch(item)">
+        <li v-for="item in filterSearchHistory" @click="onSearch($event, item)">
           <span class="icon-search"></span>
           <span class="search-history-content">{{item}}</span>
         </li>

@@ -12,20 +12,20 @@
 <body>
 <div class="wrapper">
   <my-header title="订单支付"></my-header>
-  <div class="order-info bg-white">
+  <div class="order-info bg-white" v-cloak>
     <div class="input-row">
       <span>账户余额</span>
-      <span class="ar text-warning flex-1">100元</span>
+      <span class="ar text-warning flex-1">{{accountBalance}}元</span>
     </div>
     <div class="input-row">
       <span>邀约费用</span>
-      <span class="ar text-warning flex-1">200元</span>
+      <span class="ar text-warning flex-1">{{mmoney}}元</span>
     </div>
   </div>
   <div class="remind fs24 container" style="margin-top: 0.5rem">
     <span class="text-warning">提示：</span>您支付的提示，的发挥发挥
   </div>
-  <div class="btn-submit" @click="onClickChat">确定</div>
+  <div class="btn-submit" @click="onSubmit">{{ submiting ? '正在支付' : '确认支付'}}</div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>
 <script src="../script/lib/lodash.js"></script>

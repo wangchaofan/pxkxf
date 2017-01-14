@@ -40,3 +40,36 @@ body {
     font-size: 0.6rem;
     text-align: center;
 }
+.message-list-item {
+    display: flex;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #ddd;
+}
+.message-list-item__avatar {
+    width: 2.875rem;
+    height: 2.875rem;
+    border-radius: 0.15rem;
+    flex-shrink: 0;
+}
+.message-list-item__avatar > img {
+    width: 100%;
+    height: 100%;
+}
+.message-list-item__info {
+    flex: 1;
+    overflow: hidden;
+    padding-left: 0.5rem;
+}
+.message-list-item__title {
+    font-size: 0.7rem;
+}
+.message-list-item__date {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.55rem;
+    color: #999;
+}
+.message-list-item__content {
+    color: #666;
+    font-size: 0.6rem;
+}

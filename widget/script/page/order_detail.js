@@ -19,31 +19,95 @@ function initPage() {
 
       },
       toPay: function () {
-
+        api.openWin({
+          name: 'pay',
+          url: 'widget://html/pay.html',
+          pageParam: {
+            accountBalance: this.userModel.accountBalance,
+            mmoney: this.order.mmoney,
+            orderId: this.order.SillYYDDId
+          }
+        })
       },
       onCancel: function () {
-        api.prompt({
-          buttons: ['确定', '取消']
-        }, function(ret, err) {
-          var index = ret.buttonIndex;
-          var text = ret.text;
-          alert(ret.text)
+        var self = this
+        var dialogBox = api.require('dialogBox');
+        dialogBox.input({
+          keyboardType: 'default',
+          texts: {
+            placeholder: '请输入取消原因',
+            leftBtnTitle: '取消',
+            rightBtnTitle: '确定'
+          },
+          styles: {
+            bg: '#fff',
+            corner: 4,
+            w: 300,
+            h: 160,
+            input: {
+              h: 40,
+              textSize: 14,
+              textColor: '#000'
+            },
+            title: {
+              h: 0
+            },
+            dividingLine: {
+              width: 0.5,
+              color: '#696969'
+            },
+            left: {
+              bg: 'rgba(0,0,0,0)',
+              color: '#007FFF',
+              size: 14
+            },
+            right: {
+              bg: 'rgba(0,0,0,0)',
+              color: '#007FFF',
+              size: 14
+            }
+          }
+        }, function(ret) {
+          if (ret.eventType === 'right') {
+            if (ret.text === '') {
+              api.toast({
+                  msg: '请输入原因'
+              })
+              return
+            } else {
+              self.reason = ret.text
+              self.toCancel()
+            }
+          }
+          dialogBox.close({
+            dialogName: 'input'
+          })
         })
-        return
+      },
+      toCancel: function() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'qxyydd',
           data: {
             userid: Helper.getUserId(),
-            ddid: 'a17db629-52b6-4b6a-a904-e6c1721e3a02',
-            reason: ''
+            ddid: api.pageParam.id,
+            reason: self.reason
           }
         }).then(function(res) {
           if (res.key === 'true') {
-            var data = ParseJson(res.data)
-            self.order = data[0]
-            self.userModel = data[0].usermodel[0]
-            console.log(ParseJson(res.data))
+            api.toast({
+              msg: '取消成功'
+            })
+            api.sendEvent({
+              name: 'refreshOrder'
+            })
+            setTimeout(function() {
+              api.closeWin()
+            }, 3000)
+          } else {
+            api.toast({
+              msg: res.mage
+            });
           }
         })
       },

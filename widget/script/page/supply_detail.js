@@ -29,8 +29,8 @@ function initPage() {
     		$.ajax({
     			url: BaseService.apiUrl + 'getskillinfo',
     			data: {
-						// skillid: api.pageParam.id
-						skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+						skillid: api.pageParam.id
+						// skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
     			}
     		}).done(function(res) {
     			self.supplyInfo = ParseJson(res.data)[0]
@@ -44,7 +44,8 @@ function initPage() {
 					url: BaseService.apiUrl + 'addCollection',
 					data: {
 						userid: Helper.getUserId(),
-						skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+            skillid: api.pageParam.id
+						// skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
 					}
 				}).then(function(res) {
 					if (res.key === 'true') {
@@ -57,35 +58,93 @@ function initPage() {
 				})
 			},
 			onClickAdvise: function() {
-				var self = this
-				$.ajax({
-					url: BaseService.apiUrl + 'addCollection',
-					data: {
-						userid: Helper.getUserId(),
-						skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03',
-            content: '1231'
-					}
-				}).then(function(res) {
-					if (res.key === 'true') {
+        var self = this
+        var dialogBox = api.require('dialogBox');
+        dialogBox.input({
+          keyboardType: 'default',
+          texts: {
+            placeholder: '请输入建议内容',
+            leftBtnTitle: '取消',
+            rightBtnTitle: '确定'
+          },
+          styles: {
+            bg: '#fff',
+            corner: 4,
+            w: 300,
+            h: 160,
+            input: {
+              h: 40,
+              textSize: 14,
+              textColor: '#000'
+            },
+            title: {
+              h: 0
+            },
+            dividingLine: {
+              width: 0.5,
+              color: '#696969'
+            },
+            left: {
+              bg: 'rgba(0,0,0,0)',
+              color: '#007FFF',
+              size: 14
+            },
+            right: {
+              bg: 'rgba(0,0,0,0)',
+              color: '#007FFF',
+              size: 14
+            }
+          }
+        }, function(ret) {
+          if (ret.eventType === 'right') {
+            if (ret.text === '') {
+              api.toast({
+                  msg: '请输入建议内容'
+              })
+              return
+            } else {
+              self.putAdvise(ret.text)
+            }
+          }
+          dialogBox.close({
+            dialogName: 'input'
+          })
+        })
+			},
+      putAdvise: function(content) {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'addskilljy',
+          data: {
+            userid: Helper.getUserId(),
+            skillid: api.pageParam.id,
+            // skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03',
+            content: content
+          }
+        }).then(function(res) {
+          if (res.key === 'true') {
             api.toast({
                 msg: '建议已提交'
             })
-					} else {
-						api.toast({
-							msg: res.mage
-						})
-					}
-				})
-			},
+          } else {
+            api.toast({
+              msg: res.mage
+            })
+          }
+        })
+      },
     	goChat: function() {
 
     	},
-    	goInvite: function() {
-
-    	},
-    	goInviteNoname: function() {
-
-    	}
+      onSubmit: function() {
+        api.openWin({
+          name: 'add_order',
+          url: 'widget://html/add_order.html',
+          pageParam: {
+            id: api.pageParam.id
+          }
+        })
+      }
     }
   })
 }

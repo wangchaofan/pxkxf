@@ -6,6 +6,7 @@ function initPage() {
     el: '#mainPage',
     created: function() {
       this.getList('demandList', 'getdemaorder')
+      this.getMessageCount()
     },
     data: function() {
       return {
@@ -14,7 +15,8 @@ function initPage() {
         nearByList: [],
         currentTab: 'demand',
         city: '成都',
-        type: ''
+        type: '',
+        messageCount: ''
       }
     },
     methods: {
@@ -26,6 +28,15 @@ function initPage() {
 
             }
         });
+      },
+      getMessageCount: function() {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'getXSchat',
+          data: {userid: Helper.getUserId()}
+        }).then(function(res) {
+          self.messageCount = ParseJson(res.data).length
+        })
       },
       onClickType: function(t) {
         this.type = t

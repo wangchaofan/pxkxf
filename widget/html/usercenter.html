@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>个人中心</title>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/usercenter.css">
-  <script src="../script/adapter.js"></script>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  	<title>个人中心</title>
+  	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/mysupply.css">
+	<link rel="stylesheet" href="../css/usercenter.css">
+  	<script src="../script/adapter.js"></script>
 </head>
 <body>
 	<div class="main wrapper">
@@ -36,6 +37,20 @@
 				<div class="icon-angle-right"></div>
 			</div>
 		</section>
+		<div class="newest-dynamic bg-white" v-if="dynamic" @click="viewDynamic" v-cloak>
+			<div class="newest-dynamic-title">最新动态</div>
+			<div class="dynamic-content">
+				<div class="dynamic-content-text">
+					{{dynamic.dynamicContent}}
+				</div>
+				<div class="dynamic-content-images">
+					<img src="" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="newest-supply bg-white" v-if="skill" v-cloak>
+			<supply-box :my-data="skill"></supply-box>
+		</div>
 		<div class="user-center-features">
 			<table cellpadding="0" cellspacing="0">
 				<tr>

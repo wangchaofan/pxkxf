@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>通知</title>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/message.css">
-  <script src="../script/adapter.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>我的消息</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/message.css">
+    <script src="../script/adapter.js"></script>
 </head>
 <body>
-  <div class="wrapper" v-cloak>
-    <my-header title="通知"></my-header>
-    <div class="message-day">
-      <div class="message-date">
-        <span>1月20日 12:00</span>
-      </div>
-      <div class="message-box">
-        <div class="message-title">需求通知</div>
-        <div class="message-content">详情</div>
-        <div class="message-button">详情</div>
-      </div>
+<div class="wrapper" v-cloak>
+    <my-header title="我的消息"></my-header>
+    <div class="message-list container bg-white" v-cloak>
+        <ul>
+            <li v-for="item in list" @click="onClickMessage(item)">
+                <div class="message-list-item">
+                    <div class="message-list-item__avatar">
+                        <img :src="item.fsusermodel[0].pheadimgUrl" alt="">
+                    </div>
+                    <div class="message-list-item__info">
+                        <div class="message-list-item__title">
+                            {{item.fsusermodel[0].pnickname}}
+                        </div>
+                        <div class="message-list-item__date">
+                            {{item.ctime | date('yyyy-MM-dd hh:mm:ss')}}
+                        </div>
+                        <div class="message-list-item__content text-overflow-es">{{item.fscontent}}</div>
+                    </div>
+                </div>
+            </li>
+            <li @click="goNotice">
+                <div class="message-list-item">
+                    <div class="message-list-item__avatar">
+                        <img src="" alt="">
+                    </div>
+                    <div class="message-list-item__info">
+                        <div class="message-list-item__title">
+                            系统通知
+                        </div>
+                        <div class="message-list-item__date">
+                        </div>
+                        <div class="message-list-item__content text-overflow-es"></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
-  </div>
-  <script src="../script/lib/jquery-3.1.1.min.js"></script>
-  <script src="../script/lib/lodash.js"></script>
-  <script src="../script/lib/vue.min.js"></script>
-  <script src="../script/helper.js"></script>
-  <script src="../script/page/message.js"></script>
+</div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/page/message.js"></script>
 </body>
 </html>

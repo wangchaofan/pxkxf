@@ -10,13 +10,34 @@ function initPage() {
       }
     },
     methods: {
+      onClickMessage: function(mes) {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'xxupdatestate',
+          data: { xxid: mes.chatId }
+        }).done(function(res) {
+          if (res.key === true) {
+            
+          }
+        })
+      },
       getData: function() {
         var self = this
         $.ajax({
-          url: BaseService.apiUrl + 'getCollection',
-          data: { userid: MockData.userid }
+          url: BaseService.apiUrl + 'getXSchat',
+          data: { userid: Helper.getUserId() }
         }).done(function(res) {
           self.list = ParseJson(res.data)
+          console.log(ParseJson(res.data))
+        })
+      },
+      goNotice: function () {
+        api.openWin({
+          name: 'notice',
+          url: 'widget://html/notice.html',
+          pageParam: {
+
+          }
         })
       }
     }

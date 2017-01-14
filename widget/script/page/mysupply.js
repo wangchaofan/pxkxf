@@ -1,5 +1,5 @@
 var ListItem = {
-  template: '<li class="supply-list-item">' +
+  template: '<li class="supply-list-item" @click="viewDetail">' +
   '  <div class="supply-list-item__left">' +
   '    <img :src="avatar" alt="">' +
   '  </div>' +
@@ -39,12 +39,21 @@ var ListItem = {
           return '已关闭'
       }
     },
+    viewDetail: function() {
+      api.openWin({
+        name: 'supply_detail',
+        url: 'widget://html/supply_detail.html',
+        pageParam: {
+          id: this.myData.skillID
+        }
+      })
+    },
     onClickEdit: function() {
       api.openWin({
         name: 'add_edit_supply',
         url: 'widget://html/add_edit_supply.html',
         pageParam: {
-          id: '1'
+          id: this.myData.skillID
         }
       })
     }
@@ -55,7 +64,11 @@ function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     created: function() {
-      this.getData()
+      if (api.pageParam.searchContent) {
+        this.getSearchResult(api.pageParam.searchContent)
+      } else {
+        this.getData()
+      }
     },
     components: {
       'list-item': ListItem
@@ -68,6 +81,18 @@ function initPage() {
     methods: {
       onClickNav: function(page) {
         this.currentPage = page
+      },
+      getSearchResult: function(content) {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'getsc',
+          data: {
+            content: content
+          }
+        }).then(function(res) {
+          self.list = ParseJson(res.data)
+          console.log(ParseJson(res.data))
+        })
       },
       getData: function() {
         var self = this
