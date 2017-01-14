@@ -57,26 +57,28 @@ function initPage() {
 				})
 			},
 			onClickAdvise: function() {
-
-			},
-    	goChat: function() {
-				if (this.booked) return
 				var self = this
 				$.ajax({
 					url: BaseService.apiUrl + 'addCollection',
 					data: {
 						userid: Helper.getUserId(),
-						skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+						skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03',
+            content: '1231'
 					}
 				}).then(function(res) {
 					if (res.key === 'true') {
-						self.booked = true
+            api.toast({
+                msg: '建议已提交'
+            })
 					} else {
 						api.toast({
 							msg: res.mage
 						})
 					}
 				})
+			},
+    	goChat: function() {
+
     	},
     	goInvite: function() {
 
