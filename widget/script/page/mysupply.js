@@ -4,7 +4,7 @@ var ListItem = {
   '    <img :src="avatar" alt="">' +
   '  </div>' +
   '  <div class="supply-list-item__right">' +
-  '    <div class="button-edit disabled" @click="onClickEdit"></div>' +
+  '    <div class="button-edit" :class="{disabled: myData.state == 1 || myData.state == 0}" @click.stop="onClickEdit"></div>' +
   '    <div class="supply-list-item__param">' +
   '      供应名称：<span class="text-black">{{myData.skillName}}</span>' +
   '    </div>' +
@@ -12,7 +12,7 @@ var ListItem = {
   '      供应价格：<strong class="text-warning">{{myData.smoney}}</strong>元' +
   '    </div>' +
   '    <div class="supply-list-item__param">' +
-  '      供应状态：<span class="supply-status">{{myData.sfState}}</span>' +
+  '      供应状态：<span class="supply-status">{{getStateText(myData.sfState)}}</span>' +
   '    </div>' +
   '    <div class="supply-item-desc">描述：{{myData.skilldetails}}</div>' +
   '  </div>' +
@@ -27,8 +27,26 @@ var ListItem = {
     }
   },
   methods: {
+    getStateText: function(state) {
+      switch(state) {
+        case 1:
+          return '审核中'
+        case 2:
+          return '通过'
+        case 3:
+          return '不通过'
+        default:
+          return '已关闭'
+      }
+    },
     onClickEdit: function() {
-
+      api.openWin({
+        name: 'add_edit_supply',
+        url: 'widget://html/add_edit_supply.html',
+        pageParam: {
+          id: '1'
+        }
+      })
     }
   }
 }

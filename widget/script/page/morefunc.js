@@ -73,6 +73,9 @@ function initPage() {
 				})
 				.then(function(res) {
 					if (res.key === 'true') {
+            api.toast({
+                msg: '退出登录成功'
+            });
             api.removePrefs({
                 key: 'userid'
             });

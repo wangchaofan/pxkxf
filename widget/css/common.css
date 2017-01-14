@@ -722,7 +722,8 @@ header {
 }
 
 .remind {
-  padding: 0.6rem 0;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
   color: #000;
   background: #ffeac6;
   line-height: 1.5;

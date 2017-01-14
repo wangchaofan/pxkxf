@@ -26,7 +26,7 @@ body {
 	margin-bottom: 0.1rem;
 	font-size: 0.65rem;
 }
-.user-sex-man {
+.user-sex {
 	margin-left: 0.2rem;
 	display: inline-block;
 	width: 0.65rem;
@@ -34,6 +34,9 @@ body {
 	background: url('../image/icon_sex_man.png') no-repeat;
 	-webkit-background-size: cover;
 	background-size: cover;
+}
+.user-sex.woman {
+	background-image: url('../image/icon_sex_woman.png');
 }
 .user-info-tj {
 	font-size: 0;
@@ -45,6 +48,10 @@ body {
 	padding: 0.1rem 0.2rem;
 	color: #fff;
 	background: #ff9000;
+}
+.online-status.off-line {
+	background-color: #ddd;
+	color: #fff;
 }
 .user-center-features {
 	margin-top: 0.5rem;

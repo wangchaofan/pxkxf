@@ -42,6 +42,7 @@ function initPage() {
           data: { uid: self.userid }
         }).then(function(res) {
           self.userInfo = ParseJson(res.data)[0]
+          console.log(ParseJson(res.data)[0])
         })
       }
     }

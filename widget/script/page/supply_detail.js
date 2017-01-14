@@ -9,7 +9,8 @@ function initPage() {
     },
     data: function() {
       return {
-      	supplyInfo: null
+      	supplyInfo: null,
+				booked: false
       }
     },
     computed: {
@@ -27,14 +28,55 @@ function initPage() {
     		var self = this
     		$.ajax({
     			url: BaseService.apiUrl + 'getskillinfo',
-    			data: { skillid: api.pageParam.id } // 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+    			data: {
+						// skillid: api.pageParam.id
+						skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+    			}
     		}).done(function(res) {
     			self.supplyInfo = ParseJson(res.data)[0]
     			console.log(ParseJson(res.data)[0])
     		})
     	},
-    	goChat: function() {
+			onClickBook: function() {
+				if (this.booked) return
+				var self = this
+				$.ajax({
+					url: BaseService.apiUrl + 'addCollection',
+					data: {
+						userid: Helper.getUserId(),
+						skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+					}
+				}).then(function(res) {
+					if (res.key === 'true') {
+						self.booked = true
+					} else {
+						api.toast({
+							msg: res.mage
+						})
+					}
+				})
+			},
+			onClickAdvise: function() {
 
+			},
+    	goChat: function() {
+				if (this.booked) return
+				var self = this
+				$.ajax({
+					url: BaseService.apiUrl + 'addCollection',
+					data: {
+						userid: Helper.getUserId(),
+						skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+					}
+				}).then(function(res) {
+					if (res.key === 'true') {
+						self.booked = true
+					} else {
+						api.toast({
+							msg: res.mage
+						})
+					}
+				})
     	},
     	goInvite: function() {
 

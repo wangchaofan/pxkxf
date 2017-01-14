@@ -45,9 +45,40 @@ Vue.component('my-header', {
 })
 
 Vue.component('user-box', {
-  template: '',
+  template: '<div class="user-center-top display-flex">' +
+            '  <div class="user-info">' +
+            '    <div class="user-avatar" style="overflow: hidden;">' +
+            '      <img :src="avatar" alt="" style="width: 100%;height: 100%;">' +
+            '    </div>' +
+            '    <div class="user-info-tj">' +
+            '      <div class="user-name">' +
+            '        <span class="vam">{{user.pnickname}}</span>' +
+            '        <span class="user-sex vam" :class="{woman: user.sex === \'女\'}"></span>' +
+            '      </div>' +
+            '      <div class="online-status" :class="{\'off-line\': user.onlineState === 2}">{{onlineText}}</div>' +
+            '      <slot name="userLtBottom">' +
+            '        <user-good-level :good-level="user.evaluate"></user-good-level>' +
+            '      </slot>' +
+            '    </div>' +
+            '  </div>' +
+            '  <div class="user-info-rt">' +
+            '    <div><slot name="userRtTop"></slot></div>' + 
+            '    <slot name="userRtBottom">' +
+            '      <user-roles :role="user.level"></user-roles>' +
+            '    </slot>' +
+            '  </div>' +
+            '</div>',
+  props: ['user'],
   data: function() {
     return {}
+  },
+  computed: {
+    avatar: function() {
+      return this.user.pheadimgUrl
+    },
+    onlineText: function() {
+      return this.user.onlineState == 2 ? '离线' : '在线'
+    }
   }
 })
 
@@ -89,6 +120,7 @@ Vue.component('user-good-level', {
 
 Vue.component('user-roles', {
   template: '<div class="user-roles display-flex">' +
+            '  <div class="user-roles-title text-999">用户等级：</div>' +
             '  <span class="user-roles__type1" :class="{done: roleIndex >= 1}"></span>' +
             '  <span class="user-roles__type2" :class="{done: roleIndex >= 2}"></span>' +
             '  <span class="user-roles__type3" :class="{done: roleIndex >= 3}"></span>' +

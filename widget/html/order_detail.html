@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>订单详情</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/user_avatar.css">
+  <link rel="stylesheet" href="../css/order_detail.css">
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <my-header title="订单详情"></my-header>
+  <user-box :user="userModel"></user-box>
+  <div class="order-info bg-white">
+    <div class="input-row">
+      <span>邀约技能</span>
+      <span>{{order.Skillmodel[0].skillName}}</span>
+    </div>
+    <div class="input-row">
+      <span>邀约时间</span>
+      <span>{{order.yytime}}</span>
+    </div>
+    <div class="input-row">
+      <span>邀约地点</span>
+      <span>{{order.yyaddress}}</span>
+    </div>
+    <div class="input-row">
+      <span>邀约价格</span>
+      <span>{{order.Skillmodel[0].smoney}}</span>
+    </div>
+  </div>
+  <div class="fixed-bottom display-flex">
+    <div class="button-chat" @click="onClickChat"></div>
+    <div class="button-book btn-submit" @click="toPay">去付款</div>
+    <div class="button-cancel btn-submit" @click="onCancel">取消邀约</div>
+  </div>
+</div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/page/order_detail.js"></script>
+</body>
+</html>

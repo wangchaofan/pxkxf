@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>订单详情</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/user_avatar.css">
+  <link rel="stylesheet" href="../css/order_detail.css">
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <my-header title="订单支付"></my-header>
+  <div class="order-info bg-white">
+    <div class="input-row">
+      <span>账户余额</span>
+      <span class="ar text-warning flex-1">100元</span>
+    </div>
+    <div class="input-row">
+      <span>邀约费用</span>
+      <span class="ar text-warning flex-1">200元</span>
+    </div>
+  </div>
+  <div class="remind fs24 container" style="margin-top: 0.5rem">
+    <span class="text-warning">提示：</span>您支付的提示，的发挥发挥
+  </div>
+  <div class="btn-submit" @click="onClickChat">确定</div>
+</div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/page/pay.js"></script>
+</body>
+</html>

@@ -22,7 +22,7 @@ body {
 	margin-bottom: 0.1rem;
 	font-size: 0.65rem;
 }
-.user-sex-man {
+.user-sex {
 	margin-left: 0.2rem;
 	display: inline-block;
 	width: 0.65rem;
@@ -30,6 +30,9 @@ body {
 	background: url('../image/icon_sex_man.png') no-repeat;
 	-webkit-background-size: cover;
 	background-size: cover;
+}
+.user-sex.woman {
+	background-image: url('../image/icon_sex_woman.png');
 }
 .user-info-tj {
 	position: relative;
@@ -48,12 +51,16 @@ body {
 	background-color: #ddd;
 	color: #fff;
 }
-.user-pingjia {
+.good-like {
 	position: absolute;
 	bottom: 0;
 	font-size: 0.5rem;
-	line-height: 0.6rem;
 	color: #999;
+}
+.good-like-pl {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 0;
 }
 .user-pingjia .icon-star {
 	vertical-align: top;
@@ -104,35 +111,56 @@ body {
 	width: 0.6rem;
 	height: 0.6rem;
 }
-.qulification-name.v1 {
-    background: url('../image/authicons/auth_v1_n.png') no-repeat;
-    background-size: cover;
+.user-roles {
+	padding-left: 0.1rem;
+	justify-content: space-between;
+	align-items: flex-end;
 }
-.qulification-item.certified .v1 {
-    background-image: url('../image/authicons/auth_v1_y.png');
+.user-roles .user-roles-title {
+	font-size: 0.5rem;
 }
-.qulification-name.v2 {
+
+.user-roles > span {
+	margin: 0 0.1rem;
 	width: 0.65rem;
 	height: 0.65rem;
-    background: url('../image/authicons/auth_v2_n.png') no-repeat;
-    background-size: cover;
 }
-.qulification-item.certified .v2 {
-    background-image: url('../image/authicons/auth_v2_y.png');
+
+.user-roles__type1 {
+	background: url('../image/authicons/auth_v1_n.png') no-repeat;
+	background-size: cover;
 }
-.qulification-name.v3 {
-    background: url('../image/authicons/auth_v3_n.png') no-repeat;
-    background-size: cover;
+.user-roles__type1.done {
+	background-image: url('../image/authicons/auth_v1_y.png');
 }
-.qulification-item.certified .v3 {
-    background-image: url('../image/authicons/auth_v3_y.png');
+
+.user-roles .user-roles__type2 {
+	width: 0.725rem;
+	height: 0.725rem;
+	background: url('../image/authicons/auth_v2_n.png') center 2px no-repeat;
+	background-size: cover;
 }
-.qulification-name.v4 {
-    background: url('../image/authicons/auth_v4_n.png') no-repeat;
-    background-size: cover;
+
+.user-roles__type2.done {
+	background-image: url('../image/authicons/auth_v2_y.png');
 }
-.qulification-item.certified .v4 {
-    background-image: url('../image/authicons/auth_v4_y.png');
+
+.user-roles__type3 {
+	background: url('../image/authicons/auth_v3_n.png') no-repeat;
+	background-size: cover;
+}
+
+.user-roles__type3.done {
+	background-image: url('../image/authicons/auth_v3_y.png');
+}
+
+.user-roles .user-roles__type4 {
+	margin-top: 0;
+	background: url('../image/authicons/auth_v4_n.png') no-repeat;
+	background-size: cover;
+}
+.user-roles__type4.done {
+	background-image: url('../image/authicons/auth_v4_y.png');
 }
 .user-func {
 	margin-top: 0.6rem;
@@ -177,4 +205,22 @@ body {
 }
 .user-func-item:nth-child(4) {
 	background-image: url('../image/idcard.png');
+}
+.icon-good,
+.icon-notgood {
+	display: inline-block;
+	margin-right: 1px;
+	vertical-align: text-top;
+	width: 0.6rem;
+	height: 0.6rem;
+}
+
+.icon-good {
+	background: url('../image/icon_good.png') no-repeat;
+	background-size: cover;
+}
+
+.icon-notgood {
+	background: url('../image/icon_nogood.png') no-repeat;
+	background-size: cover;
 }

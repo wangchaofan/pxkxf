@@ -23,8 +23,11 @@
 			<div class="user-info">			
 				<div class="user-avatar" v-bind:style="avatarStyle"></div>
 				<div class="user-info-tj" v-if="userid">
-					<div class="user-name"><span class="vam">{{userInfo.pnickname}}</span><span class="user-sex user-sex-man vam"></span></div>
-					<div class="online-status">在线</div>
+					<div class="user-name">
+						<span class="vam">{{userInfo.pnickname}}</span>
+						<span class="user-sex vam" :class="{'woman': userInfo.sex == 2}"></span>
+					</div>
+					<div class="online-status" :class="{'off-line': userInfo.onlineState == 2}">{{userInfo.onlineState == 1 ?  '在线' : '离线'}}</div>
 				</div>
 				<div class="please-login" v-else>请登录</div>
 			</div>

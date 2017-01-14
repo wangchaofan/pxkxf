@@ -24,8 +24,8 @@
 			</div>
 			<div class="supply-detail__desc fs24 text-999">{{supplyInfo.skilldetails}}</div>
 			<div class="display-flex supply-detail-buttons">
-				<div class="supply-detail__button">感兴趣，并收藏</div>
-				<div class="supply-detail__button">不吸引，给TA建议</div>
+				<div class="supply-detail__button" @click="onClickBook">{{booked ? '已收藏' : '感兴趣，并收藏'}}</div>
+				<div class="supply-detail__button" @click="onClickAdvise">不吸引，给TA建议</div>
 			</div>
 		</div>
 		<section class="user-center-top display-flex" v-if="userModel" v-cloak>

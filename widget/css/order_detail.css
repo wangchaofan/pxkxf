@@ -1,0 +1,33 @@
+.order-info {
+	margin-top: 0.5rem;
+	background-color: #fff;
+}
+.order-info .input-row {
+	padding: 0.5rem 0.75rem;
+}
+.order-info .input-row > span:first-child {
+	width: 4rem;	
+}
+.button-chat {
+	margin-right: 0.4rem;
+	flex-shrink: 0;
+	width: 2.4rem;
+	height: 2.2rem;
+	background: #ff9000 url('../image/icon_chat.png') center no-repeat;
+	background-size: 1.35rem 1.35rem;
+	border-radius: 0.15rem;
+}
+.fixed-bottom {
+	padding: 0 0.75rem;
+}
+.button-book,
+.button-cancel {
+	font-size: 0.7rem;
+}
+.button-cancel {
+	margin-left: 0.4rem;
+	font-size: 0.7rem;
+	background: none;
+	color: #ff9000;
+	border: 1px solid #ff9000;
+}

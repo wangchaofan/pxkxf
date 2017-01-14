@@ -12,10 +12,15 @@ Vue.component('get-msm-button', {
 	},
 	computed: {
 		text: function() {
-			return !this.sending ? this.myText : this.time + 's'
+			return !this.sending ? this.myText : this.myText + '(' + this.time + ')' + 's'
 		}
 	},
 	methods: {
+		reset: function() {
+			this.time = 60
+			this.sending = false
+			this.myText = '获取验证码'
+		},
 		getMsm: function() { 
 			var self = this
 			if (!/^1\d{10}$/.test(this.phone)) {

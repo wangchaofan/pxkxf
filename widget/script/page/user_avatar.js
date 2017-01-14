@@ -27,7 +27,6 @@ function initPage() {
           data: {uid: Helper.getUserId()}
         }).then(function(res) {
           self.userInfo = ParseJson(res.data)[0]
-          self.userInfo.evaluate = parseInt(self.userInfo.evaluate, 10)
           console.log(ParseJson(res.data)[0])
         })
       },

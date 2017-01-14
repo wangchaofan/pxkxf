@@ -17,9 +17,6 @@ function initPage() {
 			}
 		},
 		methods: {
-			loginByWx: function() {
-
-			},
 			getSmsSuccess: function(data) {
 				api.toast({
 			    msg: '验证码已经发送到' + this.regphone + '，请注意查收'
@@ -65,11 +62,12 @@ function initPage() {
 								api.closeWin()
 							}, 100)
 						} else {
+							this.$refs.msmButton.reset()
 							api.toast({msg: res.mage})
 						}
 					})
 					.fail(function(err) {
-						consle(JSON.stringify(err))
+						console.log(JSON.stringify(err))
 					})
 					.always(function() {
 						self.submiting = false

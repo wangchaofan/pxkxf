@@ -4,7 +4,7 @@ var ListItem = {
             '    <img :src="avatar" alt="">' +
             '  </div>' +
             '  <div class="supply-list-item__right">' +
-            '    <div class="button-edit disabled" @click="onClickEdit"></div>' +
+            '    <div class="button-edit" :disabled="getDisabled(myData.orderState)" @click.stop="onClickEdit"></div>' +
             '    <div class="supply-list-item__param">' +
             '      需求名称：<span class="text-black">{{myData.demandTitle}}</span>' +
             '    </div>' +
@@ -12,7 +12,7 @@ var ListItem = {
             '      需求价格：<strong class="text-warning">{{myData.dmoney}}</strong>元' +
             '    </div>' +
             '    <div class="supply-list-item__param">' +
-            '      需求状态：<span class="supply-status">{{myData.demandTitle}}</span>' +
+            '      需求状态：<span class="supply-status">{{getStateText(myData.orderState)}}</span>' +
             '    </div>' +
             '    <div class="supply-item-desc">描述：{{myData.ddetails}}</div>' +
             '  </div>' +
@@ -35,10 +35,43 @@ var ListItem = {
         pageParam: {
           id: this.myData.demandorderId
         }
-      });
+      })
+    },
+    getDisabled: function(state) {
+      if (state == 1 || state == 3)
+        return false
+      return true
+    },
+    getStateText: function(state) {
+      switch(state) {
+        case 1: 
+          return '待支付'
+        case 2:
+          return '审核中'
+        case 3: 
+          return '发布中'
+        case 4: 
+          return '进行中'
+        case 5: 
+          return '供应完成'
+        case 6: 
+          return '待评价'
+        case 7:
+          return '订单完成'
+        case 8: 
+          return '已关闭'
+        default:
+          return '已删除'
+      }
     },
     onClickEdit: function() {
-
+      api.openWin({
+        name: 'add_edit_demand',
+        url: 'widget://html/add_edit_demand.html',
+        pageParam: {
+          id: this.myData.demandorderId
+        }
+      })
     }
   }
 }

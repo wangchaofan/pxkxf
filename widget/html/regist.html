@@ -15,7 +15,7 @@
     <div class="input-row">
       <label for="regphone">手机号</label>
       <input id="regphone" type="text" maxlength="11" v-model="regphone" placeholder="请输入手机号">
-      <get-msm-button v-bind:phone="regphone" v-on:send-success="getSmsSuccess"></get-msm-button>
+      <get-msm-button ref="msmButton" v-bind:phone="regphone" v-on:send-success="getSmsSuccess"></get-msm-button>
     </div>
     <div class="input-row">
       <label id="msm" for="">验证码</label>

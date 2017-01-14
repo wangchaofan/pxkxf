@@ -1,5 +1,5 @@
 var ListItem = {
-  template: '<li class="supply-list-item">' +
+  template: '<li class="supply-list-item" @click="viewDetail">' +
   '  <div class="supply-list-item__left">' +
   '    <img :src="usermodel.pheadimgUrl" alt="">' +
   '  </div>' +
@@ -32,8 +32,14 @@ var ListItem = {
     }
   },
   methods: {
-    onClickEdit: function() {
-
+    viewDetail: function(item) {
+      api.openWin({
+        name: 'order_detail',
+        url: 'widget://html/order_detail.html',
+        pageParam: {
+          id: this.myData.SillYYDDId
+        }
+      })
     }
   }
 }
