@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>用户昵称</title>
   <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/user_avatar.css">
+	<link rel="stylesheet" href="../css/mysupply.css">
+	<link rel="stylesheet" href="../css/user_avatar.css">
   <script src="../script/adapter.js"></script>
 </head>
 <body>
@@ -27,6 +28,20 @@
 				</div>
 			</div>
 		</section>
+		<div class="newest-dynamic bg-white" v-if="dynamic" @click="viewDynamic" v-cloak>
+			<div class="newest-dynamic-title">最新动态</div>
+			<div class="dynamic-content">
+				<div class="dynamic-content-text">
+					{{dynamic.dynamicContent}}
+				</div>
+				<div class="dynamic-content-images">
+					<img src="" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="newest-supply bg-white" v-if="skill" @click="goPage('mysupply')" v-cloak>
+			<supply-box :my-data="skill"></supply-box>
+		</div>
 		<div class="user-func">
 			<div class="user-func-head">
 				<span>空闲时间</span>

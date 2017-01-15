@@ -14,22 +14,22 @@
     <section class="setting-list">
       <div class="setting-list-item">
         <div>允许所有用户与我电话沟通</div>
-        <div class="px-checkbox">
-          <input type="checkbox">
+        <div class="px-checkbox" @click="setPhoneState(1)">
+          <input type="checkbox" :checked="phonestate == 1">
           <div class="px-checkbox-style"></div>
         </div>
       </div>
       <div class="setting-list-item">
         <div>允许预约用户与我电话沟通</div>
-        <div class="px-checkbox">
-          <input type="checkbox">
+        <div class="px-checkbox" @click="setPhoneState(2)">
+          <input type="checkbox" :checked="phonestate == 2">
           <div class="px-checkbox-style"></div>
         </div>
       </div>
       <div class="setting-list-item">
         <div>允许v2级以上用户与我电话沟通</div>
-        <div class="px-checkbox">
-          <input type="checkbox">
+        <div class="px-checkbox" @click="setPhoneState(3)">
+          <input type="checkbox" :checked="phonestate == 3">
           <div class="px-checkbox-style"></div>
         </div>
       </div>

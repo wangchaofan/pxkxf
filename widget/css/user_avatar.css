@@ -224,3 +224,22 @@ body {
 	background: url('../image/icon_nogood.png') no-repeat;
 	background-size: cover;
 }
+.newest-dynamic {
+	margin-top: 0.5rem;
+	padding:  0.5rem 1rem 0.5rem 0.75rem;
+	background: #fff url('../image/icon_angle_right.png') right 0.8rem center no-repeat;
+	-webkit-background-size: 0.5rem 0.8rem;
+	background-size: 0.5rem 0.8rem;
+}
+.newest-dynamic-title {
+	font-size: 0.7rem;
+}
+.dynamic-content-text {
+	margin-top: 0.25rem;
+	font-size: 0.6rem;
+	line-height: 1.5;
+}
+.newest-supply {
+	margin-top: 0.5rem;
+	padding: 0 0.75rem;
+}
