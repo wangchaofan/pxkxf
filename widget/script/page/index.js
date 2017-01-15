@@ -34,6 +34,7 @@ apiready = function() {
 			},
 			icon: {
 				normal: 'widget://image/nvtab/icon_home.png',
+				highlight: 'widget://image/nvtab/icon_home_selected.png',
 				selected: 'widget://image/nvtab/icon_home_selected.png'
 			},
 			title: _.assign({}, nvTabBarCommonTitle, { text: '首页'})
@@ -48,6 +49,7 @@ apiready = function() {
 			},
 			icon: {
 				normal: 'widget://image/nvtab/icon_order.png',
+				highlight: 'widget://image/nvtab/icon_order_selected.png',
 				selected: 'widget://image/nvtab/icon_order_selected.png'
 			},
 			title: _.assign({}, nvTabBarCommonTitle, { text: '订单'})
@@ -77,6 +79,7 @@ apiready = function() {
 			},
 			icon: {
 				normal: 'widget://image/nvtab/icon_zixun.png',
+				highlight: 'widget://image/nvtab/icon_zixun_selected.png',
 				selected: 'widget://image/nvtab/icon_zixun_selected.png'
 			},
 			title: _.assign({}, nvTabBarCommonTitle, { text: '咨询' })
@@ -91,6 +94,7 @@ apiready = function() {
 			},
 			icon: {
 				normal: 'widget://image/nvtab/icon_user.png',
+				highlight: 'widget://image/nvtab/icon_user_selected.png',
 				selected: 'widget://image/nvtab/icon_user_selected.png'
 			},
 			title: _.assign({}, nvTabBarCommonTitle, { text: '我的' })
