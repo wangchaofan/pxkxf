@@ -24,9 +24,9 @@
     <div class="input-row">
       <label for="skilltype">分类</label>
       <select id="skilltype" class="px-select" v-model="skill.skilltype">
-        <option value="消费设计">消费设计</option>
-        <option value="消费施工">消费施工</option>
-        <option value="消费产品">消费产品</option>
+        <option value="消防设计">消防设计</option>
+        <option value="消防施工">消防施工</option>
+        <option value="消防产品">消防产品</option>
       </select>
     </div>
     <div class="input-row">
@@ -63,7 +63,7 @@
     </div>
   </form>
   <div class="fixed-bottom">
-    <div class="btn-submit" @click="onSubmit">发布</div>
+    <div class="btn-submit" :disabled="submiting" @click="onSubmit">发布</div>
   </div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>  

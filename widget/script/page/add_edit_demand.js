@@ -16,7 +16,7 @@ function initPage() {
 					perid: '', // 省
 					cid: '', // 市
 					diid: '', // 地区
-					xqtype: '消费设计' // 分类
+					xqtype: '' // 分类
 				},
 				province: '',
 				city: '',

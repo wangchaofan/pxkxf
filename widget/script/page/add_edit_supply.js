@@ -31,6 +31,7 @@ function initPage() {
 					imgarr: '',
 					Remark: ''
 				},
+				submiting: false,
 				images: []
 			}
 		},
@@ -65,6 +66,7 @@ function initPage() {
 				}
 			},
 			onSubmit: function() {
+				if (this.submiting) return 
 				var self = this
 				this.skill.imgarr = _.map(this.images, Helper.transformImageData).join(',')
 				var data = _.clone(this.skill)
@@ -73,6 +75,7 @@ function initPage() {
 					data.District = data.City
 					data.City = data.Province
 				}
+				this.submiting = true
 				$.ajax({
 					url: BaseService.apiUrl + 'addSkill',
 					data: data
@@ -85,6 +88,10 @@ function initPage() {
 							api.openWin({
 						    name: 'pay',
 						    url: 'widget://html/pay.html',
+						    reload: true,
+						    progress: {
+						    	type: 'page'
+						    },
 						    pageParam: {
 					        mmoney: self.skill.money,
 					        orderId: res.data
@@ -103,6 +110,8 @@ function initPage() {
 					api.toast({
 				    msg: '添加失败'
 					})
+				}).always(function() {
+					self.submiting = false
 				})
 			}
 		}
