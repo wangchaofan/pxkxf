@@ -61,7 +61,15 @@
     </div>
     <div class="input-row">
       <label for="">学历</label>
-      <input type="text" v-model="userInfo.education" placeholder="请填写学历">
+      <select  v-model="userInfo.education" placeholder="请填写学历">
+        <option value="博士研究生">博士研究生</option>
+        <option value="硕士研究生">硕士研究生</option>
+        <option value="本科">本科</option>
+        <option value="专科">专科</option>
+        <option value="高中">高中</option>
+        <option value="初中">初中</option>
+        <option value="小学">小学</option>
+      </select>
     </div>
     <div class="input-row">
       <label for="">职业</label>

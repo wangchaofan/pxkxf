@@ -157,6 +157,12 @@ function initPage() {
       }
     }
   })
+
+  api.addEventListener({
+    name: 'refreshUserInfo'
+  }, function (ret, err) {
+    vm.getData()
+  });
 }
 
 /* === 测试使用 === */

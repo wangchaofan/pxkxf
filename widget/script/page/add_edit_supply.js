@@ -15,6 +15,9 @@ function initPage() {
 			// 	imgarr: '',
 			// 	Remark: '嘿嘿'
 			// }
+			//if (api.pageParam.id) {
+				this.getSupply()
+			//}
 		},
 		data: function() {
 			return {
@@ -45,16 +48,33 @@ function initPage() {
 			}
 		},
 		methods: {
+			getSupply: function() {
+				var self = this
+				$.ajax({
+					url: BaseService.apiUrl + 'getskillinfo',
+					data: {
+						//skillid: api.pageParam.id
+						 skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+					}
+				}).done(function(res) {
+					var data = ParseJson(res.data)[0]
+					console.log(ParseJson(res.data)[0])
+					var skill = self.skill
+					skill.skillname = data.skillName
+					skill.skilldetails = data.skilldetails
+					skill.skilltype = data.skillType
+				})
+			},
 			selectDistrict: function() {
 				var self = this;
-        var citySelector = api.require('citySelector');
-        citySelector.open({
-          y: api.frameHeight / 1.6
-        }, function(ret, err) {
-        	self.skill.Province = ret.province
-          self.skill.City = ret.city
-          self.skill.District = ret.county
-        })
+        		var citySelector = api.require('citySelector');
+				citySelector.open({
+				 	y: api.frameHeight / 1.6
+			  	}, function(ret, err) {
+					self.skill.Province = ret.province
+				 	self.skill.City = ret.city
+				 	self.skill.District = ret.county
+			  	})
 			},
 			onFileChange: function(e) {
 				var self = this
@@ -67,7 +87,6 @@ function initPage() {
 			},
 			onSubmit: function() {
 				if (this.submiting) return 
-				var self = this
 				this.skill.imgarr = _.map(this.images, Helper.transformImageData).join(',')
 				var data = _.clone(this.skill)
 				data.servertime = data.servertime ? new Date(data.servertime).getTime() : ''
@@ -76,26 +95,37 @@ function initPage() {
 					data.City = data.Province
 				}
 				this.submiting = true
+				if (api.pageParam.id) {
+					this.edit(data)
+				} else {
+					this.add(data)
+				}
+			},
+			edit: function(data) {
+
+			},
+			add: function(data) {
+				var self = this
 				$.ajax({
 					url: BaseService.apiUrl + 'addSkill',
 					data: data
 				}).then(function(res) {
 					if (res.key === 'true') {
 						api.toast({
-						    msg: '发布成功'
+							msg: '发布成功'
 						})
 						setTimeout(function() {
 							api.openWin({
-						    name: 'pay',
-						    url: 'widget://html/pay.html',
-						    reload: true,
-						    progress: {
-						    	type: 'page'
-						    },
-						    pageParam: {
-					        mmoney: self.skill.money,
-					        orderId: res.data
-						    }
+								name: 'pay',
+								url: 'widget://html/pay.html',
+								reload: true,
+								progress: {
+									type: 'page'
+								},
+								pageParam: {
+									mmoney: self.skill.money,
+									orderId: res.data
+								}
 							})
 							setTimeout(function() {
 								api.closeWin()
@@ -103,12 +133,12 @@ function initPage() {
 						}, 3000)
 					} else {
 						api.toast({
-						    msg: res.mage
+							msg: res.mage
 						});
 					}
 				}, function(err) {
 					api.toast({
-				    msg: '添加失败'
+						msg: '添加失败'
 					})
 				}).always(function() {
 					self.submiting = false

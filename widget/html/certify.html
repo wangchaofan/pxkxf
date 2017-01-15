@@ -11,10 +11,18 @@
 <body>
   <div class="wrapper" v-cloak>
     <my-header title="用户认证"></my-header>
-    <div class="has-renzheng" v-if="holdCarId">已认证</div>
+    <div class="has-renzheng" v-if="holdCarId">
+      <div>已认证</div>
+      <!--<img :src="positiveCarId" alt="">-->
+      <!--<img :src="inverseCarId" alt="">-->
+      <!--<img :src="holdCarId" alt="">-->
+    </div>
+    <div class="has-renzheng-iamge">
+      <img src="" alt="">
+    </div>
     <div v-else>
       <section class="upload-wrap">
-        <div class="upload-desc">请您上传您的身份证照片：</div>
+        <div class="upload-desc">请您上传您的身份证正面照片：</div>
         <div class="upload-box">
           <img :src="Idzm" alt="" v-if="!!Idzm" v-cloak>
           <div class="upload-box-name" v-else>上传身份证正面</div>
@@ -23,7 +31,7 @@
         <div class="fs24 ac text-warning">请保证所有信息真实有效而且清晰可见</div>
       </section>
       <section class="upload-wrap">
-        <div class="upload-desc">请您上传您的身份证照片：</div>
+        <div class="upload-desc">请您上传您的身份证反面照片：</div>
         <div class="upload-box">
           <img :src="Idbm" alt="" v-if="!!Idbm" v-cloak>
           <div class="upload-box-name" v-else>上传身份证反面</div>

@@ -6,7 +6,7 @@ function initPage() {
     el: '.wrapper',
     data: function() {
       return {
-        userid: '',
+        userid: Helper.getUserId(),
         usedpwd: '',
         newpwd: '',
         qrpwd: ''
@@ -18,7 +18,18 @@ function initPage() {
           url: BaseService.apiUrl + 'updatepwd',
           data: _.pick(this, ['userid', 'usedpwd', 'newpwd', 'qrpwd'])
         }).then(function(res) {
-          res = JSON.parse(res)
+          if (res.key === 'true') {
+            api.toast({
+              msg: '修改密码成功'
+            })
+            setTimeout(function() {
+              api.closeWin()
+            }, 2000)
+          } else {
+            api.toast({
+              msg: res.mage
+            })
+          }
         }, function(err) {
 
         })

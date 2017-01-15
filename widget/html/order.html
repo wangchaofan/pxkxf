@@ -10,7 +10,15 @@
 </head>
 <body>
 <div class="wrapper">
-    <my-header title="订单"></my-header>
+    <header class="header">
+        <div class="header-left">
+            <!--<span class="return-back"></span>-->
+        </div>
+        <div class="header-center">
+            <span class="header-center-text">我的订单</span>
+        </div>
+        <div class="header-right"></div>
+    </header>
     <div class="type-select">
         <span class="flex-1" :class="{'current': state === 1}" @click="onSelectType(1)">进行中</span>
         <span class="flex-1" :class="{'current': state === 2}" @click="onSelectType(2)">已完成</span>

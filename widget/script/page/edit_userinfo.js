@@ -8,28 +8,28 @@ function initPage() {
 			return {
 				userInfo: {
 					uid: Helper.getUserId(),
-					pnckname: '王大凡',
+					pnckname: '',
 					sex: 'man',
-					birthDate: '1991/04/12',
-					age: '11',
-					homeProvince: '重庆',
-					homeCity: '渝北区',
-					homeDistrict: '渝北区',
-					nowProvince: '四川省',
-					nowCity: '成都市',
-					nowDistrict: '高新区',
-					phoneNumber: '18502341173',
-					email: '1237236@qq.com',
-					graduateSchool: '重庆大学',
-					education: '高中',
-					occupation: '很好',
-					company: '我的公司',
-					pQualifications: '书法家的风景,第三方',
-					pHonor: '我的ho',
-					Skill: '好地方',
-					freeTime: '周末',
-					phomepage: 'www.qq.com',
-					pautograph: '123',
+					birthDate: '',
+					age: '',
+					homeProvince: '',
+					homeCity: '',
+					homeDistrict: '',
+					nowProvince: '',
+					nowCity: '',
+					nowDistrict: '',
+					phoneNumber: '',
+					email: '',
+					graduateSchool: '',
+					education: '',
+					occupation: '',
+					company: '',
+					pQualifications: '',
+					pHonor: '',
+					Skill: '',
+					freeTime: '',
+					phomepage: '',
+					pautograph: '',
 				},
 				submiting: false
 			}
@@ -51,11 +51,11 @@ function initPage() {
 		methods: {
 			selectZone: function(t) {
 				var self = this;
-        var citySelector = api.require('citySelector');
+				var citySelector = api.require('citySelector');
 				var userInfo = this.userInfo
-        citySelector.open({
-          y: api.frameHeight / 1.6
-        }, function(ret, err) {
+					citySelector.open({
+					y: api.frameHeight / 1.6
+				}, function(ret, err) {
 					if (t === 'home') {
 						userInfo.homeProvince = ret.province
 						userInfo.homeCity = ret.city
@@ -75,6 +75,7 @@ function initPage() {
 				}).then(function(res) {
 					res = ParseJson(res.data)[0]
 					var userInfo = self.userInfo
+					console.log(res)
 					_.forEach(res, function(v, k) {
 						if (!_.isUndefined(userInfo[k])) {
 							userInfo[k] = v
@@ -83,6 +84,7 @@ function initPage() {
 					if (userInfo.birthDate) {
 						userInfo.birthDate = Helper.dateFormat(userInfo.birthDate, 'yyyy-MM-dd')
 					}
+					userInfo.pnckname = res.usermodel[0].pnickname
 				})
 			},
 			selectQualifications: function() {
@@ -201,10 +203,19 @@ function initPage() {
 							api.toast({
 							    msg: '修改成功'
 							})
+							api.sendEvent({
+								name: 'loginSuccess'
+							})
+							api.sendEvent({
+								name: 'refreshUserInfo'
+							})
+							setTimeout(function() {
+								api.closeWin()
+							}, 2000)
 						} else {
 							api.toast({
 							    msg: res.mage
-							});
+							})
 						}
 					})
 					.fail(function(err) {
