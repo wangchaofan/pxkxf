@@ -15,9 +15,9 @@ function initPage() {
 			// 	imgarr: '',
 			// 	Remark: '嘿嘿'
 			// }
-			//if (api.pageParam.id) {
+			if (api.pageParam.id) {
 				this.getSupply()
-			//}
+			}
 		},
 		data: function() {
 			return {
@@ -34,6 +34,8 @@ function initPage() {
 					imgarr: '',
 					Remark: ''
 				},
+				title: api.pageParam.id ? '修改供应' : '发布供应',
+				// title: '修改供应',
 				submiting: false,
 				images: []
 			}
@@ -53,8 +55,8 @@ function initPage() {
 				$.ajax({
 					url: BaseService.apiUrl + 'getskillinfo',
 					data: {
-						//skillid: api.pageParam.id
-						 skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+						skillid: api.pageParam.id
+						// skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
 					}
 				}).done(function(res) {
 					var data = ParseJson(res.data)[0]
@@ -63,6 +65,16 @@ function initPage() {
 					skill.skillname = data.skillName
 					skill.skilldetails = data.skilldetails
 					skill.skilltype = data.skillType
+					skill.Province = data.addressprovincese
+					skill.City = data.addressCityse
+					skill.District = data.addressdistrctse
+					skill.money = data.smoney
+					skill.Remark = data.Remark
+					skill.servertime = Helper.dateFormat(data.servertime, 'yyyy-MM-dd')
+					self.images = _.forEach(data.Skillworksmodel, function(v) {
+						Helper.imagePreview()
+						return v.skillwoksurl
+					})
 				})
 			},
 			selectDistrict: function() {

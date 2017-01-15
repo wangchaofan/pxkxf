@@ -16,6 +16,9 @@ var ListItem = {
   '    <div class="supply-list-item__param">' +
   '      邀约时间：{{myData.mtime | date("yyyy-MM-dd")}}' +
   '    </div>' +
+  '    <div class="supply-list-item__param">' +
+  '      订单状态：{{getStateText(myData.State)}}' +
+  '    </div>' +
   '    <div class="supply-item-desc">描述：{{skill.skilldetails}}</div>' +
   '  </div>' +
   '</li>',
@@ -40,6 +43,17 @@ var ListItem = {
           id: this.myData.SillYYDDId
         }
       })
+    },
+    getStateText: function() {
+      switch(this.myData.State) {
+        case 1: return '预约中';
+        case 2: return '进行中';
+        case 3: return '供应完成';
+        case 4: return '待评价';
+        case 5: return '订单完成';
+        case 6: return '订单取消';
+        default: return '订单拒绝';
+      }
     }
   }
 }
