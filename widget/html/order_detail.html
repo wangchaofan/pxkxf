@@ -12,8 +12,8 @@
 <body>
 <div class="wrapper">
   <my-header title="订单详情"></my-header>
-  <user-box :user="userModel"></user-box>
-  <div class="order-info bg-white">
+  <user-box v-if="userModel" :user="userModel"></user-box>
+  <div class="order-info bg-white" v-cloak>
     <div class="input-row">
       <span>邀约技能</span>
       <span>{{order.Skillmodel[0].skillName}}</span>
@@ -32,10 +32,15 @@
       <span>元</span>
     </div>
   </div>
-  <div class="fixed-bottom display-flex">
+  <div class="fixed-bottom display-flex" v-cloak>
     <div class="button-chat" @click="onClickChat"></div>
-    <div class="button-book btn-submit" @click="toPay">去付款</div>
-    <div class="button-cancel btn-submit" @click="onCancel">取消邀约</div>
+    <div class="button-book btn-submit" v-if="order.State == 1" @click="toPay">去付款</div>
+    <div class="button-cancel btn-submit" v-if="order.State == 1 || order.State == 2" @click="onCancel">取消邀约</div>
+    <div class="button-book btn-submit" v-if="order.State == 3" @click="toConfirm">供应完成</div>
+    <div class="button-cancel btn-submit" v-if="order.State == 4" @click="toComment">待评价</div>
+    <div class="button-book btn-submit" v-if="order.State == 5" disabled>订单已完成</div>  
+    <div class="button-book btn-submit" v-if="order.State == 6" disabled>订单已取消</div> 
+    <div class="button-book btn-submit" v-if="order.State == 0" disabled>订单被拒绝</div> 
   </div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>

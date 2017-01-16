@@ -8,7 +8,7 @@ function initPage() {
       return {
         accountBalance: 0,
         // mmoney: 100,
-        submiting: false
+        submiting: false,
         mmoney: api.pageParam.mmoney
       }
     },

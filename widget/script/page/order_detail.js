@@ -9,8 +9,7 @@ function initPage() {
         order: {
           Skillmodel: [{}]
         },
-        userModel: {
-        },
+        userModel: null,
         reason: ''
       }
     },
@@ -18,6 +17,7 @@ function initPage() {
       onClickChat: function() {
 
       },
+      // === 支付 ===
       toPay: function () {
         api.openWin({
           name: 'pay',
@@ -29,6 +29,21 @@ function initPage() {
           }
         })
       },
+      // === 确认完成 ===
+      toConfirm: function() {
+
+      },
+      // === 评价 ===z
+      toComment: function() {
+        api.openWin({
+          name: 'comment',
+          url: 'widget://html/comment.html',
+          pageParam: {
+            id: api.pageParam.id
+          }
+        })
+      },
+      // ===取消 ===
       onCancel: function () {
         var self = this
         var dialogBox = api.require('dialogBox');

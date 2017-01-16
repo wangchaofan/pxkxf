@@ -1,0 +1,41 @@
+#commentContent {
+    display: block;
+    width: 100%;
+    height: 5rem;
+    font-size: 0.6rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #eee;
+}
+.pingfen-wrap h3 {
+    margin: 0;
+    padding: 0 0.75rem;
+    height: 2rem;
+    font-size: 0.7rem;
+    line-height: 2rem;
+    font-weight: 400;
+    border-bottom: 1px solid #ddd;
+}
+.input-row > label {
+    font-size: 0.65rem;
+}
+.pingfen-row {
+    padding: 0 0.75rem;
+    height: 2rem;
+}
+.pingfen-row-name {
+    font-size: 0.7rem;
+}
+.good {
+    margin: 0 0.2rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: url('../image/icon_good.png') no-repeat;
+    background-size: cover;
+}
+.bad {
+    margin: 0 0.2rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: url('../image/icon_nogood.png') no-repeat;
+    background-size: cover;
+}
