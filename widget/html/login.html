@@ -10,7 +10,9 @@
 </head>
 <body>
   <div id="mainPage" class="wrapper">
-    <my-header title="登录"></my-header>
+    <my-header title="登录">
+      <div slot="headerLeft"></div>
+    </my-header>
     <div class="login-form bg-white">
       <div class="login-form-input">
         <input class="login-form__username" v-model="phone" type="text" placeholder="请输入用户名">

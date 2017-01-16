@@ -82,7 +82,10 @@ function initPage() {
             api.sendEvent({
               name: 'logoutSuccess'
             })
-            api.closeWin()
+            api.openWin({
+              name: 'login',
+              url: 'widget://html/login.html'
+            })
 					}
 				}, function(err) {
 

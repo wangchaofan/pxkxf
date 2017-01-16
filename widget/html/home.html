@@ -14,8 +14,8 @@
 <div id="mainPage" class="main-wrap">
   <div class="top-banner">
     <div class="logo"></div>
-    <div class="weather">
-      <div><strong>12℃</strong>晴</div>
+    <div class="weather" v-cloak>
+      <div><strong>{{temperature}}℃</strong>{{weatherText}}</div>
       <div class="ar">空气良</div>
     </div>
     <div class="top-banner-bottom">
@@ -31,7 +31,7 @@
       </div>
       <div class="top-banner-bottom__right">
         <div class="message-tip" @click="goViewMessage">
-          <div class="message-tip-number"><i v-cloak>{{messageCount}}</i></div>
+          <div class="message-tip-number" v-if="messageCount > 0"><i v-cloak>{{messageCount}}</i></div>
         </div>
       </div>
     </div>

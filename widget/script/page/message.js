@@ -27,8 +27,11 @@ function initPage() {
           url: BaseService.apiUrl + 'getXSchat',
           data: { userid: Helper.getUserId() }
         }).done(function(res) {
-          self.list = ParseJson(res.data)
-          console.log(ParseJson(res.data))
+          if (res.key === 'true') {
+            self.list = ParseJson(res.data)
+            console.log(ParseJson(res.data))
+          }
+          // alert(JSON.stringify(res))
         })
       },
       goNotice: function () {

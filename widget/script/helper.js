@@ -24,7 +24,9 @@ var MockData = {
 Vue.component('my-header', {
   template: '<header class="header">' +
             ' <div class="header-left">' +
-            '   <span class="return-back" @click="returnBack"></span>' +
+            '   <slot name="headerLeft">' +
+            '     <span class="return-back" @click="returnBack"></span>' +
+            '   </slot>' +
             ' </div>' +
             ' <div class="header-center">' +
             '   <span class="header-center-text">{{title}}</span>' +

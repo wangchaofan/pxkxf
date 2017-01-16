@@ -64,9 +64,9 @@ function initPage() {
 							api.setPrefs({
 							    key: 'userid',
 							    value: res.data
-							});
+							})
 							api.sendEvent({
-								name: 'loginSuccess'
+								name: 'initHomePage'
 							})
 							api.closeWin()
 						} else {
@@ -94,4 +94,11 @@ setTimeout(function() {
 
 apiready = function(){
   initPage()
+  api.addEventListener({
+    name: 'keyback'
+	}, function(ret, err) {
+		if (!ret.longPress) {
+			api.closeWin({name: 'root'})
+		}
+	})
 }

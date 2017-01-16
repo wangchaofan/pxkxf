@@ -7,6 +7,7 @@ function initPage() {
     created: function() {
       this.getList('demandList', 'getdemaorder')
       this.getMessageCount()
+      this.getLocation()
     },
     data: function() {
       return {
@@ -14,12 +15,54 @@ function initPage() {
         supplyList: [],
         nearByList: [],
         currentTab: 'demand',
-        city: '成都',
+        city: '成都市',
         type: '',
-        messageCount: ''
+        messageCount: '',
+        weatherText: '',
+        temperature: ''
       }
     },
     methods: {
+      getLocation: function() {
+        var self = this
+        $.ajax({
+          url: 'http://api.map.baidu.com/location/ip?ak=HSXjSbv4ZGFgRHwLwvje7tqo',
+          dataType: 'json',
+          dataFilter: function(res) {
+            return res
+          }
+        }).then(function(res) {
+          console.log(res)
+          if (res.status === 0) {
+            self.city = res.content.address_detail.city
+          } else {
+            api.toast({
+              msg: '定位失败'
+            })
+          }
+          self.getWeather()
+        })
+      },
+      getWeather: function() {
+        var self = this
+        $.ajax({
+          type: 'get',
+          url: 'https://api.thinkpage.cn/v3/weather/now.json',
+          data: {
+            key: 'ugvl5p1eioqcd3lq',
+            location: self.city,
+            language: 'zh-Hans',
+            unit: 'c'
+          },
+          dataType: 'json',
+          dataFilter: function(res) {
+            return res
+          }
+        }).then(function(res) {
+          self.temperature = res.results[0].now.temperature
+          self.weatherText = res.results[0].now.text
+        })
+      },
       goViewMessage: function() {
         api.openWin({
             name: 'message',
