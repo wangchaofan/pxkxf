@@ -15,7 +15,7 @@
   <form class="supply-form" action="">
     <div class="input-row">
       <label for="skillname">供应名称</label>
-      <input id="skillname" type="text" v-model="skill.skillname" placeholder="填写或选择您可以赚钱的技能（10字内）">
+      <input id="skillname" type="text" v-model="skill.skillName" placeholder="填写或选择您可以赚钱的技能（10字内）">
     </div>
     <div class="input-row supply-detail">
       <label for="skilldetails">供应详情</label>
@@ -49,7 +49,7 @@
       </div>
       <div class="person-credentials-list" v-cloak>
         <div class="person-credentials-image-wrap" v-for="(img, index) in images">
-          <div class="button-delete"></div>
+          <div class="button-delete" @click="deleteImage(index)"></div>
           <img :src="img"  alt="">
         </div>
         <div class="upload-box">

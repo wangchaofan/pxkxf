@@ -43,6 +43,7 @@ function initPage() {
         api.openWin({
           name: 'mysupply',
           url: 'widget://html/mysupply.html',
+          reload: true,
           pageParam: {
             searchContent: content
           }

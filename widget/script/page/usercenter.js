@@ -32,6 +32,7 @@ function initPage() {
         api.openWin({
           name: pageName,
           url: 'widget://html/' + pageName + '.html',
+          reload: true,
           pageParam: {
 
           }

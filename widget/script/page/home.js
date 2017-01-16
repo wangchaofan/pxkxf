@@ -77,6 +77,7 @@ function initPage() {
         api.openWin({
             name: 'message',
             url: 'widget://html/message.html',
+            reload: true,
             pageParam: {
 
             }

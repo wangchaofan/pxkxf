@@ -39,6 +39,7 @@ var ListItem = {
       api.openWin({
         name: 'order_detail',
         url: 'widget://html/order_detail.html',
+        reload: true,
         pageParam: {
           id: this.myData.SillYYDDId
         }

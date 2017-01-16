@@ -56,7 +56,8 @@ function initPage() {
       return {
         userInfo: {},
         dynamic: null,
-        skill: null
+        skill: null,
+        title: '用户昵称'
       }
     },
     computed: {
@@ -67,6 +68,14 @@ function initPage() {
       }
     },
     methods: {
+      onClickReturnBack: function() {
+        if (this.title === '选择头像') {
+          this.FNImageClip.close()
+          this.title = "用户昵称"
+        } else {
+          api.closeWin()
+        }
+      },
       viewDynamic: function() {
         api.openWin({
           name: 'mydynamics',
@@ -107,27 +116,83 @@ function initPage() {
         var self = this
         api.getPicture({
           sourceType: sourceType,
-          encodingType: 'jpg',
+          encodingType: 'png',
           mediaValue: 'pic',
-          destinationType: 'base64',
+          destinationType: 'url',
           allowEdit: true,
           quality: 50,
           targetWidth: 200,
           targetHeight: 200,
           saveToPhotoAlbum: true
         }, function(ret, err) { 
-          self.uploadAvatar(ret.base64Data)
+          self.clipImage(ret.data)
+        })
+      },
+      clipImage: function(src) {
+        this.title = '选择头像'
+        var FNImageClip = api.require('FNImageClip');
+        this.FNImageClip = FNImageClip
+        FNImageClip.open({
+          rect: {
+            x: 0,
+            y: 48,
+            w: api.winWidth,
+            h: api.winHeight - 48
+          },
+          srcPath: src,
+          style: {
+            mask: 'rgba(0,0,0,0.5)',
+            clip: {
+              w: 240,
+              h: 240,
+              x: (api.winWidth - 240) / 2,
+              y: (api.winHeight - 240 - 48) / 2,
+              borderColor: '#666',
+              borderWidth: 1,
+              appearance: 'rectangle'
+            }
+          },
+          mode: 'image'
+        }, function(ret, err) {
+  
+        })
+      },
+      clipImageComplete: function() {
+        var self = this
+        this.FNImageClip.save({
+          destPath: 'fs://imageClip/result.png',
+          copyToAlbum: false,
+          quality: 0.8
+        }, function(ret, err) {
+          if (ret) {
+            self.userInfo.pheadimgUrl = ret.destPath
+            self.skill.pheadimgUrl = ret.destPath
+            self.FNImageClip.close()
+            convertImgToBase64(ret.destPath, function(base64) {
+              self.uploadAvatar(base64)
+            })
+          } else {
+            alert(JSON.stringify(err));
+          }
         })
       },
       uploadAvatar: function(image) {
         var self = this
+        api.showProgress({
+            style: 'default',
+            animationType: 'fade',
+            title: '',
+            text: '正在上传头像...',
+            modal: false
+        })
         $.ajax({
           url: BaseService.apiUrl + 'saveimg',
           data: {userid: Helper.getUserId(), fileNameurl: Helper.transformImageData(image)}
         }).done(function(res) {
+          api.hideProgress();
           if (res.key === 'true') {
             api.toast({
-              msg: '修改成功'
+              msg: '上传成功'
             })
             self.userInfo.pheadimgUrl = image
             api.sendEvent({

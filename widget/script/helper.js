@@ -85,6 +85,7 @@ Vue.component('user-box', {
       api.openWin({
         name: 'user_homepage',
         url: 'user_homepage',
+        reload: true,
         pageParam: {
           uid: this.user.lUserId
         }
@@ -259,4 +260,20 @@ function dateFormat(val, fmt) {
   for (var k in o)
   if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
   return fmt
+}
+
+function convertImgToBase64(url, callback, outputFormat){
+  var canvas = document.createElement('CANVAS'),
+    ctx = canvas.getContext('2d'),
+    img = new Image;
+    img.crossOrigin = 'Anonymous';
+    img.onload = function(){
+      canvas.height = img.height;
+      canvas.width = img.width;
+      ctx.drawImage(img,0,0);
+      var dataURL = canvas.toDataURL(outputFormat || 'image/png');
+      callback.call(this, dataURL);
+      canvas = null; 
+    };
+    img.src = url;
 }

@@ -4,7 +4,7 @@ function initPage() {
 		created: function() {
 			// this.skill = {
 			// 	userid: Helper.getUserId(),
-			// 	skillname: '测试',
+			// 	skillName: '测试',
 			// 	skilldetails: '测试详情',
 			// 	skilltype: '',
 			// 	servertime: '',
@@ -15,15 +15,15 @@ function initPage() {
 			// 	imgarr: '',
 			// 	Remark: '嘿嘿'
 			// }
-			if (api.pageParam.id) {
+			// if (api.pageParam.id) {
 				this.getSupply()
-			}
+			// }
 		},
 		data: function() {
 			return {
 				skill: {
 					userid: Helper.getUserId(),
-					skillname: '',
+					skillName: '',
 					skilldetails: '',
 					skilltype: '',
 					servertime: '',
@@ -34,8 +34,8 @@ function initPage() {
 					imgarr: '',
 					Remark: ''
 				},
-				title: api.pageParam.id ? '修改供应' : '发布供应',
-				// title: '修改供应',
+				// title: api.pageParam.id ? '修改供应' : '发布供应',
+				title: '修改供应',
 				submiting: false,
 				images: []
 			}
@@ -55,25 +55,27 @@ function initPage() {
 				$.ajax({
 					url: BaseService.apiUrl + 'getskillinfo',
 					data: {
-						skillid: api.pageParam.id
-						// skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+						// skillid: api.pageParam.id
+						skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
 					}
 				}).done(function(res) {
 					var data = ParseJson(res.data)[0]
 					console.log(ParseJson(res.data)[0])
 					var skill = self.skill
-					skill.skillname = data.skillName
+					skill.ddid = data.skillID
+					skill.skillName = data.skillName
 					skill.skilldetails = data.skilldetails
-					skill.skilltype = data.skillType
+					skill.skilltype = data.skillType || ''
 					skill.Province = data.addressprovincese
 					skill.City = data.addressCityse
 					skill.District = data.addressdistrctse
 					skill.money = data.smoney
 					skill.Remark = data.Remark
 					skill.servertime = Helper.dateFormat(data.servertime, 'yyyy-MM-dd')
-					self.images = _.forEach(data.Skillworksmodel, function(v) {
-						Helper.imagePreview()
-						return v.skillwoksurl
+					_.forEach(data.Skillworksmodel, function(v) {
+						convertImgToBase64(v.skillwoksurl, function(base64) {
+							self.images.push(base64)
+						})
 					})
 				})
 			},
@@ -97,6 +99,9 @@ function initPage() {
 					})
 				}
 			},
+			deleteImage: function(index) {
+				this.images.splice(index, 1)
+			},
 			onSubmit: function() {
 				if (this.submiting) return 
 				this.skill.imgarr = _.map(this.images, Helper.transformImageData).join(',')
@@ -107,14 +112,31 @@ function initPage() {
 					data.City = data.Province
 				}
 				this.submiting = true
-				if (api.pageParam.id) {
-					this.edit(data)
-				} else {
-					this.add(data)
-				}
+				this.edit(data)
+				// if (api.pageParam.id) {
+				// 	data.ddid = api.pageParam.id
+				// 	this.edit(data)
+				// } else {
+				// 	this.add(data)
+				// }
 			},
 			edit: function(data) {
-
+				$.ajax({
+					url: BaseService.apiUrl + 'updateSkill',
+					data: data
+				}).then(function(res) {
+					if (res.key === 'true') {
+						console.log(res)
+						api.toast({
+					    msg: '修改成功'
+						})
+						api.closeToWin({name: 'mysupply'})
+					} else {
+						api.toast({
+					    msg: res.mage
+						})
+					}
+				})
 			},
 			add: function(data) {
 				var self = this

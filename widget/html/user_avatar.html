@@ -11,7 +11,17 @@
 </head>
 <body>
 	<div class="wrapper">
-		<my-header title="用户昵称"></my-header>
+		<header class="header">
+		  <div class="header-left">
+		    <span class="return-back" @click="onClickReturnBack"></span>
+		  </div>
+		  <div class="header-center">
+		    <span class="header-center-text">{{title}}</span>
+		  </div>
+		  <div class="header-right">
+		  	<div slot="headerRight" v-show="title === '选择头像'" @click="clipImageComplete">确定</div>
+		  </div>
+		</header>
 		<section class="user-center-top display-flex" v-if="userInfo.pnickname" v-cloak>
 			<div class="user-info">			
 				<div class="user-avatar" :style="avatarStyle"></div>
