@@ -67,17 +67,11 @@ function initPage() {
       }
     },
     methods: {
-      viewDynamic: function() {
-        api.openWin({
-          name: 'mydynamics',
-          url: 'widget://html/mydynamics.html'
-        })
-      },
       getData: function() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getuserinfo',
-          data: {uid: Helper.getUserId()}
+          data: {uid: api.pageParam.uid}
         }).then(function(res) {
           var data =  ParseJson(res.data)[0]
           self.userInfo = data
@@ -91,62 +85,9 @@ function initPage() {
           }
         })
       },
-      editAvatar: function() {
-        var self = this
-        api.actionSheet({
-          buttons: ['拍照','从相册选择']
-        }, function(ret, err) {
-          if (ret.buttonIndex === 1) {
-            self.selectImage('camera')
-          } else if (ret.buttonIndex === 2) {
-            self.selectImage('library')
-          }
-        });
-      },
-      selectImage: function(sourceType) {
-        var self = this
-        api.getPicture({
-          sourceType: sourceType,
-          encodingType: 'jpg',
-          mediaValue: 'pic',
-          destinationType: 'base64',
-          allowEdit: true,
-          quality: 50,
-          targetWidth: 200,
-          targetHeight: 200,
-          saveToPhotoAlbum: true
-        }, function(ret, err) { 
-          self.uploadAvatar(ret.base64Data)
-        })
-      },
-      uploadAvatar: function(image) {
-        var self = this
-        $.ajax({
-          url: BaseService.apiUrl + 'saveimg',
-          data: {userid: Helper.getUserId(), fileNameurl: Helper.transformImageData(image)}
-        }).done(function(res) {
-          if (res.key === 'true') {
-            api.toast({
-              msg: '修改成功'
-            })
-            self.userInfo.pheadimgUrl = image
-            api.sendEvent({
-                name: 'editAvatarSuccess',
-                extra: {
-                  avatar: image, 
-                }
-            });
-          } else {
-            api.toast({
-              msg: res.mage
-            });
-          }
-        })
-      },
       goPage: function(pageName) {
-        var pageParam = {}
-        if (pageName === 'phone_setting') {
-          pageParam.phonestate = this.userInfo.phonestate
+        var pageParam = {
+          uid: api.pageParam.uid
         }
         api.openWin({
           name: pageName,
@@ -156,12 +97,6 @@ function initPage() {
         })
       }
     }
-  })
-
-  api.addEventListener({
-    name: 'refreshUserInfo'
-  }, function (ret, err) {
-    vm.getData()
   })
 }
 

@@ -49,7 +49,7 @@ Vue.component('my-header', {
 Vue.component('user-box', {
   template: '<div class="user-center-top display-flex">' +
             '  <div class="user-info">' +
-            '    <div class="user-avatar" style="overflow: hidden;">' +
+            '    <div class="user-avatar" style="overflow: hidden;" @click.prevent="viewUserHomepage">' +
             '      <img :src="avatar" alt="" style="width: 100%;height: 100%;">' +
             '    </div>' +
             '    <div class="user-info-tj">' +
@@ -70,7 +70,7 @@ Vue.component('user-box', {
             '    </slot>' +
             '  </div>' +
             '</div>',
-  props: ['user'],
+  props: ['user', 'preventHome'],
   data: function() {
     return {}
   },
@@ -80,6 +80,15 @@ Vue.component('user-box', {
     },
     onlineText: function() {
       return this.user.onlineState == 2 ? '离线' : '在线'
+    },
+    viewUserHomepage: function() {
+      api.openWin({
+        name: 'user_homepage',
+        url: 'user_homepage',
+        pageParam: {
+          uid: this.user.lUserId
+        }
+      })
     }
   }
 })

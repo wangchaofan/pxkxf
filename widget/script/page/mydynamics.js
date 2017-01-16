@@ -23,7 +23,7 @@ function initPage() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getDynamics',
-          data: {userid: Helper.getUserId()}
+          data: {userid: api.pageParam.uid || Helper.getUserId()}
         }).done(function(res) {
           self.list = ParseJson(res.data)
           console.log(ParseJson(res.data))

@@ -4,7 +4,7 @@ var ListItem = {
   '    <img :src="avatar" alt="">' +
   '  </div>' +
   '  <div class="supply-list-item__right">' +
-  '    <div class="button-edit" :class="{disabled: myData.state == 1 || myData.state == 0}" @click.stop="onClickEdit"></div>' +
+  '    <div class="button-edit" :class="editClass" v-show="showEditButton" @click.stop="onClickEdit"></div>' +
   '    <div class="supply-list-item__param">' +
   '      供应名称：<span class="text-black">{{myData.skillName}}</span>' +
   '    </div>' +
@@ -24,6 +24,12 @@ var ListItem = {
   computed: {
     avatar: function() {
       return this.myData ? this.myData.sUsermodel[0].pheadimgUrl : ''
+    },
+    editClass: function() {
+      return { disabled : this.myData.state == 1 || this.myData.state == 0 }
+    },
+    showEditButton: function() {
+      return !api.pageParam.uid
     }
   },
   methods: {
@@ -98,7 +104,7 @@ function initPage() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getuserSkill',
-          data: { userid: Helper.getUserId() }
+          data: { userid: api.pageParam.uid || Helper.getUserId() }
         }).then(function(res) {
           if (res.key === 'true') {
             self.list = ParseJson(res.data)

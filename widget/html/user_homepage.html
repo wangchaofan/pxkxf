@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="wrapper">
-		<my-header title="用户昵称"></my-header>
+		<my-header title="用户主页"></my-header>
 		<section class="user-center-top display-flex" v-if="userInfo.pnickname" v-cloak>
 			<div class="user-info">			
 				<div class="user-avatar" :style="avatarStyle"></div>
@@ -22,13 +22,12 @@
 				</div>
 			</div>
 			<div class="user-info-rt">
-				<a class="edit-avatar-button" href="javascript:" @click="editAvatar">修改头像</a>
 				<div class="user-level">
 					<user-roles :role="userInfo.levle"></user-roles>
 				</div>
 			</div>
 		</section>
-		<div class="newest-dynamic bg-white" v-if="dynamic" @click="viewDynamic" v-cloak>
+		<div class="newest-dynamic bg-white" v-if="dynamic" @click="goPage('mydynamics')" v-cloak>
 			<div class="newest-dynamic-title">最新动态</div>
 			<div class="dynamic-content">
 				<div class="dynamic-content-text">
@@ -43,15 +42,9 @@
 			<supply-box :my-data="skill"></supply-box>
 		</div>
 		<div class="user-func">
-			<div class="user-func-head" v-cloak>
+			<div class="user-func-head">
 				<span>空闲时间</span>
 				<span class="free-time">{{userInfo.freeTime}}</span>
-			</div>
-			<div class="user-func-container">
-				<div class="user-func-item" @click="goPage('phone_setting')">电话沟通</div>
-				<div class="user-func-item" @click="goPage('edit_userinfo')">编辑资料</div>
-				<div class="user-func-item" @click="goPage('qualification')">专业证书</div>
-				<div class="user-func-item" @click="goPage('certify')">身份认证</div>
 			</div>
 		</div>
 	</div>
@@ -59,6 +52,6 @@
 	<script src="../script/lib/lodash.js"></script>
 	<script src="../script/lib/vue.min.js"></script>
 	<script src="../script/helper.js"></script>
-	<script src="../script/page/user_avatar.js"></script>
+	<script src="../script/page/user_homepage.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 var ListItem = {
   template: '<li class="supply-list-item" @click="viewDetail">' +
-  '  <div class="supply-list-item__left">' +
+  '  <div class="supply-list-item__left" @click.stop="viewUserHomepage">' +
   '    <img :src="usermodel.pheadimgUrl" alt="">' +
   '  </div>' +
   '  <div class="supply-list-item__right">' +
@@ -43,6 +43,15 @@ var ListItem = {
           id: this.myData.SillYYDDId
         }
       })
+    },
+    viewUserHomepage: function() {
+      api.openWin({
+        name: 'user_homepage',
+        url: 'widget://html/user_homepage.html',
+        pageParam: {
+          uid: this.usermodel.lUserId
+        }
+      }) 
     },
     getStateText: function() {
       switch(this.myData.State) {

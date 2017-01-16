@@ -23,6 +23,16 @@ function initPage() {
       }
     },
     methods: {
+      viewUserHomepage: function(user) {
+        console.log(user)
+        api.openWin({
+          name: 'user_homepage',
+          url: 'widget://html/user_homepage.html',
+          pageParam: {
+            uid: user.lUserId
+          }
+        })
+      },
       getLocation: function() {
         var self = this
         $.ajax({
