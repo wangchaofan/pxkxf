@@ -691,6 +691,7 @@ header {
 }
 .header-center-text {
   flex: 1;
+  display: block;
   font-size: 18px;
   line-height: 30px;
   text-align: center;
