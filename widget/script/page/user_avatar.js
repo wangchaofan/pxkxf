@@ -166,7 +166,9 @@ function initPage() {
         }, function(ret, err) {
           if (ret) {
             self.userInfo.pheadimgUrl = ret.destPath
-            self.skill.pheadimgUrl = ret.destPath
+            var skill = _.clone(self.skill)
+            skill.pheadimgUrl = ret.destPath
+            self.skill = skill
             self.FNImageClip.close()
             convertImgToBase64(ret.destPath, function(base64) {
               self.uploadAvatar(base64)
@@ -178,6 +180,7 @@ function initPage() {
       },
       uploadAvatar: function(image) {
         var self = this
+        this.title = '用户昵称'
         api.showProgress({
             style: 'default',
             animationType: 'fade',
@@ -189,22 +192,21 @@ function initPage() {
           url: BaseService.apiUrl + 'saveimg',
           data: {userid: Helper.getUserId(), fileNameurl: Helper.transformImageData(image)}
         }).done(function(res) {
-          api.hideProgress();
+          api.hideProgress()
           if (res.key === 'true') {
             api.toast({
               msg: '上传成功'
             })
-            self.userInfo.pheadimgUrl = image
             api.sendEvent({
-                name: 'editAvatarSuccess',
-                extra: {
-                  avatar: image, 
-                }
+              name: 'editAvatarSuccess',
+              extra: {
+                avatar: image
+              }
             });
           } else {
             api.toast({
               msg: res.mage
-            });
+            })
           }
         })
       },

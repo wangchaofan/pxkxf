@@ -50,7 +50,7 @@
 			</div>
 		</div>
 		<div class="newest-supply bg-white" v-if="skill" @click="goPage('mysupply')" v-cloak>
-			<supply-box :my-data="skill"></supply-box>
+			<supply-box ref="supplyBox" :my-data="skill"></supply-box>
 		</div>
 		<div class="user-func">
 			<div class="user-func-head" v-cloak>
