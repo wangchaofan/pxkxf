@@ -27,4 +27,15 @@
   <permission name="bootCompleted"/>
   <permission name="hardware"/>
   <access origin="*"/>
+  <feature name="aliPayPlus">
+    <param name="urlScheme" value="AliPayPlusA000000011"/>
+  </feature>
+  <feature name="wxPay">
+    <param name="urlScheme" value="wxd0d84bbf23b4a0e4"/>
+    <param name="apiKey" value="wxd0d84bbf23b4a0e4"/>
+    <param name="apiSecret" value="a354f72aa1b4c2b8eaad137ac81434cd"/>
+  </feature>
+  <feature name="rongCloud2">
+    <param name="appKey" value="ik1qhw09ikasp"/>
+  </feature>
 </widget>

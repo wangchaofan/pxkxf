@@ -31,16 +31,19 @@
             </li>
             <li @click="goNotice">
                 <div class="message-list-item">
-                    <div class="message-list-item__avatar">
-                        <img src="" alt="">
+                    <div class="message-list-item__avatar notice">
+                        <span class="has-new-notice" v-if="!hasNoReadNotice"></span>
                     </div>
-                    <div class="message-list-item__info">
+                    <div class="message-list-item__info" v-if="notice">
                         <div class="message-list-item__title">
                             系统通知
                         </div>
                         <div class="message-list-item__date">
+                            {{notice.noticetime | date('yyyy-MM-dd hh:mm:ss')}}
                         </div>
-                        <div class="message-list-item__content text-overflow-es"></div>
+                        <div class="message-list-item__content text-overflow-es">
+                            {{notice.noticecontent}}
+                        </div>
                     </div>
                 </div>
             </li>

@@ -30,9 +30,8 @@ body {
     color: #666;
     font-size: 0.6rem;
     line-height: 1.5;
-    padding: 0.25rem 0;
+    padding: 0.5rem 0;
     border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
 }
 .message-button {
     height: 1.6rem;
@@ -46,6 +45,7 @@ body {
     border-bottom: 1px solid #ddd;
 }
 .message-list-item__avatar {
+    position: relative;
     width: 2.875rem;
     height: 2.875rem;
     border-radius: 0.15rem;
@@ -54,6 +54,19 @@ body {
 .message-list-item__avatar > img {
     width: 100%;
     height: 100%;
+}
+.message-list-item__avatar.notice {
+    background: url('../image/icon_laba.png') center no-repeat;
+    background-size: 2rem 2rem;
+}
+.message-list-item__avatar .has-new-notice {
+    position: absolute;
+    display: block;
+    right: 0;
+    width: 0.4rem;
+    height: 0.4rem;
+    background-color: red;
+    border-radius: 100%;
 }
 .message-list-item__info {
     flex: 1;

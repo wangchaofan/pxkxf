@@ -3,6 +3,7 @@ function initPage() {
     el: '.wrapper',
     created: function() {
       this.getData()
+      this.updateState()
     },
     data: function() {
       return {
@@ -18,6 +19,14 @@ function initPage() {
         }).done(function(res) {
           console.log(ParseJson(res.data))
           self.list = ParseJson(res.data)
+        })
+      },
+      updateState: function() {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'updatestate',
+          data: { tzid: Helper.getUserId() }
+        }).done(function(res) {
         })
       }
     }

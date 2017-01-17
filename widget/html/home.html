@@ -108,7 +108,7 @@
           <li v-for="item in supplyList" @click.prevent="viewSupplyDetail(item)">
             <a class="display-flex">
               <div class="user-info">
-                <div class="user-avatar-wrap" @click.stop="viewUserHomepage(item.Usermodel[0])">
+                <div class="user-avatar-wrap" @click.stop="viewUserHomepage(item.sUsermodel[0])">
                   <img class="user-avatar" v-bind:src="item.sUsermodel[0].pheadimgUrl" alt="">
                   <div class="p-tag">供应</div>
                 </div>

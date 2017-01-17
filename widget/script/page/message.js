@@ -3,10 +3,13 @@ function initPage() {
     el: '.wrapper',
     created: function() {
       this.getData()
+      this.getNotice()
     },
     data: function() {
       return {
-        list: []
+        list: [],
+        notice: null,
+        hasNoReadNotice: false
       }
     },
     methods: {
@@ -19,6 +22,17 @@ function initPage() {
           if (res.key === true) {
             
           }
+        })
+      },
+      getNotice: function() {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'gettz',
+          data: { userid: Helper.getUserId() }
+        }).done(function(res) {
+          self.notice = ParseJson(res.data)[0]
+          self.hasNoReadNotice = _.every(self.notice, function(o) { return o.state == '2'})
+          console.log(ParseJson(res.data))
         })
       },
       getData: function() {
