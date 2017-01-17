@@ -283,7 +283,7 @@ function getRongcloudToken() {
   return $.ajax({
             url: BaseService.apiUrl + 'gettoken',
             data: {
-              userid: ''
+              userid: getUserId()
             }
           })
 }

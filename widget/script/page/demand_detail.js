@@ -30,6 +30,7 @@ function initPage() {
 				$.ajax({
 				url: BaseService.apiUrl + 'getxqinfo',
 				data: { xqid: api.pageParam.id } // 'a17db629-52b6-4b6a-a904-e6c1721e3a00'
+				// data: { xqid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00'}
 				}).done(function(res) {
 				self.demandInfo = ParseJson(res.data)[0]
 				console.log(ParseJson(res.data)[0])
@@ -44,13 +45,21 @@ function initPage() {
 					return
 				}
 				var self = this
+				var data = {
+						// ddid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00',
+						ddid: api.pageParam.id,
+						userid: Helper.getUserId(),
+						describe: self.describe
+					}
+				alert(JSON.stringify(data))
 				$.ajax({
 					url: BaseService.apiUrl + 'addXQInvited',
 					data: {
-						ddid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00',
+						// ddid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00',
+						ddid: api.pageParam.id,
 						userid: Helper.getUserId(),
 						describe: self.describe
-					} // 'a17db629-52b6-4b6a-a904-e6c1721e3a00'
+					}
 				}).done(function(res) {
 					if (res.key === 'true') {
 						alert('应邀成功')

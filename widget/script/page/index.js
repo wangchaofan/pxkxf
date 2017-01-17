@@ -9,6 +9,15 @@ apiready = function() {
 		})
 	} else {
 		initPage()
+
+		var rong = api.require('rongCloud2');
+		// 初始化融云
+		rong.init(function(ret, err) {
+      if (ret.status == 'error') {
+        api.toast({ msg: err.code });
+      } else {
+      }
+    })
 	}
 
 	function initPage() {
