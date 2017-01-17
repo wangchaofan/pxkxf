@@ -27,7 +27,4 @@
   <permission name="bootCompleted"/>
   <permission name="hardware"/>
   <access origin="*"/>
-  <feature name="rongCloud2">
-    <param name="appKey" value="ik1qhw09ikasp" />
-  </feature>
 </widget>
