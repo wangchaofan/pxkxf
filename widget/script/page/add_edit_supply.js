@@ -15,9 +15,9 @@ function initPage() {
 			// 	imgarr: '',
 			// 	Remark: '嘿嘿'
 			// }
-			// if (api.pageParam.id) {
+			if (api.pageParam.id) {
 				this.getSupply()
-			// }
+			}
 		},
 		data: function() {
 			return {
@@ -34,8 +34,8 @@ function initPage() {
 					imgarr: '',
 					Remark: ''
 				},
-				// title: api.pageParam.id ? '修改供应' : '发布供应',
-				title: '修改供应',
+				title: api.pageParam.id ? '修改供应' : '发布供应',
+				// title: '修改供应',
 				submiting: false,
 				images: []
 			}
@@ -55,8 +55,8 @@ function initPage() {
 				$.ajax({
 					url: BaseService.apiUrl + 'getskillinfo',
 					data: {
-						// skillid: api.pageParam.id
-						skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+						skillid: api.pageParam.id
+						// skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
 					}
 				}).done(function(res) {
 					var data = ParseJson(res.data)[0]
@@ -112,13 +112,12 @@ function initPage() {
 					data.City = data.Province
 				}
 				this.submiting = true
-				this.edit(data)
-				// if (api.pageParam.id) {
-				// 	data.ddid = api.pageParam.id
-				// 	this.edit(data)
-				// } else {
-				// 	this.add(data)
-				// }
+				if (api.pageParam.id) {
+					data.ddid = api.pageParam.id
+					this.edit(data)
+				} else {
+					this.add(data)
+				}
 			},
 			edit: function(data) {
 				$.ajax({

@@ -10,7 +10,8 @@ function initPage() {
     },
     data: function() {
       return {
-        wtid: '073cb677-da3b-45ad-8536-9030e3ac5376',
+        // wtid: '073cb677-da3b-45ad-8536-9030e3ac5376',
+        wtid: api.pageParam.id,
         question: null,
         relateQuestion: null,
         expertTWHDmodel: null,

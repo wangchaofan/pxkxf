@@ -46,8 +46,8 @@ function initPage() {
         $.ajax({
           url: BaseService.apiUrl + 'getskillinfo',
           data: {
-            skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
-            // skillddid: api.pageParam.id
+            // skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+            skillddid: api.pageParam.id
           }
         }).then(function(res) {
           if (res.key === 'true') {
