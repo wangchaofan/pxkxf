@@ -15,7 +15,19 @@ function initPage() {
     },
     methods: {
       onClickChat: function() {
+        var rong = api.require('rongCloud2');
+        rong.init(function(ret, err) {
+          alert(JSON.stringify(ret))
+          if (ret.status == 'error')
+            api.toast({ msg: err.code });
+        })
 
+        rong.connect({
+          token: 'ThptTWyiPPPvZHvuSiuri82yq+hfEluLjZ78E1qo4hEVSFQNpqdoPu406urMWKN4Z3/olWR+v9JVLAwfOQoLrA=='
+        }, function(ret, err) {
+          if (ret.status == 'success')
+            api.toast({ msg: ret.result.userId });
+        })
       },
       // === 支付 ===
       toPay: function () {

@@ -14,6 +14,7 @@ var Helper = {
   uploadImg: UploadImg,
   transformImageData: TransformImageData,
   getUserId: getUserId,
+  getRongcloudToken: getRongcloudToken,
   dateFormat: dateFormat
 }
 
@@ -276,4 +277,13 @@ function convertImgToBase64(url, callback, outputFormat){
       canvas = null; 
     };
     img.src = url;
+}
+
+function getRongcloudToken() {
+  return $.ajax({
+            url: BaseService.apiUrl + 'gettoken',
+            data: {
+              userid: ''
+            }
+          })
 }

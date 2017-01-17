@@ -57,7 +57,7 @@ function initPage() {
 						self.showDialog = false
 					} else {
 						api.toast({
-							msg: reg.mage
+							msg: res.mage
 						})
 					}
 				})
