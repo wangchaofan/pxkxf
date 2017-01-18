@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>消防实习</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mysupply.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <script src="../script/adapter.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <div class="header-left">
+            <span class="return-back" @click="returnBack"></span>
+        </div>
+        <div class="header-center">
+            <div class="remand-header">
+                <span :class="{selected: currentPage === 'demand'}" @click="onClickNav('demand')">需求</span>
+                <span :class="{selected: currentPage === 'supply'}" @click="onClickNav('supply')">供应</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="fs24 white"></span>
+        </div>
+    </header>
+    <div class="remand-list" v-if="currentPage === 'demand'" v-cloak>
+        <div class="none-text" v-if="demandList.length === 0" v-cloak>现在还没有需求哦~</div>
+        <ul v-else>
+            <demand-item v-for="item in demandList" :item="item"></demand-item>
+        </ul>
+    </div>
+    <div class="remand-list" v-else>
+        <div class="none-text" v-if="supplyList.length === 0" v-cloak>现在还没有供应哦~</div>
+        <ul v-else>
+            <supply-item v-for="item in supplyList" :item="item"></supply-item>
+        </ul>
+    </div>
+</div>
+<!-- 订单状态（1待支付,2审核中,3发布中,4进行中,5供应完成,6待评价,7订单完成,0已关闭,-1已删除） -->
+<!-- 待支付和，发布中的可以修改 -->
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/page/category_list.js"></script>
+</body>
+</html>

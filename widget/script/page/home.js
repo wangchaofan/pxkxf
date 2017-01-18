@@ -93,9 +93,11 @@ function initPage() {
         })
       },
       onClickType: function(t) {
-        this.type = t
-        this.getList('supplyList', 'getSkill', true)
-        this.getList('demandList', 'getdemaorder', true)
+        api.openWin({
+          name: 'category_list',
+          url: 'widget://html/category_list.html',
+          pageParam: {category: t}
+        })
       },
       onClickSearchButton: function() {
         api.openWin({

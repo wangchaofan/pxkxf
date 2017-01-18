@@ -28,7 +28,7 @@
   <permission name="hardware"/>
   <access origin="*"/>
   <feature name="aliPayPlus">
-    <param name="urlScheme" value="AliPayPlusA000000011"/>
+    <param name="urlScheme" value="AliPayPlusA6937824183587"/>
   </feature>
   <feature name="wxPay">
     <param name="urlScheme" value="wxd0d84bbf23b4a0e4"/>
