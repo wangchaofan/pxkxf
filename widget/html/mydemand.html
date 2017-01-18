@@ -33,7 +33,7 @@
   <div class="supply-list" v-else>
     <div class="none-text" v-if="inviteList.length === 0" v-cloak>暂时没有应邀~</div>
     <ul v-else>
-      <list-item v-for="item in inviteList" :my-data="item"></list-item>
+      <invite-item v-for="item in inviteList" :my-data="item"></invite-item>
     </ul>
   </div>
   <div class="remind fs24 ac" v-show="currentPage === 'demand'">定标后，可在我的订单中与中标者联系</div>
