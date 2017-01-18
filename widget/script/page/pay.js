@@ -28,8 +28,9 @@ function initPage() {
         if (this.submiting) return
         var self = this
         this.submiting = true
+        var url = api.pageParam.orderType === 'demand' ? 'xqcz' :  'gyddcz'
         $.ajax({
-          url: BaseService.apiUrl + 'gyddcz',
+          url: BaseService.apiUrl + url,
           data: {
             userid: Helper.getUserId(),
             ddid: api.pageParam.orderId

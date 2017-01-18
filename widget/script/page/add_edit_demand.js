@@ -50,7 +50,22 @@ function initPage() {
 					    name: 'refreshMyDemand'
 						})
 						setTimeout(function() {
-							api.closeWin()
+							api.openWin({
+								name: 'pay',
+								url: 'widget://html/pay.html',
+								reload: true,
+								progress: {
+									type: 'page'
+								},
+								pageParam: {
+									mmoney: self.demand.money,
+									orderId: res.data,
+									orderType: 'demand'
+								}
+							})
+							setTimeout(function() {
+								api.closeWin()
+							}, 2000)
 						}, 3000)
 					} else {
 						api.toast({

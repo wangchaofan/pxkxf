@@ -148,22 +148,8 @@ function initPage() {
 							msg: '发布成功'
 						})
 						setTimeout(function() {
-							api.openWin({
-								name: 'pay',
-								url: 'widget://html/pay.html',
-								reload: true,
-								progress: {
-									type: 'page'
-								},
-								pageParam: {
-									mmoney: self.skill.money,
-									orderId: res.data
-								}
-							})
-							setTimeout(function() {
-								api.closeWin()
-							}, 2000)
-						}, 3000)
+							api.closeWin()
+						}, 2000)
 					} else {
 						api.toast({
 							msg: res.mage

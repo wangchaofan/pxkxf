@@ -15,18 +15,13 @@ function initPage() {
     },
     methods: {
       onClickChat: function() {
-        var rong = api.require('rongCloud2');
-        Helper.getRongcloudToken().then(function(res) {
-          rong.connect({
-            token: res.data
-          }, function(ret, err) {
-            alert(JSON.stringify(ret))
-            if (ret.status == 'success')
-              api.toast({ msg: ret.result.userId });
-          })
-        }, function(err) {
-          alert(JSON.stringify(err))
-        })
+        api.openWin({
+            name: 'chat_room',
+            url: 'widget://html/chat_room.html',
+            pageParam: {
+                name: 'value'
+            }
+        });
       },
       // === 支付 ===
       toPay: function () {

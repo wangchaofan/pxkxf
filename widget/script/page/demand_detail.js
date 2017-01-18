@@ -25,16 +25,24 @@ function initPage() {
     	}
     },
     methods: {
+    	share: function() {
+    		var sharedModule = api.require('shareAction');
+    		sharedModule.share({
+  		    type: 'url',
+  		    text: '111',
+  		    path: 'http://www.baidu.com'
+    		})
+    	},
     	getData: function() {
-			var self = this
-				$.ajax({
-				url: BaseService.apiUrl + 'getxqinfo',
-				data: { xqid: api.pageParam.id } // 'a17db629-52b6-4b6a-a904-e6c1721e3a00'
-				// data: { xqid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00'}
-				}).done(function(res) {
-				self.demandInfo = ParseJson(res.data)[0]
-				console.log(ParseJson(res.data)[0])
-			})
+				var self = this
+					$.ajax({
+					url: BaseService.apiUrl + 'getxqinfo',
+					data: { xqid: api.pageParam.id } // 'a17db629-52b6-4b6a-a904-e6c1721e3a00'
+					// data: { xqid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00'}
+					}).done(function(res) {
+					self.demandInfo = ParseJson(res.data)[0]
+					console.log(ParseJson(res.data)[0])
+				})
     	},
 			onClickCancel: function() {
 				this.showDialog = false
@@ -51,7 +59,6 @@ function initPage() {
 						userid: Helper.getUserId(),
 						describe: self.describe
 					}
-				alert(JSON.stringify(data))
 				$.ajax({
 					url: BaseService.apiUrl + 'addXQInvited',
 					data: {
@@ -72,7 +79,13 @@ function initPage() {
 				})
 			},
     	goChat: function() {
-
+    		api.openWin({
+  		    name: 'chat_room',
+  		    url: 'widget://html/chat_room.html',
+  		    pageParam: {
+		        name: 'value'
+  		    }
+    		})
     	},
     	goInvite: function() {
 				this.showDialog = true

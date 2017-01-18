@@ -12,7 +12,7 @@
 <body>
 	<div class="wrapper">
 		<my-header title="需求详情">
-			<div class="fs24 white ac" slot="headerRight">分享</div>
+			<div class="fs24 white ac" slot="headerRight" @click="share">分享</div>
 		</my-header>
 		<section class="user-center-top display-flex" v-cloak>
 			<div class="user-info" v-if="userModel && demandInfo">			
