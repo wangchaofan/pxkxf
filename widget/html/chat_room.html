@@ -12,11 +12,10 @@
 <body>
 <div class="wrapper" v-cloak>
     <my-header title="在线咨询"></my-header>
-    <div class="share-price ac">
-        <div class="promo-bag"></div>
-        <div class="share-price-condition">邀请好友应邀此需求并完成订单</div>
-        <div class="share-price-text">您将获得订单金额的15%</div>
+    <div class="fs24">
+        <p v-for="msg in receiveMessages" v-html="transformMessage(msg.content.text)"></p>
     </div>
+    <div>{{userId}}</div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>
 <script src="../script/lib/lodash.js"></script>

@@ -3,6 +3,17 @@ function initPage() {
     el: '.wrapper',
     created: function() {
       this.getUserData()
+      this.aliPayPlus = api.require('aliPayPlus');
+      this.aliPayPlus.config({
+        appId: '2016073100134028',
+        rsaPriKey: 'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCdMAIgXVBZ19OgT1ls59KOPk23YdfRfTa8jBUgGqBH7f5wzLe',
+      }, function(ret, err) {
+        api.alert({
+          title: '支付结果',
+          msg: JSON.stringify(ret),
+          buttons: ['确定']
+        });
+      });
     },
     data: function() {
       return {
@@ -45,7 +56,7 @@ function initPage() {
             }, 4000)
           } else {
             api.toast({
-                msg: res.mage 
+                msg: res.mage
             });
           }
         }).always(function() {

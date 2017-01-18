@@ -82,6 +82,7 @@ function initPage() {
     		api.openWin({
   		    name: 'chat_room',
   		    url: 'widget://html/chat_room.html',
+					allowEdit: true,
   		    pageParam: {
 		        name: 'value'
   		    }

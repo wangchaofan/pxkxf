@@ -14,7 +14,11 @@ apiready = function() {
 		// 初始化融云
 		rong.init(function(ret, err) {
       if (ret.status == 'error') {
-        api.toast({ msg: err.code });
+				rong.setOnReceiveMessageListener(function(ret, err) {
+					api.toast({msg: 'recevie 1111'})
+					api.toast({ msg: JSON.stringify(ret.result.message) });
+					api.toast({ msg: ret.result.message.left });
+				})
       } else {
       }
     })
