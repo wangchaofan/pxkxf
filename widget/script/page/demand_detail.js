@@ -11,7 +11,8 @@ function initPage() {
       return {
       	demandInfo: null,
 				showDialog: false,
-				describe: ''
+				describe: '',
+				isMe: api.pageParam.user === 'self'
       }
     },
     computed: {
@@ -35,15 +36,40 @@ function initPage() {
     	},
     	getData: function() {
 				var self = this
-					$.ajax({
-					url: BaseService.apiUrl + 'getxqinfo',
-					data: { xqid: api.pageParam.id } // 'a17db629-52b6-4b6a-a904-e6c1721e3a00'
-					// data: { xqid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00'}
-					}).done(function(res) {
+				$.ajax({
+				url: BaseService.apiUrl + 'getxqinfo',
+				data: { xqid: api.pageParam.id }
+				// data: { xqid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00'}
+				}).done(function(res) {
 					self.demandInfo = ParseJson(res.data)[0]
 					console.log(ParseJson(res.data)[0])
 				})
     	},
+			// 确定选择应邀人
+			confirmInvite: function(inviteItem) {
+				var self = this
+				if (inviteItem.ystate == 2) return
+				api.confirm({
+					title: '提示',
+					msg: '确定选择应邀人？',
+					buttons: ['确定', '取消']
+				}, function(ret, err) {
+					if (ret.buttonIndex === 1) {
+						$.ajax({
+							url: BaseService.apiUrl + 'getgetXQInvitedSate',
+							data: {yyddid: inviteItem.InvitedId}
+						}).then(function(res) {
+							if (res.key === 'true') {
+								inviteItem.ystate = 2
+							} else {
+								api.toast({
+									msg: res.mage
+								})
+							}
+						})
+					}
+				})
+			},
 			onClickCancel: function() {
 				this.showDialog = false
 			},

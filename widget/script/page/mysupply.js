@@ -4,7 +4,7 @@ var ListItem = {
   '    <img :src="avatar" alt="">' +
   '  </div>' +
   '  <div class="supply-list-item__right">' +
-  '    <div class="button-edit" :class="editClass" v-show="showEditButton" @click.stop="onClickEdit"></div>' +
+  '    <div class="button-edit" v-if="showEditButton" @click.stop="onClickEdit">操作</div>' +
   '    <div class="supply-list-item__param">' +
   '      供应名称：<span class="text-black">{{myData.skillName}}</span>' +
   '    </div>' +
@@ -25,8 +25,8 @@ var ListItem = {
     avatar: function() {
       return this.myData ? this.myData.sUsermodel[0].pheadimgUrl : ''
     },
-    editClass: function() {
-      return { disabled : this.myData.state == 1 || this.myData.state == 0 }
+    canEdit: function() {
+      return this.myData.state != 1 && this.myData.state != 0
     },
     showEditButton: function() {
       return !api.pageParam.uid
@@ -54,20 +54,59 @@ var ListItem = {
         }
       })
     },
+    delete: function() {
+      var self = this
+      api.confirm({
+        title: '提示',
+        msg: '确认删除？',
+        buttons: ['确定', '取消']
+      }, function(ret, err) {
+        if (ret.buttonIndex === 1) {
+          $.ajax({
+            url: BaseService.apiUrl + 'deleteskill',
+            data: {skillid: self.myData.skillID}
+          }).then(function(res) {
+            if (res.key === 'true') {
+              vm.getData()
+            } else {
+              api.toast({
+                  msg: res.mage
+              })
+            }
+          })
+        }
+      })
+    },
     onClickEdit: function() {
-      api.openWin({
-        name: 'add_edit_supply',
-        url: 'widget://html/add_edit_supply.html',
-        pageParam: {
-          id: this.myData.skillID
+      var self = this
+      var buttons = ['删除']
+      if (this.canEdit) {
+        buttons.splice(0, 0, '修改')
+      }
+      api.actionSheet({
+        cancelTitle: '取消',
+        buttons: buttons
+      }, function(ret, err) {
+        if (self.canEdit) {
+          if (ret.buttonIndex === 1) {
+            Helper.openWin('add_edit_supply', {id: self.myData.skillID})
+          } else if (ret.buttonIndex === 2) {
+            self.delete()
+          }
+        } else {
+          if (ret.buttonIndex === 1) {
+            self.delete()
+          }
         }
       })
     }
   }
 }
 
+var vm
+
 function initPage() {
-  var vm = new Vue({
+  vm = new Vue({
     el: '.wrapper',
     created: function() {
       if (api.pageParam.searchContent) {

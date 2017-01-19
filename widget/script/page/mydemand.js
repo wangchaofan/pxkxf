@@ -4,7 +4,7 @@ var ListItem = {
             '    <img :src="avatar" alt="">' +
             '  </div>' +
             '  <div class="supply-list-item__right">' +
-            '    <div class="button-edit" :disabled="getDisabled(myData.orderState)" @click.stop="onClickEdit"></div>' +
+            '    <div class="button-edit" @click.stop="onClickEdit">操作</div>' +
             '    <div class="supply-list-item__param">' +
             '      需求名称：<span class="text-black">{{myData.demandTitle}}</span>' +
             '    </div>' +
@@ -24,6 +24,9 @@ var ListItem = {
   computed: {
     avatar: function() {
       return this.myData ? this.myData.Usermodel[0].pheadimgUrl : ''
+    },
+    canEdit: function() {
+      return !(this.myData.orderState == 1 || this.myData.orderState == 3)
     }
   },
   methods: {
@@ -33,14 +36,10 @@ var ListItem = {
         name: 'demand_detail',
         url: 'widget://html/demand_detail.html',
         pageParam: {
-          id: this.myData.demandorderId
+          id: this.myData.demandorderId,
+          user: 'self'
         }
       })
-    },
-    getDisabled: function(state) {
-      if (state == 1 || state == 3)
-        return false
-      return true
     },
     getStateText: function(state) {
       switch(state) {
@@ -64,12 +63,49 @@ var ListItem = {
           return '已删除'
       }
     },
+    delete: function() {
+      var self = this
+      api.confirm({
+        title: '提示',
+        msg: '确认删除？',
+        buttons: ['确定', '取消']
+      }, function(ret, err) {
+        if (ret.buttonIndex === 1) {
+          $.ajax({
+            url: BaseService.apiUrl + 'deletexq',
+            data: {xqid: self.myData.demandorderId}
+          }).then(function(res) {
+            if (res.key === 'true') {
+              vm.getData()
+            } else {
+              api.toast({
+                  msg: res.mage
+              })
+            }
+          })
+        }
+      })
+    },
     onClickEdit: function() {
-      api.openWin({
-        name: 'add_edit_demand',
-        url: 'widget://html/add_edit_demand.html',
-        pageParam: {
-          id: this.myData.demandorderId
+      var self = this
+      var buttons = ['删除']
+      if (this.canEdit) {
+        buttons.splice(0, 0, '修改')
+      }
+      api.actionSheet({
+        cancelTitle: '取消',
+        buttons: buttons
+      }, function(ret, err) {
+        if (self.canEdit) {
+          if (ret.buttonIndex === 1) {
+            Helper.openWin('add_edit_demand', {id: self.myData.demandorderId})
+          } else if (ret.buttonIndex === 2) {
+            self.delete()
+          }
+        } else {
+          if (ret.buttonIndex === 1) {
+            self.delete()
+          }
         }
       })
     }
@@ -142,8 +178,10 @@ var InviteItem = {
   }
 }
 
+var vm
+
 function initPage() {
-  var vm = new Vue({
+  vm = new Vue({
     el: '.wrapper',
     created: function() {
       this.getData()

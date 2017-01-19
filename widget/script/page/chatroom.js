@@ -2,6 +2,7 @@ var vm;
 var rong;
 var imageJson;
 var IMAGE_REGXE = /(\[[\u4e00-\u9fa5]+])/g;
+
 $.ajax({
   url: '../res/emotion/emotion.json',
   dataType: 'json',

@@ -12,12 +12,13 @@
 <div class="wrapper">
   <my-header title="我的动态"></my-header>
   <div class="supply-list" v-cloak>
-    <ul>
+    <ul v-if="list.length > 0">
       <li class="supply-list-item" v-for="item in list" @click="viewDetail(item)">
         <div class="supply-list-item__left">
           <img :src="item.Usermodel[0].pheadimgUrl" alt="">
         </div>
         <div class="supply-list-item__right">
+          <div class="button-edit" @click.stop="onClickDelete(item)">删除</div>
           <div class="supply-list-item__param">
             用户：<span class="text-black">{{item.Usermodel[0].pnickname}}</span>
           </div>
@@ -35,6 +36,7 @@
         </div>
       </li>
     </ul>
+    <div class="none-text" v-else v-cloak>你还没有发表动态哦~</div>
   </div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>

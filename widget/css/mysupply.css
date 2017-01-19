@@ -51,10 +51,10 @@
 .button-edit {
     position: absolute;
     right: 0;
-    width: 0.65rem;
+    width: 1.5rem;
     height: 0.65rem;
-    background: url('../image/icon_edit.png') no-repeat;
-    background-size: cover;
+    /* background: url('../image/icon_edit.png') no-repeat; */
+    /* background-size: cover; */
 }
 .button-edit.disabled {
     filter: grayscale(100%);
@@ -87,7 +87,7 @@
     flex: 1;
     margin-top: -2px;
     height: 32px;
-    padding: 0 30px;
+    padding: 0 12px;
 }
 .remand-header > span {
     flex: 1;

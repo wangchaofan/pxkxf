@@ -166,3 +166,16 @@
     background: #e4353a;
     color: #fff;
 }
+.user-info-rt {
+    justify-content: flex-start;
+}
+.confirm-button {
+    margin-top: 0.2rem;
+    align-self: flex-end;
+    text-align: right;
+    font-size: 0.6rem;
+    color: #999;
+}
+.confirm-button.selected {
+    color: green;
+}

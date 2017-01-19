@@ -69,10 +69,11 @@
 				</div>
 				<div class="user-info-rt">
 					<a class="location-byme fs24 text-999" href="javascript:">5km</a>
+					<div class="confirm-button" :class="{selected: item.ystate == 2}" @click="confirmInvite(item)">{{item.ystate == 2 ? '已选择' : '选择'}}</div>
 				</div>
 			</div>
 		</div>
-		<div class="fixed-bottom deman-detail-bottom display-flex">
+		<div class="fixed-bottom deman-detail-bottom display-flex" v-if="!isMe">
 			<div class="button-chat" @click="goChat">聊一聊</div>
 			<div class="button-invite" @click="goInvite">应邀</div>
 			<!--<div class="button-invite-noname" @click="goInviteNoname">匿名应邀</div>-->

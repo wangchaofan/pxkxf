@@ -19,6 +19,29 @@ function initPage() {
             }
         });
       },
+      onClickDelete: function(item) {
+        var self = this
+        api.confirm({
+          title: '提示',
+          msg: '确认删除？',
+          buttons: ['确定', '取消']
+        }, function(ret, err) {
+          if (ret.buttonIndex === 1) {
+            $.ajax({
+              url: BaseService.apiUrl + 'deletedt',
+              data: {dtid: item.dynamicsId}
+            }).then(function(res) {
+              if (res.key === 'true') {
+                self.getData()
+              } else {
+                api.toast({
+                  msg: res.mage
+                })
+              }
+            })
+          }
+        })
+      },
       getData: function() {
         var self = this
         $.ajax({
