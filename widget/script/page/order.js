@@ -68,6 +68,17 @@ var ListItem = {
 }
 
 function initPage() {
+  api.setRefreshHeaderInfo({
+    visible: true,
+    loadingImg: 'widget://image/refresh.png',
+    bgColor: '#ddd',
+    textColor: '#333',
+    textDown: '下拉刷新...',
+    textUp: '松开刷新...',
+    showTime: false
+  }, function(ret, err) {
+    vm.getData()
+  })
   var vm = new Vue({
     el: '.wrapper',
     created: function() {
@@ -95,6 +106,7 @@ function initPage() {
           url: BaseService.apiUrl + 'skilldd',
           data: { userid: Helper.getUserId(), state: self.state }
         }).then(function(res) {
+          api.refreshHeaderLoadDone()
           if (res.key === 'true') {
             console.log(ParseJson(res.data))
             if (self.state === 1) {

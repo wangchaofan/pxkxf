@@ -64,6 +64,7 @@ function initPage() {
 						}).then(function(res) {
 							if (res.key === 'true') {
 								inviteItem.ystate = 2
+								self.demandInfo.yynum = self.demandInfo.yynum + 1
 							} else {
 								api.toast({
 									msg: res.mage

@@ -65,16 +65,6 @@ function initPage() {
           alert(JSON.stringify(err))
         })
       },
-      setReceiveMessageListener: function() {
-        var self = this
-        api.toast({msg: 'setListener'})
-        rong.setOnReceiveMessageListener(function(ret, err) {
-          api.toast({msg: 'recevie 1111'})
-          self.receiveMessages.push(ret.result.message)
-          api.toast({ msg: JSON.stringify(ret.result.message) });
-          api.toast({ msg: ret.result.message.left });
-        })
-      },
       getHistoryMessage: function() {
         var self = this
         rong.getHistoryMessages({

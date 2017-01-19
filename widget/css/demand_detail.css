@@ -134,7 +134,9 @@
     font-size: 0.6rem;
 }
 .dialog-demand-content .row > span:first-child {
+    margin-right: 0.4rem;
     width: 3.9rem;
+    flex: 1;
 }
 .dialog-demand-content .row > span:last-child {
     color: #666;

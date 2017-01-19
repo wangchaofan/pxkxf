@@ -45,8 +45,11 @@
 		<div class="user-func">
 			<div class="user-func-head">
 				<span>空闲时间</span>
-				<span class="free-time">{{userInfo.freeTime}}</span>
+				<span class="free-time">{{userInfo.freeTime || '随时'}}</span>
 			</div>
+		</div>
+		<div class="fixed-bottom">
+			<div class="btn-submit" @click="onFocus" v-cloak>{{isFocus ? '取消关注' : '关注'}}</div>
 		</div>
 	</div>
 	<script src="../script/lib/jquery-3.1.1.min.js"></script>

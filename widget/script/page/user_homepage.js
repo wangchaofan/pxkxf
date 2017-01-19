@@ -51,12 +51,15 @@ function initPage() {
     },
     created: function() {
       this.getData()
+      this.checkIsFocus()
     },
     data: function() {
       return {
         userInfo: {},
         dynamic: null,
-        skill: null
+        skill: null,
+        uid: api.pageParam.uid,
+        isFocus: false
       }
     },
     computed: {
@@ -71,7 +74,7 @@ function initPage() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getuserinfo',
-          data: {uid: api.pageParam.uid}
+          data: {uid: self.uid}
         }).then(function(res) {
           var data =  ParseJson(res.data)[0]
           self.userInfo = data
@@ -85,16 +88,40 @@ function initPage() {
           }
         })
       },
+      checkIsFocus: function() {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'chaksfgz',
+          data: {hyuserid: self.uid, userid: Helper.getUserId()}
+        }).then(function(res) {
+          if (res.key === 'true') {
+            self.isFocus = true
+          }
+        }, function(err) {
+          alert(err)
+        })
+      },
+      onFocus: function () {
+        var self = this
+        var uri = this.isFocus ? 'delFriends' : 'addFriends'
+        $.ajax({
+          url: BaseService.apiUrl + uri,
+          data: {hyuserid: self.uid, userid: Helper.getUserId()}
+        }).then(function(res) {
+          if (res.key === 'true') {
+            self.isFocus = !self.isFocus
+          } else {
+            api.toast({msg: res.mage})
+          }
+        }, function(err) {
+          alert(err)
+        })
+      },
       goPage: function(pageName) {
         var pageParam = {
-          uid: api.pageParam.uid
+          uid: this.uid
         }
-        api.openWin({
-          name: pageName,
-          url: 'widget://html/' + pageName + '.html',
-          reload: true,
-          pageParam: pageParam
-        })
+        Helper.openWin(pageName, pageParam)
       }
     }
   })

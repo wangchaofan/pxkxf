@@ -14,19 +14,11 @@
 		<my-header title="需求详情">
 			<div class="fs24 white ac" slot="headerRight" @click="share">分享</div>
 		</my-header>
-		<section class="user-center-top display-flex" v-cloak>
-			<div class="user-info" v-if="userModel && demandInfo">			
-				<div class="user-avatar" :style="userModel.avatarStyle"></div>
-				<div class="user-info-tj">
-					<div class="user-name"><span class="vam">{{userModel.pnickname}}</span><span class="user-sex user-sex-man vam"></span></div>
-					<div class="online-status">在线</div>
-					<div class="demand-price fs24">愿付酬金：<span class="text-warning">{{demandInfo.dmoney}}</span>元/人 <span class="warrant">(酬金已担保)</span></div>
-				</div>
-			</div>
-			<div class="user-info-rt">
-				<a class="location-byme fs24 text-999" href="javascript:">5km</a>
-			</div>
-		</section>
+		<user-box v-if="demandInfo" :user="demandInfo.Usermodel[0]">
+			<a slot="userRtTop" class="location-byme fs24 text-999" href="javascript:">5km</a>
+			<div slot="userRtBottom"></div>
+			<div slot="userLtBottom" class="demand-price fs24">愿付酬金：<span class="text-warning">{{demandInfo.dmoney}}</span>元/人 <span class="warrant">(酬金已担保)</span></div>
+		</user-box>
 		<div class="remand-detail bg-white container" v-if="demandInfo" v-cloak>
 			<div class="row">
 				<span class="row-label">他的需求</span>

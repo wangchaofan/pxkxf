@@ -1,8 +1,9 @@
 /**
  * Created by chaofanw on 2016/12/23.
  */
+var vm
 function initPage() {
-  var vm = new Vue({
+  vm = new Vue({
     el: '#mainPage',
     created: function() {
       this.getList('demandList', 'getdemaorder')
@@ -156,6 +157,7 @@ function initPage() {
           success: function(res) {
             self[listId] = JSON.parse(res.data)
             console.log(JSON.parse(res.data))
+            api.refreshHeaderLoadDone()
           },
           error: function(err) {
             // alert(JSON.stringify(err))
@@ -175,6 +177,19 @@ setTimeout(function() {
 
 apiready = function() {
   initPage()
+
+  api.setRefreshHeaderInfo({
+    visible: true,
+    loadingImg: 'widget://image/refresh.png',
+    bgColor: '#ddd',
+    textColor: '#333',
+    textDown: '下拉刷新...',
+    textUp: '松开刷新...',
+    showTime: false
+  }, function(ret, err) {
+    vm.getList('demandList', 'getdemaorder', true)
+    vm.getList('supplyList', 'getSkill', true)
+  })
 
   var mySwiper = new Swiper('.swiper-container', {
     loop: true,
