@@ -12,12 +12,6 @@ $.ajax({
   }
 })
 
-function transformMessage(msg) {
-  return msg.replace(IMAGE_REGXE, function(result) {
-    var v = _.find(imageJson, { text: result});
-    return '<img src=../res/emotion/"' + v.name + '".png />'
-  })
-}
 function initPage() {
   rong = api.require('rongCloud2');
   vm = new Vue({
@@ -148,29 +142,29 @@ function initChatbox() {
         normalImg: 'widget://res/img/keybord_button.png'
       },
       recordBtn: {
-          normalBg: '#c4c4c4',
-          activeBg: '#999999',
-          color: '#000',
-          size: 14
+        normalBg: '#c4c4c4',
+        activeBg: '#999999',
+        color: '#000',
+        size: 14
       },
       indicator: {
-          target: 'both',
-          color: '#c4c4c4',
-          activeColor: '#9e9e9e'
+        target: 'both',
+        color: '#c4c4c4',
+        activeColor: '#9e9e9e'
       }
     },
       extras: {
-          titleSize: 10,
-          titleColor: '#a3a3a3',
-          btns: [{
-              title: '图片',
-              normalImg: 'widget://res/img/chatBox_album1.png',
-              activeImg: 'widget://res/img/chatBox_album2.png'
-          }, {
-              title: '拍照',
-              normalImg: 'widget://res/img/chatBox_cam1.png',
-              activeImg: 'widget://res/img/chatBox_cam2.png'
-          }]
+        titleSize: 10,
+        titleColor: '#a3a3a3',
+        btns: [{
+            title: '图片',
+            normalImg: 'widget://res/img/chatBox_album1.png',
+            activeImg: 'widget://res/img/chatBox_album2.png'
+        }, {
+            title: '拍照',
+            normalImg: 'widget://res/img/chatBox_cam1.png',
+            activeImg: 'widget://res/img/chatBox_cam2.png'
+        }]
       }
   }, function(ret, err) {
     if(ret.eventType === 'send') {

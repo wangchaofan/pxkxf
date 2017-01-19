@@ -9,7 +9,8 @@ function initPage() {
         step: 1,
         zhpwd: '',
         ms: '',
-        sended: false
+        sended: false,
+        restext: ''
       }
     },
     computed: {
@@ -18,19 +19,45 @@ function initPage() {
       }
     },
     methods: {
-      getSmsSuccess: function()  {
-
+      getSmsSuccess: function(res)  {
+        if (res.key === 'true') {
+          this.sended = true
+        }
       },
       doStep_first: function() {
-        this.step = this.step + 1
-        this.sended = true
+        if (/^1\d{10}$/.test(this.zhpwd)) {
+          this.step = this.step + 1
+        } else {
+          api.toast({msg: '请输入手机号'})
+        }
       },
       doStep_sencond: function() {
-        this.step = this.step + 1
+        var self = this
+        if (this.ms === '') {
+          alert('请输入验证码')
+          return
+        }
+        $.ajax({
+          url: BaseService.apiUrl + 'zhpwd',
+          data: {
+            userzh: this.zhpwd,
+            ms: this.ms
+          }
+        }).then(function (res) {
+          if (res.key === 'true') {
+            self.restext = res.data
+            self.step = self.step + 1
+          } else {
+            api.toast({msg: res.mage})
+          }
+        }, function(err) {
 
+        })
       },
       doStep_third: function() {
-
+        api.closeToWin({
+          name: 'login'
+        })
       },
       onSubmit: function() {
         if (this.step === 1) {

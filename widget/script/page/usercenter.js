@@ -9,14 +9,10 @@ function initPage() {
         this.getUserInfo()
       }
     },
-    data: function() {
-      return {
-        userid: Helper.getUserId(),
-        userInfo: {
-          pheadimgUrl: '../image/default_avatar.png'
-        },
-        dynamic: null,
-        skill: null
+    data: {
+      userid: Helper.getUserId(),
+      userInfo: {
+        pheadimgUrl: '../image/default_avatar.png'
       }
     },
     computed: {
@@ -47,13 +43,8 @@ function initPage() {
           var data = ParseJson(res.data)[0]
           self.userInfo = data
           console.log(ParseJson(res.data)[0])
-          if (data.Dynamicsmodel) {
-            self.dynamic = data.Dynamicsmodel[0]
-          }
-          if (data.skillmodel) {
-            self.skill = data.skillmodel[0]
-            self.skill.pheadimgUrl = data.pheadimgUrl
-          }
+        }, function(err) {
+          alert(err)
         })
       }
     }

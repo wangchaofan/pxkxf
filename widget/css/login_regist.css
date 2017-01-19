@@ -59,6 +59,7 @@ body {
 }
 .btn-get-code {
 	height: 1.5rem;
+	flex-shrink: 0;
 	padding: 0 0.25rem;
 	font-size: 0.6rem;
 	line-height: 1.5rem;

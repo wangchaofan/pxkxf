@@ -68,11 +68,16 @@ function initPage() {
 							api.sendEvent({
 								name: 'initHomePage'
 							})
-							api.closeWin()
+							api.sendEvent({
+								name: 'loginSuccess'
+							})
+							api.closeToWin({
+							    name: 'root'
+							});
 						} else {
 							api.toast({
 							    msg: res.mage
-							});
+							})
 						}
 					})
 					.fail(function(err) {
