@@ -2,12 +2,18 @@
  * Created by chaofanw on 2017/1/3.
  */
 
+/* === 全局变量 === */
 var ParseJson = JSON.parse
+var MockData = {
+  userid: 'A17DB629-52B6-4B6A-A904-E6C1721E3A05'
+}
 
+/* === api 基础服务 === */
 var BaseService = {
   apiUrl: 'http://120.26.116.143:809/WebServer/userServer.asmx/'
 }
 
+/* === 辅助方法 === */
 var Helper = {
   xmlToJson: XmlToJson,
   imagePreview: ImagePreview,
@@ -15,13 +21,51 @@ var Helper = {
   transformImageData: TransformImageData,
   getUserId: getUserId,
   getRongcloudToken: getRongcloudToken,
-  dateFormat: dateFormat
+  dateFormat: dateFormat,
+  openWin: function(winName, pageParam, option) {
+    var defaultOption = {
+      name: winName,
+      url: 'widget://html/' + winName + '.html',
+      reload: true,
+      useWKWebView: true,
+      scrollToTop: true,
+      progress: {
+        type: 'page'
+      },
+      reload: true,
+      pageParam: pageParam || {}
+    }
+    api.openWin(_.assign(defaultOption, option))
+  },
+  openFrame: function(frameName, pageParam, option) {
+    var defaultOption = {
+      name: 'frameName',
+      url: 'widget://html/' + winName + '.html',
+      rect: {
+          x: 0,
+          y: 48,
+          w: 'auto',
+          h: 'auto'
+      },
+      useWKWebView: true,
+      pageParam: pageParam || {},
+      scrollToTop: true,
+      bounces: true,
+      bgColor: '#fff',
+      vScrollBarEnabled: true,
+      hScrollBarEnabled: false,
+      progress: {
+        type: 'page'
+      },
+      reload: true
+    }
+    api.openFrame(_.assign(defaultOption, option));
+  }
 }
 
-var MockData = {
-	userid: 'A17DB629-52B6-4B6A-A904-E6C1721E3A05'
-}
+/* === Vue 全局components === */
 
+/* === 页面头部 === */
 Vue.component('my-header', {
   template: '<header class="header">' +
             ' <div class="header-left">' +
@@ -47,6 +91,7 @@ Vue.component('my-header', {
   }
 })
 
+/* === 用户box === */
 Vue.component('user-box', {
   template: '<div class="user-center-top display-flex">' +
             '  <div class="user-info">' +
@@ -97,6 +142,7 @@ Vue.component('user-box', {
   }
 })
 
+/* === 专家box === */
 Vue.component('professor-box', {
   template: '<div class="professor-box">' +
             '<div class="professor-avatar">' +
@@ -113,6 +159,7 @@ Vue.component('professor-box', {
   props: ['professor']
 })
 
+/* === 用户好评 === */
 Vue.component('user-good-level', {
   template: '<div class="good-like">' +
             '  好评:' +
@@ -133,6 +180,7 @@ Vue.component('user-good-level', {
   }
 })
 
+/* === 用户等级 === */
 Vue.component('user-roles', {
   template: '<div class="user-roles display-flex">' +
             '  <div class="user-roles-title text-999">用户等级：</div>' +
@@ -158,10 +206,12 @@ Vue.component('user-roles', {
   }
 })
 
+/* === Vue 全局filter */ 
 Vue.filter('date', function(val, fmt) {
   return dateFormat(val, fmt)
 })
 
+/* === ajax 全局设置 ===*/
 $.ajaxSetup({
   type: 'post',
   dataType: 'text',
@@ -171,46 +221,11 @@ $.ajaxSetup({
   }
 })
 
+/* === 全局方法 === */
 function XmlToJson(xml) {
   var r = /<string.+?>(.+)<\/string>/
   return r.exec(xml)[1]
 }
-
-// function xmlToJson(xml) {
-//   // Create the return object
-//   var obj = {};
-//   if (xml.nodeType == 1) { // element
-//     // do attributes
-//     if (xml.attributes.length > 0) {
-//       obj["@attributes"] = {};
-//       for (var j = 0; j < xml.attributes.length; j++) {
-//         var attribute = xml.attributes.item(j);
-//         obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
-//       }
-//     }
-//   } else if (xml.nodeType == 3) { // text
-//     obj = xml.nodeValue;
-//   }
-//   // do children
-//   if (xml.hasChildNodes()) {
-//     for (var i = 0; i < xml.childNodes.length; i++) {
-//       var item = xml.childNodes.item(i);
-//       var nodeName = item.nodeName;
-
-//       if (typeof (obj[nodeName]) == "undefined") {
-//         obj[nodeName] = xmlToJson(item);
-//       } else {
-//         if (typeof (obj[nodeName].length) == "undefined") {
-//           var old = obj[nodeName];
-//           obj[nodeName] = [];
-//           obj[nodeName].push(old);
-//         }
-//         obj[nodeName].push(xmlToJson(item));
-//       }
-//     }
-//   }
-//   return obj;
-// }
 
 function ImagePreview(file) {
   var dtd = $.Deferred()
@@ -283,9 +298,9 @@ function convertImgToBase64(url, callback, outputFormat){
 
 function getRongcloudToken() {
   return $.ajax({
-            url: BaseService.apiUrl + 'gettoken',
-            data: {
-              userid: getUserId()
-            }
-          })
+    url: BaseService.apiUrl + 'gettoken',
+    data: {
+      userid: getUserId()
+    }
+  })
 }

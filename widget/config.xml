@@ -33,12 +33,12 @@
   <feature name="wx">
     <param name="urlScheme" value="wx8e9a88ba16112813"/>
     <param name="apiKey" value="wx8e9a88ba16112813"/>
-    <param name="apiSecret" value="a354f72aa1b4c2b8eaad137ac81434cd"/>
+    <param name="apiSecret" value="4763fd57d609b1290b49f9126fd709d1"/>
   </feature>
   <feature name="wxPay">
-    <param name="urlScheme" value="wxd0d84bbf23b4a0e4"/>
-    <param name="apiKey" value="wxd0d84bbf23b4a0e4"/>
-    <param name="apiSecret" value="a354f72aa1b4c2b8eaad137ac81434cd"/>
+    <param name="urlScheme" value="wx8e9a88ba16112813"/>
+    <param name="apiKey" value="wx8e9a88ba16112813"/>
+    <param name="apiSecret" value="4763fd57d609b1290b49f9126fd709d1"/>
   </feature>
   <feature name="rongCloud2">
     <param name="appKey" value="ik1qhw09ikasp"/>

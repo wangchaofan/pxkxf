@@ -15,6 +15,13 @@ apiready = function() {
 		rong.init(function(ret, err) {
       if (ret.status == 'error') {
 				rong.setOnReceiveMessageListener(function(ret, err) {
+					api.sendEvent({
+					    name: 'myEvent',
+					    extra: {
+					        valueName1: 'value1', 
+					        valueName2: 'value2'
+					    }
+					});
 					api.toast({msg: 'recevie 1111'})
 					api.toast({ msg: JSON.stringify(ret.result.message) });
 					api.toast({ msg: ret.result.message.left });
