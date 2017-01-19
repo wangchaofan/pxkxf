@@ -58,19 +58,20 @@ function initPage() {
 					})
 					.then(function(res) {
 						if (res.key === 'true') {
+							self.setLocation(res.data)
 							api.toast({
 							    msg: '登录成功'
 							});
 							api.setPrefs({
 							    key: 'userid',
 							    value: res.data
-							})
+							});
 							api.sendEvent({
 								name: 'initHomePage'
-							})
+							});
 							api.sendEvent({
 								name: 'loginSuccess'
-							})
+							});
 							api.closeToWin({
 							    name: 'root'
 							});
@@ -86,6 +87,21 @@ function initPage() {
 					.always(function() {
 						this.submiting = false
 					})
+			},
+			setLocation: function(userid) {
+				baiduLocation.getLocation(function(ret) {
+					if (ret.status) {
+						$.ajax({
+							url: BaseService.apiUrl + 'updateGoldenlatitude',
+							data: {
+								userid: userid,
+								jd: ret.longitude,
+								wd: ret.latitude
+							}
+						}).then(function(res) {
+						})
+					}
+				})
 			}
 		}
 	})
@@ -99,6 +115,7 @@ setTimeout(function() {
 
 apiready = function(){
   initPage()
+
   api.addEventListener({
     name: 'keyback'
 	}, function(ret, err) {

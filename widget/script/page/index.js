@@ -1,4 +1,12 @@
 apiready = function() {
+	var baiduLocation = api.require('baiduLocation');
+	baiduLocation.startLocation({
+		accuracy: '100m',
+		filter: 1,
+		autoStop: true
+	}, function(ret, err) {
+	})
+
 	if (!Helper.getUserId()) {
 		api.openWin({
 	    name: 'login',
@@ -9,6 +17,27 @@ apiready = function() {
 		})
 	} else {
 		initPage()
+
+		baiduLocation.getLocation(function(ret) {
+			if (ret.status) {
+				$.ajax({
+					url: BaseService.apiUrl + 'updateGoldenlatitude',
+					data: {
+						userid: Helper.getUserId(),
+						jd: ret.longitude,
+						wd: ret.latitude
+					}
+				}).then(function(res) {
+				})
+			}
+		})
+
+		/* 断网事件 */
+		api.addEventListener({
+			name:'offline'
+		}, function(ret, err){
+			alert('网络已断开！');
+		})
 
 		var rong = api.require('rongCloud2');
 		// 初始化融云
@@ -220,6 +249,7 @@ apiready = function() {
 			api.setFrameGroupIndex({ name: 'group', index: index })
 		}
 	}
+
 	api.addEventListener({
 	  name: 'initHomePage'
 	}, function(ret, err) {
