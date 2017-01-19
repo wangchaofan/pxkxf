@@ -104,6 +104,12 @@ function initPage() {
 			},
 			onSubmit: function() {
 				if (this.submiting) return 
+				if (this.skill.servertime && new Date(this.skill.servertime).getTime() < Date.now()) {
+					api.toast({
+						msg: '有效时间不能小于当前时间'
+					})
+					return
+				}
 				this.skill.imgarr = _.map(this.images, Helper.transformImageData).join(',')
 				var data = _.clone(this.skill)
 				data.servertime = data.servertime ? new Date(data.servertime).getTime() : ''

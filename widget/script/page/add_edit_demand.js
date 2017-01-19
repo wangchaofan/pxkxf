@@ -3,6 +3,7 @@ function initPage() {
 		el: '.wrapper',
 		created: function() {
 			this.getProvice()
+			this.getUserData()
 		},
 		data: function() {
 			return {
@@ -34,6 +35,30 @@ function initPage() {
 			}
 		},
 		methods: {
+			getUserData: function() {
+				var self = this
+				$.ajax({
+					url: BaseService.apiUrl + 'getuserinfo',
+					data: { uid: Helper.getUserId() }
+				}).then(function(res) {
+					var data = ParseJson(res.data)[0]
+					if (data.levle === '普通用户') {
+						api.confirm({
+							title: '提示',
+							msg: '发布需要需要实名认证，是否立即认证？',
+						}, function (ret, err) {
+							if (ret.buttonIndex === 2) {
+								Helper.openWin('qualification')
+								setTimeout(function() {
+									api.closeWin()
+								}, 2000)
+							} else {
+								api.closeWin()
+							}
+						});
+					}
+				})
+			},
 			onSubmit: function() {
 				var self = this
 				var data = _.clone(this.demand)

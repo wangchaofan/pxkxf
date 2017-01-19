@@ -12,7 +12,7 @@ function initPage() {
       	demandInfo: null,
 				showDialog: false,
 				describe: '',
-				isMe: api.pageParam.user === 'self'
+				isMe: true
       }
     },
     computed: {
@@ -39,9 +39,12 @@ function initPage() {
 				$.ajax({
 				url: BaseService.apiUrl + 'getxqinfo',
 				data: { xqid: api.pageParam.id }
-				// data: { xqid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00'}
+				 //data: { xqid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00'}
 				}).done(function(res) {
 					self.demandInfo = ParseJson(res.data)[0]
+					if (self.demandInfo.Usermodel[0].lUserId !== Helper.getUserId()) {
+						self.isMe = false
+					}
 					console.log(ParseJson(res.data)[0])
 				})
     	},
