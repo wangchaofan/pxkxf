@@ -30,7 +30,8 @@ function initPage() {
     		$.ajax({
     			url: BaseService.apiUrl + 'getskillinfo',
     			data: {
-						skillid: api.pageParam.id
+						skillid: api.pageParam.id,
+            userid: Helper.getUserId()
 						// skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
     			}
     		}).done(function(res) {
@@ -38,6 +39,14 @@ function initPage() {
     			console.log(ParseJson(res.data)[0])
     		})
     	},
+      share: function() {
+        var sharedModule = api.require('shareAction');
+        sharedModule.share({
+          type: 'url',
+          text: '111',
+          path: 'http://www.baidu.com'
+        })
+      },
 			onClickBook: function() {
 				if (this.booked) return
 				var self = this
@@ -135,7 +144,7 @@ function initPage() {
         })
       },
     	goChat: function() {
-
+        Helper.openWin('chat_room', {userId: this.supplyInfo.sUsermodel[0].lUserId})
     	},
       onSubmit: function() {
         api.openWin({

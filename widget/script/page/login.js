@@ -89,6 +89,7 @@ function initPage() {
 					})
 			},
 			setLocation: function(userid) {
+				var baiduLocation = api.require('baiduLocation');
 				baiduLocation.getLocation(function(ret) {
 					if (ret.status) {
 						$.ajax({

@@ -15,7 +15,7 @@
 			<div class="fs24 white ac" slot="headerRight" @click="share">分享</div>
 		</my-header>
 		<user-box v-if="demandInfo" :user="demandInfo.Usermodel[0]">
-			<a slot="userRtTop" class="location-byme fs24 text-999" href="javascript:">5km</a>
+			<a slot="userRtTop" class="location-byme fs24 text-999" href="javascript:">{{demandInfo.distance | number}}km</a>
 			<div slot="userRtBottom"></div>
 			<div slot="userLtBottom" class="demand-price fs24">愿付酬金：<span class="text-warning">{{demandInfo.dmoney}}</span>元/人 <span class="warrant">(酬金已担保)</span></div>
 		</user-box>
@@ -60,7 +60,7 @@
 					</div>
 				</div>
 				<div class="user-info-rt">
-					<a class="location-byme fs24 text-999" href="javascript:">5km</a>
+					<a class="location-byme fs24 text-999" href="javascript:">{{item.xqdistance | number}}km</a>
 					<div v-if="isMe" class="confirm-button" :class="{selected: item.ystate == 2}" @click="confirmInvite(item)">{{item.ystate == 2 ? '已选择' : '待选择'}}</div>
 					<div v-else class="confirm-button" :class="{selected: item.ystate == 2}">{{item.ystate == 2 ? '已选择' : '待选择'}}</div>
 				</div>
@@ -90,7 +90,7 @@
 							</div>
 						</div>
 						<div class="user-info-rt">
-							<a class="location-byme fs24 text-999" href="javascript:">5km</a>
+							<a class="location-byme fs24 text-999" href="javascript:">{{demandInfo.distance | number}}km</a>
 						</div>
 					</div>
 					<div class="dialog-demand-content">

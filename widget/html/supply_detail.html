@@ -12,7 +12,7 @@
 <body>
 	<div class="wrapper">
 		<my-header title="供应详情">
-			<div class="fs24 white ac" slot="headerRight">分享</div>
+			<div class="fs24 white ac" slot="headerRight" @click="share">分享</div>
 		</my-header>
 		<div class="supply-detail bg-white container" v-if="supplyInfo" v-cloak>
 			<div class="supply-detail__images">
@@ -33,7 +33,7 @@
 			<div slot="userRtBottom"></div>
 		</user-box>
 		<div class="fixed-bottom display-flex" v-if="!isMe">
-			<div class="button-chat"></div>
+			<div class="button-chat" @click="goChat"></div>
 			<div class="button-book btn-submit" @click="onSubmit">立即预约</div>
 		</div>
 	</div>

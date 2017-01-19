@@ -23,15 +23,7 @@ function initPage() {
     data: function() {
       return {
         userId: '',
-        receiveMessages: []
-      }
-    },
-    filters: {
-      message: function(val) {
-        return val.replace(IMAGE_REGXE, function(result) {
-          var v = _.find(imageJson, { text: result});
-          return '<img src="../res/emotion/' + v.name + '.png" />'
-        })
+        messages: []
       }
     },
     methods: {
@@ -69,12 +61,13 @@ function initPage() {
         var self = this
         rong.getHistoryMessages({
           conversationType: 'PRIVATE',
-          targetId: this.userId,
+          targetId: api.pageParam.targetId,
           //oldestMessageId: 40,
           count: 20
         }, function(ret, err) {
           if (ret.status === 'success') {
-            self.receiveMessages = ret.result
+            self.messages = ret.result
+            //alert(JSON.stringify(ret.result))
           }
           //api.alert({ msg: JSON.stringify(ret.result) });
         })
@@ -83,7 +76,7 @@ function initPage() {
         var self = this
         rong.sendTextMessage({
           conversationType: 'PRIVATE',
-          targetId: this.userId,
+          targetId: api.pageParam.targetId,
           text: msg,
           extra: ''
         }, function(ret, err) {
@@ -149,8 +142,8 @@ function initChatbox() {
         titleColor: '#a3a3a3',
         btns: [{
             title: '图片',
-            normalImg: 'widget://res/img/chatBox_album1.png',
-            activeImg: 'widget://res/img/chatBox_album2.png'
+            normalImg: 'widget://res/img/icon_image.png',
+            activeImg: 'widget://res/img/icon_image.png'
         }, {
             title: '拍照',
             normalImg: 'widget://res/img/chatBox_cam1.png',
@@ -177,4 +170,11 @@ setTimeout(function() {
 apiready = function(){
   initChatbox()
   initPage()
+
+
+  api.addEventListener({
+    name: 'receiveMessage'
+  }, function (ret, err) {
+    alert(JSON.stringify(ret))
+  });
 }

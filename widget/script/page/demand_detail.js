@@ -25,6 +25,11 @@ function initPage() {
   			return null
     	}
     },
+		filters: {
+			number: function(val) {
+				return parseFloat(val).toFixed(2)
+			}
+		},
     methods: {
     	share: function() {
     		var sharedModule = api.require('shareAction');
@@ -38,8 +43,8 @@ function initPage() {
 				var self = this
 				$.ajax({
 				url: BaseService.apiUrl + 'getxqinfo',
-				data: { xqid: api.pageParam.id }
-				 //data: { xqid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00'}
+				data: { xqid: api.pageParam.id, userid: Helper.getUserId() }
+				 //data: { xqid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00', userid: Helper.getUserId()}
 				}).done(function(res) {
 					self.demandInfo = ParseJson(res.data)[0]
 					if (self.demandInfo.Usermodel[0].lUserId !== Helper.getUserId()) {
@@ -109,14 +114,7 @@ function initPage() {
 				})
 			},
     	goChat: function() {
-    		api.openWin({
-  		    name: 'chat_room',
-  		    url: 'widget://html/chat_room.html',
-					allowEdit: true,
-  		    pageParam: {
-		        name: 'value'
-  		    }
-    		})
+				Helper.openWin('chat_room', {targetId: this.userModel.lUserId})
     	},
     	goInvite: function() {
 				this.showDialog = true

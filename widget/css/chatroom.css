@@ -94,3 +94,6 @@ body {
 	border-bottom: 0.35rem solid transparent;
 	border-left: 0.5rem solid #fff;
 }
+.msg-box.right .msg-content-wrap .msg-content {
+	background: ##609BE3;
+}

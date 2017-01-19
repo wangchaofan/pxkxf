@@ -14,49 +14,60 @@
     <my-header title="在线咨询"></my-header>
     <div class="wenxin-remind">温馨提示：消防担保交易会保障您的钱款安全，完成服务后再确认付款。非消防交易频发钱款诈骗行为，请小心谨慎。</div>
     <div class="messages-container">
-        <div class="msg-box left">
-            <div class="user-avatar">
-                <img src="../image/avatar_demo.png" alt="">
-            </div>
-            <div class="msg-content-wrap">
-                <div class="msg-content">多岁的冯绍峰</div>
-            </div>
-        </div>
-        <div class="msg-box left">
-            <div class="user-avatar">
-                <img src="../image/avatar_demo.png" alt="">
-            </div>
-            <div class="msg-content-wrap">
-                <div class="msg-content type-image">
-                    <img src="../image/home_banner.jpg" alt="">
+        <!--<div class="msg-box left">-->
+            <!--<div class="user-avatar">-->
+                <!--<img src="../image/avatar_demo.png" alt="">-->
+            <!--</div>-->
+            <!--<div class="msg-content-wrap">-->
+                <!--<div class="msg-content">多岁的冯绍峰</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="msg-box left">-->
+            <!--<div class="user-avatar">-->
+                <!--<img src="../image/avatar_demo.png" alt="">-->
+            <!--</div>-->
+            <!--<div class="msg-content-wrap">-->
+                <!--<div class="msg-content type-image">-->
+                    <!--<img src="../image/home_banner.jpg" alt="">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <template v-for="msg in messages">
+            <div v-if="msg.sendUserId != userId" class="msg-box left">
+                <div class="user-avatar">
+                    <img src="../image/avatar_demo.png" alt="">
+                </div>
+                <div class="msg-content-wrap">
+                    <div class="msg-content">{{msg.content.text}}</div>
                 </div>
             </div>
-        </div>
-        <div class="msg-box left">
-            <div class="user-avatar">
-                <img src="../image/avatar_demo.png" alt="">
-            </div>
-            <div class="msg-content-wrap">
-                <div class="msg-content type-image">
-                    <img src="../image/icon_angle.png" alt="">
+            <!--<div class="msg-box left">-->
+                <!--<div class="user-avatar">-->
+                    <!--<img src="../image/avatar_demo.png" alt="">-->
+                <!--</div>-->
+                <!--<div class="msg-content-wrap">-->
+                    <!--<div class="msg-content type-image">-->
+                        <!--<img src="../image/icon_angle.png" alt="">-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div v-else class="msg-box right">
+                <div class="user-avatar">
+                    <img src="../image/avatar_demo.png" alt="">
+                </div>
+                <div class="msg-content-wrap">
+                    <div class="msg-content">
+                        多岁的冯绍峰多岁的冯绍峰多<img src="../res/emotion/Expression_1.png" />岁的冯绍峰多岁的冯绍峰多岁的冯绍峰多岁的冯绍峰多
+                        岁的冯绍峰多岁的冯绍峰
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="msg-box right">
-            <div class="user-avatar">
-                <img src="../image/avatar_demo.png" alt="">
-            </div>
-            <div class="msg-content-wrap">
-                <div class="msg-content">
-                    多岁的冯绍峰多岁的冯绍峰多<img src="../res/emotion/Expression_1.png" />岁的冯绍峰多岁的冯绍峰多岁的冯绍峰多岁的冯绍峰多
-                    岁的冯绍峰多岁的冯绍峰
-                </div>
-            </div>
-        </div>
+        </template>
+
     </div>
-    <div class="fs24">
-        <p v-for="msg in receiveMessages" v-html="transformMessage(msg.content.text)"></p>
-    </div>
+    <!--<div class="fs24">-->
+        <!--<p v-for="msg in receiveMessages" v-html="transformMessage(msg.content.text)"></p>-->
+    <!--</div>-->
     <div>{{userId}}</div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>

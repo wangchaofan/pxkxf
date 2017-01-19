@@ -23,6 +23,11 @@ function initPage() {
         temperature: ''
       }
     },
+    filters: {
+      number: function(val) {
+        return parseFloat(val).toFixed(2)
+      }
+    },
     methods: {
       viewUserHomepage: function(user) {
         console.log(user)
@@ -153,11 +158,11 @@ function initPage() {
         if (self[listId].length > 0 && !refresh) return
         $.ajax({
           url: BaseService.apiUrl + uri,
-          data: {type: self.type},
+          data: {type: self.type, userid: Helper.getUserId()},
           success: function(res) {
             self[listId] = JSON.parse(res.data)
             console.log(JSON.parse(res.data))
-            api.refreshHeaderLoadDone()
+            //api.refreshHeaderLoadDone()
           },
           error: function(err) {
             // alert(JSON.stringify(err))
