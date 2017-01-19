@@ -12,8 +12,10 @@
 	margin-top: 0.8rem;
 	margin-bottom: 0.4rem;
 }
+.supply-detail__desc {
+	margin-bottom: 1.05rem;
+}
 .supply-detail-buttons {
-	margin-top: 1.05rem;
 	margin-bottom: 0.8rem;
 }
 .supply-detail__button {

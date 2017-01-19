@@ -23,7 +23,7 @@
 				<div class="fs28 text-999"><span class="text-warning">¥{{supplyInfo.smoney}}</span>{{supplyInfo.smoneytype}}</div>
 			</div>
 			<div class="supply-detail__desc fs24 text-999">{{supplyInfo.skilldetails}}</div>
-			<div class="display-flex supply-detail-buttons">
+			<div class="display-flex supply-detail-buttons" v-if="!isMe">
 				<div class="supply-detail__button" @click="onClickBook">{{booked ? '已收藏' : '感兴趣，并收藏'}}</div>
 				<div class="supply-detail__button" @click="onClickAdvise">不吸引，给TA建议</div>
 			</div>
@@ -32,7 +32,7 @@
 			<div slot="userRtTop" class="fs24 text-999" href="javascript:">共发布供应{{supplyInfo.fbnumber}}个</div>
 			<div slot="userRtBottom"></div>
 		</user-box>
-		<div class="fixed-bottom display-flex">
+		<div class="fixed-bottom display-flex" v-if="!isMe">
 			<div class="button-chat"></div>
 			<div class="button-book btn-submit" @click="onSubmit">立即预约</div>
 		</div>

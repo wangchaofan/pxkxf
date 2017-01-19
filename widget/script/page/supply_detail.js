@@ -10,7 +10,8 @@ function initPage() {
     data: function() {
       return {
       	supplyInfo: null,
-				booked: false
+				booked: false,
+        isMe: api.pageParam.user === 'self'
       }
     },
     computed: {

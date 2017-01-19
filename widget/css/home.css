@@ -177,12 +177,12 @@
 	display: inline-block;
 	padding: 0 0.8rem;
 	font-size: 0.8rem;
-	line-height: 1.7rem;
-	border-bottom: 1px solid #ddd;
+	line-height: 1.65rem;
+	border-bottom: 1px solid transparent;
 }
 
 .tab-header span.current {
-	border-bottom: 1px solid #f94f2b;
+	border-bottom: 2px solid #f94f2b;
 }
 
 .remand-list {

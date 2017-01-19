@@ -46,13 +46,7 @@ var ListItem = {
       }
     },
     viewDetail: function() {
-      api.openWin({
-        name: 'supply_detail',
-        url: 'widget://html/supply_detail.html',
-        pageParam: {
-          id: this.myData.skillID
-        }
-      })
+      Helper.openWin('supply_detail', {id: this.myData.skillID, user: 'self'})
     },
     delete: function() {
       var self = this

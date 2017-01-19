@@ -662,13 +662,13 @@ header {
   z-index: 9;
   display: flex;
   width: 100%;
-  height: 48px;
+  height: 44px;
   background: #e4353a;
 }
 .header-left,
 .header-right {
   width: 44px;
-  line-height: 48px;
+  line-height: 44px;
   color: #fff;
   font-size: 14px;
   height: 100%;
@@ -692,8 +692,8 @@ header {
 .header-center-text {
   flex: 1;
   display: block;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: 16px;
+  line-height: 26px;
   text-align: center;
   color: #fff;
 }

@@ -69,7 +69,8 @@
 				</div>
 				<div class="user-info-rt">
 					<a class="location-byme fs24 text-999" href="javascript:">5km</a>
-					<div class="confirm-button" :class="{selected: item.ystate == 2}" @click="confirmInvite(item)">{{item.ystate == 2 ? '已选择' : '选择'}}</div>
+					<div v-if="isMe" class="confirm-button" :class="{selected: item.ystate == 2}" @click="confirmInvite(item)">{{item.ystate == 2 ? '已选择' : '待选择'}}</div>
+					<div v-else class="confirm-button" :class="{selected: item.ystate == 2}">{{item.ystate == 2 ? '已选择' : '待选择'}}</div>
 				</div>
 			</div>
 		</div>
