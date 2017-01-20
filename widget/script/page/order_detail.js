@@ -15,13 +15,7 @@ function initPage() {
     },
     methods: {
       onClickChat: function() {
-        api.openWin({
-            name: 'chat_room',
-            url: 'widget://html/chat_room.html',
-            pageParam: {
-                name: 'value'
-            }
-        });
+        Helper.openWin('chat_room', {targetID: this.userModel.lUserId})
       },
       // === 支付 ===
       toPay: function () {

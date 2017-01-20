@@ -169,12 +169,15 @@ setTimeout(function() {
 
 apiready = function(){
   initChatbox()
+
+
   initPage()
 
 
   api.addEventListener({
     name: 'receiveMessage'
   }, function (ret, err) {
+    alert(1)
     alert(JSON.stringify(ret))
   });
 }

@@ -71,10 +71,8 @@ function initPage() {
             userid: Helper.getUserId()
           }
         }).then(function(res) {
-          alert(res)
           if (res.key === 'true') {
             var data = ParseJson(res.data)
-            alert(res.data)
             self.order = data[0]
             self.userModel = data[0].sUsermodel[0]
           } else {
