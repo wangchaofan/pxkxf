@@ -13,7 +13,7 @@
   <my-header title="充值"></my-header>
   <div class="input-recharge-num text-black">
     <span>充值</span>
-    <input type="text" placeholder="输入您想充入的金额">
+    <input type="number" v-model.number="money" placeholder="输入您想充入的金额">
     <span class="unit">元</span>
   </div>
   <div class="recharge-remind">
@@ -22,10 +22,10 @@
   </div>
   <h3>选择支付方式</h3>
   <div class="pay-way-wrap fs28">
-    <div class="pay-way display-flex zhifubao selected">支付宝安全支付<span class="icon-selected"></span></div>
-    <div class="pay-way display-flex weichat">微信安全支付<span class="icon-selected"></span></div>
+    <div class="pay-way display-flex zhifubao" :class="{selected: payType === 'ali'}" @click="onSelectPayType('ali')">支付宝安全支付<span class="icon-selected"></span></div>
+    <div class="pay-way display-flex weichat" :class="{selected: payType === 'wx'}" @click="onSelectPayType('wx')">微信安全支付<span class="icon-selected"></span></div>
   </div>
-  <div class="btn-submit" disabled>确定</div>
+  <div class="btn-submit" :disabled="!canSubmit" @click="onSubmit">确定</div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>
 <script src="../script/lib/lodash.js"></script>

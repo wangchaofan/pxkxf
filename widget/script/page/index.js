@@ -48,12 +48,9 @@ apiready = function() {
 					api.sendEvent({
 						name: 'receiveMessage',
 						extra: {
-							data: ret.result
+							message: ret.result.message
 						}
-					});
-					api.toast({msg: 'recevie 1111'})
-					api.toast({ msg: JSON.stringify(ret.result.message) });
-					api.toast({ msg: ret.result.message.left });
+					})
 				})
       } else {
       }
@@ -167,13 +164,6 @@ apiready = function() {
 				if (ret.index < 2) {
 					switchFrame(ret.index)
 				} else if (ret.index === 2) {
-					if (!api.getPrefs({key: 'userid', sync: true})) {
-						api.openWin({
-						    name: 'login',
-						    url: 'widget://html/login.html'
-						});
-						return false
-					}
 					api.actionSheet({
 				    cancelTitle: '取消',
 				    buttons: ['发布供应', '发布需求', '发布动态'],

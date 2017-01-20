@@ -15,7 +15,8 @@ function initPage() {
     },
     methods: {
       onClickChat: function() {
-        Helper.openWin('chat_room', {targetID: this.userModel.lUserId})
+        alert(JSON.stringify(this.userModel))
+        Helper.openWin('chat_room', {targetId: this.userModel.lUserId})
       },
       // === 支付 ===
       toPay: function () {
@@ -138,7 +139,7 @@ function initPage() {
           if (res.key === 'true') {
             var data = ParseJson(res.data)
             self.order = data[0]
-            self.userModel = data[0].usermodel[0]
+            self.userModel = data[0].Skillmodel[0].sUsermodel[0]
             console.log(ParseJson(res.data))
           }
         })

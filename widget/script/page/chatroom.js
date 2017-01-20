@@ -45,6 +45,7 @@ function initPage() {
         })
       },
       getHistoryMessage: function() {
+        alert(api.pageParam.targetId)
         var self = this
         rong.getHistoryMessages({
           conversationType: 'PRIVATE',
@@ -52,7 +53,6 @@ function initPage() {
           //oldestMessageId: 40,
           count: 20
         }, function(ret, err) {
-          alert(JSON.stringify(ret))
           if (ret.status === 'success') {
             self.messages = ret.result
             //alert(JSON.stringify(ret.result))
@@ -182,7 +182,6 @@ apiready = function(){
   api.addEventListener({
     name: 'receiveMessage'
   }, function (ret, err) {
-    alert(1)
     alert(JSON.stringify(ret))
   });
 }

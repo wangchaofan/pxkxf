@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>服务订单</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mysupply.css">
+    <script src="../script/adapter.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="type-select">
+        <span class="flex-1" :class="{'current': state === 1}" @click="onSelectType(1)">进行中</span>
+        <span class="flex-1" :class="{'current': state === 2}" @click="onSelectType(2)">已完成</span>
+        <span class="flex-1" :class="{'current': state === 3}" @click="onSelectType(3)">已取消</span>
+    </div>
+    <div class="supply-list" v-show="state === 1">
+        <div class="none-text" v-if="doingList.length === 0" v-cloak>暂时没有订单~</div>
+        <ul v-else>
+            <list-item v-for="item in doingList" :my-data="item"></list-item>
+        </ul>
+    </div>
+    <div class="supply-list" v-show="state === 2">
+        <div class="none-text" v-if="completeList.length === 0" v-cloak>暂时没有订单~</div>
+        <ul v-else>
+            <list-item v-for="item in completeList" :my-data="item"></list-item>
+        </ul>
+    </div>
+    <div class="supply-list" v-show="state === 3">
+        <div class="none-text" v-if="cancelList.length === 0" v-cloak>暂时没有订单~</div>
+        <ul v-else>
+            <list-item v-for="item in cancelList" :my-data="item"></list-item>
+        </ul>
+    </div>
+</div>
+<!-- 0已关闭， 1审核中，2通过，3不通过 -->
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/page/order.js"></script>
+</body>
+</html>

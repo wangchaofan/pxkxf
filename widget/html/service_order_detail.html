@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>服务订单详情</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/user_avatar.css">
+  <link rel="stylesheet" href="../css/order_detail.css">
+  <script src="../script/adapter.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <my-header title="服务订单详情"></my-header>
+  <user-box v-if="userModel" :user="userModel"></user-box>
+  <div class="order-info bg-white" v-if="order" v-cloak>
+    <div class="input-row">
+      <span>邀约技能</span>
+      <span>{{order.Skillmodel[0].skillName}}</span>
+    </div>
+    <div class="input-row">
+      <span>邀约时间</span>
+      <span>{{order.mtime | date('yyyy-MM-dd hh:mm')}}</span>
+    </div>
+    <div class="input-row">
+      <span>邀约地点</span>
+      <span>{{order.yyaddress}}</span>
+    </div>
+    <div class="input-row">
+      <span>邀约价格</span>
+      <span class="flex-1">{{order.Skillmodel[0].smoney}}</span>
+      <span>元</span>
+    </div>
+  </div>
+  <div class="fixed-bottom display-flex" v-cloak>
+    <div class="button-chat" @click="onClickChat"></div>
+    <div class="button-book btn-submit" v-if="order.State == 1" @click="onClickAccept">接受订单</div>
+    <div class="button-cancel btn-submit" v-if="order.State == 1" @click="onClickRefuse">拒绝订单</div>
+    <div class="button-cancel btn-submit" v-if="order.State == 2" @click="onClickComplete">供应完成</div>
+    <div class="button-cancel btn-submit" v-if="order.State == 4" @click="toComment">待评价</div>
+    <div class="button-book btn-submit" v-if="order.State == 5" disabled>订单已完成</div>  
+    <div class="button-book btn-submit" v-if="order.State == 6" disabled>订单已取消</div> 
+    <div class="button-book btn-submit" v-if="order.State == 7" disabled>订单被拒绝</div>
+  </div>
+</div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/page/service_order_detail.js"></script>
+</body>
+</html>
