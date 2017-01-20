@@ -18,11 +18,22 @@ function initPage() {
   vm = new Vue({
     el: '.wrapper',
     created: function() {
-      this.connect()
+      this.getHistoryMessage();
+      this.getUserInfo(Helper.getUserId(), 'user');
+      if (!api.pageParam.avatar) {
+        this.getUserInfo(api.pageParam.targetId, 'target');
+      }
     },
     data: function() {
       return {
         userId: '',
+        myInfo: {
+          avatar: ''
+        },
+        targetInfo: {
+          avatar: api.pageParam.avatar || '',
+          nickname: api.pageParam.nickname || ''
+        },
         messages: []
       }
     },
@@ -33,30 +44,6 @@ function initPage() {
           return '<img src="../res/emotion/' + v.name + '.png" />'
         })
       },
-      connect: function() {
-        var self = this
-        api.showProgress({
-          animationType: 'fade',
-          title: '提示',
-          text: '正在连接...',
-          modal: false
-        });
-        //this.setReceiveMessageListener()
-        Helper.getRongcloudToken().then(function(res) {
-          rong.connect({
-            token: res.data
-          }, function(ret, err) {
-            api.hideProgress()
-            if (ret.status == 'success')
-              self.userId = ret.result.userId
-              self.getHistoryMessage()
-              // api.toast({ msg: ret.result.userId });
-          })
-        }, function(err) {
-          api.hideProgress()
-          alert(JSON.stringify(err))
-        })
-      },
       getHistoryMessage: function() {
         var self = this
         rong.getHistoryMessages({
@@ -65,11 +52,11 @@ function initPage() {
           //oldestMessageId: 40,
           count: 20
         }, function(ret, err) {
+          alert(JSON.stringify(ret))
           if (ret.status === 'success') {
             self.messages = ret.result
             //alert(JSON.stringify(ret.result))
           }
-          //api.alert({ msg: JSON.stringify(ret.result) });
         })
       },
       sendMessage: function(msg) {
@@ -78,7 +65,9 @@ function initPage() {
           conversationType: 'PRIVATE',
           targetId: api.pageParam.targetId,
           text: msg,
-          extra: ''
+          extra: {
+
+          }
         }, function(ret, err) {
           if (ret.status == 'prepare')
             api.toast({ msg: JSON.stringify(ret.result.message) });
@@ -90,6 +79,25 @@ function initPage() {
       },
       sendImage: function() {
 
+      },
+      getUserInfo: function(uid, type) {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'getuserinfo',
+          data: {uid: uid}
+        }).then(function(res) {
+          var data = ParseJson(res.data)[0]
+          if (type === 'user') {
+            self.myInfo = {
+              avatar: data.pheadimgUrl
+            }
+          } else {
+            self.targetInfo = {
+              avatar: data.pheadimgUrl,
+              nickname: data.pnickname
+            }
+          }
+        })
       }
     }
   })
@@ -169,10 +177,7 @@ setTimeout(function() {
 
 apiready = function(){
   initChatbox()
-
-
   initPage()
-
 
   api.addEventListener({
     name: 'receiveMessage'

@@ -7,7 +7,7 @@ function initPage() {
     el: '#mainPage',
     created: function() {
       this.getList('demandList', 'getdemaorder')
-      this.getMessageCount()
+      //this.getMessageCount()
       this.getLocation()
     },
     data: function() {
@@ -164,6 +164,22 @@ function initPage() {
         })
       }
     }
+  })
+
+  var rong = api.require('rongCloud2');
+  Helper.getRongcloudToken().then(function(res) {
+    rong.connect({
+      token: res.data
+    }, function(ret, err) {
+      if (ret.status == 'success') {
+        api.setPrefs({
+          key: 'rongUserId',
+          value: ret.result.userId
+        })
+      }
+    })
+  }, function(err) {
+    alert(JSON.stringify(err))
   })
 }
 

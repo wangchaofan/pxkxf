@@ -46,6 +46,13 @@ body {
 	background: #fff;
 	border-radius: 8px;
 }
+.msg-box .target-nickname {
+	margin-bottom: 0.2rem;
+	height: 0.8rem;
+	font-size: 0.6rem;
+	line-height: 0.8rem;
+	color: #666;
+}
 .msg-box .msg-content img {
 	vertical-align: middle;
 	width: 0.9rem;
@@ -57,14 +64,14 @@ body {
 	height: auto;
 }
 .msg-box.left .msg-content-wrap {
-	padding-top: 0.25rem;
+	//padding-top: 0.25rem;
 	margin-left: 0.35rem;
 	padding-left: 0.35rem;
 }
 .msg-box.left .msg-content-wrap:before {
 	position: absolute;
 	left: 0;
-	top: 0.8rem;
+	top: 1.4rem;
 	content: '';
 	display: block;
 	height: 0;

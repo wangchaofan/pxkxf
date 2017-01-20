@@ -13,7 +13,7 @@
 <div class="wrapper">
   <my-header title="订单详情"></my-header>
   <user-box v-if="userModel" :user="userModel"></user-box>
-  <div class="order-info bg-white" v-cloak>
+  <div class="order-info bg-white" v-if="order" v-cloak>
     <div class="input-row">
       <span>邀约技能</span>
       <span>{{order.Skillmodel[0].skillName}}</span>
@@ -40,7 +40,7 @@
     <div class="button-cancel btn-submit" v-if="order.State == 4" @click="toComment">待评价</div>
     <div class="button-book btn-submit" v-if="order.State == 5" disabled>订单已完成</div>  
     <div class="button-book btn-submit" v-if="order.State == 6" disabled>订单已取消</div> 
-    <div class="button-book btn-submit" v-if="order.State == 0" disabled>订单被拒绝</div> 
+    <div class="button-book btn-submit" v-if="order.State == 7" disabled>订单被拒绝</div>
   </div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>

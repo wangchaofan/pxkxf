@@ -19,10 +19,11 @@
                 <!--<img src="../image/avatar_demo.png" alt="">-->
             <!--</div>-->
             <!--<div class="msg-content-wrap">-->
+                <!--<div class="target-nickname">111</div>-->
                 <!--<div class="msg-content">多岁的冯绍峰</div>-->
             <!--</div>-->
         <!--</div>-->
-        <!--<div class="msg-box left">-->
+        <!--<div class="msg-box right">-->
             <!--<div class="user-avatar">-->
                 <!--<img src="../image/avatar_demo.png" alt="">-->
             <!--</div>-->
@@ -33,12 +34,13 @@
             <!--</div>-->
         <!--</div>-->
         <template v-for="msg in messages">
-            <div v-if="msg.sendUserId != userId" class="msg-box left">
+            <div v-if="msg.messageDirection == 'RECEIVE'" class="msg-box left">
                 <div class="user-avatar">
-                    <img src="../image/avatar_demo.png" alt="">
+                    <img :src="targetInfo.avatar" alt="">
                 </div>
                 <div class="msg-content-wrap">
-                    <div class="msg-content">{{msg.content.text}}</div>
+                    <div class="target-nickname">{{targetInfo.nickname}}</div>
+                    <div class="msg-content" v-html="msg.content.text"></div>
                 </div>
             </div>
             <!--<div class="msg-box left">-->
@@ -53,13 +55,10 @@
             <!--</div>-->
             <div v-else class="msg-box right">
                 <div class="user-avatar">
-                    <img src="../image/avatar_demo.png" alt="">
+                    <img :src="myInfo.avatar" alt="">
                 </div>
                 <div class="msg-content-wrap">
-                    <div class="msg-content">
-                        多岁的冯绍峰多岁的冯绍峰多<img src="../res/emotion/Expression_1.png" />岁的冯绍峰多岁的冯绍峰多岁的冯绍峰多岁的冯绍峰多
-                        岁的冯绍峰多岁的冯绍峰
-                    </div>
+                    <div class="msg-content" v-html="msg.content.text"></div>
                 </div>
             </div>
         </template>

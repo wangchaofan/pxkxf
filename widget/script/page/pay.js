@@ -4,6 +4,7 @@ function initPage() {
     created: function() {
       this.getUserData()
       this.aliPayPlus = api.require('aliPayPlus');
+      var aliPayPlus = api.require('aliPayPlus');
       this.aliPayPlus.config({
         appId: '2016073100134028',
         rsaPriKey: 'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCdMAIgXVBZ19OgT1ls59KOPk23YdfRfTa8jBUgGqBH7f5wzLe',
@@ -40,13 +41,26 @@ function initPage() {
         var self = this
         this.submiting = true
         var url = api.pageParam.orderType === 'demand' ? 'xqcz' :  'gyddcz'
-        //$.ajax({
-        //  url: BaseService.apiUrl + 'zfbzf',
-        //  data: {userid: Helper.getUserId(), money: self.mmoney}
-        //}).then(function(res) {
-        //  alert(res.data)
-        //})
-        //return
+        $.ajax({
+          url: BaseService.apiUrl + 'zf',
+          data: {userid: Helper.getUserId(), money: self.mmoney}
+        }).then(function(res) {
+          var data = ParseJson(res.data)
+          var aliPayPlus = api.require('aliPayPlus');
+          aliPayPlus.pay({
+            subject: data.subject,
+            body: data.body,
+            amount: data.total_amount,
+            tradeNO: data.out_trade_no
+          }, function(ret, err) {
+            api.alert({
+              title: '支付结果',
+              msg: JSON.stringify(ret),
+              buttons: ['确定']
+            });
+          });
+        })
+        return
         $.ajax({
           url: BaseService.apiUrl + url,
           data: {
