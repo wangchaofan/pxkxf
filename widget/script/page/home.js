@@ -162,7 +162,7 @@ function initPage() {
           success: function(res) {
             self[listId] = JSON.parse(res.data)
             console.log(JSON.parse(res.data))
-            //api.refreshHeaderLoadDone()
+            api.refreshHeaderLoadDone()
           },
           error: function(err) {
             // alert(JSON.stringify(err))

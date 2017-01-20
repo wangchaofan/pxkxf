@@ -119,6 +119,7 @@ function initPage() {
         currentPage: 'demand',
         demandList: [],
         supplyList: [],
+        posting: false,
         category: api.pageParam.category
       }
     },
@@ -140,9 +141,10 @@ function initPage() {
       },
       getDemand: function() {
         var self = this
+        this.posting = true
         $.ajax({
           url: BaseService.apiUrl + 'getdemaorder',
-          data: {type: this.category},
+          data: {type: this.category, userid: Helper.getUserId()},
           success: function(res) {
             self.demandList = JSON.parse(res.data)
             console.log(JSON.parse(res.data))
@@ -150,13 +152,16 @@ function initPage() {
           error: function(err) {
             // alert(JSON.stringify(err))
           }
+        }).always(function() {
+          self.posting = false
         })
       },
       getSupply: function() {
         var self = this
+        self.posting = true
         $.ajax({
           url: BaseService.apiUrl + 'getSkill',
-          data: {type: self.category},
+          data: {type: self.category, userid: Helper.getUserId()},
           success: function(res) {
             self.supplyList = JSON.parse(res.data)
             console.log(JSON.parse(res.data))
@@ -164,6 +169,8 @@ function initPage() {
           error: function(err) {
             // alert(JSON.stringify(err))
           }
+        }).always(function() {
+          self.posting = false
         })
       }
     }

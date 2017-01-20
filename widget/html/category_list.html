@@ -26,13 +26,15 @@
         </div>
     </header>
     <div class="remand-list" v-if="currentPage === 'demand'" v-cloak>
-        <div class="none-text" v-if="demandList.length === 0" v-cloak>现在还没有需求哦~</div>
+        <div class="none-text" v-show="posting">正在加载...</div>
+        <div class="none-text" v-if="demandList.length === 0 && !posting" v-cloak>现在还没有需求哦~</div>
         <ul v-else>
             <demand-item v-for="item in demandList" :item="item"></demand-item>
         </ul>
     </div>
     <div class="remand-list" v-else>
-        <div class="none-text" v-if="supplyList.length === 0" v-cloak>现在还没有供应哦~</div>
+        <div class="none-text" v-show="posting">正在加载...</div>
+        <div class="none-text" v-if="supplyList.length === 0 && !posting" v-cloak>现在还没有供应哦~</div>
         <ul v-else>
             <supply-item v-for="item in supplyList" :item="item"></supply-item>
         </ul>
