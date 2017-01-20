@@ -12,7 +12,7 @@
 <body>
 <div class="wrapper">
   <my-header title="发起订单"></my-header>
-  <user-box :user="userModel"></user-box>
+  <user-box v-if="userModel" :user="userModel"></user-box>
   <div class="order-info bg-white" v-cloak>
     <div class="input-row">
       <span>邀约技能</span>

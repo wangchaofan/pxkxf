@@ -8,8 +8,7 @@ function initPage() {
       return {
         order: {
         },
-        userModel: {
-        },
+        userModel: null,
         formData: {
           yydate: '',
           yyaddress: '',
@@ -48,7 +47,7 @@ function initPage() {
                   type: 'page'
                 },
                 pageParam: {
-                  mmoney: self.formData.yymoney,
+                  mmoney: self.order.smoney,
                   orderId: res.data,
                   orderType: 'supply'
                 }
@@ -67,17 +66,20 @@ function initPage() {
         $.ajax({
           url: BaseService.apiUrl + 'getskillinfo',
           data: {
-            // skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
-            skillid: api.pageParam.id
+            //skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03',
+            skillid: api.pageParam.id,
+            userid: Helper.getUserId()
           }
         }).then(function(res) {
+          alert(res)
           if (res.key === 'true') {
             var data = ParseJson(res.data)
+            alert(res.data)
             self.order = data[0]
             self.userModel = data[0].sUsermodel[0]
+          } else {
+            alert(res.mage)
           }
-        }, function(err) {
-          alert(JSON.stringify(err))
         })
       }
     }

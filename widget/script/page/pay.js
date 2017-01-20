@@ -8,11 +8,11 @@ function initPage() {
         appId: '2016073100134028',
         rsaPriKey: 'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCdMAIgXVBZ19OgT1ls59KOPk23YdfRfTa8jBUgGqBH7f5wzLe',
       }, function(ret, err) {
-        api.alert({
-          title: '支付结果',
-          msg: JSON.stringify(ret),
-          buttons: ['确定']
-        });
+        //api.alert({
+        //  title: '支付结果',
+        //  msg: JSON.stringify(ret),
+        //  buttons: ['确定']
+        //});
       });
     },
     data: function() {
@@ -40,13 +40,13 @@ function initPage() {
         var self = this
         this.submiting = true
         var url = api.pageParam.orderType === 'demand' ? 'xqcz' :  'gyddcz'
-        $.ajax({
-          url: BaseService.apiUrl + 'zfbzf',
-          data: {userid: Helper.getUserId(), money: self.mmoney}
-        }).then(function(res) {
-          alert(res.data)
-        })
-        return
+        //$.ajax({
+        //  url: BaseService.apiUrl + 'zfbzf',
+        //  data: {userid: Helper.getUserId(), money: self.mmoney}
+        //}).then(function(res) {
+        //  alert(res.data)
+        //})
+        //return
         $.ajax({
           url: BaseService.apiUrl + url,
           data: {
@@ -60,7 +60,7 @@ function initPage() {
             })
             setTimeout(function() {
               api.closeWin()
-            }, 4000)
+            }, 2000)
           } else {
             api.toast({
                 msg: res.mage

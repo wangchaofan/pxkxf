@@ -20,7 +20,7 @@ var DemandItem = {
             '        </div>' +
             '        <div class="remand-info__other">' +
             '          <div class="user-name">{{item.Usermodel[0].pnickname}}</div>' +
-            '          <div class="user-location">{{item.addressprovince + \' \' + item.addressCity + \' \' + item.addressdistrct}}</div>' +
+            '          <div class="user-location">{{item.distance | number}}km</div>' +
             '        </div>' +
             '      </div>' +
             '    </a>' +
@@ -28,6 +28,11 @@ var DemandItem = {
   props: ['item'],
   data: function() {
     return {}
+  },
+  filters: {
+    number: function(val) {
+      return parseFloat(val).toFixed(2)
+    }
   },
   methods: {
     viewUserHomepage: function() {
@@ -73,7 +78,7 @@ var SupplyItem = {
             '	    </div>' +
             '	    <div class="remand-info__other">' +
             '	      <div class="user-name">{{item.sUsermodel[0].pnickname}}</div>' +
-            '	      <div class="user-location">{{item.addressprovincese + \' \' + item.addressCityse + \' \' + item.addressdistrctse}}</div>' +
+            '	      <div class="user-location">{{item.distance | number}}km</div>' +
             '	    </div>' +
             '	  </div>' +
             '	</a>' +
@@ -81,6 +86,11 @@ var SupplyItem = {
   props: ['item'],
   data: function() {
     return {}
+  },
+  filters: {
+    number: function(val) {
+      return parseFloat(val).toFixed(2)
+    }
   },
   methods: {
     viewUserHomepage: function() {
