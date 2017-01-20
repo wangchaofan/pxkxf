@@ -41,22 +41,16 @@ function initPage() {
       },
       getLocation: function() {
         var self = this
-        $.ajax({
+        api.ajax({
           url: 'http://api.map.baidu.com/location/ip?ak=HSXjSbv4ZGFgRHwLwvje7tqo',
+          method: 'get',
+          timeout: 30,
           dataType: 'json',
-          dataFilter: function(res) {
-            return res
+          returnAll: false
+        }, function (ret, err) {
+          if (ret) {
+            self.city = ret.content.address_detail.city
           }
-        }).then(function(res) {
-          console.log(res)
-          if (res.status === 0) {
-            self.city = res.content.address_detail.city
-          } else {
-            api.toast({
-              msg: '定位失败'
-            })
-          }
-          self.getWeather()
         })
       },
       getWeather: function() {
