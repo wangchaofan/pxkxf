@@ -115,6 +115,9 @@
 				</div>
 			</div>
 		</div>
+		<div class="fixed-bottom" v-if="demandInfo && demandInfo.orderState == 1 && isMe">
+			<div class="btn-submit" @click="toPay">立即支付</div>
+		</div>
 	</div>
 	<script src="../script/lib/jquery-3.1.1.min.js"></script>
 	<script src="../script/lib/lodash.js"></script>

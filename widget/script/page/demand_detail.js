@@ -39,6 +39,14 @@ function initPage() {
   		    path: 'http://www.baidu.com'
     		})
     	},
+			toPay: function() {
+				Helper.openWin('pay', {
+					mmoney: '20',
+					orderId:  api.pageParam.id,
+					orderType: 'demand',
+					fromWin: api.winName
+				})
+			},
     	getData: function() {
 				var self = this
 				$.ajax({
