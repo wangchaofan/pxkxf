@@ -99,8 +99,22 @@ body {
 	width: 0;
 	border-top: 0.35rem solid transparent;
 	border-bottom: 0.35rem solid transparent;
-	border-left: 0.5rem solid #fff;
+	border-left: 0.5rem solid deepskyblue;
 }
 .msg-box.right .msg-content-wrap .msg-content {
-	background: #609BE3;
+	background: deepskyblue;
+}
+.message-date {
+	margin: 0.75rem 0;
+	font-size: 0;
+	text-align: center;
+}
+.message-date span {
+	display: inline-block;
+	padding: 0.25rem;
+	font-size: 0.5rem;
+	line-height: 0.5rem;
+	color: #999;
+	border-radius: 6px;
+	background: #ddd;
 }

@@ -30,8 +30,8 @@
   <feature name="baiduLocation">
     <param name="apiKey" value="HSXjSbv4ZGFgRHwLwvje7tqo" />
   </feature>
-  <feature name="aliPayPlus">
-    <param name="urlScheme" value="AliPayPlusA6937824183587"/>
+  <feature name="aliPay">
+    <param name="urlScheme" value="AliPayA6937824183587"/>
   </feature>
   <feature name="wx">
     <param name="urlScheme" value="wx8e9a88ba16112813"/>

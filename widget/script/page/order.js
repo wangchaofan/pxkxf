@@ -182,7 +182,7 @@ function initPage() {
           url: BaseService.apiUrl + this.uri,
           data: { userid: Helper.getUserId(), state: state }
         }).then(function(res) {
-          //api.refreshHeaderLoadDone();
+          api.refreshHeaderLoadDone();
           if (res.key === 'true') {
             console.log(ParseJson(res.data));
             self.setData(ParseJson(res.data));

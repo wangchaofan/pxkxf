@@ -28,7 +28,8 @@ function initPage() {
       return {
         userId: '',
         myInfo: {
-          avatar: ''
+          avatar: '',
+          nickname: ''
         },
         targetInfo: {
           avatar: api.pageParam.avatar || '',
@@ -38,6 +39,10 @@ function initPage() {
       }
     },
     methods: {
+      isShowDate: function(msg, index) {
+        var preMsg = this.messages[index - 1]
+        return !preMsg || (msg.receivedTime - preMsg.receivedTime > 1000 * 60)
+      },
       transformMessage: function(val) {
         return val.replace(IMAGE_REGXE, function(result) {
           var v = _.find(imageJson, { text: result});
@@ -45,7 +50,6 @@ function initPage() {
         })
       },
       getHistoryMessage: function() {
-        alert(api.pageParam.targetId)
         var self = this
         rong.getHistoryMessages({
           conversationType: 'PRIVATE',
@@ -54,27 +58,33 @@ function initPage() {
           count: 20
         }, function(ret, err) {
           if (ret.status === 'success') {
-            self.messages = ret.result
+            self.messages = _.reverse(ret.result)
+            Vue.nextTick(function() {
+              $('body').scrollTop(1000000)
+            })
             //alert(JSON.stringify(ret.result))
           }
         })
       },
-      sendMessage: function(msg) {
+      sendTextMessage: function(msg) {
         var self = this
         rong.sendTextMessage({
           conversationType: 'PRIVATE',
           targetId: api.pageParam.targetId,
           text: msg,
-          extra: {
-
-          }
+          extra: this.myInfo
         }, function(ret, err) {
-          if (ret.status == 'prepare')
-            api.toast({ msg: JSON.stringify(ret.result.message) });
-          else if (ret.status == 'success')
-            api.toast({ msg: ret.result.message.messageId });
-          else if (ret.status == 'error')
+          if (ret.status == 'prepare'){
+            self.messages.push(ret.result.message);
+            Vue.nextTick(function() {
+              $('body').scrollTop(1000000)
+            })
+            //api.toast({ msg: JSON.stringify(ret.result.message) });
+          } else if (ret.status == 'success') {
+            //api.toast({ msg: ret.result.message.messageId });
+          } else if (ret.status == 'error') {
             api.toast({ msg: err.code });
+          }
         });
       },
       sendImage: function() {
@@ -89,7 +99,8 @@ function initPage() {
           var data = ParseJson(res.data)[0]
           if (type === 'user') {
             self.myInfo = {
-              avatar: data.pheadimgUrl
+              avatar: data.pheadimgUrl,
+              nickname: data.pnickname
             }
           } else {
             self.targetInfo = {
@@ -160,7 +171,7 @@ function initChatbox() {
       }
   }, function(ret, err) {
     if(ret.eventType === 'send') {
-      vm.sendMessage(ret.msg)
+      vm.sendTextMessage(ret.msg)
     } else if (ret.eventType === 'clickExtras') {
       if (ret.index === 0) {
         vm.sendImage()
@@ -182,6 +193,9 @@ apiready = function(){
   api.addEventListener({
     name: 'receiveMessage'
   }, function (ret, err) {
-    alert(JSON.stringify(ret))
-  });
+    vm.messages.push(ret.value.data)
+    Vue.nextTick(function() {
+      $('body').scrollTop(1000000)
+    })
+  })
 }

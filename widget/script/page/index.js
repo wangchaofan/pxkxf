@@ -44,11 +44,10 @@ apiready = function() {
 		rong.init(function(ret, err) {
       if (ret.status == 'success') {
 				rong.setOnReceiveMessageListener(function(ret, err) {
-					alert(JSON.stringify(ret))
 					api.sendEvent({
 						name: 'receiveMessage',
 						extra: {
-							message: ret.result.message
+							data: ret.result.message
 						}
 					})
 				})

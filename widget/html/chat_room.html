@@ -33,14 +33,17 @@
                 <!--</div>-->
             <!--</div>-->
         <!--</div>-->
-        <template v-for="msg in messages">
+        <template v-for="(msg, index) in messages">
+            <div class="message-date" v-if="isShowDate(msg, index)">
+                <span>{{msg.receivedTime | date('yyyy-MM-dd hh:mm')}}</span>
+            </div>
             <div v-if="msg.messageDirection == 'RECEIVE'" class="msg-box left">
                 <div class="user-avatar">
                     <img :src="targetInfo.avatar" alt="">
                 </div>
                 <div class="msg-content-wrap">
                     <div class="target-nickname">{{targetInfo.nickname}}</div>
-                    <div class="msg-content" v-html="msg.content.text"></div>
+                    <div class="msg-content" v-html="transformMessage(msg.content.text)"></div>
                 </div>
             </div>
             <!--<div class="msg-box left">-->
@@ -58,7 +61,7 @@
                     <img :src="myInfo.avatar" alt="">
                 </div>
                 <div class="msg-content-wrap">
-                    <div class="msg-content" v-html="msg.content.text"></div>
+                    <div class="msg-content" v-html="transformMessage(msg.content.text)"></div>
                 </div>
             </div>
         </template>
