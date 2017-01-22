@@ -7,7 +7,7 @@ function initPage() {
     el: '#mainPage',
     created: function() {
       this.getList('demandList', 'getdemaorder')
-      //this.getMessageCount()
+      this.getMessageCount()
       this.getLocation()
     },
     data: function() {
@@ -85,12 +85,18 @@ function initPage() {
       },
       getMessageCount: function() {
         var self = this
-        $.ajax({
-          url: BaseService.apiUrl + 'getXSchat',
-          data: {userid: Helper.getUserId()}
-        }).then(function(res) {
-          self.messageCount = ParseJson(res.data).length
+        var rong = api.require('rongCloud2');
+        rong.getTotalUnreadCount(function(ret, err) {
+          if (ret.status === 'success') {
+            self.messageCount = ret.result
+          }
         })
+        // $.ajax({
+        //   url: BaseService.apiUrl + 'getXSchat',
+        //   data: {userid: Helper.getUserId()}
+        // }).then(function(res) {
+        //   self.messageCount = ParseJson(res.data).length
+        // })
       },
       onClickType: function(t) {
         api.openWin({

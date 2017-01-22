@@ -13,8 +13,20 @@ $.ajax({
   }
 })
 
+function clearUnreadStatus() {
+  rong.clearMessagesUnreadStatus({
+    conversationType: 'PRIVATE',
+    targetId: api.pageParam.targetId
+  }, function(ret, err) {
+    if (ret.status === 'success') {
+
+    }
+  })
+}
+
 function initPage() {
   rong = api.require('rongCloud2');
+  clearUnreadStatus()
   vm = new Vue({
     el: '.wrapper',
     created: function() {
@@ -58,7 +70,9 @@ function initPage() {
           count: 20
         }, function(ret, err) {
           if (ret.status === 'success') {
-            self.messages = _.reverse(ret.result)
+            if (ret.result && ret.result.length > 0) {
+              self.messages = _.reverse(ret.result)
+            }
             Vue.nextTick(function() {
               $('body').scrollTop(1000000)
             })
@@ -72,7 +86,10 @@ function initPage() {
           conversationType: 'PRIVATE',
           targetId: api.pageParam.targetId,
           text: msg,
-          extra: this.myInfo
+          extra: {
+            sender: self.myInfo,
+            receiver: self.targetInfo
+          }
         }, function(ret, err) {
           if (ret.status == 'prepare'){
             self.messages.push(ret.result.message);

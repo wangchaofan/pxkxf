@@ -8,21 +8,20 @@ function initPage() {
     data: function() {
       return {
         list: [],
-        notice: null,
-        hasNoReadNotice: false
+        notice: {},
+        hasNoReadNotice: false,
+        uid: Helper.getUserId()
+      }
+    },
+    filters: {
+      json: function(val, key) {
+        return JSON.parse(val)[key]
       }
     },
     methods: {
-      onClickMessage: function(mes) {
-        var self = this
-        $.ajax({
-          url: BaseService.apiUrl + 'xxupdatestate',
-          data: { xxid: mes.chatId }
-        }).done(function(res) {
-          if (res.key === true) {
-            
-          }
-        })
+      onClickMessage: function(msg) {
+        var targetId = msg.senderUserId === this.uid ? msg.targetId : msg.senderUserId;
+        Helper.openWin('chat_room', {targetId: targetId})
       },
       getNotice: function() {
         var self = this
@@ -37,16 +36,32 @@ function initPage() {
       },
       getData: function() {
         var self = this
-        $.ajax({
-          url: BaseService.apiUrl + 'getXSchat',
-          data: { userid: Helper.getUserId() }
-        }).done(function(res) {
-          if (res.key === 'true') {
-            self.list = ParseJson(res.data)
-            console.log(ParseJson(res.data))
+        var rong = api.require('rongCloud2');
+
+        rong.getConversationList(function(ret, err) {
+          if (ret.status === 'success') {
+            self.list = _.map(ret.result, function(msg) {
+              var extra = ParseJson(msg.latestMessage.extra)
+              if (!extra.sender) {
+                extra.sender = {};
+                extra.receiver = {};
+              }
+              msg.latestMessage.extra = extra;
+              return msg;
+            });
+            // alert(JSON.stringify(ret.result))
           }
-          // alert(JSON.stringify(res))
         })
+        // $.ajax({
+        //   url: BaseService.apiUrl + 'getXSchat',
+        //   data: { userid: Helper.getUserId() }
+        // }).done(function(res) {
+        //   if (res.key === 'true') {
+        //     self.list = ParseJson(res.data)
+        //     console.log(ParseJson(res.data))
+        //   }
+        //   // alert(JSON.stringify(res))
+        // })
       },
       goNotice: function () {
         api.openWin({
@@ -67,6 +82,6 @@ setTimeout(function() {
   }
 }, 500)
 
-apiready = function(){
+apiready = function() {
   initPage()
 }

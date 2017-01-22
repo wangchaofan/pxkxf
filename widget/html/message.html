@@ -9,23 +9,43 @@
     <script src="../script/adapter.js"></script>
 </head>
 <body>
-<div class="wrapper" v-cloak>
+<div class="wrapper">
     <my-header title="我的消息"></my-header>
-    <div class="message-list container bg-white" v-cloak>
+    <div class="message-list bg-white" v-cloak>
         <ul>
-            <li v-for="item in list" @click="onClickMessage(item)">
-                <div class="message-list-item">
+            <li v-for="item in list" @touchstart="onClickMessage(item)" tapmode="hover">
+                <div class="message-list-item" v-if="item.targetId === uid">
                     <div class="message-list-item__avatar">
-                        <img :src="item.fsusermodel[0].pheadimgUrl" alt="">
+                        <img :src="item.latestMessage.extra.sender.avatar" alt="">
                     </div>
                     <div class="message-list-item__info">
                         <div class="message-list-item__title">
-                            {{item.fsusermodel[0].pnickname}}
+                            {{item.latestMessage.extra.sender.nickname}}
                         </div>
+                        <div class="message-list-item__content text-overflow-es">{{item.latestMessage.text}}</div>
+                    </div>
+                    <div class="message-list-item__otherinfo">
                         <div class="message-list-item__date">
-                            {{item.ctime | date('yyyy-MM-dd hh:mm:ss')}}
+                            {{item.receivedTime | date('yyyy-MM-dd hh:mm:ss')}}
                         </div>
-                        <div class="message-list-item__content text-overflow-es">{{item.fscontent}}</div>
+                        <div class="unread-number">4</div>
+                    </div>
+                </div>
+                <div class="message-list-item" v-else>
+                    <div class="message-list-item__avatar">
+                        <img :src="item.latestMessage.extra.receiver.avatar" alt="">
+                    </div>
+                    <div class="message-list-item__info">
+                        <div class="message-list-item__title">
+                            {{item.latestMessage.extra.receiver.nickname}}
+                        </div>
+                        <div class="message-list-item__content text-overflow-es">{{item.latestMessage.text}}</div>
+                    </div>
+                    <div class="message-list-item__otherinfo">
+                        <div class="message-list-item__date">
+                            {{item.receivedTime | date('yyyy-MM-dd hh:mm:ss')}}
+                        </div>
+                        <div class="unread-number">5</div>
                     </div>
                 </div>
             </li>
@@ -38,12 +58,15 @@
                         <div class="message-list-item__title">
                             系统通知
                         </div>
-                        <div class="message-list-item__date">
-                            {{notice.noticetime | date('yyyy-MM-dd hh:mm:ss')}}
-                        </div>
                         <div class="message-list-item__content text-overflow-es">
                             {{notice.noticecontent}}
                         </div>
+                    </div>
+                    <div class="message-list-item__otherinfo">
+                        <div class="message-list-item__date">
+                            {{notice.noticetime | date('yyyy-MM-dd hh:mm:ss')}}
+                        </div>
+                        <div class="unread-number">12</div>
                     </div>
                 </div>
             </li>
