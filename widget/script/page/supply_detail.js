@@ -144,7 +144,7 @@ function initPage() {
         })
       },
     	goChat: function() {
-        Helper.openWin('chat_room', {targetID: this.supplyInfo.sUsermodel[0].lUserId})
+        Helper.openWin('chat_room', {targetId: this.supplyInfo.sUsermodel[0].lUserId})
     	},
       onSubmit: function() {
         api.openWin({
