@@ -10,6 +10,23 @@ function initPage() {
       }
     },
     methods: {
+      shareTowx: function(scene) {
+        var wx = api.require('wx');
+        wx.shareWebpage({
+          apiKey: 'wx8e9a88ba16112813',
+          scene: scene,
+          title: '测试标题',
+          description: '分享内容的描述',
+          thumb: 'widget://a.jpg',
+          contentUrl: 'http://apicloud.com'
+        }, function(ret, err) {
+          if (ret.status) {
+            api.toast({msg: '分享成功'});
+          } else {
+            api.toast({msg: '分享失败'});
+          }
+        });
+      },
       onSubmit: function() {
         var self = this
         if (_.trim(this.content).length === 0) {

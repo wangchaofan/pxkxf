@@ -34,7 +34,7 @@
   </div>
   <div class="fixed-bottom display-flex" v-cloak>
     <div class="button-chat" @click="onClickChat"></div>
-    <div class="button-book btn-submit" v-if="order.State == 1" @click="toPay">去付款</div>
+    <div class="button-book btn-submit" v-if="order.fkstate == 1" @click="toPay">去付款</div>
     <div class="button-cancel btn-submit" v-if="order.State == 1 || order.State == 2" @click="onCancel">取消邀约</div>
     <div class="button-book btn-submit" v-if="order.State == 3" @click="toConfirm">供应完成</div>
     <div class="button-cancel btn-submit" v-if="order.State == 4" @click="toComment">待评价</div>

@@ -28,6 +28,7 @@ function initPage() {
         if (this.submiting) return
         var self = this
         this.submiting = true
+        // alert(api.pageParam.orderId)
         var url = api.pageParam.orderType === 'demand' ? 'xqcz' :  'gyddcz'
         $.ajax({
           url: BaseService.apiUrl + url,

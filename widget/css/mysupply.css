@@ -167,17 +167,23 @@
     height: 3rem;
 }
 .type-select {
+    position: fixed;
+    top: 44px;
+    left: 0;
+    z-index: 9;
+    width: 100%;
     display: flex;
     padding: 0 1.5rem;
-    height: 2.2rem;
-    line-height: 2.2rem;
+    height: 44px;
+    line-height: 45px;
     font-size: 0.7rem;
     text-align: center;
+    background: #fff;
     border-bottom: 1px solid #ddd;
 }
 .type-select > span {
     height: 100%;
-    box-sizing: content-box;
+    background: #fff;
 }
 .type-select > span.current {
     border-bottom: 2px solid #e4353a;

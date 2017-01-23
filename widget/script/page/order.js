@@ -17,7 +17,7 @@ var ListItem = {
   '      邀约时间：{{myData.mtime | date("yyyy-MM-dd")}}' +
   '    </div>' +
   '    <div class="supply-list-item__param">' +
-  '      订单状态：{{getStateText(myData.State)}}' +
+  '      订单状态：<span v-html="getStateText(myData.State)">' +
   '    </div>' +
   '    <div class="supply-item-desc">描述：{{skill.skilldetails}}</div>' +
   '  </div>' +
@@ -54,6 +54,9 @@ var ListItem = {
       }) 
     },
     getStateText: function() {
+      if (this.myData.fkstate == 1) {
+        return '<span class="text-warning">待付款</span>'
+      }
       switch(this.myData.State) {
         case 1: return '预约中';
         case 2: return '进行中';
@@ -226,7 +229,7 @@ function initPage() {
     textUp: '松开刷新...',
     showTime: false
   }, function(ret, err) {
-    vm.getData()
+    vm.getData(vm.state)
   })
 }
 /* === 测试使用 === */

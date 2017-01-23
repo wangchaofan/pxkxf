@@ -22,7 +22,7 @@ function initPage() {
           name: 'chat_room',
           url: 'widget://html/chat_room.html',
           pageParam: {
-            name: 'value'
+            targetId: this.userModel.lUserId
           }
         })
       },
@@ -54,8 +54,8 @@ function initPage() {
               })
               setTimeout(function() {
                 api.closeWin()
-              }, 2000)
-            }, 3000)
+              }, 1000)
+            }, 2000)
           } else {
             alert(res.mage)
           }

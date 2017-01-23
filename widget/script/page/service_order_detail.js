@@ -24,7 +24,7 @@ function initPage() {
         var self = this
         api.confirm({
           title: '提示',
-          msg: '是否确定拒绝？'
+          msg: '是否确定接受？'
         }, function (ret, err) {
           if (ret.buttonIndex == 2) {
             $.ajax({
