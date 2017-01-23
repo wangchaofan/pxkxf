@@ -28,7 +28,7 @@
                         <div class="message-list-item__date">
                             {{item.receivedTime | date('yyyy-MM-dd hh:mm:ss')}}
                         </div>
-                        <div class="unread-number">4</div>
+                        <div class="unread-number" v-if="item.unreadMessageCount > 0">{{item.unreadMessageCount}}</div>
                     </div>
                 </div>
                 <div class="message-list-item" v-else>
@@ -45,7 +45,7 @@
                         <div class="message-list-item__date">
                             {{item.receivedTime | date('yyyy-MM-dd hh:mm:ss')}}
                         </div>
-                        <div class="unread-number">5</div>
+                        <div class="unread-number" v-if="item.unreadMessageCount > 0">{{item.unreadMessageCount}}</div>
                     </div>
                 </div>
             </li>
