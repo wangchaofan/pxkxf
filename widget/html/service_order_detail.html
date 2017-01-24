@@ -34,13 +34,13 @@
   </div>
   <div class="fixed-bottom display-flex" v-cloak>
     <div class="button-chat" @click="onClickChat"></div>
-    <div class="button-book btn-submit" v-if="order.State == 1" @click="onClickAccept">接受订单</div>
-    <div class="button-cancel btn-submit" v-if="order.State == 1" @click="onClickRefuse">拒绝订单</div>
-    <div class="button-cancel btn-submit" v-if="order.State == 2" @click="onClickComplete">供应完成</div>
-    <div class="button-cancel btn-submit" v-if="order.State == 4" @click="toComment">待评价</div>
-    <div class="button-book btn-submit" v-if="order.State == 5" disabled>订单已完成</div>  
-    <div class="button-book btn-submit" v-if="order.State == 6" disabled>订单已取消</div> 
-    <div class="button-book btn-submit" v-if="order.State == 7" disabled>订单被拒绝</div>
+    <div class="button-book btn-submit" v-if="order.mstate == 1" @click="onClickAccept">接受订单</div>
+    <div class="button-cancel btn-submit" v-if="order.mstate == 1" @click="onClickRefuse">拒绝订单</div>
+    <div class="button-cancel btn-submit" v-if="order.mstate == 2" @click="onClickComplete">供应完成</div>
+    <div class="button-cancel btn-submit" v-if="order.mstate == 4" @click="toComment">待评价</div>
+    <div class="button-book btn-submit" v-if="order.mstate == 5" disabled>订单已完成</div>
+    <div class="button-book btn-submit" v-if="order.mstate == 6" disabled>订单已取消</div>
+    <div class="button-book btn-submit" v-if="order.mstate == 7" disabled>订单被拒绝</div>
   </div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>

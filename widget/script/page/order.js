@@ -113,7 +113,7 @@ var ServiceListItem = {
       Helper.openWin('user_homepage', {uid: this.usermodel.lUserId});
     },
     getStateText: function() {
-      switch(this.myData.State) {
+      switch(this.myData.mstate) {
         case 1: return '预约中';
         case 2: return '进行中';
         case 3: return '供应完成';
