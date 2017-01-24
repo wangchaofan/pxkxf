@@ -760,8 +760,8 @@ header {
 }
 
 .btn-submit[disabled] {
-  background: #e5e5e5;
-  color: #c8c8c8;
+  background: #ddd;
+  color: #fff;
 }
 
 .input-row {

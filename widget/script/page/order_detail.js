@@ -15,7 +15,6 @@ function initPage() {
     },
     methods: {
       onClickChat: function() {
-        alert(JSON.stringify(this.userModel))
         Helper.openWin('chat_room', {targetId: this.userModel.lUserId})
       },
       // === 支付 ===
@@ -32,7 +31,27 @@ function initPage() {
       },
       // === 确认完成 ===
       toConfirm: function() {
-
+        var self = this
+        api.confirm({
+          title: '提示',
+          msg: '是否确定完成？'
+        }, function (ret, err) {
+          if (ret.buttonIndex == 2) {
+            $.ajax({
+              url: BaseService.apiUrl + 'yygyddwc',
+              data: {
+                ddid: self.ddid
+              }
+            }).done(function(res) {
+              alert(JSON.stringify(res))
+              if (res.key === 'true') {
+                self.getData()
+              } else {
+                api.toast({msg: res.mage})
+              }
+            })
+          }
+        })
       },
       // === 评价 ===z
       toComment: function() {

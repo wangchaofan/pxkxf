@@ -77,7 +77,7 @@ function initPage() {
 						}).then(function(res) {
 							if (res.key === 'true') {
 								inviteItem.ystate = 2
-								self.demandInfo.yynum = self.demandInfo.yynum + 1
+								self.demandInfo.yxnum = parseInt(self.demandInfo.yxnum) + 1
 							} else {
 								api.toast({
 									msg: res.mage
@@ -114,6 +114,7 @@ function initPage() {
 					if (res.key === 'true') {
 						alert('应邀成功')
 						self.showDialog = false
+						self.demandInfo.yynum = parseInt(self.demandInfo.yynum, 10) + 1
 					} else {
 						api.toast({
 							msg: res.mage

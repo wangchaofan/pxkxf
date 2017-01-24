@@ -73,11 +73,12 @@ function initPage() {
         }, function (ret, err) {
           if (ret.buttonIndex == 2) {
             $.ajax({
-              url: BaseService.apiUrl + 'yygyddwc',
+              url: BaseService.apiUrl + 'gyddwc',
               data: {
                 ddid: self.ddid
               }
             }).done(function(res) {
+              alert(JSON.stringify(res))
               if (res.key === 'true') {
                 self.getData()
               } else {
@@ -89,27 +90,20 @@ function initPage() {
       },
       // === 评价 ===z
       toComment: function() {
-        api.openWin({
-          name: 'comment',
-          url: 'widget://html/comment.html',
-          pageParam: {
-            id: api.pageParam.id
-          }
-        })
+        Helper.openWin('comment', {id: this.ddid, orderType: 'service'})
       },
       getData: function () {
         var self = this
         $.ajax({
-          url: BaseService.apiUrl + 'yyskillddinfo',
+          url: BaseService.apiUrl + 'fwskillddinfo',
           data: {
-            // skillddid: 'a17db629-52b6-4b6a-a904-e6c1721e3a02'
             skillddid: api.pageParam.id
           }
         }).then(function(res) {
           if (res.key === 'true') {
             var data = ParseJson(res.data)
             self.order = data[0]
-            self.userModel = data[0].Skillmodel[0].sUsermodel[0]
+            self.userModel = data[0].usermodel[0]
             console.log(ParseJson(res.data))
           }
         })

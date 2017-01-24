@@ -46,7 +46,7 @@ var ListItem = {
       })
     },
     getStateText: function() {
-      switch(this.myData.State) {
+      switch(this.myData.mstate) {
         case 1: return '预约中';
         case 2: return '进行中';
         case 3: return '供应完成';
@@ -68,13 +68,14 @@ function initPage() {
     data: function() {
       return {
         order: null,
+        type: api.pageParam.orderType,
         comment: {
           userid: Helper.getUserId(),
           ddid: '',
           jlpj: 0, // 供应评分
           rpj: 0, // 供应人评分
           describe: '',
-          type: 1
+          type: api.pageParam.orderType === 'service' ? 2 : 1
         }
       }
     },
@@ -102,29 +103,34 @@ function initPage() {
         return true
       },
       onSubmit: function() {
-        if (!this.validate()) return
-        var self = this
-        this.comment.ddid = this.order.SillYYDDId
+        if (!this.validate()) return;
+        var self = this;
+        var uri = this.type === 'service' ? 'gygyddpl' : 'yygyddpl';
+        this.comment.ddid = this.order.SillYYDDId;
         $.ajax({
-          url: BaseService.apiUrl + 'yygyddpl',
+          url: BaseService.apiUrl + uri,
           data: this.comment
         }).then(function(res) {
           if (res.key === 'true') {
-            api.toast({msg: '评价成功'})
+            api.toast({msg: '评价成功'});
             setTimeout(function() {
-              api.closeWin()
+              api.closeToWin({
+                name: self.type === 'service' ? 'service_order_detail' : 'order_detail'
+              })
             }, 2000)
           } else {
             api.toast({msg: res.mage})
           }
+        }, function(err) {
+          alert(JSON.stringify(err))
         })
       },
       getData: function () {
         var self = this
+        var uri = this.type === 'service' ? 'fwskillddinfo' : 'fwskillddinfo';
         $.ajax({
-          url: BaseService.apiUrl + 'yyskillddinfo',
+          url: BaseService.apiUrl + uri,
           data: {
-            // skillddid: 'a17db629-52b6-4b6a-a904-e6c1721e3a02'
             skillddid: api.pageParam.id
           }
         }).then(function(res) {
