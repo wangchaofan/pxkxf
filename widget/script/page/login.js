@@ -66,6 +66,7 @@ function initPage() {
 							    key: 'userid',
 							    value: res.data
 							});
+							Helper.setUserInfo();
 							api.sendEvent({
 								name: 'initHomePage'
 							});

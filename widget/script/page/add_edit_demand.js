@@ -3,7 +3,7 @@ function initPage() {
 		el: '.wrapper',
 		created: function() {
 			this.getProvice()
-			this.getUserData()
+			// this.getUserData()
 		},
 		data: function() {
 			return {

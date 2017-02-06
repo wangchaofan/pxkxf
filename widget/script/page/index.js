@@ -5,6 +5,9 @@ apiready = function() {
 		filter: 1,
 		autoStop: true
 	}, function(ret, err) {
+		if (err) {
+			api.toast({msg: '定位失败！'})
+		}
 	})
 
 	if (!Helper.getUserId()) {
@@ -174,25 +177,29 @@ apiready = function() {
 					}, function(ret, err) {
 				    var index = ret.buttonIndex;
 				    if (index === 1) {
-				    	api.openWin({
-			    	    name: 'add_edit_supply',
-			    	    url: 'widget://html/add_edit_supply.html',
-			    	    pageParam: {
+				    	if (judgeAuthority()) {
+				    		api.openWin({
+				    	    name: 'add_edit_supply',
+				    	    url: 'widget://html/add_edit_supply.html',
+				    	    pageParam: {
 			    	        type: 'add'
-			    	    }
-				    	})
+				    	    }
+					    	})
+				    	}
 				    } else if (index === 2) {
-				    	api.openWin({
-			    	    name: 'add_edit_supply',
-			    	    url: 'widget://html/add_edit_demand.html',
-			    	    pageParam: {
-			    	      type: 'add'
-			    	    }
-				    	})
+				    	if (judgeAuthority()) {
+				    		api.openWin({
+			    	    	name: 'add_edit_supply',
+			    	    	url: 'widget://html/add_edit_demand.html',
+			    	    	pageParam: {
+			    	      		type: 'add'
+			    	    	}
+				    		})
+				    	}
 				    } else if (index === 3) {
 				    	api.openWin({
-			    	    name: 'page1',
-			    	    url: 'widget://html/add_dynamic.html'
+			    	    	name: 'page1',
+			    	    	url: 'widget://html/add_dynamic.html'
 				    	})
 				    }
 				    NVTabBar.setSelect({
@@ -237,6 +244,22 @@ apiready = function() {
 			currentIndex = index
 			api.setFrameGroupIndex({ name: 'group', index: index })
 		}
+	}
+
+	function judgeAuthority() {
+		var user = Helper.getUserInfo()
+		if (user.levle === '普通用户') {
+			api.confirm({
+				title: '提示',
+				msg: '发布需要实名认证，是否立即认证？',
+			}, function (ret, err) {
+				if (ret.buttonIndex === 2) {
+					Helper.openWin('qualification')
+				}
+			});
+			return false;
+		}
+		return true;
 	}
 
 	api.addEventListener({

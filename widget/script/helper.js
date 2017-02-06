@@ -22,6 +22,8 @@ var Helper = {
   getUserId: getUserId,
   getRongcloudToken: getRongcloudToken,
   dateFormat: dateFormat,
+  getUserInfo: getUserInfo,
+  setUserInfo: setUserInfo,
   openWin: function(winName, pageParam, option) {
     var defaultOption = {
       name: winName,
@@ -251,6 +253,24 @@ function UploadImg(userid, imgData) {
       fileNameurl: imgData
     }
   })
+}
+
+function setUserInfo() {
+  $.ajax({
+    url: BaseService.apiUrl + 'getuserinfo',
+    data: { uid: getUserId() }
+  }).then(function(res) {
+    api.setPrefs({
+      key: 'userInfo',
+      value: ParseJson(res.data)[0]
+    })
+  }, function(err) {
+    console.log(err)
+  })
+}
+
+function getUserInfo() {
+  return JSON.parse(api.getPrefs({key: 'userInfo', sync: true}))
 }
 
 function getUserId() {
