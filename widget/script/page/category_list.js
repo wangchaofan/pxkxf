@@ -118,7 +118,8 @@ function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     created: function() {
-      this.getDemand()
+      this.getDemand();
+      this.getSupply();
     },
     components: {
       'demand-item': DemandItem,

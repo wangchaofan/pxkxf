@@ -167,12 +167,13 @@ body {
 	background: #fff;
 }
 .user-func-head {
+	margin-top: 0.5rem;
 	height: 2.15rem;
 	padding: 0 0.75rem;
 	font-size: 0.75rem;
 	line-height: 2.15rem;
 	color: #000;
-	border-bottom: 1px solid #ddd;
+	background: #fff;
 }
 .user-func-head .free-time {
 	display: inline-block;
@@ -182,6 +183,7 @@ body {
 .user-func-container {
 	display: flex;
 	height: 5.25rem;
+	border-bottom: 1px solid #ddd;
 }
 .user-func-item {
 	flex: 1;

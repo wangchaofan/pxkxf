@@ -103,7 +103,12 @@ function initPage() {
 				var self = this;
 				var citySelector = api.require('citySelector');
 				citySelector.open({
-				  y: api.frameHeight / 1.6
+				  y: api.frameHeight / 1.6,
+					titleImg: 'widget://image/topbar_bg.jpg',
+					bgImg: 'widget://image/cityselector_bg.jpg',
+					cancelImg: 'widget://image/button_cancel.jpg',
+					enterImg: 'widget://image/button_ok.jpg',
+					fontColor: '#666'
 				}, function(ret, err) {
 					self.province = ret.province
 					if (!ret.county) {

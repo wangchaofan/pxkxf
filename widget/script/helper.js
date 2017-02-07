@@ -5,7 +5,7 @@
 /* === 全局变量 === */
 var ParseJson = JSON.parse
 var MockData = {
-  userid: 'A17DB629-52B6-4B6A-A904-E6C1721E3A05'
+  userid: 'a17db629-52b6-4b6a-a904-e6c1721e3a05'
 }
 
 /* === api 基础服务 === */
@@ -132,14 +132,9 @@ Vue.component('user-box', {
   },
   methods: {
     viewUserHomepage: function() {
-      api.openWin({
-        name: 'user_homepage',
-        url: 'widget://html/user_homepage.html',
-        reload: true,
-        pageParam: {
-          uid: this.user.lUserId
-        }
-      })
+      if (this.user.lUserId !== Helper.getUserId()) {
+        Helper.openWin('user_homepage', {uid: this.user.lUserId});
+      }
     }
   }
 })

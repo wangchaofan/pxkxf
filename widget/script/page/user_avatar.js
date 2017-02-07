@@ -57,7 +57,7 @@ function initPage() {
         userInfo: {},
         dynamic: null,
         skill: null,
-        title: '用户昵称'
+        title: '个人资料'
       }
     },
     computed: {
@@ -71,16 +71,13 @@ function initPage() {
       onClickReturnBack: function() {
         if (this.title === '选择头像') {
           this.FNImageClip.close()
-          this.title = "用户昵称"
+          this.title = "个人资料"
         } else {
           api.closeWin()
         }
       },
       viewDynamic: function() {
-        api.openWin({
-          name: 'mydynamics',
-          url: 'widget://html/mydynamics.html'
-        })
+        Helper.openWin('mydynamics');
       },
       getData: function() {
         var self = this
@@ -180,7 +177,7 @@ function initPage() {
       },
       uploadAvatar: function(image) {
         var self = this
-        this.title = '用户昵称'
+        this.title = '个人资料'
         api.showProgress({
             style: 'default',
             animationType: 'fade',
@@ -210,6 +207,9 @@ function initPage() {
           }
         })
       },
+      handlerClickUserLevel: function() {
+        Helper.openWin('qualification');
+      },  
       goPage: function(pageName) {
         var pageParam = {}
         if (pageName === 'phone_setting') {

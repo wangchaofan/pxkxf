@@ -12,7 +12,7 @@ var ListItem = {
   '      供应价格：<strong class="text-warning">{{myData.smoney}}</strong>元' +
   '    </div>' +
   '    <div class="supply-list-item__param">' +
-  '      供应状态：<span class="supply-status">{{getStateText(myData.sfState)}}</span>' +
+  '      供应状态：<span class="supply-status">{{getStateText(myData.State)}}</span>' +
   '    </div>' +
   '    <div class="supply-item-desc">描述：{{myData.skilldetails}}</div>' +
   '  </div>' +

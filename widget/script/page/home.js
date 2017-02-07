@@ -99,11 +99,7 @@ function initPage() {
         // })
       },
       onClickType: function(t) {
-        api.openWin({
-          name: 'category_list',
-          url: 'widget://html/category_list.html',
-          pageParam: {category: t}
-        })
+        Helper.openWin('category_list', {category: t})
       },
       onClickSearchButton: function() {
         api.openWin({
@@ -130,7 +126,12 @@ function initPage() {
         var self = this;
         var citySelector = api.require('citySelector');
         citySelector.open({
-          y: api.frameHeight / 1.6 + 50
+          y: api.frameHeight / 1.6 + 50,
+          titleImg: 'widget://image/topbar_bg.jpg',
+          bgImg: 'widget://image/cityselector_bg.jpg',
+          cancelImg: 'widget://image/button_cancel.jpg',
+          enterImg: 'widget://image/button_ok.jpg',
+          fontColor: '#666'
         }, function(ret, err) {
           self.city = ret.city;
         })
@@ -160,7 +161,11 @@ function initPage() {
           url: BaseService.apiUrl + uri,
           data: {type: self.type, userid: Helper.getUserId()},
           success: function(res) {
-            self[listId] = JSON.parse(res.data)
+            var data = JSON.parse(res.data);
+            var userId = Helper.getUserId()
+            self[listId] = _.filter(data, function(u) {
+              return u.fUserId !== userId && u.sUserId !== userId;
+            });
             console.log(JSON.parse(res.data))
             api.refreshHeaderLoadDone()
           },

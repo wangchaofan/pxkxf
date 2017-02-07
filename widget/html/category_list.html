@@ -11,31 +11,15 @@
 </head>
 <body>
 <div class="wrapper">
-    <header class="header">
-        <div class="header-left">
-            <span class="return-back" @click="returnBack"></span>
-        </div>
-        <div class="header-center">
-            <div class="remand-header">
-                <span :class="{selected: currentPage === 'demand'}" @click="onClickNav('demand')">需求</span>
-                <span :class="{selected: currentPage === 'supply'}" @click="onClickNav('supply')">供应</span>
-            </div>
-        </div>
-        <div class="header-right">
-            <span class="fs24 white"></span>
-        </div>
-    </header>
-    <div class="remand-list" v-if="currentPage === 'demand'" v-cloak>
-        <div class="none-text" v-show="posting">正在加载...</div>
-        <div class="none-text" v-if="demandList.length === 0 && !posting" v-cloak>现在还没有需求哦~</div>
-        <ul v-else>
+    <my-header :title="category"></my-header>
+    <div class="none-text" v-show="posting">正在加载...</div>
+    <div class="remand-list" v-cloak>
+        <ul>
             <demand-item v-for="item in demandList" :item="item"></demand-item>
         </ul>
     </div>
-    <div class="remand-list" v-else>
-        <div class="none-text" v-show="posting">正在加载...</div>
-        <div class="none-text" v-if="supplyList.length === 0 && !posting" v-cloak>现在还没有供应哦~</div>
-        <ul v-else>
+    <div class="remand-list" v-cloak>
+        <ul>
             <supply-item v-for="item in supplyList" :item="item"></supply-item>
         </ul>
     </div>
