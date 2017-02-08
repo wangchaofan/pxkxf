@@ -59,15 +59,18 @@ function initPage() {
           Idzm: TransformImageData(self.Idzm),
           Idbm: TransformImageData(self.Idbm),
           scId: TransformImageData(self.scId)
-        }
+        };
         $.ajax({
           url: BaseService.apiUrl + 'getID',
           data: data
         }).then(function(res) {
           if (res.key === 'true') {
             api.toast({
-                msg: '认证功能'
+                msg: '认证成功'
             })
+            setTimeout(function() {
+              api.closeWin();
+            }, 2000);
           } else {
             api.toast({
                 msg: res.mage

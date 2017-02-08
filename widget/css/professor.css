@@ -1,3 +1,6 @@
+.wrapper {
+    padding-bottom: 0;
+}
 .professors {
     display: flex;
     flex-wrap: wrap;

@@ -202,6 +202,9 @@ apiready = function() {
 			    	    	url: 'widget://html/add_dynamic.html'
 				    	})
 				    }
+						if (currentIndex >= 2) {
+							currentIndex = currentIndex + 1
+						}
 				    NVTabBar.setSelect({
 					    index: currentIndex
 						})

@@ -46,7 +46,7 @@ function initPage() {
 				if (skill.Province) {
 					return skill.Province + ' ' + skill.City + ' ' + skill.District
 				}
-				return '请选择地区'
+				return '请选择地区(默认为任何地区)'
 			}
 		},
 		methods: {
@@ -83,12 +83,17 @@ function initPage() {
 				var self = this;
         		var citySelector = api.require('citySelector');
 				citySelector.open({
-				 	y: api.frameHeight / 1.6
-			  	}, function(ret, err) {
-					self.skill.Province = ret.province
-				 	self.skill.City = ret.city
-				 	self.skill.District = ret.county
-			  	})
+				 	y: api.frameHeight / 1.6,
+					titleImg: 'widget://image/topbar_bg.jpg',
+					bgImg: 'widget://image/cityselector_bg.jpg',
+					cancelImg: 'widget://image/button_cancel.jpg',
+					enterImg: 'widget://image/button_ok.jpg',
+					fontColor: '#666'
+				}, function(ret, err) {
+				self.skill.Province = ret.province
+				self.skill.City = ret.city
+				self.skill.District = ret.county
+				})
 			},
 			onFileChange: function(e) {
 				var self = this
@@ -109,6 +114,10 @@ function initPage() {
 						msg: '有效时间不能小于当前时间'
 					})
 					return
+				}
+				if (this.skill.money < 1) {
+					api.toast({msg: '价格不能小于1元'});
+					return;
 				}
 				this.skill.imgarr = _.map(this.images, Helper.transformImageData).join(',')
 				var data = _.clone(this.skill)
