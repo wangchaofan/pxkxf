@@ -13,6 +13,12 @@ function initPage() {
       }
     },
     methods: {
+      goIdCertify: function() {
+        Helper.openWin('certify');
+      },
+      goMajorCertify: function() {
+        Helper.openWin('certify_major');
+      },
       getData: function() {
         var self = this
         $.ajax({

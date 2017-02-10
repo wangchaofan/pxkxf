@@ -15,12 +15,10 @@
     <div class="">
       <div class="upload-desc">请您上传您的身份证照片：<span>最多10张</span></div>
       <section class="upload-wrap some-images display-flex">
-        <img src="" v-cloak>
-        <img src="" v-cloak>
-        <img src="" v-cloak>
-        <div class="upload-box">
+        <img v-for="img in images" :src="img">
+        <div class="upload-box" @click="handlerClickUpload">
           <div class="upload-box-name">上传证书</div>
-          <input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'Idzm')">
+          <!--<input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'Idzm')">-->
         </div>
       </section>
     </div>

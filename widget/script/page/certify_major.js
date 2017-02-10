@@ -5,32 +5,49 @@ function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     created: function() {
-      this.getData()
     },
     data: function() {
       return {
-        list: [],
+        images: [],
         posting: true
       }
     },
     methods: {
-      getData: function () {
-        var self = this
-        $.ajax({
-          url: BaseService.apiUrl + 'getFans',
-          data: {
-            userid: Helper.getUserId()
-          }
-        }).then(function(res) {
-          if (res.key === 'true') {
-            self.list = ParseJson(res.data)
-            console.log(ParseJson(res.data))
-            self.posting = false
-          }
-        })
+      handlerClickUpload: function() {
+        if (this.images.lenth >= 10) {
+          api.toast({
+            msg: '最多只能上传10张照片',
+          });
+        }
+        var self = this;
+        api.getPicture({
+          sourceType: 'library',
+          encodingType: 'jpg',
+          mediaValue: 'pic',
+          destinationType: 'base64',
+          allowEdit: false,
+          saveToPhotoAlbum: false
+        }, function (ret, err) {
+          self.images.push(ret.base64Data)
+        });
       },
       onSubmit: function () {
-        
+        $.ajax({
+          url: BaseService.apiUrl + 'addUserZs',
+          data: {
+            userid: Helper.getUserId(),
+            imgarr: _.map(Helper.transformImageData).join(',')
+          }
+        }).then(function(ret) {
+          if (ret.key == 'true') {
+            api.toast({msg: '提交成功!'});
+            setTimeout(function() {
+              api.closeWin()
+            }, 2000);
+          } else {
+            api.tosat({msg: ret.mage})
+          }
+        });
       }
     }
   })

@@ -6,7 +6,7 @@ function initPage() {
   vm = new Vue({
     el: '#mainPage',
     created: function() {
-      this.getList('demandList', 'getdemaorder')
+      this.getList()
       this.getMessageCount()
       this.getLocation()
     },
@@ -20,7 +20,10 @@ function initPage() {
         type: '',
         messageCount: '',
         weatherText: '',
-        temperature: ''
+        temperature: '',
+        demandNum: 1,
+        supplyNum: 1,
+        nearByNum: 1
       }
     },
     filters: {
@@ -74,14 +77,7 @@ function initPage() {
         })
       },
       goViewMessage: function() {
-        api.openWin({
-            name: 'message',
-            url: 'widget://html/message.html',
-            reload: true,
-            pageParam: {
-
-            }
-        });
+        Helper.openWin('message');
       },
       getMessageCount: function() {
         var self = this
@@ -112,7 +108,6 @@ function initPage() {
       },
       onClickTabHead: function(tabId) {
         this.currentTab = tabId
-        console.log(tabId)
         if (tabId === 'demand') {
           this.getList('demandList', 'getdemaorder')
         } else if (tabId === 'supply') {
@@ -154,18 +149,27 @@ function initPage() {
             }
         });
       },
-      getList: function(listId, uri, refresh) {
-        var self = this
-        if (self[listId].length > 0 && !refresh) return
+      getDemandList: function() {
+        var self = this;
+        var data = {
+          type: this.type,
+          userid: Helper.getUserId(),
+          num: this.demandNum
+        };
         $.ajax({
-          url: BaseService.apiUrl + uri,
-          data: {type: self.type, userid: Helper.getUserId()},
+          url: BaseService.apiUrl + 'getdemaorder',
+          data: data,
           success: function(res) {
             var data = JSON.parse(res.data);
-            var userId = Helper.getUserId()
-            self[listId] = _.filter(data, function(u) {
-              return u.fUserId !== userId && u.sUserId !== userId;
+            data = _.filter(data, function(u) {
+              return u.fUserId !== data.userid;
             });
+            if (data.num === 1) {
+              self.demandList = data
+            } else {
+              self.demandList = self.demandList.concat(data);
+            }
+            self.demandNum += 1;
             console.log(JSON.parse(res.data))
             api.refreshHeaderLoadDone()
           },
@@ -173,6 +177,50 @@ function initPage() {
             // alert(JSON.stringify(err))
           }
         })
+      },
+      getSupplyList: function() {
+        var self = this;
+        var data = {
+          type: this.type,
+          userid: Helper.getUserId(),
+          num: this.supplyNum
+        };
+        $.ajax({
+          url: BaseService.apiUrl + 'getSkill',
+          data: data,
+          success: function(res) {
+            var data = JSON.parse(res.data);
+            data = _.filter(data, function(u) {
+              return u.sUserId !== data.userId;
+            });
+            if (data.num === 1) {
+              self.supplyList = data
+            } else {
+              self.supplyList = self.supplyList.concat(data)
+            }
+            self.supplyNum += 1;
+            console.log(JSON.parse(res.data))
+            api.refreshHeaderLoadDone()
+          },
+          error: function(err) {
+            // alert(JSON.stringify(err))
+          }
+        })
+      },
+      getNearByList: function() {
+
+      },
+      getList: function(refresh) {
+        if (this.currentTab === 'demand') {
+          refresh && (this.demandNum = 1);
+          this.getDemandList();
+        } else if (this.currentTab === 'supply') {
+          refresh && (this.supplyNum = 1);
+          this.getSupplyList();
+        } else {
+          refresh && (this.nearByNum = 1);
+          this.nearByList = _.assgin(_.clone(this.demandList), _.clone(this.supplyList))
+        }
       }
     }
   })
@@ -192,6 +240,15 @@ function initPage() {
   }, function(err) {
     alert(JSON.stringify(err))
   })
+
+  api.addEventListener({
+    name: 'scrolltobottom',
+    extra:{
+      threshold: 50     //设置距离底部多少距离时触发，默认值为0，数字类型
+    }
+  }, function (ret, err) {
+    vm.getList()
+  });
 }
 
 /* === 测试使用 === */
@@ -213,8 +270,8 @@ apiready = function() {
     textUp: '松开刷新...',
     showTime: false
   }, function(ret, err) {
-    vm.getList('demandList', 'getdemaorder', true)
-    vm.getList('supplyList', 'getSkill', true)
+    vm.getList(true)
+    vm.getList(true)
   })
 
   var mySwiper = new Swiper('.swiper-container', {
