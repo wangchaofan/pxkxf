@@ -57,11 +57,18 @@ function initPage() {
               amount: data.total_amount,
               tradeNO: data.out_trade_no
             }, function(ret, err) {
-              api.alert({
-                title: '支付结果',
-                msg: ALI_PAY_CODE[ret.code],
-                buttons: ['确定']
-              });
+              if (ret.code == 9000) {
+                api.toast({msg: '支付成功'});
+                setTimeout(function() {
+                  api.closeToWin('mywallet');
+                }, 2000);
+              } else {
+                api.alert({
+                  title: '支付结果',
+                  msg: ALI_PAY_CODE[ret.code],
+                  buttons: ['确定']
+                });
+              }
             });
           } else {
             api.toast({msg: res.mage})

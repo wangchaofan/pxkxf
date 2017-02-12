@@ -62,7 +62,7 @@ var SupplyItem = {
             '	  <div class="user-info">' +
             '	    <div class="user-avatar-wrap" @click.stop="viewUserHomepage(item.sUsermodel[0])">' +
             '	      <img class="user-avatar" v-bind:src="item.sUsermodel[0].pheadimgUrl" alt="">' +
-            '	      <div class="p-tag">供应</div>' +
+            '	      <div class="p-tag supply">供应</div>' +
             '	    </div>' +
             '	    <user-roles :role="item.slevel"></user-roles>' +
             '	    <user-good-level :good-level="item.sUsermodel[0].evaluate"></user-good-level>' +
@@ -94,22 +94,10 @@ var SupplyItem = {
   },
   methods: {
     viewUserHomepage: function() {
-      api.openWin({
-        name: 'user_homepage',
-        url: 'widget://html/user_homepage.html',
-        pageParam: {
-          uid: this.item.sUsermodel[0].lUserId
-        }
-      })
+      Helper.openWin('user_homepage', {uid: this.item.sUsermodel[0].lUserId});
     },
     viewSupplyDetail: function() {
-      api.openWin({
-        name: 'supply_detail',
-        url: 'widget://html/supply_detail.html',
-        pageParam: {
-          id: this.item.skillID
-        }
-      })
+      Helper.openWin('supply_detail', {id: this.item.skillID});
     }
   }
 }
@@ -120,6 +108,7 @@ function initPage() {
     created: function() {
       this.getDemand();
       this.getSupply();
+      this.pageNum += 1;
     },
     components: {
       'demand-item': DemandItem,
@@ -131,6 +120,7 @@ function initPage() {
         demandList: [],
         supplyList: [],
         posting: false,
+        pageNum: 1,
         category: api.pageParam.category
       }
     },
@@ -155,7 +145,7 @@ function initPage() {
         this.posting = true
         $.ajax({
           url: BaseService.apiUrl + 'getdemaorder',
-          data: {type: this.category, userid: Helper.getUserId()},
+          data: {type: this.category, userid: Helper.getUserId(), num: this.pageNum},
           success: function(res) {
             self.demandList = JSON.parse(res.data)
             console.log(JSON.parse(res.data))
@@ -172,7 +162,7 @@ function initPage() {
         self.posting = true
         $.ajax({
           url: BaseService.apiUrl + 'getSkill',
-          data: {type: self.category, userid: Helper.getUserId()},
+          data: {type: self.category, userid: Helper.getUserId(), num: this.pageNum},
           success: function(res) {
             self.supplyList = JSON.parse(res.data)
             console.log(JSON.parse(res.data))
@@ -185,7 +175,18 @@ function initPage() {
         })
       }
     }
-  })
+  });
+
+  api.addEventListener({
+    name: 'scrolltobottom',
+    extra:{
+      threshold: 50     //设置距离底部多少距离时触发，默认值为0，数字类型
+    }
+  }, function (ret, err) {
+    vm.getDemand();
+    vm.getSupply();
+    vm.pageNum += 1;
+  });
 }
 /* === 测试使用 === */
 setTimeout(function() {

@@ -110,7 +110,7 @@
               <div class="user-info">
                 <div class="user-avatar-wrap" @click.stop="viewUserHomepage(item.sUsermodel[0])">
                   <img class="user-avatar" v-bind:src="item.sUsermodel[0].pheadimgUrl" alt="">
-                  <div class="p-tag">供应</div>
+                  <div class="p-tag supply">供应</div>
                 </div>
                 <user-roles :role="item.slevel"></user-roles>
                 <user-good-level :good-level="item.sUsermodel[0].evaluate"></user-good-level>

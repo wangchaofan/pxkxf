@@ -51,7 +51,7 @@
 	height: 1.5rem;
 	line-height: 1.5rem;
 	font-size: 0.6rem;
-	color: #9f9f9f;		
+	color: #9f9f9f;
 	background: #fff;
 	border-radius: 4px;
 }
@@ -99,7 +99,7 @@
 }
 
 .message-tip .message-tip-number {
-	position: absolute;	
+	position: absolute;
 	right: -0.2rem;
 	top: -0.15rem;
 	display: flex;
@@ -159,17 +159,17 @@
 .swiper-container {
 	height: 6rem;
 	border-bottom: 0.5rem solid #f0f1f5;
-	background: #eee;	
+	background: #eee;
 }
 
 .tab {
 	background: #fff;
-} 
+}
 
 .tab-header {
 	height: 2.025rem;
 	padding: 0.3rem 0.75rem 0;
-	color: #666;	
+	color: #666;
 	border-bottom: 1px solid #ddd;
 }
 
@@ -217,7 +217,7 @@
 	height: 3.5rem;
 }
 .user-avatar-wrap .user-avatar {
-	width: 100%;	
+	width: 100%;
 	height: 100%;
 	border-radius: 4px;
 }
@@ -232,8 +232,12 @@
 	font-size: 0.4rem;
 	line-height: 0.55rem;
 	text-align: center;
-	background: #ee5d61;	
+	background: #ee5d61;
 	border-radius: 2px;
+}
+
+.user-avatar-wrap .p-tag.supply {
+	background: #20a0ff;
 }
 
 .user-info .good-like,
@@ -302,7 +306,7 @@
 .remand-info {
 	flex: 1;
 	font-size: 0.7rem;
-	color: #999;	
+	color: #999;
 	line-height: 1;
 	overflow: hidden;
 }

@@ -6,9 +6,10 @@ function initPage() {
   vm = new Vue({
     el: '#mainPage',
     created: function() {
-      this.getList()
-      this.getMessageCount()
-      this.getLocation()
+      this.getList();
+      this.getMessageCount();
+      this.getLocation();
+      this.getWeather();
     },
     data: function() {
       return {
@@ -33,14 +34,7 @@ function initPage() {
     },
     methods: {
       viewUserHomepage: function(user) {
-        console.log(user)
-        api.openWin({
-          name: 'user_homepage',
-          url: 'widget://html/user_homepage.html',
-          pageParam: {
-            uid: user.lUserId
-          }
-        })
+        Helper.openWin('user_homepage', {uid: user.lUserId});
       },
       getLocation: function() {
         var self = this

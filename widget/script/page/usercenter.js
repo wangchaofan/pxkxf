@@ -25,14 +25,7 @@ function initPage() {
         if (!this.userid) {
           pageName = 'login'
         }
-        api.openWin({
-          name: pageName,
-          url: 'widget://html/' + pageName + '.html',
-          reload: true,
-          pageParam: {
-
-          }
-        })
+        Helper.openWin(pageName);
       },
       getUserInfo: function() {
         var self = this
@@ -67,7 +60,7 @@ function initPage() {
   api.addEventListener({
       name: 'editAvatarSuccess'
   }, function(ret, err) {
-      if (ret) {  
+      if (ret) {
         vm.userInfo.pheadimgUrl = ret.value.avatar
       }
   });
