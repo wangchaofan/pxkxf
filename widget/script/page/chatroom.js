@@ -7,8 +7,8 @@ $.ajax({
   url: '../res/emotion/emotion.json',
   dataType: 'json',
   type: 'get',
-  dataFilter: function(ret) {return ret},
-  success: function(res) {
+  dataFilter: function (ret) { return ret },
+  success: function (res) {
     imageJson = res
   }
 })
@@ -17,7 +17,7 @@ function clearUnreadStatus() {
   rong.clearMessagesUnreadStatus({
     conversationType: 'PRIVATE',
     targetId: api.pageParam.targetId
-  }, function(ret, err) {
+  }, function (ret, err) {
     if (ret.status === 'success') {
 
     }
@@ -29,14 +29,14 @@ function initPage() {
   clearUnreadStatus()
   vm = new Vue({
     el: '.wrapper',
-    created: function() {
+    created: function () {
       this.getHistoryMessage();
       this.getUserInfo(Helper.getUserId(), 'user');
       if (!api.pageParam.avatar) {
         this.getUserInfo(api.pageParam.targetId, 'target');
       }
     },
-    data: function() {
+    data: function () {
       return {
         userId: '',
         myInfo: {
@@ -51,36 +51,36 @@ function initPage() {
       }
     },
     methods: {
-      isShowDate: function(msg, index) {
+      isShowDate: function (msg, index) {
         var preMsg = this.messages[index - 1]
         return !preMsg || (msg.receivedTime - preMsg.receivedTime > 1000 * 60)
       },
-      transformMessage: function(val) {
-        return val.replace(IMAGE_REGXE, function(result) {
-          var v = _.find(imageJson, { text: result});
+      transformMessage: function (val) {
+        return val.replace(IMAGE_REGXE, function (result) {
+          var v = _.find(imageJson, { text: result });
           return '<img src="../res/emotion/' + v.name + '.png" />'
         })
       },
-      getHistoryMessage: function() {
+      getHistoryMessage: function () {
         var self = this
         rong.getHistoryMessages({
           conversationType: 'PRIVATE',
           targetId: api.pageParam.targetId,
           //oldestMessageId: 40,
           count: 20
-        }, function(ret, err) {
+        }, function (ret, err) {
           if (ret.status === 'success') {
             if (ret.result && ret.result.length > 0) {
               self.messages = _.reverse(ret.result)
             }
-            Vue.nextTick(function() {
-              $('body').scrollTop(1000000)
+            Vue.nextTick(function () {
+              $('body')
+                .scrollTop(1000000)
             })
-            //alert(JSON.stringify(ret.result))
           }
         })
       },
-      sendTextMessage: function(msg) {
+      sendTextMessage: function (msg) {
         var self = this
         rong.sendTextMessage({
           conversationType: 'PRIVATE',
@@ -90,11 +90,12 @@ function initPage() {
             sender: self.myInfo,
             receiver: self.targetInfo
           }
-        }, function(ret, err) {
-          if (ret.status == 'prepare'){
+        }, function (ret, err) {
+          if (ret.status == 'prepare') {
             self.messages.push(ret.result.message);
-            Vue.nextTick(function() {
-              $('body').scrollTop(1000000)
+            Vue.nextTick(function () {
+              $('body')
+                .scrollTop(1000000)
             })
             //api.toast({ msg: JSON.stringify(ret.result.message) });
           } else if (ret.status == 'success') {
@@ -104,28 +105,29 @@ function initPage() {
           }
         });
       },
-      sendImage: function() {
+      sendImageMessage: function () {
 
       },
-      getUserInfo: function(uid, type) {
+      getUserInfo: function (uid, type) {
         var self = this
         $.ajax({
-          url: BaseService.apiUrl + 'getuserinfo',
-          data: {uid: uid}
-        }).then(function(res) {
-          var data = ParseJson(res.data)[0]
-          if (type === 'user') {
-            self.myInfo = {
-              avatar: data.pheadimgUrl,
-              nickname: data.pnickname
+            url: BaseService.apiUrl + 'getuserinfo',
+            data: { uid: uid }
+          })
+          .then(function (res) {
+            var data = ParseJson(res.data)[0]
+            if (type === 'user') {
+              self.myInfo = {
+                avatar: data.pheadimgUrl,
+                nickname: data.pnickname
+              }
+            } else {
+              self.targetInfo = {
+                avatar: data.pheadimgUrl,
+                nickname: data.pnickname
+              }
             }
-          } else {
-            self.targetInfo = {
-              avatar: data.pheadimgUrl,
-              nickname: data.pnickname
-            }
-          }
-        })
+          })
       }
     }
   })
@@ -173,21 +175,21 @@ function initChatbox() {
         activeColor: '#9e9e9e'
       }
     },
-      extras: {
-        titleSize: 10,
-        titleColor: '#a3a3a3',
-        btns: [{
-            title: '图片',
-            normalImg: 'widget://res/img/icon_image.png',
-            activeImg: 'widget://res/img/icon_image.png'
+    extras: {
+      titleSize: 10,
+      titleColor: '#a3a3a3',
+      btns: [{
+        title: '图片',
+        normalImg: 'widget://res/img/icon_image.png',
+        activeImg: 'widget://res/img/icon_image.png'
         }, {
-            title: '拍照',
-            normalImg: 'widget://res/img/chatBox_cam1.png',
-            activeImg: 'widget://res/img/chatBox_cam2.png'
+        title: '拍照',
+        normalImg: 'widget://res/img/chatBox_cam1.png',
+        activeImg: 'widget://res/img/chatBox_cam2.png'
         }]
-      }
-  }, function(ret, err) {
-    if(ret.eventType === 'send') {
+    }
+  }, function (ret, err) {
+    if (ret.eventType === 'send') {
       vm.sendTextMessage(ret.msg)
     } else if (ret.eventType === 'clickExtras') {
       if (ret.index === 0) {
@@ -197,13 +199,13 @@ function initChatbox() {
   })
 }
 /* === 测试使用 === */
-setTimeout(function() {
+setTimeout(function () {
   if (!window.api) {
     initPage()
   }
 }, 500)
 
-apiready = function(){
+apiready = function () {
   initChatbox()
   initPage()
 
@@ -211,8 +213,9 @@ apiready = function(){
     name: 'receiveMessage'
   }, function (ret, err) {
     vm.messages.push(ret.value.data)
-    Vue.nextTick(function() {
-      $('body').scrollTop(1000000)
+    Vue.nextTick(function () {
+      $('body')
+        .scrollTop(1000000)
     })
   })
 }

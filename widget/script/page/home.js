@@ -213,7 +213,7 @@ function initPage() {
           this.getSupplyList();
         } else {
           refresh && (this.nearByNum = 1);
-          this.nearByList = _.assgin(_.clone(this.demandList), _.clone(this.supplyList))
+          this.nearByList = _.clone(this.demandList)
         }
       }
     }

@@ -119,6 +119,8 @@ function initPage() {
         currentPage: 'demand',
         demandList: [],
         supplyList: [],
+        hasMoreDemand: true,
+        hasMoreSupply: true,
         posting: false,
         pageNum: 1,
         category: api.pageParam.category
@@ -142,16 +144,18 @@ function initPage() {
       },
       getDemand: function() {
         var self = this
-        this.posting = true
+        if (!this.hasMoreDemand) return;
         $.ajax({
           url: BaseService.apiUrl + 'getdemaorder',
           data: {type: this.category, userid: Helper.getUserId(), num: this.pageNum},
           success: function(res) {
-            self.demandList = JSON.parse(res.data)
+            var data = JSON.parse(res.data);
+            if (!data || data.length === 0) {
+              self.hasMoreDemand = false;
+              return;
+            }
+            self.demandList = self.demandList.concat(data)
             console.log(JSON.parse(res.data))
-          },
-          error: function(err) {
-            // alert(JSON.stringify(err))
           }
         }).always(function() {
           self.posting = false
@@ -159,16 +163,18 @@ function initPage() {
       },
       getSupply: function() {
         var self = this
-        self.posting = true
+        if (!this.hasMoreSupply) return;
         $.ajax({
           url: BaseService.apiUrl + 'getSkill',
           data: {type: self.category, userid: Helper.getUserId(), num: this.pageNum},
           success: function(res) {
-            self.supplyList = JSON.parse(res.data)
+            var data = JSON.parse(res.data);
+            if (!data || data.length === 0) {
+              self.hasMoreSupply = false;
+              return;
+            }
+            self.supplyList = self.supplyList.concat(data)
             console.log(JSON.parse(res.data))
-          },
-          error: function(err) {
-            // alert(JSON.stringify(err))
           }
         }).always(function() {
           self.posting = false
