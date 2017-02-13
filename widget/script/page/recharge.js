@@ -55,12 +55,15 @@ function initPage() {
               subject: data.subject,
               body: data.body,
               amount: data.total_amount,
-              tradeNO: data.out_trade_no
+              tradeNO: data.out_trade_no,
+              passback_params: Helper.getUserId()
             }, function(ret, err) {
               if (ret.code == 9000) {
                 api.toast({msg: '支付成功'});
                 setTimeout(function() {
-                  api.closeToWin('mywallet');
+                  api.closeToWin({
+                    name: 'mywallet'
+                  });
                 }, 2000);
               } else {
                 api.alert({

@@ -47,7 +47,7 @@ function initPage() {
           avatar: api.pageParam.avatar || '',
           nickname: api.pageParam.nickname || ''
         },
-        messages: []
+          messages: []
       }
     },
     methods: {
@@ -94,8 +94,7 @@ function initPage() {
           if (ret.status == 'prepare') {
             self.messages.push(ret.result.message);
             Vue.nextTick(function () {
-              $('body')
-                .scrollTop(1000000)
+              $('body').scrollTop(1000000)
             })
             //api.toast({ msg: JSON.stringify(ret.result.message) });
           } else if (ret.status == 'success') {
@@ -105,8 +104,50 @@ function initPage() {
           }
         });
       },
-      sendImageMessage: function () {
-
+      selectImage: function() {
+        var self = this;
+        api.getPicture({
+          sourceType: 'library',
+          encodingType: 'jpg',
+          mediaValue: 'pic',
+          destinationType: 'url',
+          allowEdit: true,
+          quality: 50,
+          targetWidth: 100,
+          targetHeight: 100,
+          saveToPhotoAlbum: false
+        }, function(ret, err) {
+          if (ret.data) {
+            self.messages.push({
+              content: {
+                imageUrl: ret.data,
+                thumbPath: ret.data,
+                extra: {}
+              },
+              objectName: 'RC:ImgMsg'
+            })
+          }
+        });
+      },
+      sendImageMessage: function (imageUrl) {
+        rong.sendImageMessage({
+          conversationType: 'PRIVATE',
+          targetId: api.pageParam.targetId,
+          imagePath: imageUrl,
+          extra: {
+            sender: self.myInfo,
+            receiver: self.targetInfo
+          }
+        }, function(ret, err) {
+          if (ret.status == 'prepare')
+            api.toast({ msg: JSON.stringify(ret.result.message) });
+          else if (ret.status == 'progress')
+            api.toast({ msg: ret.result.progress });
+          else if (ret.status == 'success')
+            api.toast({ msg: ret.result.message.messageId });
+          else if (ret.status == 'error')
+            api.toast({ msg: err.code });
+        });
       },
       getUserInfo: function (uid, type) {
         var self = this
@@ -193,7 +234,7 @@ function initChatbox() {
       vm.sendTextMessage(ret.msg)
     } else if (ret.eventType === 'clickExtras') {
       if (ret.index === 0) {
-        vm.sendImage()
+        vm.selectImage()
       }
     }
   })

@@ -117,8 +117,9 @@ function initPage() {
           .done(function (res) {
             if (res.key === 'true') {
               api.toast({ msg: '应邀成功!' });
-              self.showDialog = false
-              self.demandInfo.yynum = parseInt(self.demandInfo.yynum, 10) + 1
+              self.showDialog = false;
+              self.demandInfo.yynum = parseInt(self.demandInfo.yynum, 10) + 1;
+              self.getData();
             } else {
               api.toast({
                 msg: res.mage

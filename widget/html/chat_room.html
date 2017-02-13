@@ -43,7 +43,10 @@
                 </div>
                 <div class="msg-content-wrap">
                     <div class="target-nickname">{{targetInfo.nickname}}</div>
-                    <div class="msg-content" v-html="transformMessage(msg.content.text)"></div>
+                    <div v-if="msg.objectName === 'RC:ImgMsg'" class="msg-content type-image">
+                      <img :src="msg.content.thumbPath" alt="">
+                    </div>
+                    <div v-else class="msg-content" v-html="transformMessage(msg.content.text)"></div>
                 </div>
             </div>
             <!--<div class="msg-box left">-->
@@ -61,16 +64,14 @@
                     <img :src="myInfo.avatar" alt="">
                 </div>
                 <div class="msg-content-wrap">
-                    <div class="msg-content" v-html="transformMessage(msg.content.text)"></div>
+                  <div v-if="msg.objectName === 'RC:ImgMsg'" class="msg-content type-image">
+                    <img :src="msg.content.thumbPath" alt="">
+                  </div>
+                  <div v-else class="msg-content" v-html="transformMessage(msg.content.text)"></div>
                 </div>
             </div>
         </template>
-
     </div>
-    <!--<div class="fs24">-->
-        <!--<p v-for="msg in receiveMessages" v-html="transformMessage(msg.content.text)"></p>-->
-    <!--</div>-->
-    <!--<div>{{userId}}</div>-->
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>
 <script src="../script/lib/lodash.js"></script>

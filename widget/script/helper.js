@@ -112,7 +112,7 @@ Vue.component('user-box', {
             '    </div>' +
             '  </div>' +
             '  <div class="user-info-rt">' +
-            '    <div><slot name="userRtTop"></slot></div>' + 
+            '    <div><slot name="userRtTop"></slot></div>' +
             '    <slot name="userRtBottom">' +
             '      <user-roles :role="user.level"></user-roles>' +
             '    </slot>' +
@@ -150,6 +150,10 @@ Vue.component('professor-box', {
             '  <div class="professor-title">' +
             '    <span class="text-999">专家职称：</span>' +
             '    <span>{{professor.ezyname}}</span>' +
+            '  </div>' +
+            '  <div class="professor-title" style="margin-top: 0.1rem;">' +
+            '    <span class="text-999">排期时间：</span>' +
+            '    <span>{{professor.pqtime | date("yyyy-MM-dd")}}</span>' +
             '  </div>' +
             '</div>' +
             '</div>',
@@ -203,7 +207,7 @@ Vue.component('user-roles', {
   }
 })
 
-/* === Vue 全局filter */ 
+/* === Vue 全局filter */
 Vue.filter('date', function(val, fmt) {
   return dateFormat(val, fmt)
 })
@@ -281,13 +285,13 @@ function dateFormat(val, fmt) {
   }
   var date = new Date(val)
   var o = {
-    "M+": date.getMonth() + 1, //月份 
-    "d+": date.getDate(), //日 
-    "h+": date.getHours(), //小时 
-    "m+": date.getMinutes(), //分 
-    "s+": date.getSeconds(), //秒 
-    "q+": Math.floor((date.getMonth() + 3) / 3), //季度 
-    "S": date.getMilliseconds() //毫秒 
+    "M+": date.getMonth() + 1, //月份
+    "d+": date.getDate(), //日
+    "h+": date.getHours(), //小时
+    "m+": date.getMinutes(), //分
+    "s+": date.getSeconds(), //秒
+    "q+": Math.floor((date.getMonth() + 3) / 3), //季度
+    "S": date.getMilliseconds() //毫秒
   };
   if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
   for (var k in o)
@@ -306,7 +310,7 @@ function convertImgToBase64(url, callback, outputFormat){
       ctx.drawImage(img,0,0);
       var dataURL = canvas.toDataURL(outputFormat || 'image/png');
       callback.call(this, dataURL);
-      canvas = null; 
+      canvas = null;
     };
     img.src = url;
 }
