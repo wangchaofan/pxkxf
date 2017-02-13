@@ -118,3 +118,23 @@ body {
 	border-radius: 6px;
 	background: #ddd;
 }
+
+.mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99;
+	background: rgba(0,0,0,.5);
+}
+
+.mask .display-flex {
+	height: 100%;
+	width: 100%;
+}
+
+.origin-image {
+	display: block;
+	width: 100%;
+}

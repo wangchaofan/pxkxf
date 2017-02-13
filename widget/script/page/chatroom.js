@@ -47,13 +47,28 @@ function initPage() {
           avatar: api.pageParam.avatar || '',
           nickname: api.pageParam.nickname || ''
         },
-          messages: []
+        messages: [],
+        viewingImage: '',
+        showOriginImage: false
       }
     },
     methods: {
       isShowDate: function (msg, index) {
         var preMsg = this.messages[index - 1]
         return !preMsg || (msg.receivedTime - preMsg.receivedTime > 1000 * 60)
+      },
+      /* 查看原图 */
+      viewOriginImage: function(image) {
+        this.showOriginImage = true;
+        this.viewingImage = image;
+        var UIChatBox = api.require('UIChatBox');
+        UIChatBox.hide();
+      },
+      hideOriginImage: function() {
+        this.showOriginImage = false;
+        this.viewingImage = '';
+        var UIChatBox = api.require('UIChatBox');
+        UIChatBox.show();
       },
       transformMessage: function (val) {
         return val.replace(IMAGE_REGXE, function (result) {
@@ -111,10 +126,7 @@ function initPage() {
           encodingType: 'jpg',
           mediaValue: 'pic',
           destinationType: 'url',
-          allowEdit: true,
-          quality: 50,
-          targetWidth: 100,
-          targetHeight: 100,
+          allowEdit: false,
           saveToPhotoAlbum: false
         }, function(ret, err) {
           if (ret.data) {
