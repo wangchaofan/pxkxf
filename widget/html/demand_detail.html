@@ -55,7 +55,7 @@
 					<div class="user-avatar" :style="{'background-image': 'url(' + item.usermodel[0].pheadimgUrl + ')'}"></div>
 					<div class="user-info-tj">
 						<div class="user-name"><span class="vam">{{item.usermodel[0].pnickname}}</span><span class="user-sex user-sex-man vam"></span></div>
-						<div class="online-status">在线</div>
+						<div class="online-status" :class="{'off-line': item.usermodel[0].onlineState == 2}">{{item.usermodel[0].onlineState == 2 ? '离线' : '在线'}}</div>
 						<div class="demand-price fs24">技能描述：{{item.skillms}}</div>
 					</div>
 				</div>
