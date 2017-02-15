@@ -56,12 +56,6 @@ function initPage() {
     }
   })
 }
-/* === 测试使用 === */
-setTimeout(function() {
-  if (!window.api) {
-    initPage()
-  }
-}, 500)
 
 apiready = function(){
   initPage()
