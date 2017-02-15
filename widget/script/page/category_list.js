@@ -168,7 +168,6 @@ function initPage() {
         });
         $.when(getDemand, getSupply)
           .then(function(res1, res2) {
-            alert(JSON.stringify(res1[0]))
             self.demandList = ParseJson(res1[0].data);
             self.supplyList = ParseJson(res2[0].data);
           });
