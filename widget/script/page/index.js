@@ -176,31 +176,13 @@ apiready = function() {
 				    }
 					}, function(ret, err) {
 				    var index = ret.buttonIndex;
+						if (index !== 4 && !judgeAuthority()) return;
 				    if (index === 1) {
-				    	if (judgeAuthority()) {
-				    		api.openWin({
-				    	    name: 'add_edit_supply',
-				    	    url: 'widget://html/add_edit_supply.html',
-				    	    pageParam: {
-			    	        type: 'add'
-				    	    }
-					    	})
-				    	}
+							Helper.openWin('add_edit_supply', {type: 'add'});
 				    } else if (index === 2) {
-				    	if (judgeAuthority()) {
-				    		api.openWin({
-			    	    	name: 'add_edit_supply',
-			    	    	url: 'widget://html/add_edit_demand.html',
-			    	    	pageParam: {
-			    	      		type: 'add'
-			    	    	}
-				    		})
-				    	}
+							Helper.openWin('add_edit_supply', {type: 'add'});
 				    } else if (index === 3) {
-				    	api.openWin({
-			    	    	name: 'page1',
-			    	    	url: 'widget://html/add_dynamic.html'
-				    	})
+							Helper.openWin('add_dynamic', {type: 'add'});
 				    }
 						if (currentIndex >= 2) {
 							currentIndex = currentIndex + 1

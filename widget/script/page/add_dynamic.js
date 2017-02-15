@@ -11,7 +11,7 @@ function initPage() {
 			onSubmit: function() {
         var self = this
         if (_.trim(this.dynamicContent).length === 0) {
-          alert('请输入动态详情')
+          api.toast({msg: '请输入动态详情'});
           return
         }
         $.ajax({
@@ -24,16 +24,18 @@ function initPage() {
         }).then(function(res) {
         	if (res.key === 'true') {
         		api.toast({
-        		    msg: '添加成功'
+        		    msg: '发布成功'
         		});
-        		api.closeWin()
+						setTimeout(function() {
+							api.closeWin()
+						}, 2000);
         	} else {
         		api.toast({
         		    msg: res.mage
         		});
         	}
         }, function(err) {
-          alert('添加失败')
+          alert('发布失败')
         })
 			},
 			deleteImage: function(index) {
