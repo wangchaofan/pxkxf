@@ -11,7 +11,7 @@ $.ajax({
   success: function (res) {
     imageJson = res
   }
-})
+});
 
 function clearUnreadStatus() {
   rong.clearMessagesUnreadStatus({
@@ -77,12 +77,12 @@ function initPage() {
         })
       },
       getHistoryMessage: function () {
-        var self = this
+        var self = this;
         rong.getHistoryMessages({
           conversationType: 'PRIVATE',
           targetId: api.pageParam.targetId,
           //oldestMessageId: 40,
-          count: 20
+          count: 40
         }, function (ret, err) {
           if (ret.status === 'success') {
             if (ret.result && ret.result.length > 0) {
@@ -96,7 +96,7 @@ function initPage() {
         })
       },
       sendTextMessage: function (msg) {
-        var self = this
+        var self = this;
         rong.sendTextMessage({
           conversationType: 'PRIVATE',
           targetId: api.pageParam.targetId,
@@ -110,7 +110,7 @@ function initPage() {
             self.messages.push(ret.result.message);
             Vue.nextTick(function () {
               $('body').scrollTop(1000000)
-            })
+            });
             //api.toast({ msg: JSON.stringify(ret.result.message) });
           } else if (ret.status == 'success') {
             //api.toast({ msg: ret.result.message.messageId });
@@ -130,6 +130,7 @@ function initPage() {
           saveToPhotoAlbum: false
         }, function(ret, err) {
           if (ret.data) {
+            self.sendImageMessage(ret.data);
             self.messages.push({
               content: {
                 imageUrl: ret.data,
@@ -151,14 +152,14 @@ function initPage() {
             receiver: self.targetInfo
           }
         }, function(ret, err) {
-          if (ret.status == 'prepare')
-            api.toast({ msg: JSON.stringify(ret.result.message) });
-          else if (ret.status == 'progress')
-            api.toast({ msg: ret.result.progress });
-          else if (ret.status == 'success')
-            api.toast({ msg: ret.result.message.messageId });
-          else if (ret.status == 'error')
-            api.toast({ msg: err.code });
+          //if (ret.status == 'prepare')
+          //  api.toast({ msg: JSON.stringify(ret.result.message) });
+          //else if (ret.status == 'progress')
+          //  api.toast({ msg: ret.result.progress });
+          //else if (ret.status == 'success')
+          //  api.toast({ msg: ret.result.message.messageId });
+          //else if (ret.status == 'error')
+          //  api.toast({ msg: err.code });
         });
       },
       getUserInfo: function (uid, type) {

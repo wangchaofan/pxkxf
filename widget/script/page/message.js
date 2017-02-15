@@ -21,6 +21,7 @@ function initPage() {
     methods: {
       onClickMessage: function(msg) {
         var targetId = msg.senderUserId === this.uid ? msg.targetId : msg.senderUserId;
+        msg.unreadMessageCount = 0;
         Helper.openWin('chat_room', {targetId: targetId})
       },
       getNotice: function() {
@@ -52,16 +53,6 @@ function initPage() {
             // alert(JSON.stringify(ret.result))
           }
         })
-        // $.ajax({
-        //   url: BaseService.apiUrl + 'getXSchat',
-        //   data: { userid: Helper.getUserId() }
-        // }).done(function(res) {
-        //   if (res.key === 'true') {
-        //     self.list = ParseJson(res.data)
-        //     console.log(ParseJson(res.data))
-        //   }
-        //   // alert(JSON.stringify(res))
-        // })
       },
       goNotice: function () {
         api.openWin({
