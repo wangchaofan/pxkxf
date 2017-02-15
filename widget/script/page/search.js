@@ -40,14 +40,7 @@ function initPage() {
           $api.setStorage('searchHistory', this.searchHistory)
         }
         if (!content) return
-        api.openWin({
-          name: 'mysupply',
-          url: 'widget://html/mysupply.html',
-          reload: true,
-          pageParam: {
-            searchContent: content
-          }
-        })
+        Helper.openWin('category_list', {searchContent: content});
       }
     }
   })

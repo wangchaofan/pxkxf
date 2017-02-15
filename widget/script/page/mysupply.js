@@ -103,11 +103,7 @@ function initPage() {
   vm = new Vue({
     el: '.wrapper',
     created: function() {
-      if (api.pageParam.searchContent) {
-        this.getSearchResult(api.pageParam.searchContent)
-      } else {
-        this.getData()
-      }
+      this.getData()
     },
     components: {
       'list-item': ListItem
@@ -120,18 +116,6 @@ function initPage() {
     methods: {
       onClickNav: function(page) {
         this.currentPage = page
-      },
-      getSearchResult: function(content) {
-        var self = this
-        $.ajax({
-          url: BaseService.apiUrl + 'getsc',
-          data: {
-            content: content
-          }
-        }).then(function(res) {
-          self.list = ParseJson(res.data)
-          console.log(ParseJson(res.data))
-        })
       },
       getData: function() {
         var self = this

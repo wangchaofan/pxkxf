@@ -106,9 +106,14 @@ function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     created: function() {
-      this.getDemand();
-      this.getSupply();
-      this.pageNum += 1;
+      if (api.pageParam.searchContent) {
+        this.title = '搜索结果';
+        this.getSearchResult(api.pageParam.searchContent);
+      } else {
+        this.getDemand();
+        this.getSupply();
+        this.pageNum += 1;
+      }
     },
     components: {
       'demand-item': DemandItem,
@@ -123,7 +128,8 @@ function initPage() {
         hasMoreSupply: true,
         posting: false,
         pageNum: 1,
-        category: api.pageParam.category
+        category: api.pageParam.category,
+        title: api.pageParam.category
       }
     },
     watch: {
@@ -141,6 +147,31 @@ function initPage() {
       },
       returnBack: function() {
         api.closeWin()
+      },
+      /**
+       * 获取搜索的供应和请求
+       * @param content 搜索条件
+       */
+      getSearchResult: function(content) {
+        var self = this;
+        var getDemand = $.ajax({
+          url: BaseService.apiUrl + 'getscxq',
+          data: {
+            content: content
+          }
+        });
+        var getSupply = $.ajax({
+          url: BaseService.apiUrl + 'getsc',
+          data: {
+            content: content
+          }
+        });
+        $.when(getDemand, getSupply)
+          .then(function(res1, res2) {
+            alert(JSON.stringify(res1[0]))
+            self.demandList = ParseJson(res1[0].data);
+            self.supplyList = ParseJson(res2[0].data);
+          });
       },
       getDemand: function() {
         var self = this
