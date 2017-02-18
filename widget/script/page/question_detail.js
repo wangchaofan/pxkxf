@@ -65,11 +65,24 @@ function initPage() {
         })
       },
       sendComment: function() {
+        var self = this;
+        if (this.commentContent.length === 0) return;
         $.ajax({
-          url: BaseService.apiUrl + 'getgzwt',
-          data: {userid: Helper.getUserId(), wtid: self.wtid}
+          url: BaseService.apiUrl + 'addhdtwinfo',
+          data: {
+            hduserid: Helper.getUserId(),
+            twid: self.wtid,
+            content: self.commentContent
+          }
         }).then(function(res) {
-
+          if (res.key == 'true') {
+            self.commentContent = '';
+            self.getData();
+          } else {
+            api.toast({msg: res.mage});
+          }
+        }, function(err) {
+          alert(JSON.stringify(err))
         })
       },
       getData: function() {

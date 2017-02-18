@@ -11,14 +11,10 @@ function initPage() {
     },
     methods: {
       toAdd: function() {
-        api.openWin({
-          name: 'add_question',
-          url: 'widget://html/add_question.html',
-          realod: true
-        });
+        Helper.openWin('add_question');
       },
       goQuestionDetail: function(item) {
-        Helper.openWin('question_detail', {id: item.expertTWId});
+        Helper.openWin('questions_detail', {id: item.expertTWId});
       },
       getData: function () {
         var self = this

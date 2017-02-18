@@ -6,13 +6,23 @@
   <title>专家荣誉</title>
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/certify.css">
+  <style type="text/css">
+    .upload-wrap {
+      height: auto;
+    }
+    .some-images img {
+      margin: 0.5rem;
+      width: 5rem;
+      height: 7.5rem;
+    }
+  </style>
   <script src="../script/adapter.js"></script>
 </head>
 <body>
   <div class="wrapper" v-cloak>
     <my-header title="专家荣誉"></my-header>
     <div class="upload-desc">专家荣誉照片</div>
-    <section class="upload-wrap some-images display-flex">
+    <section class= "upload-wrap some-images display-flex">
       <img v-for="item in list" :src="item.ryurl">
     </section>
   </div>

@@ -17,6 +17,7 @@ function initPage() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getexpertuserinfo',
+          //data: { exuserid: '073cb677-da3b-45ad-8536-9030e3ac5375'}
           data: { exuserid: api.pageParam.id}
         }).done(function(res) {
           self.list = ParseJson(res.data)[0].ExpertRYmodel

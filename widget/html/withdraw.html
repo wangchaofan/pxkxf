@@ -37,7 +37,7 @@
   </div>
   <div class="input-recharge-num text-black">
     <span class="input-text">提现金额</span>
-    <input type="number" v-model.number="money" placeholder="输入您想充入的金额">
+    <input type="number" v-model.number="money" placeholder="输入您想提現的金额">
     <span class="unit">元</span>
   </div>
   <div class="btn-submit" :disabled="!canSubmit" v-cloak @click="onSubmit">{{submiting ? '正在提交...' : '提现'}}</div>
