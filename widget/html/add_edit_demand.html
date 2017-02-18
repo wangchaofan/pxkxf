@@ -26,12 +26,12 @@
       </select>
     </div>
     <div class="input-row">
-      <label for="demandNum">需求人数</label>
+      <label>需求人数</label>
       <input type="number" v-model.number="demand.rnum" placeholder="请填写需求人数">
       <span>人</span>
     </div>
     <div class="input-row">
-      <label for="effectiveTime">有效期限</label>
+      <label>有效期限</label>
       <input type="date" v-model="demand.timenum">
     </div>
     <div class="input-row supply-detail">
@@ -39,7 +39,7 @@
       <textarea class="px-textarea" id="ddetails" v-model="demand.xqdetails" placeholder="说的越详细，应邀的人更多，更精准！"></textarea>
     </div>
     <div class="input-row" @click="onSelectZone">
-      <label for="daddress">地区</label>
+      <label>地区</label>
       <input v-model="zone" placeholder="请选择地区(默认任何地区)" readonly>
     </div>
     <div class="input-row" style="border-bottom: none;">

@@ -762,6 +762,7 @@ header {
 .btn-submit[disabled] {
   background: #ddd;
   color: #fff;
+  border: none;
 }
 
 .input-row {

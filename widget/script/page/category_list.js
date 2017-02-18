@@ -154,11 +154,14 @@ function initPage() {
        */
       getSearchResult: function(content) {
         var self = this;
+        alert(content)
         var getDemand = $.ajax({
           url: BaseService.apiUrl + 'getscxq',
           data: {
             content: content
           }
+        }).then(function(res) {
+          alert(res)
         });
         var getSupply = $.ajax({
           url: BaseService.apiUrl + 'getsc',
@@ -166,11 +169,13 @@ function initPage() {
             content: content
           }
         });
-        $.when(getDemand, getSupply)
-          .then(function(res1, res2) {
-            self.demandList = ParseJson(res1[0].data);
-            self.supplyList = ParseJson(res2[0].data);
-          });
+        //$.when(getDemand, getSupply)
+        //  .then(function(res1, res2) {
+        //    alert(res1)
+        //    alert(res2)
+        //    self.demandList = ParseJson(res1[0].data);
+        //    self.supplyList = ParseJson(res2[0].data);
+        //  });
       },
       getDemand: function() {
         var self = this

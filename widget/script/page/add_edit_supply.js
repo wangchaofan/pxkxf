@@ -83,7 +83,7 @@ function initPage() {
 				var self = this;
         		var citySelector = api.require('citySelector');
 				citySelector.open({
-				 	y: api.frameHeight / 1.6,
+				 	y: api.frameHeight / 1.6 + 50,
 					titleImg: 'widget://image/topbar_bg.jpg',
 					bgImg: 'widget://image/cityselector_bg.jpg',
 					cancelImg: 'widget://image/button_cancel.jpg',

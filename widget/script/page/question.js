@@ -18,14 +18,7 @@ function initPage() {
         });
       },
       goQuestionDetail: function(item) {
-        api.openWin({
-          name: 'question_detail',
-          url: 'widget://html/questions_detail.html',
-          reload: true,
-          pageParam: {
-            id: item.expertTWId
-          }
-        });
+        Helper.openWin('question_detail', {id: item.expertTWId});
       },
       getData: function () {
         var self = this
@@ -41,6 +34,12 @@ function initPage() {
     }
   })
 }
+/* === 测试使用 === */
+setTimeout(function() {
+  if (!window.api) {
+    initPage()
+  }
+}, 500)
 
 apiready = function(){
   initPage()

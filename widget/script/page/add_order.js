@@ -37,21 +37,13 @@ function initPage() {
           if (res.key === 'true') {
             api.toast({
               msg: '发起订单成功'
-            })
+            });
             setTimeout(function() {
-              api.openWin({
-                name: 'pay',
-                url: 'widget://html/pay.html',
-                reload: true,
-                progress: {
-                  type: 'page'
-                },
-                pageParam: {
-                  mmoney: self.order.smoney,
-                  orderId: res.data,
-                  orderType: 'supply'
-                }
-              })
+              Helper.openWin('pay', {
+                mmoney: self.order.smoney,
+                orderId: res.data,
+                orderType: 'supply'
+              });
               setTimeout(function() {
                 api.closeWin()
               }, 1000)

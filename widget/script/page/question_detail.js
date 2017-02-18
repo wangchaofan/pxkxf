@@ -65,7 +65,12 @@ function initPage() {
         })
       },
       sendComment: function() {
+        $.ajax({
+          url: BaseService.apiUrl + 'getgzwt',
+          data: {userid: Helper.getUserId(), wtid: self.wtid}
+        }).then(function(res) {
 
+        })
       },
       getData: function() {
         var self = this

@@ -29,7 +29,7 @@ function initPage() {
         var self = this
         this.submiting = true
         // alert(api.pageParam.orderId)
-        var url = api.pageParam.orderType === 'demand' ? 'xqcz' :  'gyddcz'
+        var url = api.pageParam.orderType === 'demand' ? 'xqcz' :  'gyddcz';
         $.ajax({
           url: BaseService.apiUrl + url,
           data: {

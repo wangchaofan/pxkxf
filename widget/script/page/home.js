@@ -73,6 +73,7 @@ function initPage() {
       goViewMessage: function() {
         Helper.openWin('message');
       },
+      /*　获取消息数量　*/
       getMessageCount: function() {
         var self = this
         var rong = api.require('rongCloud2');
@@ -80,13 +81,7 @@ function initPage() {
           if (ret.status === 'success') {
             self.messageCount = ret.result
           }
-        })
-        // $.ajax({
-        //   url: BaseService.apiUrl + 'getXSchat',
-        //   data: {userid: Helper.getUserId()}
-        // }).then(function(res) {
-        //   self.messageCount = ParseJson(res.data).length
-        // })
+        });
       },
       onClickType: function(t) {
         Helper.openWin('category_list', {category: t})
