@@ -15,7 +15,8 @@ function initPage() {
         question: null,
         relateQuestion: null,
         expertTWHDmodel: null,
-        isFocus: false
+        isFocus: false,
+        commentContent: ''
       }
     },
     computed: {
@@ -25,7 +26,7 @@ function initPage() {
     },
     methods: {
       viewQuestion: function(q) {
-        
+        Helper.openWin('questions_detail', {id: q.expertTWId});
       },
       onFocus: function() {
         var self = this
@@ -63,11 +64,14 @@ function initPage() {
           self.focus = res.data === '1'
         })
       },
+      sendComment: function() {
+
+      },
       getData: function() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getwtinfo',
-          data: {wtid: self.wtid} // 
+          data: {wtid: self.wtid}
         }).then(function(res) {
           if (res.key === 'true') {
             self.question = ParseJson(res.data)[0]

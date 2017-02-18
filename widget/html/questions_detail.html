@@ -46,6 +46,10 @@
       {{item.twtitle}}
     </div>
   </div>
+  <div class="fixed-bottom send-comment">
+    <input class="send-comment-input" type="text" v-model="commentContent" placeholder="回答问题">
+    <div class="btn-send" @click="sendComment">发送</div>
+  </div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>
 <script src="../script/lib/lodash.js"></script>

@@ -180,7 +180,7 @@ apiready = function() {
 				    if (index === 1) {
 							Helper.openWin('add_edit_supply', {type: 'add'});
 				    } else if (index === 2) {
-							Helper.openWin('add_edit_supply', {type: 'add'});
+							Helper.openWin('add_edit_demand', {type: 'add'});
 				    } else if (index === 3) {
 							Helper.openWin('add_dynamic', {type: 'add'});
 				    }

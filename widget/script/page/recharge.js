@@ -39,6 +39,21 @@ function initPage() {
         if (!this.canSubmit) return
         this.payType === 'ali' ? this.payByAli() : this.payByWx()
       },
+      paySuccessCallback: function(money) {
+        $.ajax({
+          url: BaseService.apiUrl + 'zfje',
+          data: {
+            userid: Helper.getUserId(),
+            money: money
+          }
+        }).always(function() {
+          setTimeout(function() {
+            api.closeToWin({
+              name: 'mywallet'
+            });
+          }, 1000);
+        });
+      },
       payByWx: function () {
 
       },
@@ -60,11 +75,7 @@ function initPage() {
             }, function(ret, err) {
               if (ret.code == 9000) {
                 api.toast({msg: '支付成功'});
-                setTimeout(function() {
-                  api.closeToWin({
-                    name: 'mywallet'
-                  });
-                }, 2000);
+                self.paySuccessCallback(data.total_amount);
               } else {
                 api.alert({
                   title: '支付结果',

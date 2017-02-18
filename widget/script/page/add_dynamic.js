@@ -19,7 +19,7 @@ function initPage() {
           data: {
             userid: Helper.getUserId(),
             dynamicContent: self.dynamicContent,
-            imgarr: _.map(self.imgarr, TransformImageData).join(',')
+            imgarr: _.map(self.imgarr, TransformImageData).joing(',')
           }
         }).then(function(res) {
         	if (res.key === 'true') {
