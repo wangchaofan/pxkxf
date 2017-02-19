@@ -31,7 +31,7 @@ function initPage() {
         var data = _.assign({}, this.formData, {userid: Helper.getUserId(), skillid: this.order.skillID, yymoney: this.order.smoney})
         data.yydate = data.yydate ? new Date(data.yydate).getTime() : ''
         $.ajax({
-          url: BaseService.apiUrl + 'getyySkill',
+          url: BaseService.apiUrl + 'yyskill',
           data: data
         }).then(function(res) {
           if (res.key === 'true') {
@@ -44,10 +44,7 @@ function initPage() {
                 orderId: res.data,
                 orderType: 'supply'
               });
-              setTimeout(function() {
-                api.closeWin()
-              }, 1000)
-            }, 2000)
+            }, 500)
           } else {
             alert(res.mage)
           }

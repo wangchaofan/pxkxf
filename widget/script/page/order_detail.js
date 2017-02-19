@@ -164,7 +164,17 @@ function initPage() {
         })
       }
     }
-  })
+  });
+
+  addEvent(vm)
+}
+
+function addEvent(vm) {
+  api.addEventListener({
+    name: 'refreshOrder',
+  }, function (ret, err) {
+    vm.getData();
+  });
 }
 
 apiready = function(){

@@ -40,10 +40,14 @@ function initPage() {
           if (res.key === 'true') {
             api.toast({
                 msg: '支付成功'
-            })
+            });
+            // 更新order
+            api.sendEvent({
+              name: 'refreshOrder'
+            });
             setTimeout(function() {
               api.closeWin()
-            }, 2000)
+            }, 1000);
           } else {
             api.toast({
                 msg: res.mage
@@ -57,6 +61,7 @@ function initPage() {
   })
 }
 
-apiready = function(){
+apiready = function() {
+  api.closeWin({name: 'add_order'});
   initPage()
 }
