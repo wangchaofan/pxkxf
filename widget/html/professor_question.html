@@ -18,7 +18,7 @@
     </div>
     <div class="professors" v-cloak>
       <div v-for="item in freeProfessors" @click="viewProfessorDetail(item)">
-        <professor-box  :professor="item"></professor-box>
+        <professor-box :show-theme="true"  :professor="item"></professor-box>
       </div>
     </div>
   </div>

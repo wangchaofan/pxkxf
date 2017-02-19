@@ -32,6 +32,7 @@ function initPage() {
               data: {dtid: item.dynamicsId}
             }).then(function(res) {
               if (res.key === 'true') {
+                api.toast({msg: '删除成功'});
                 self.getData()
               } else {
                 api.toast({

@@ -5,8 +5,9 @@ function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     created: function() {
-      this.getQuestions()
-      this.getProfessors()
+      this.getQuestions();
+      this.getProfessors();
+      this.getBestProfessors();
     },
     data: function() {
       return {
@@ -25,31 +26,13 @@ function initPage() {
         });
       },
       viewMoreQuestion: function() {
-        api.openWin({
-          name: 'questions',
-          url: 'widget://html/questions.html',
-          reload: true
-        });
+        Helper.openWin('questions');
       },
       viewProfessorDetail: function(pf) {
-        api.openWin({
-          name: 'professor_detail',
-          url: 'widget://html/professor_detail.html',
-          reload: true,
-          pageParam: {
-              id: pf.expertId
-          }
-        });
+        Helper.openWin('professor_detail', {id: pf.expertId});
       },
       viewQuestionDetail: function(qt) {
-        api.openWin({
-          name: 'question_detail',
-          url: 'widget://html/questions_detail.html',
-          reload: true,
-          pageParam: {
-            id: qt.expertTWId
-          }
-        });
+        Helper.openWin('questions_detail', {id: qt.expertTWId});
       },
       getQuestions: function() {
         var self = this
@@ -69,7 +52,7 @@ function initPage() {
       getProfessors: function() {
         var self = this
         $.ajax({
-          url: BaseService.apiUrl + 'getExpert',
+          url: BaseService.apiUrl + 'getzsExpert',
           data: {
             userid: self.userid
           }
@@ -77,6 +60,16 @@ function initPage() {
           if (res.key === 'true') {
             var list = ParseJson(res.data)
             self.freeProfessors = list.slice(0, 2)
+          }
+        })
+      },
+      getBestProfessors: function() {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'getzsExpert'
+        }).then(function(res) {
+          if (res.key === 'true') {
+            var list = ParseJson(res.data)
             self.bestProfessors = list.slice(0, 2)
           }
         })

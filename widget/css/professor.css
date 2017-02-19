@@ -10,7 +10,7 @@
 .professor-box {
     margin-bottom: 1rem;
     width: 6.25rem;
-    height: 9.7rem;
+    height: auto;
     overflow: hidden;
     border-radius: 4px;
 }
@@ -29,7 +29,8 @@
 }
 .professor-info {
     height: 100%;
-    padding-top: 0.6rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.2rem;
     background: #f5f5f5;
 }
 .professor-name {

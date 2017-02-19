@@ -40,6 +40,12 @@ function initPage() {
       }
     }
   })
+
+  api.addEventListener({
+    name: 'refreshWallet'
+  }, function(ret, err){
+    vm.getData();
+  });
 }
 
 apiready = function(){

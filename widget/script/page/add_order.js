@@ -31,7 +31,7 @@ function initPage() {
         var data = _.assign({}, this.formData, {userid: Helper.getUserId(), skillid: this.order.skillID, yymoney: this.order.smoney})
         data.yydate = data.yydate ? new Date(data.yydate).getTime() : ''
         $.ajax({
-          url: BaseService.apiUrl + 'yyskill',
+          url: BaseService.apiUrl + 'getyySkill',
           data: data
         }).then(function(res) {
           if (res.key === 'true') {

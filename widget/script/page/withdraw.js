@@ -48,9 +48,16 @@ function initPage() {
         }).then(function (res) {
           if (res.key === 'true') {
             api.toast({
-                msg: '提交成功'
-            })
-            api.closeWin()
+              msg: '提现成功'
+            });
+            setTimeout(function() {
+              api.sendEvent({
+                name: 'refreshWallet',
+              });
+              api.closeToWin({
+                name: 'mywallet'
+              });
+            }, 1000)
           } else {
             api.toast({
                 msg: res.mage

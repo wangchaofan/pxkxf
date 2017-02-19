@@ -142,22 +142,26 @@ Vue.component('user-box', {
 /* === 专家box === */
 Vue.component('professor-box', {
   template: '<div class="professor-box">' +
-            '<div class="professor-avatar">' +
-            '  <img :src="professor.ephtourl" alt="">' +
-            '</div>' +
-            '<div class="professor-info ac">' +
-            '  <div class="professor-name">{{professor.eName}}</div>' +
-            '  <div class="professor-title">' +
-            '    <span class="text-999">专家职称：</span>' +
-            '    <span>{{professor.ezyname}}</span>' +
-            '  </div>' +
-            '  <div class="professor-title" style="margin-top: 0.1rem;">' +
-            '    <span class="text-999">排期时间：</span>' +
-            '    <span>{{professor.pqtime | date("yyyy-MM-dd")}}</span>' +
-            '  </div>' +
-            '</div>' +
+              '<div class="professor-avatar">' +
+              '  <img :src="professor.ephtourl" alt="">' +
+              '</div>' +
+              '<div class="professor-info ac">' +
+              '  <div class="professor-name">{{professor.eName}}</div>' +
+              '  <div class="professor-title">' +
+              '    <span class="text-999">专家职称：</span>' +
+              '    <span>{{professor.ezyname}}</span>' +
+              '  </div>' +
+              '  <div class="professor-title" style="margin-top: 0.1rem;" v-if="showTheme">' +
+              '    <span class="text-999">咨询主题：</span>' +
+              '    <span>{{professor.ConsultingTheme}}</span>' +
+              '  </div>' +
+              '  <div class="professor-title" style="margin-top: 0.1rem;">' +
+              '    <span class="text-999">排期时间：</span>' +
+              '    <span>{{professor.pqtime | date("yyyy-MM-dd")}}</span>' +
+              '  </div>' +
+              '</div>' +
             '</div>',
-  props: ['professor']
+  props: ['professor', 'showTheme']
 })
 
 /* === 用户好评 === */
