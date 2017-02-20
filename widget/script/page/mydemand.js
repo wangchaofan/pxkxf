@@ -155,21 +155,21 @@ var InviteItem = {
     },
     getStateText: function(state) {
       switch(state) {
-        case 1: 
+        case 1:
           return '待支付'
         case 2:
           return '审核中'
-        case 3: 
+        case 3:
           return '发布中'
-        case 4: 
+        case 4:
           return '进行中'
-        case 5: 
+        case 5:
           return '供应完成'
-        case 6: 
+        case 6:
           return '待评价'
         case 7:
           return '订单完成'
-        case 8: 
+        case 8:
           return '已关闭'
         default:
           return '已删除'
@@ -221,7 +221,9 @@ function initPage() {
             data: { userid: Helper.getUserId() }
           }).then(function(res) {
             if (res.key === 'true') {
-              self.demandList = ParseJson(res.data)
+              self.demandList = _.filter(ParseJson(res.data), function(item) {
+                return item.orderState != -1;
+              });
               console.log(ParseJson(res.data))
             }
           })
@@ -230,7 +232,9 @@ function initPage() {
             url: BaseService.apiUrl + 'getXQInvited',
             data: { userid: Helper.getUserId() }
           }).then(function(res) {
-            self.inviteList = ParseJson(res.data)
+            self.inviteList = _.filter(ParseJson(res.data), function(item) {
+              return item.DemandOrder[0].orderState != -1;
+            });
             console.log(ParseJson(res.data))
           })
         }

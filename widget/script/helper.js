@@ -220,9 +220,21 @@ Vue.filter('date', function(val, fmt) {
 $.ajaxSetup({
   type: 'post',
   dataType: 'text',
+  beforeSend: function() {
+    api.showProgress({
+      style: 'default',
+      animationType: 'fade',
+      title: '',
+      text: '请稍候...',
+      modal: true
+    });
+  },
   dataFilter: function(res) {
     // console.log(XmlToJson(res))
     return JSON.parse(XmlToJson(res))
+  },
+  complete: function() {
+    api.hideProgress();
   }
 })
 
@@ -284,6 +296,9 @@ function getUserId() {
 }
 
 function dateFormat(val, fmt) {
+  if (!val) {
+    return '长期';
+  }
   if (typeof val === 'string') {
     val = parseInt(val.match(/\d+/)[0])
   }

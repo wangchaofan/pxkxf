@@ -29,6 +29,9 @@ var ListItem = {
   computed: {
     usermodel: function() {
       return this.myData ? this.myData.Skillmodel[0].sUsermodel[0] : {}
+
+
+
     },
     skill: function() {
       return this.myData ? this.myData.Skillmodel[0] : {}
@@ -57,7 +60,7 @@ var ListItem = {
       if (this.myData.fkstate == 1) {
         return '<span class="text-warning">待付款</span>'
       }
-      switch(this.myData.State) {
+      switch(this.myData.mstate) {
         case 1: return '预约中';
         case 2: return '进行中';
         case 3: return '供应完成';

@@ -538,6 +538,9 @@ a {
 .text-warning {
   color: #ec3c41;
 }
+.text-success {
+  color: #21c396;
+}
 .text-black {
   color: #000;
 }

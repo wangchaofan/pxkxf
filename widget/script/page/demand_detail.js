@@ -23,6 +23,12 @@ function initPage() {
           return userModel
         }
         return null
+      },
+      inviteButtonVisible: function() {
+        return !this.isMe && this.demandInfo && this.demandInfo.yxnum < this.demandInfo.demandNum;
+      },
+      payButtonVisible: function() {
+        return this.demandInfo && this.demandInfo.orderState == 1 && this.isMe
       }
     },
     filters: {
@@ -137,7 +143,17 @@ function initPage() {
 
       }
     }
-  })
+  });
+
+  addEvent(vm);
+}
+
+function addEvent(vm) {
+  api.addEventListener({
+    name: 'refreshDemand'
+  }, function (ret, err) {
+    vm.getData();
+  });
 }
 
 apiready = function () {

@@ -12,7 +12,7 @@ var ListItem = {
   '      供应价格：<strong class="text-warning">{{myData.smoney}}</strong>元' +
   '    </div>' +
   '    <div class="supply-list-item__param">' +
-  '      供应状态：<span class="supply-status">{{getStateText(myData.State)}}</span>' +
+  '      供应状态：<span class="supply-status" v-html="getStateText(myData.State)"></span>' +
   '    </div>' +
   '    <div class="supply-item-desc">描述：{{myData.skilldetails}}</div>' +
   '  </div>' +
@@ -38,9 +38,9 @@ var ListItem = {
         case 1:
           return '审核中'
         case 2:
-          return '通过'
+          return '<span class="text-success">通过</span>'
         case 3:
-          return '不通过'
+          return '<span class="text-warning">不通过</span>'
         default:
           return '已关闭'
       }
