@@ -48,6 +48,9 @@ function initPage() {
           }
         }).always(function() {
           setTimeout(function() {
+            api.sendEvent({
+              name: 'refreshWallet',
+            });
             api.closeToWin({
               name: 'mywallet'
             });

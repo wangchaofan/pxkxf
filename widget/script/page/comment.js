@@ -36,14 +36,7 @@ var ListItem = {
   },
   methods: {
     viewDetail: function(item) {
-      api.openWin({
-        name: 'order_detail',
-        url: 'widget://html/order_detail.html',
-        reload: true,
-        pageParam: {
-          id: this.myData.SillYYDDId
-        }
-      })
+      Helper.openWin('order_detail', { id: this.myData.SillYYDDId });
     },
     getStateText: function() {
       switch(this.myData.mstate) {
@@ -113,11 +106,14 @@ function initPage() {
         }).then(function(res) {
           if (res.key === 'true') {
             api.toast({msg: '评价成功'});
+            api.sendEvent({
+              name: 'refreshOrder'
+            });
             setTimeout(function() {
               api.closeToWin({
                 name: self.type === 'service' ? 'service_order_detail' : 'order_detail'
               })
-            }, 2000)
+            }, 1000)
           } else {
             api.toast({msg: res.mage})
           }

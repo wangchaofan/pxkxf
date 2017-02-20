@@ -25,7 +25,7 @@
     </div>
   </header>
   <div class="supply-list" v-if="currentPage === 'demand'" v-cloak>
-    <div class="none-text" v-if="demandList.length === 0" v-cloak>暂时没有应邀~</div>
+    <div class="none-text" v-if="demandList.length === 0" v-cloak>暂时没有需求~</div>
     <ul v-else>
       <list-item v-for="item in demandList" :my-data="item"></list-item>
     </ul>

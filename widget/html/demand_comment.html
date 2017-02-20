@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>需求评价</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/user_avatar.css">
+    <link rel="stylesheet" href="../css/mysupply.css">
+    <link rel="stylesheet" href="../css/comment.css">
+    <script src="../script/adapter.js"></script>
+</head>
+<body style="background: #fff;">
+<div class="wrapper">
+    <my-header title="评价"></my-header>
+    <user-box :user="supplyer"></user-box>
+    <textarea id="commentContent" v-model="comment.describe" placeholder="请输入评价内容"></textarea>
+    <div class="pingfen-wrap">
+        <h3>评分</h3>
+        <div class="pingfen-row display-flex" style="margin-top: 0.5rem;">
+            <span class="pingfen-row-name">供应评分</span>
+            <span class="display-flex">
+                <i v-for="n in 5" :class="{bad: n > comment.fraction, good: n <= comment.fraction}" @click="selectGyScore(n)"></i>
+            </span>
+        </div>
+        <div class="pingfen-row display-flex">
+            <span class="pingfen-row-name">供应人评分</span>
+            <span class="display-flex">
+                <i v-for="n in 5" :class="{bad: n > comment.userscore, good: n <= comment.userscore}" @click="selectGpScore(n)"></i>
+            </span>
+        </div>
+    </div>
+    <div class="fixed-bottom">
+        <div class="btn-submit" @click="onSubmit">提交</div>
+    </div>
+</div>
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
+<script src="../script/lib/lodash.js"></script>
+<script src="../script/lib/vue.min.js"></script>
+<script src="../script/helper.js"></script>
+<script src="../script/page/demand_comment.js"></script>
+</body>
+</html>

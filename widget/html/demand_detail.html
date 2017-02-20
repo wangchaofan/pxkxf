@@ -61,8 +61,7 @@
 				</div>
 				<div class="user-info-rt">
 					<a class="location-byme fs24 text-999" href="javascript:">{{item.xqdistance | number}}km</a>
-					<div v-if="isMe" class="confirm-button" :class="{selected: item.ystate == 2}" @click="confirmInvite(item)">{{item.ystate == 2 ? '已选择' : '待选择'}}</div>
-					<div v-else class="confirm-button" :class="{selected: item.ystate == 2}">{{item.ystate == 2 ? '已选择' : '待选择'}}</div>
+					<div class="confirm-button" :class="{selected: item.ystate == 2}" @click="handlerClickConfirm(item)">{{getStatusText(item)}}</div>
 				</div>
 			</div>
 		</div>
@@ -70,6 +69,13 @@
 			<div class="button-chat" @click="goChat">聊一聊</div>
 			<div class="button-invite" v-if="demandInfo.ifstate != 1" @click="goInvite">应邀</div>
 			<!--<div class="button-invite-noname" @click="goInviteNoname">匿名应邀</div>-->
+		</div>
+		<div class="fixed-bottom" v-if="buttonVisible">
+			<div class="btn-submit" v-if="demandInfo.orderState == 1" @click="toPay">立即支付</div>
+			<div class="btn-submit" v-else-if="!isMe && demandInfo.orderState == 4" @click="handlerComplete">供应完成</div>
+			<div class="btn-submit" v-else-if="isMe && demandInfo.orderState == 5" @click="handlerClickDemandComplete">需求完成</div>
+			<div class="btn-submit" v-else-if="demandInfo.orderState == 7 || demandInfo.orderState == 7" disabled>订单已完成</div>
+			<div class="btn-submit" v-else-if="demandInfo.orderState == 8" disabled>订单已关闭</div>
 		</div>
 		<div class="mask" v-show="showDialog" v-if="demandInfo" v-cloak>
 			<div class="yy-dialog">
@@ -114,9 +120,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="fixed-bottom" v-if="payButtonVisible">
-			<div class="btn-submit" @click="toPay">立即支付</div>
 		</div>
 	</div>
 	<script src="../script/lib/jquery-3.1.1.min.js"></script>

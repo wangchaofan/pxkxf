@@ -46,7 +46,7 @@ function initPage() {
               name: 'refreshOrder'
             });
             api.sendEvent({
-              name: 'refreshDemand'
+              name: 'refreshMyDemand'
             });
             setTimeout(function() {
               api.closeWin({name: 'add_order'});

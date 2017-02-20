@@ -2,7 +2,7 @@ function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     created: function() {
-      this.getData()
+      this.getData();
     },
     data: function() {
       return {
@@ -10,7 +10,8 @@ function initPage() {
           Skillmodel: [{}]
         },
         userModel: null,
-        reason: ''
+        reason: '',
+        ddid: api.pageParam.id
       }
     },
     methods: {
@@ -43,25 +44,21 @@ function initPage() {
                 ddid: self.ddid
               }
             }).done(function(res) {
-              alert(JSON.stringify(res))
+              api.toast({msg: '供应完成'});
               if (res.key === 'true') {
-                self.getData()
+                self.getData();
               } else {
                 api.toast({msg: res.mage})
               }
+            }).catch(function(err){
+              alert(JSON.stringify(err))
             })
           }
         })
       },
       // === 评价 ===z
       toComment: function() {
-        api.openWin({
-          name: 'comment',
-          url: 'widget://html/comment.html',
-          pageParam: {
-            id: api.pageParam.id
-          }
-        })
+        Helper.openWin('comment', { id: api.pageParam.id });
       },
       // ===取消 ===
       onCancel: function () {
@@ -125,7 +122,7 @@ function initPage() {
           url: BaseService.apiUrl + 'qxyydd',
           data: {
             userid: Helper.getUserId(),
-            ddid: api.pageParam.id,
+            ddid: self.ddid,
             reason: self.reason
           }
         }).then(function(res) {

@@ -168,7 +168,7 @@ var InviteItem = {
         case 6:
           return '待评价'
         case 7:
-          return '订单完成'
+          return '订单已完成'
         case 8:
           return '已关闭'
         default:
