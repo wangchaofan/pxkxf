@@ -2,8 +2,6 @@ function initPage() {
 	var vm = new Vue({
 		el: '.wrapper',
 		created: function() {
-			this.getProvice()
-			// this.getUserData()
 		},
 		data: function() {
 			return {
@@ -19,21 +17,14 @@ function initPage() {
 					diid: '', // 地区
 					xqtype: '' // 分类
 				},
-				province: '',
-				city: '',
-				county: '',
 				proviceList: [],
 				upload_images: []
 			}
 		},
 		computed: {
 			zone: function() {
-				if (this.province) {
-					if (this.province == this.city) {
-						return this.province + ' ' + this.county;
-					}
-					return this.province + ' ' + this.city + ' ' + this.county;
-				}
+				if (this.demand.perid)
+					return this.demand.perid + ' ' + this.demand.cid + ' ' + this.demand.diid;
 				return '';
 			}
 		},
@@ -65,7 +56,8 @@ function initPage() {
 			onSubmit: function() {
 				var self = this
 				var data = _.clone(this.demand)
-				data.timenum = new Date(data.timenum).getTime()
+				if (data.timenum)
+					data.timenum = new Date(data.timenum).getTime()
 				$.ajax({
 					url: BaseService.apiUrl + 'getaddDemandOrder',
 					data: data
@@ -86,83 +78,76 @@ function initPage() {
 									type: 'page'
 								},
 								pageParam: {
-									mmoney: self.demand.money,
+									mmoney: self.demand.money * self.demand.rnum,
 									orderId: res.data,
 									orderType: 'demand'
 								}
 							})
 							setTimeout(function() {
 								api.closeWin()
-							}, 2000)
-						}, 3000)
+							}, 1000)
+						}, 2000)
 					} else {
 						api.toast({
 						    msg: res.mage
 						});
 					}
+				}, function(err) {
+					alert(JSON.stringify(err));
 				})
 			},
 			onSelectZone: function() {
 				var self = this;
-				var citySelector = api.require('citySelector');
-				citySelector.open({
-				  y: api.frameHeight / 1.6 + 50,
-					titleImg: 'widget://image/topbar_bg.jpg',
-					bgImg: 'widget://image/cityselector_bg.jpg',
-					cancelImg: 'widget://image/button_cancel.jpg',
-					enterImg: 'widget://image/button_ok.jpg',
-					fontColor: '#666'
-				}, function(ret, err) {
-					self.province = ret.province
-					if (!ret.county) {
-						self.city = ret.province
-						self.county = ret.city
-					} else {
-						self.city = ret.city
-				  	self.county = ret.county
+				var UIActionSelector = api.require('UIActionSelector');
+				UIActionSelector.open({
+					datas: 'widget://res/city.json',
+					layout: {
+						row: 5,
+						col: 3,
+						height: 40,
+						size: 14,
+						sizeActive: 14,
+						rowSpacing: 5,
+						colSpacing: 10,
+						maskBg: 'rgba(0,0,0,0.2)',
+						bg: '#fff',
+						color: '#888',
+						colorActive: '#e4353a',
+						colorSelected: '#e4353a'
+					},
+					animation: true,
+					cancel: {
+						text: '取消',
+						size: 14,
+						w: 90,
+						h: 35,
+						bg: '#ddd',
+						bgActive: '#ddd',
+						color: '#fff',
+						colorActive: '#fff'
+					},
+					ok: {
+						text: '确定',
+						size: 14,
+						w: 90,
+						h: 35,
+						bg: '#e4353a',
+						bgActive: '#e4353a',
+						color: '#fff ',
+						colorActive: '#fff'
+					},
+					title: {
+						text: '请选择',
+						size: 14,
+						h: 44,
+						bg: '#eee',
+						color: '#333'
 					}
-				  self.getProvinceId()
+				}, function(ret, err) {
+					self.demand.perid = ret.level1;
+					self.demand.cid = ret.level2
+					self.demand.diid = ret.level3;
 				});
-			},
-			getProvice: function() {
-				var self = this;
-				$.ajax({
-					url: BaseService.apiUrl + 'getS_Province'
-				}).then(function(res) {
-					self.proviceList = ParseJson(res.data)
-				})
-			},
-			getProvinceId: function() {
-				var self = this
-				this.demand.perid = _.filter(this.proviceList, function(v) {
-					return v.ProvinceName.indexOf(self.province) >= 0
-				})[0].ProvinceID
-				this.getCityId(this.demand.perid)
-			},
-			getCityId: function(perid) {
-				var self = this
-				$.ajax({
-					url: BaseService.apiUrl + 'getS_City',
-					data: {perid: perid}
-				}).then(function(res) {
-					self.demand.cid = _.filter(ParseJson(res.data), function(v) {
-						return v.CityName.indexOf(self.city) >= 0
-					})[0].CityID
-					console.log(self.demand.cid)
-					self.getCountyId(self.demand.cid)
-				})
-			},
-			getCountyId: function(citid) {
-				var self = this
-				$.ajax({
-					url: BaseService.apiUrl + 'getS_District',
-					data: {citid: citid}
-				}).then(function(res) {
-					self.demand.diid = _.filter(ParseJson(res.data), function(v) {
-						return v.DistrictName.indexOf(self.county) >= 0
-					})[0].DistrictID
-					console.log(self.demand.diid)
-				})
 			}
 		}
 	})

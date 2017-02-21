@@ -48,8 +48,9 @@ function initPage() {
             api.sendEvent({
               name: 'refreshMyDemand'
             });
+            api.closeWin({name: 'add_order'});
+            api.closeWin({name: 'supply_detail'});
             setTimeout(function() {
-              api.closeWin({name: 'add_order'});
               api.closeWin()
             }, 1000);
           } else {

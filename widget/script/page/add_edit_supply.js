@@ -2,19 +2,6 @@ function initPage() {
 	var vm = new Vue({
 		el: '.wrapper',
 		created: function() {
-			// this.skill = {
-			// 	userid: Helper.getUserId(),
-			// 	skillName: '测试',
-			// 	skilldetails: '测试详情',
-			// 	skilltype: '',
-			// 	servertime: '',
-			// 	Province: '',
-			// 	City: '',
-			// 	District: '',
-			// 	money: '200',
-			// 	imgarr: '',
-			// 	Remark: '嘿嘿'
-			// }
 			if (api.pageParam.id) {
 				this.getSupply()
 			}
@@ -81,19 +68,56 @@ function initPage() {
 			},
 			selectDistrict: function() {
 				var self = this;
-        		var citySelector = api.require('citySelector');
-				citySelector.open({
-				 	y: api.frameHeight / 1.6 + 50,
-					titleImg: 'widget://image/topbar_bg.jpg',
-					bgImg: 'widget://image/cityselector_bg.jpg',
-					cancelImg: 'widget://image/button_cancel.jpg',
-					enterImg: 'widget://image/button_ok.jpg',
-					fontColor: '#666'
+				var UIActionSelector = api.require('UIActionSelector');
+				UIActionSelector.open({
+					datas: 'widget://res/city.json',
+					layout: {
+						row: 5,
+						col: 3,
+						height: 40,
+						size: 14,
+						sizeActive: 14,
+						rowSpacing: 5,
+						colSpacing: 10,
+						maskBg: 'rgba(0,0,0,0.2)',
+						bg: '#fff',
+						color: '#888',
+						colorActive: '#e4353a',
+						colorSelected: '#e4353a'
+					},
+					animation: true,
+					cancel: {
+						text: '取消',
+						size: 14,
+						w: 90,
+						h: 35,
+						bg: '#ddd',
+						bgActive: '#ddd',
+						color: '#fff',
+						colorActive: '#fff'
+					},
+					ok: {
+						text: '确定',
+						size: 14,
+						w: 90,
+						h: 35,
+						bg: '#e4353a',
+						bgActive: '#e4353a',
+						color: '#fff ',
+						colorActive: '#fff'
+					},
+					title: {
+						text: '请选择',
+						size: 14,
+						h: 44,
+						bg: '#eee',
+						color: '#333'
+					}
 				}, function(ret, err) {
-				self.skill.Province = ret.province
-				self.skill.City = ret.city
-				self.skill.District = ret.county
-				})
+					self.skill.Province = ret.level1;
+					self.skill.City = ret.level2;
+					self.skill.District = ret.level3;
+				});
 			},
 			onFileChange: function(e) {
 				var self = this

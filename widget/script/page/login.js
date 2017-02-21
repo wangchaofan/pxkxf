@@ -63,8 +63,8 @@ function initPage() {
 							    msg: '登录成功'
 							});
 							api.setPrefs({
-							    key: 'userid',
-							    value: res.data
+								key: 'userid',
+								value: res.data
 							});
 							Helper.setUserInfo();
 							api.sendEvent({

@@ -130,7 +130,11 @@ function initPage() {
       // 确定选择应邀人
       confirmInvite: function (inviteItem) {
         var self = this
-        if (!this.isMe || inviteItem.ystate == 2) return
+        if (!this.isMe || inviteItem.ystate == 2 || this.demandInfo.orderState >= 4) return
+        if (this.demandInfo.demandNum == this.demandInfo.yxnum) {
+          api.toast({msg: '应邀人数已满'});
+          return;
+        }
         api.confirm({
           title: '提示',
           msg: '确定选择应邀人？',
@@ -145,6 +149,9 @@ function initPage() {
                 if (res.key === 'true') {
                   inviteItem.ystate = 2
                   self.demandInfo.yxnum = parseInt(self.demandInfo.yxnum) + 1
+                  if (self.demandInfo.yxnum == self.demandInfo.demandNum) {
+                    self.getData();
+                  }
                 } else {
                   api.toast({
                     msg: res.mage

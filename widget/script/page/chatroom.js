@@ -7,9 +7,15 @@ $.ajax({
   url: '../res/emotion/emotion.json',
   dataType: 'json',
   type: 'get',
+  beforeSend: function() {
+
+  },
   dataFilter: function (ret) { return ret },
   success: function (res) {
     imageJson = res
+  },
+  complete: function() {
+
   }
 });
 

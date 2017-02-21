@@ -108,17 +108,6 @@ function initPage() {
       },
       onSelectCity: function() {
         var self = this;
-        //var citySelector = api.require('citySelector');
-        //citySelector.open({
-        //  y: api.frameHeight / 1.6 + 50,
-        //  titleImg: 'widget://image/topbar_bg.jpg',
-        //  bgImg: 'widget://image/cityselector_bg.jpg',
-        //  cancelImg: 'widget://image/button_cancel.jpg',
-        //  enterImg: 'widget://image/button_ok.jpg',
-        //  fontColor: '#666'
-        //}, function(ret, err) {
-        //  self.city = ret.city;
-        //})
         var UIActionSelector = api.require('UIActionSelector');
         UIActionSelector.open({
           datas: 'widget://res/city.json',
@@ -169,39 +158,27 @@ function initPage() {
         });
       },
       viewDemandDetail: function(data) {
-        api.openWin({
-            name: 'demand_detail',
-            url: 'widget://html/demand_detail.html',
-            pageParam: {
-              id: data.demandorderId
-            }
-        });
+        Helper.openWin('demand_detail', {id: data.demandorderId});
       },
       viewSupplyDetail: function(data) {
-        api.openWin({
-            name: 'supply_detail',
-            url: 'widget://html/supply_detail.html',
-            pageParam: {
-              id: data.skillID
-            }
-        });
+        Helper.openWin('supply_detail', {id: data.skillID, user: data.sUserId === Helper.getUserId() ? 'self' : ''});
       },
       getDemandList: function() {
         var self = this;
-        var data = {
+        var postData = {
           type: this.type,
           userid: Helper.getUserId(),
           num: this.demandNum
         };
         $.ajax({
           url: BaseService.apiUrl + 'getdemaorder',
-          data: data,
+          data: postData,
           success: function(res) {
             var data = JSON.parse(res.data);
             data = _.filter(data, function(u) {
               return u.fUserId !== data.userid;
             });
-            if (data.num === 1) {
+            if (postData.num === 1) {
               self.demandList = data
             } else {
               self.demandList = self.demandList.concat(data);
@@ -217,20 +194,20 @@ function initPage() {
       },
       getSupplyList: function() {
         var self = this;
-        var data = {
+        var postData = {
           type: this.type,
           userid: Helper.getUserId(),
           num: this.supplyNum
         };
         $.ajax({
           url: BaseService.apiUrl + 'getSkill',
-          data: data,
+          data: postData,
           success: function(res) {
             var data = JSON.parse(res.data);
             data = _.filter(data, function(u) {
               return u.sUserId !== data.userId;
             });
-            if (data.num === 1) {
+            if (postData.num === 1) {
               self.supplyList = data
             } else {
               self.supplyList = self.supplyList.concat(data)
