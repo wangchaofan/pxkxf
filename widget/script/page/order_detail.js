@@ -59,6 +59,7 @@ function initPage() {
       // === 评价 ===z
       toComment: function() {
         Helper.openWin('comment', { id: api.pageParam.id });
+
       },
       // ===取消 ===
       onCancel: function () {

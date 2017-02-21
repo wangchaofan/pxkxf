@@ -78,7 +78,6 @@ function initPage() {
                 ddid: self.ddid
               }
             }).done(function(res) {
-              alert(JSON.stringify(res))
               if (res.key === 'true') {
                 self.getData()
               } else {
