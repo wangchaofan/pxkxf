@@ -71,15 +71,17 @@ function initPage() {
 						}).then(function() {
 							if (res.key === 'true') {
 								api.toast({msg: '设置成功'});
-								api.sendEvent({
-									name: 'initHomePage'
-								});
-								api.sendEvent({
-									name: 'loginSuccess'
-								});
-								api.closeToWin({
-									name: 'root'
-								});
+								setTimeout(function() {
+									api.sendEvent({
+										name: 'initHomePage'
+									});
+									api.sendEvent({
+										name: 'loginSuccess'
+									});
+									api.closeToWin({
+										name: 'root'
+									});
+								}, 1500);
 							} else {
 								api.toast({
 									msg: res.mage
