@@ -66,16 +66,26 @@ function initPage() {
 								key: 'userid',
 								value: res.data
 							});
-							Helper.setUserInfo();
-							api.sendEvent({
-								name: 'initHomePage'
-							});
-							api.sendEvent({
-								name: 'loginSuccess'
-							});
-							api.closeToWin({
-							    name: 'root'
-							});
+							$.ajax({
+								url: BaseService.apiUrl + 'getuserinfo',
+								data: { uid: getUserId() }
+							}).then(function(res) {
+								api.setPrefs({
+									key: 'userInfo',
+									value: ParseJson(res.data)[0]
+								});
+								api.sendEvent({
+									name: 'initHomePage'
+								});
+								api.sendEvent({
+									name: 'loginSuccess'
+								});
+								api.closeToWin({
+									name: 'root'
+								});
+							}, function(err) {
+								console.log(err)
+							})
 						} else {
 							api.toast({
 							    msg: res.mage
