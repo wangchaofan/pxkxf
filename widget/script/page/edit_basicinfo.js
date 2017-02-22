@@ -19,13 +19,20 @@ function initPage() {
 				this.userInfo.sex = v
 			},
 			onUpload: function(e) {
-				var file = e.target.files[0]
 				var self = this
-				if (file) {
-					Helper.imagePreview(file).then(function(url) {
-						self.avatarImg = url
-					})
-				}
+				api.getPicture({
+					sourceType: 'library',
+					encodingType: 'png',
+					mediaValue: 'pic',
+					destinationType: 'base64',
+					allowEdit: true,
+					quality: 50,
+					targetWidth: 200,
+					targetHeight: 200,
+					saveToPhotoAlbum: true
+				}, function(ret, err) {
+					self.avatarImg = ret.base64Data
+				})
 			},
 			validate: function() {
 				var dtd = $.Deferred()
@@ -54,13 +61,31 @@ function initPage() {
 						})
 					})
 					.then(function(res) {
-						if (res.key === 'true') {
-							api.closeWin()
-						} else {
-							api.toast({
-							    msg: res.mage
-							})
-						}
+						$.ajax({
+							url: BaseService.apiUrl + 'getloginrz',
+							data: {
+								phone: api.pageParam.phone,
+								pwd: api.pageParam.pwd,
+								appip: '192.168.22.11'
+							}
+						}).then(function() {
+							if (res.key === 'true') {
+								api.toast({msg: '设置成功'});
+								api.sendEvent({
+									name: 'initHomePage'
+								});
+								api.sendEvent({
+									name: 'loginSuccess'
+								});
+								api.closeToWin({
+									name: 'root'
+								});
+							} else {
+								api.toast({
+									msg: res.mage
+								})
+							}
+						})
 					})
 					.fail(function(err) {
 						alert(err)

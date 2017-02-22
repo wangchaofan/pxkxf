@@ -170,8 +170,12 @@ function initPage() {
         });
         $.when(getDemand, getSupply)
           .then(function(res1, res2) {
-            self.demandList = ParseJson(res1[0].data);
-            self.supplyList = ParseJson(res2[0].data);
+            if (res1[0] && res1[0].data) {
+              self.demandList = ParseJson(res1[0].data);
+            }
+            if (res2[0] && res2[0].data) {
+              self.supplyList = ParseJson(res2[0].data);
+            }
           });
       },
       getDemand: function() {
@@ -181,6 +185,7 @@ function initPage() {
           url: BaseService.apiUrl + 'getdemaorder',
           data: {type: this.category, userid: Helper.getUserId(), num: this.pageNum},
           success: function(res) {
+            if (!res.data) return;
             var data = JSON.parse(res.data);
             if (!data || data.length === 0) {
               self.hasMoreDemand = false;
@@ -200,6 +205,7 @@ function initPage() {
           url: BaseService.apiUrl + 'getSkill',
           data: {type: self.category, userid: Helper.getUserId(), num: this.pageNum},
           success: function(res) {
+            if (!res.data) return;
             var data = JSON.parse(res.data);
             if (!data || data.length === 0) {
               self.hasMoreSupply = false;

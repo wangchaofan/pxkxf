@@ -174,6 +174,9 @@ function initPage() {
           url: BaseService.apiUrl + 'getdemaorder',
           data: postData,
           success: function(res) {
+            if (!res.data) {
+              return;
+            }
             var data = JSON.parse(res.data);
             data = _.filter(data, function(u) {
               return u.fUserId !== data.userid;
@@ -203,6 +206,9 @@ function initPage() {
           url: BaseService.apiUrl + 'getSkill',
           data: postData,
           success: function(res) {
+            if (!res.data) {
+              return;
+            }
             var data = JSON.parse(res.data);
             data = _.filter(data, function(u) {
               return u.sUserId !== data.userId;

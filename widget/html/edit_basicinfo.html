@@ -12,8 +12,7 @@
 <div class="wrapper">
   <my-header title="基本信息"></my-header>
   <div class="upload-avatar ac">
-  	<div class="upload-icon">
-     <input type="file" accept="image/jpg,image/png" @change="onUpload"> 
+  	<div class="upload-icon" @click="onUpload">
      <img v-if="avatarImg" v-bind:src="avatarImg" alt="">
     </div>
   	<div class="upload-text">上传头像</div>

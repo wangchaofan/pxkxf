@@ -60,6 +60,18 @@ apiready = function() {
 	}
 
 	function initPage() {
+		$.ajax({
+			url: BaseService.apiUrl + 'getuserinfo',
+			data: { uid: getUserId() }
+		}).then(function(res) {
+			api.setPrefs({
+				key: 'userInfo',
+				value: ParseJson(res.data)[0]
+			});
+		}, function(err) {
+			console.log(err)
+		});
+
 		var nvTabBarCommonTitle = {
 			text: '首页',
 			size: 13.0,

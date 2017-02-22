@@ -52,22 +52,22 @@ function initPage() {
 					.then(function(res) {
 						if (res.key === 'true') {
 							api.toast({
-							    msg: '注册成功'
-							})
-							api.openWin({
-							    name: 'edit_basicinfo',
-							    url: 'widget://html/edit_basicinfo.html'
-							})
+								msg: '注册成功'
+							});
+							api.setPrefs({
+								key: 'userid',
+								value: res.data
+							});
+							Helper.openWin('edit_basicinfo', {phone: self.regphone, pwd: self.pwd});
 							setTimeout(function() {
 								api.closeWin()
-							}, 100)
+							}, 1000)
 						} else {
-							this.$refs.msmButton.reset()
 							api.toast({msg: res.mage})
 						}
 					})
 					.fail(function(err) {
-						console.log(JSON.stringify(err))
+						alert(JSON.stringify(err))
 					})
 					.always(function() {
 						self.submiting = false
