@@ -106,7 +106,7 @@ function initPage() {
       },
       toPay: function () {
         Helper.openWin('pay', {
-          mmoney: '20',
+          mmoney: this.demandInfo.dmoney * this.demandInfo.demandNum,
           orderId: api.pageParam.id,
           orderType: 'demand',
           fromWin: api.winName
