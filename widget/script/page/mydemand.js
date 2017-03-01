@@ -26,38 +26,30 @@ var ListItem = {
       return this.myData ? this.myData.Usermodel[0].pheadimgUrl : ''
     },
     canEdit: function() {
-      return !(this.myData.orderState == 1 || this.myData.orderState == 3)
+      return this.myData.orderState == 1 || this.myData.orderState == 3
     }
   },
   methods: {
     viewDetail: function() {
-      var self = this
-      api.openWin({
-        name: 'demand_detail',
-        url: 'widget://html/demand_detail.html',
-        pageParam: {
-          id: this.myData.demandorderId,
-          user: 'self'
-        }
-      })
+      Helper.openWin('demand_detail', { id: this.myData.demandorderId, user: 'self' })
     },
     getStateText: function(state) {
       switch(state) {
-        case 1: 
+        case 1:
           return '待支付'
         case 2:
           return '审核中'
-        case 3: 
+        case 3:
           return '发布中'
-        case 4: 
+        case 4:
           return '进行中'
-        case 5: 
+        case 5:
           return '供应完成'
-        case 6: 
+        case 6:
           return '待评价'
         case 7:
           return '订单完成'
-        case 8: 
+        case 8:
           return '已关闭'
         default:
           return '已删除'
@@ -68,9 +60,8 @@ var ListItem = {
       api.confirm({
         title: '提示',
         msg: '确认删除？',
-        buttons: ['确定', '取消']
       }, function(ret, err) {
-        if (ret.buttonIndex === 1) {
+        if (ret.buttonIndex === 2) {
           $.ajax({
             url: BaseService.apiUrl + 'deletexq',
             data: {xqid: self.myData.demandorderId}

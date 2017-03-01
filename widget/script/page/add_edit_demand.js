@@ -2,9 +2,12 @@ function initPage() {
 	var vm = new Vue({
 		el: '.wrapper',
 		created: function() {
+			this.getDemand()
 		},
 		data: function() {
 			return {
+				title: api.pageParam.id ? '修改需求' : '新增需求',
+				demandId: api.pageParam.id,
 				demand: {
 					userid: Helper.getUserId(),
 					xqname: '',
@@ -26,6 +29,9 @@ function initPage() {
 				if (this.demand.perid)
 					return this.demand.perid + ' ' + this.demand.cid + ' ' + this.demand.diid;
 				return '';
+			},
+			buttonText: function() {
+				return this.demandId ? '确认修改' : '发布'
 			}
 		},
 		methods: {
@@ -54,6 +60,13 @@ function initPage() {
 				})
 			},
 			onSubmit: function() {
+				if (this.demandId) {
+					this.handleEditDemand()
+				} else {
+					this.handleAddDemand()
+				}
+			},
+			handleAddDemand: function() {
 				var self = this
 				var data = _.clone(this.demand)
 				if (data.timenum)
@@ -64,10 +77,10 @@ function initPage() {
 				}).then(function(res) {
 					if (res.key === 'true') {
 						api.toast({
-						    msg: '发布成功'
+							msg: '发布成功'
 						})
 						api.sendEvent({
-					    name: 'refreshMyDemand'
+							name: 'refreshMyDemand'
 						})
 						setTimeout(function() {
 							api.openWin({
@@ -85,16 +98,41 @@ function initPage() {
 							})
 							setTimeout(function() {
 								api.closeWin()
-							}, 1000)
-						}, 2000)
+							}, 500)
+						}, 1000)
 					} else {
 						api.toast({
-						    msg: res.mage
-						});
+							msg: res.mage
+						})
 					}
 				}, function(err) {
 					alert(JSON.stringify(err));
 				})
+			},
+			handleEditDemand: function() {
+
+			},
+			getDemand: function() {
+				var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'getxqinfo',
+          data: { xqid: self.demandId, userid: Helper.getUserId() }
+          //data: { xqid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00', userid: Helper.getUserId()}
+        })
+        .done(function (res) {
+					var data = ParseJson(res.data)[0]
+					self.demand = {
+						xqname: data.demandTitle,
+						xqtype: data.demandtype,
+						rnum: data.demandNum,
+						timenum: Helper.dateFormat(data.dtime, 'yyyy-MM-dd'),
+						xqdetails: data.ddetails,
+						money: data.dmoney,
+						perid: data.S_province,
+						cid: data.s_City,
+						diid: data.s_distrct
+					}
+        })
 			},
 			onSelectZone: function() {
 				var self = this;
@@ -156,4 +194,3 @@ function initPage() {
 apiready = function(){
     initPage()
 }
-    

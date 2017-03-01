@@ -50,20 +50,14 @@
 			</div>
 		</div>
 		<div class="has-invited-person" v-if="demandInfo" v-cloak>
-			<div class="user-center-top display-flex" v-for="item in demandInfo.XQInvitedmodel">
-				<div class="user-info">
-					<div class="user-avatar" :style="{'background-image': 'url(' + item.usermodel[0].pheadimgUrl + ')'}"></div>
-					<div class="user-info-tj">
-						<div class="user-name"><span class="vam">{{item.usermodel[0].pnickname}}</span><span class="user-sex user-sex-man vam"></span></div>
-						<div class="online-status" :class="{'off-line': item.usermodel[0].onlineState == 2}">{{item.usermodel[0].onlineState == 2 ? '离线' : '在线'}}</div>
-						<div class="demand-price fs24">技能描述：{{item.skillms}}</div>
-					</div>
-				</div>
-				<div class="user-info-rt">
+			<user-box v-for="item in demandInfo.XQInvitedmodel" :user="item.usermodel[0]">
+				<div class="demand-price fs24" slot="userLtBottom">技能描述：{{item.skillms}}</div>
+				<div class="user-info-rt" slot="userRtTop">
 					<a class="location-byme fs24 text-999" href="javascript:">{{item.xqdistance | number}}km</a>
 					<div class="confirm-button" :class="{selected: item.ystate == 2}" @click="handlerClickConfirm(item)">{{getStatusText(item)}}</div>
 				</div>
-			</div>
+				<div slot="userRtBottom"></div>
+			</user-box>
 		</div>
 		<div class="fixed-bottom deman-detail-bottom display-flex" v-if="inviteButtonVisible">
 			<div class="button-chat" @click="goChat">聊一聊</div>

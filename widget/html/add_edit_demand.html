@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="wrapper">
-  <my-header title="发起需求"></my-header>
+  <my-header :title="title"></my-header>
   <form class="supply-form" action="">
     <div class="input-row">
       <label for="demandTitle">我的需求</label>
@@ -49,10 +49,10 @@
     </div>
   </form>
   <div class="fixed-bottom">
-    <div class="btn-submit" @click="onSubmit">发布</div>
+    <div class="btn-submit" @click="onSubmit">{{buttonText}}</div>
   </div>
 </div>
-<script src="../script/lib/jquery-3.1.1.min.js"></script>  
+<script src="../script/lib/jquery-3.1.1.min.js"></script>
 <script src="../script/lib/lodash.js"></script>
 <script src="../script/lib/vue.min.js"></script>
 <script src="../script/helper.js"></script>
