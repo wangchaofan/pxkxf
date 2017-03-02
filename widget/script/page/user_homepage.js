@@ -95,7 +95,7 @@ function initPage() {
           data: {hyuserid: self.uid, userid: Helper.getUserId()}
         }).then(function(res) {
           if (res.key === 'true') {
-            self.isFocus = true
+            self.isFocus = res.data == 1
           }
         }, function(err) {
           alert(err)

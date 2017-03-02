@@ -22,11 +22,14 @@ function initPage() {
             return '已关闭'
         }
       },
+      handleViewSupply: function(item) {
+        Helper.openWin('supply_detail', pageParam: {id: item.skillID})
+      },
       getData: function() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getCollection',
-          data: { userid: MockData.userid }
+          data: { userid: Helper.getUserId() }
         }).done(function(res) {
           alert(res.data)
           self.list = ParseJson(res.data)

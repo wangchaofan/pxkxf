@@ -14,9 +14,9 @@
   <div class="supply-list" v-cloak>
     <div class="none-text" v-if="list.length === 0">你还没有收藏技能~</div>
     <ul v-else>
-      <li class="supply-list-item" v-for="item in list">
+      <li class="supply-list-item" v-for="item in list" @click="handleViewSupply(item)">
         <div class="supply-list-item__left">
-          <img src="" alt="">
+          <img :src="item.usermodel[0].pheadimgUrl" alt="">
         </div>
         <div class="supply-list-item__right">
           <div class="supply-list-item__param">
