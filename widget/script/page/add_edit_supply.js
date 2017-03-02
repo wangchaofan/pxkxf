@@ -42,7 +42,8 @@ function initPage() {
 				$.ajax({
 					url: BaseService.apiUrl + 'getskillinfo',
 					data: {
-						skillid: api.pageParam.id
+						skillid: api.pageParam.id,
+						userid: Helper.getUserId()
 						// skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
 					}
 				}).done(function(res) {
@@ -53,17 +54,26 @@ function initPage() {
 					skill.skillName = data.skillName
 					skill.skilldetails = data.skilldetails
 					skill.skilltype = data.skillType || ''
-					skill.Province = data.addressprovincese
-					skill.City = data.addressCityse
-					skill.District = data.addressdistrctse
+					skill.Province = data.addressprovince
+					skill.City = data.addresscity
+					skill.District = data.addDistrict
 					skill.money = data.smoney
 					skill.Remark = data.Remark
-					skill.servertime = Helper.dateFormat(data.servertime, 'yyyy-MM-dd')
+					skill.servertime = data.servertime
 					_.forEach(data.Skillworksmodel, function(v) {
 						convertImgToBase64(v.skillwoksurl, function(base64) {
 							self.images.push(base64)
 						})
 					})
+				})
+			},
+			onSelectDate: function() {
+				var self = this
+				api.openPicker({
+			    type: 'date',
+			    title: '选择时间'
+				}, function(ret, err) {
+			    self.skill.servertime = ret.year + '/' + ret.month + '/' + ret.day + ' 00:00:00'
 				})
 			},
 			selectDistrict: function() {
@@ -132,7 +142,7 @@ function initPage() {
 				this.images.splice(index, 1)
 			},
 			onSubmit: function() {
-				if (this.submiting) return 
+				if (this.submiting) return
 				if (this.skill.servertime && new Date(this.skill.servertime).getTime() < Date.now()) {
 					api.toast({
 						msg: '有效时间不能小于当前时间'
@@ -164,7 +174,6 @@ function initPage() {
 					data: data
 				}).then(function(res) {
 					if (res.key === 'true') {
-						console.log(res)
 						api.toast({
 					    msg: '修改成功'
 						})
@@ -209,4 +218,3 @@ function initPage() {
 apiready = function(){
     initPage()
 }
-    
