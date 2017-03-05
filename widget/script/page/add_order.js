@@ -26,8 +26,20 @@ function initPage() {
           }
         })
       },
+      validate: function() {
+        if (!this.yydate) {
+          api.toast({msg: '请填写邀约时间'})
+          return false
+        }
+        if (!this.yyaddress) {
+          api.toast({msg: '请填写邀约地点'})
+          return false
+        }
+        return true
+      },
       onSubmit: function() {
         var self = this
+        if (!this.validate()) return;
         var data = _.assign({}, this.formData, {userid: Helper.getUserId(), skillid: this.order.skillID, yymoney: this.order.smoney})
         data.yydate = data.yydate ? new Date(data.yydate).getTime() : ''
         $.ajax({

@@ -13,15 +13,20 @@
 <div class="wrapper">
     <my-header :title="title"></my-header>
     <div class="none-text" v-show="posting">正在加载...</div>
-    <div class="remand-list" v-cloak>
-        <ul>
-            <demand-item v-for="item in demandList" :item="item"></demand-item>
-        </ul>
+    <div v-if="demandList.length == 0 && supplyList.length == 0" class="none-text">
+      没有相关内容
     </div>
-    <div class="remand-list" v-cloak>
-        <ul>
-            <supply-item v-for="item in supplyList" :item="item"></supply-item>
-        </ul>
+    <div v-else>
+      <div class="remand-list" v-cloak>
+          <ul>
+              <demand-item v-for="item in demandList" :item="item"></demand-item>
+          </ul>
+      </div>
+      <div class="remand-list" v-cloak>
+          <ul>
+              <supply-item v-for="item in supplyList" :item="item"></supply-item>
+          </ul>
+      </div>
     </div>
 </div>
 <!-- 订单状态（1待支付,2审核中,3发布中,4进行中,5供应完成,6待评价,7订单完成,0已关闭,-1已删除） -->

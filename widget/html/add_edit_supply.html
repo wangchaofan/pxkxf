@@ -31,7 +31,7 @@
     </div>
     <div class="input-row">
       <label for="servertime">有效时间</label>
-      <input type="date" id="servertime" v-model="skill.servertime" />
+      <input type="datetime" id="servertime" v-model="skill.servertime" readonly @click="onSelectDate" />
     </div>
     <div class="fs24 text-warning" style="margin-top: 0.35rem;">提示：若不填有效时间则默认为长期供应</div>
     <div class="input-row" @click="selectDistrict">
