@@ -42,12 +42,13 @@ function initPage() {
 				$.ajax({
 					url: BaseService.apiUrl + 'getskillinfo',
 					data: {
-						skillid: api.pageParam.id
+						skillid: api.pageParam.id,
+						userid: Helper.getUserId()
 						// skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
 					}
-				}).done(function(res) {
+				}).then(function(res) {
+					alert(res.data)
 					var data = ParseJson(res.data)[0]
-					console.log(ParseJson(res.data)[0])
 					var skill = self.skill
 					skill.ddid = data.skillID
 					skill.skillName = data.skillName
@@ -64,6 +65,8 @@ function initPage() {
 							self.images.push(base64)
 						})
 					})
+				}, function(err) {
+					alert(JSON.stringify(err))
 				})
 			},
 			selectDistrict: function() {
