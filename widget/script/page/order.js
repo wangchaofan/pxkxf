@@ -230,6 +230,7 @@ function initPage() {
     textColor: '#333',
     textDown: '下拉刷新...',
     textUp: '松开刷新...',
+    textLoading: '加载中...',
     showTime: false
   }, function(ret, err) {
     vm.getData(vm.state)
