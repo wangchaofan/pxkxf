@@ -37,7 +37,7 @@ function initPage() {
           self.userInfo = data
           console.log(ParseJson(res.data)[0])
         }, function(err) {
-          alert(err)
+          api.toast({msg: err.message});
         })
       }
     }

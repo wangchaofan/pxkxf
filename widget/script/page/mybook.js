@@ -23,7 +23,7 @@ function initPage() {
         }
       },
       handleViewSupply: function(item) {
-        Helper.openWin('supply_detail', pageParam: {id: item.skillID})
+        Helper.openWin('supply_detail', { id: item.skillID })
       },
       getData: function() {
         var self = this
@@ -31,7 +31,7 @@ function initPage() {
           url: BaseService.apiUrl + 'getCollection',
           data: { userid: Helper.getUserId() }
         }).done(function(res) {
-          alert(res.data)
+          Helper.alert(res.data)
           self.list = ParseJson(res.data)
         })
       }

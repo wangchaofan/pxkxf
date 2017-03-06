@@ -38,8 +38,8 @@ apiready = function() {
 		/* 断网事件 */
 		api.addEventListener({
 			name:'offline'
-		}, function(ret, err){
-			alert('网络已断开！');
+		}, function(ret, err) {
+			Helper.alert('网络已断开！')
 		})
 
 		var rong = api.require('rongCloud2');

@@ -32,7 +32,7 @@ function initPage() {
       onClickZan: function() {
         var self = this
         if (this.hasZan) {
-          alert('你已经点过赞了')
+          api.toast({msg: '你已经点过赞了'});
           return
         }
         $.ajax({

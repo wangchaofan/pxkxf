@@ -55,14 +55,10 @@ function initPage() {
                 }
               })
             } else {
-              api.alert({
-                  msg : "暂无更新"
-              });
+              Helper.alert('暂无更新');
             }
 	        } else {
-	          api.alert({
-	              msg : err.msg
-	          });
+            Helper.alert(err.msg);
 	        }
     		});
 			},

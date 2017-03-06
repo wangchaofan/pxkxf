@@ -24,7 +24,7 @@ Vue.component('get-msm-button', {
 		getMsm: function() { 
 			var self = this
 			if (!/^1\d{10}$/.test(this.phone)) {
-				alert('请输入正确的手机号')
+				api.toast({msg: '请输入正确的手机号'})
 				return
 			} 
 			if (this.sending) return

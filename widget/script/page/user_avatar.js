@@ -171,7 +171,7 @@ function initPage() {
               self.uploadAvatar(base64)
             })
           } else {
-            alert(JSON.stringify(err));
+            api.toast({msg: err.message});
           }
         })
       },

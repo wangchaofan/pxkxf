@@ -24,6 +24,15 @@ var Helper = {
   dateFormat: dateFormat,
   getUserInfo: getUserInfo,
   setUserInfo: setUserInfo,
+  alert: function(msg) {
+    api.alert({
+      title: '提示',
+      msg: msg,
+      buttons: ['确定']
+    }, function() {
+      
+    })
+  },
   openWin: function(winName, pageParam, option) {
     var defaultOption = {
       name: winName,

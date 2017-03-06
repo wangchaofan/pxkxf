@@ -58,7 +58,7 @@ function initPage() {
               });
             }, 500)
           } else {
-            alert(res.mage)
+            api.toast({msg: res.mage});
           }
         })
       },
@@ -77,7 +77,7 @@ function initPage() {
             self.order = data[0]
             self.userModel = data[0].sUsermodel[0]
           } else {
-            alert(res.mage)
+            api.toast({msg: res.mage});
           }
         })
       }

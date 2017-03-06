@@ -16,6 +16,8 @@ function initPage() {
         demandList: [],
         supplyList: [],
         nearByList: [],
+        hasMoreDemand: true,
+        hasMoreSupply: true,
         currentTab: 'demand',
         city: '成都市',
         type: '',
@@ -165,6 +167,7 @@ function initPage() {
       },
       getDemandList: function() {
         var self = this;
+        if (!this.hasMoreSupply) return;
         var postData = {
           type: this.type,
           userid: Helper.getUserId(),
@@ -181,6 +184,9 @@ function initPage() {
             data = _.filter(data, function(u) {
               return u.fUserId !== data.userid;
             });
+            if (data.length === 0) {
+              self.hasMoreSupply = false
+            }
             if (postData.num === 1) {
               self.demandList = data
             } else {
@@ -197,6 +203,7 @@ function initPage() {
       },
       getSupplyList: function() {
         var self = this;
+        if (!this.hasMoreDemand) return;
         var postData = {
           type: this.type,
           userid: Helper.getUserId(),
@@ -213,6 +220,9 @@ function initPage() {
             data = _.filter(data, function(u) {
               return u.sUserId !== data.userId;
             });
+            if (data.length === 0) {
+              self.hasMoreDemand = false
+            }
             if (postData.num === 1) {
               self.supplyList = data
             } else {
@@ -258,7 +268,7 @@ function initPage() {
       }
     })
   }, function(err) {
-    alert(JSON.stringify(err))
+    api.toast({msg: err.message});
   })
 
   api.addEventListener({
@@ -284,7 +294,8 @@ apiready = function() {
     textLoading: '加载中...',
     showTime: false
   }, function(ret, err) {
-    vm.getList(true)
+    vm.hasMoreDemand = true
+    vm.hasMoreSupply = true
     vm.getList(true)
   })
 

@@ -118,7 +118,7 @@ function initPage() {
             api.toast({msg: res.mage})
           }
         }, function(err) {
-          alert(JSON.stringify(err))
+          api.toast({msg: err.message});
         })
       },
       getData: function () {

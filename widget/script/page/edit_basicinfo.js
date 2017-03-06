@@ -90,7 +90,7 @@ function initPage() {
 						})
 					})
 					.fail(function(err) {
-						alert(err)
+						api.toast({msg: err.message});
 					})
 					.always(function() {
 						this.submiting = false

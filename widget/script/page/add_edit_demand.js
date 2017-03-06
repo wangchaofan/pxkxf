@@ -106,7 +106,7 @@ function initPage() {
 						})
 					}
 				}, function(err) {
-					alert(JSON.stringify(err));
+					api.toast({msg: err.message});
 				})
 			},
 			handleEditDemand: function() {

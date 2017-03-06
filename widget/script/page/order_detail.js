@@ -51,7 +51,7 @@ function initPage() {
                 api.toast({msg: res.mage})
               }
             }).catch(function(err){
-              alert(JSON.stringify(err))
+              api.toast({msg: err.message})
             })
           }
         })

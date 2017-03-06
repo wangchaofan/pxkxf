@@ -30,7 +30,7 @@ function initPage() {
       onSubmit: function() {
         var self = this
         if (_.trim(this.content).length === 0) {
-          alert('内容不能为空')
+          api.toast({msg: '内容不能为空'});
           return
         }
         $.ajax({

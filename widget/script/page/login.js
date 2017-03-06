@@ -93,7 +93,7 @@ function initPage() {
 						}
 					})
 					.fail(function(err) {
-						alert(err)
+						Helper.alert(err)
 					})
 					.always(function() {
 						this.submiting = false

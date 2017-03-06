@@ -34,7 +34,7 @@ function initPage() {
       doStep_sencond: function() {
         var self = this
         if (this.ms === '') {
-          alert('请输入验证码')
+          api.toast({msg: '请输入验证码'});
           return
         }
         $.ajax({

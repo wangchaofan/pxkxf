@@ -98,7 +98,7 @@ function initPage() {
             self.isFocus = res.data == 1
           }
         }, function(err) {
-          alert(err)
+          api.toast({msg: err.message});
         })
       },
       onFocus: function () {
@@ -114,7 +114,7 @@ function initPage() {
             api.toast({msg: res.mage})
           }
         }, function(err) {
-          alert(err)
+          api.toast({msg: err.message})
         })
       },
       goPage: function(pageName) {

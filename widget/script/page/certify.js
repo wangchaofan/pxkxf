@@ -45,13 +45,13 @@ function initPage() {
       onSubmit: function() {
         var self = this
         if (!this.Idzm) {
-          alert('请上传身份证正面')
+          api.toast({msg: '请上传身份证正面'});
           return
         } else if (!this.Idbm) {
-          alert('请上传身份证反面')
+          api.toast({msg: '请上传身份证反面'});
           return
         } else if (!this.scId) {
-          alert('请上传手持身份证照片')
+          api.toast({msg: '请上传手持身份证照片'});
           return
         }
         var data = {
@@ -77,7 +77,7 @@ function initPage() {
             });
           }
         }, function(err) {
-          alert('上传失败')
+          api.toast({msg: '上传失败'});
         })
       }
     }

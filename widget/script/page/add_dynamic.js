@@ -35,7 +35,7 @@ function initPage() {
         		});
         	}
         }, function(err) {
-          alert('发布失败')
+          api.toast({msg: '发布失败'});
         })
 			},
 			deleteImage: function(index) {

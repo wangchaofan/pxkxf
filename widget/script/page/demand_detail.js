@@ -166,7 +166,7 @@ function initPage() {
       },
       onClickSubmit: function () {
         if (!this.describe) {
-          alert('请填写你的技能优势')
+          api.toast({msg: '请填写你的技能优势'});
           return
         }
         var self = this

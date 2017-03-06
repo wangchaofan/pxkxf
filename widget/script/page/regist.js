@@ -67,7 +67,7 @@ function initPage() {
 						}
 					})
 					.fail(function(err) {
-						alert(JSON.stringify(err))
+						api.toast({msg: err.message});
 					})
 					.always(function() {
 						self.submiting = false
