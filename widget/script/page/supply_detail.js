@@ -11,7 +11,8 @@ function initPage() {
       return {
       	supplyInfo: null,
 				booked: false,
-        isMe: api.pageParam.user === 'self'
+        isMe: api.pageParam.user === 'self',
+        buttonDisabled: true
       }
     },
     computed: {
@@ -36,6 +37,9 @@ function initPage() {
     			}
     		}).done(function(res) {
     			self.supplyInfo = ParseJson(res.data)[0]
+          if (self.supplyInfo.State == 2) {
+            self.buttonDisabled = false
+          }
     			console.log(ParseJson(res.data)[0])
     		})
     	},
@@ -147,13 +151,8 @@ function initPage() {
         Helper.openWin('chat_room', {targetId: this.supplyInfo.sUsermodel[0].lUserId})
     	},
       onSubmit: function() {
-        api.openWin({
-          name: 'add_order',
-          url: 'widget://html/add_order.html',
-          pageParam: {
-            id: api.pageParam.id
-          }
-        })
+        if (this.buttonDisabled) return;
+        Helper.openWin('add_order', {id: api.pageParam.id})
       }
     }
   })

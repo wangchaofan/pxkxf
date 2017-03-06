@@ -30,7 +30,7 @@ var Helper = {
       msg: msg,
       buttons: ['确定']
     }, function() {
-      
+
     })
   },
   openWin: function(winName, pageParam, option) {
@@ -123,7 +123,7 @@ Vue.component('user-box', {
             '  <div class="user-info-rt">' +
             '    <div><slot name="userRtTop"></slot></div>' +
             '    <slot name="userRtBottom">' +
-            '      <user-roles :role="user.level"></user-roles>' +
+            '      <user-roles :role="user.levle"></user-roles>' +
             '    </slot>' +
             '  </div>' +
             '</div>',
@@ -230,20 +230,22 @@ $.ajaxSetup({
   type: 'post',
   dataType: 'text',
   beforeSend: function() {
-    api.showProgress({
-      style: 'default',
-      animationType: 'fade',
-      title: '',
-      text: '请稍候...',
-      modal: true
-    });
+    if (window.api) {
+      api.showProgress({
+        style: 'default',
+        animationType: 'fade',
+        title: '',
+        text: '请稍候...',
+        modal: true
+      });
+    }
   },
   dataFilter: function(res) {
     // console.log(XmlToJson(res))
     return JSON.parse(XmlToJson(res))
   },
   complete: function() {
-    api.hideProgress();
+    window.api && api.hideProgress();
   }
 })
 

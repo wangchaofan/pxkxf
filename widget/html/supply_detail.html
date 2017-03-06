@@ -34,7 +34,7 @@
 		</user-box>
 		<div class="fixed-bottom display-flex" v-if="!isMe">
 			<div class="button-chat" @click="goChat"></div>
-			<div class="button-book btn-submit" @click="onSubmit">立即预约</div>
+			<div class="button-book btn-submit" :disabled="buttonDisabled" @click="onSubmit">立即预约</div>
 		</div>
 	</div>
 	<script src="../script/lib/jquery-3.1.1.min.js"></script>

@@ -23,7 +23,24 @@ function initPage() {
         }
       },
       handleViewSupply: function(item) {
-        Helper.openWin('supply_detail', { id: item.skillID })
+        Helper.openWin('supply_detail', { id: item.cSkillId })
+      },
+      handleCancel: function(item) {
+        var self = this;
+        $.ajax({
+          url: BaseService.apiUrl + 'delCollection',
+          data: {
+            skillid: item.cSkillId,
+            userid: Helper.getUserId()
+          }
+        }).then(function(res) {
+          if (res.key == 'true') {
+            api.toast({msg: '取消成功'});
+            self.getData();
+          } else {
+            api.toast({msg: res.mage})
+          }
+        })
       },
       getData: function() {
         var self = this
@@ -31,7 +48,6 @@ function initPage() {
           url: BaseService.apiUrl + 'getCollection',
           data: { userid: Helper.getUserId() }
         }).done(function(res) {
-          Helper.alert(res.data)
           self.list = ParseJson(res.data)
         })
       }

@@ -72,7 +72,44 @@ apiready = function() {
 			console.log(err)
 		});
 
-		var nvTabBarCommonTitle = {
+		api.openFrameGroup({
+			name: 'group',
+			background: '#fff',
+			scrollEnabled: false,
+			rect: {
+				x: 0,
+				y: 0,
+				w: 'auto',
+				h: 'auto'
+			},
+			index: 0,
+			frames: [{
+				name: 'home',
+				url: 'html/home.html'
+			}, {
+				name: 'order',
+				url: 'html/order.html'
+			}, {
+				name: 'consult',
+				url: 'html/professor_question.html'
+			}, {
+				name: 'usercenter',
+				url: 'html/usercenter.html'
+			}]
+		}, function(ret, err) {
+			var index = ret.index;
+		})
+
+    initTabBar();
+	}
+
+  function initTabBar() {
+    function switchFrame(index) {
+			currentIndex = index
+			api.setFrameGroupIndex({ name: 'group', index: index })
+		}
+
+    var nvTabBarCommonTitle = {
 			text: '首页',
 			size: 13.0,
 			normal: '#333',
@@ -208,40 +245,7 @@ apiready = function() {
 				}
 			}
 		})
-
-		api.openFrameGroup({
-			name: 'group',
-			background: '#fff',
-			scrollEnabled: false,
-			rect: {
-				x: 0,
-				y: 0,
-				w: 'auto',
-				h: 'auto'
-			},
-			index: 0,
-			frames: [{
-				name: 'home',
-				url: 'html/home.html'
-			}, {
-				name: 'order',
-				url: 'html/order.html'
-			}, {
-				name: 'consult',
-				url: 'html/professor_question.html'
-			}, {
-				name: 'usercenter',
-				url: 'html/usercenter.html'
-			}]
-		}, function(ret, err) {
-			var index = ret.index;
-		})
-
-		function switchFrame(index) {
-			currentIndex = index
-			api.setFrameGroupIndex({ name: 'group', index: index })
-		}
-	}
+  }
 
 	function judgeAuthority() {
 		var user = Helper.getUserInfo()

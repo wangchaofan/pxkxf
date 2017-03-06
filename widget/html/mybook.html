@@ -19,7 +19,7 @@
           <img :src="item.usermodel[0].pheadimgUrl" alt="">
         </div>
         <div class="supply-list-item__right">
-          <div class="supply-list-item__param">
+          <div class="supply-list-item__param supply-name">
             供应名称：<span class="text-black">{{item.skillmodel[0].skillName}}</span>
           </div>
           <div class="supply-list-item__param">
@@ -30,6 +30,7 @@
           </div>
           <div class="supply-item-desc">{{item.skillmodel[0].skilldetails}}</div>
         </div>
+        <div class="btn-cancel" @click.stop="handleCancel(item)">取消收藏</div>
       </li>
     </ul>
   </div>

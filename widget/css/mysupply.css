@@ -10,10 +10,18 @@
     padding: 0 0.75rem;
 }
 .supply-list-item {
+    position: relative;
     display: flex;
     padding-top: 0.9rem;
     padding-bottom: 0.8rem;
     border-bottom: 1px solid #e5e5e5;
+}
+.supply-list-item .btn-cancel {
+    position: absolute;
+    display: inline-block;
+    font-size: 0.6rem;
+    right: 0.75rem;
+    top: 0.9rem
 }
 .supply-list-item__left {
     margin-right: 0.5rem;
@@ -29,6 +37,7 @@
     flex: 1;
     font-size: 0.7rem;
     color: #999;
+    overflow: hidden;
 }
 .supply-list-item__param {
     line-height: 1;
@@ -67,6 +76,14 @@
 }
 .supply-form {
     padding: 0 0.75rem;
+}
+.supply-name {
+    width: 100%;
+    padding-right: 3.6rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 .supply-form .supply-detail {
     align-items: flex-start;
