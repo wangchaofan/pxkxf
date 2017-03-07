@@ -31,3 +31,54 @@
 	color: #ff9000;
 	border: 1px solid #ff9000;
 }
+
+.comment-list {
+	margin-top: 0.5rem;
+	background: #fff;
+}
+.comment-list > h3 {
+	margin: 0;
+	font-size: 0.7rem;
+	line-height: 1;
+	padding: 0.5rem 0.75rem;
+	font-weight: 400;
+}
+.comment-list-item {
+	display: flex;
+	padding: 0.5rem 0.75rem;
+	border-top: 1px solid #ddd;	
+}
+.comment-user-avatar {
+	margin-right: 0.2rem;
+	display: block;
+	height: 3rem;
+	width: 3rem;
+	flex-shrink: 0;
+	overflow: hidden;
+}
+.commnent-list-item__content {
+	font-size: 0.6rem;
+}
+.comment-content {
+	margin-top: 0.4rem;
+	margin-bottom: 0.4rem;
+	background: #f0f0f0;
+	padding: 0.2rem 0.4rem;
+}
+.commnent-list-item__content .user-name-wrap {
+	justify-content: space-between;
+	margin-bottom: 0.1rem;
+}
+.comment-score-container {
+	margin-bottom: 0.2rem;
+	align-items: center;
+	justify-content: flex-start;
+}
+.score-icon {
+	margin: 0 0.15rem;
+	display: block;
+    width: 0.7rem;
+    height: 0.7rem;
+    background: url('../image/icon_good.png') no-repeat;
+    background-size: cover;
+}

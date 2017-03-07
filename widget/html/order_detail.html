@@ -32,6 +32,31 @@
       <span>元</span>
     </div>
   </div>
+  <div class="comment-list" v-if="comments">
+    <h3 class="">用户评论</h3>
+    <div class="comment-list-item" v-for="comment in comments">
+      <img class="comment-user-avatar" :src="comment.usermodel[0].pheadimgUrl" @click.top="viewUserPage(comment.usermodel[0])" alt="">
+      <div class="commnent-list-item__content flex-1">
+        <div class="display-flex user-name-wrap">
+          <div class="user-name">{{comment.usermodel[0].pnickname}}</div>
+          <div class="comment-date">{{comment.stime | date('yyyy-MM-dd hh:mm')}}</div>
+        </div>
+        <div class="comment-content">
+          {{comment.describe}}
+        </div>
+        <div class="comment-score">
+          <div class="comment-score-container display-flex">
+            <span>供应评分:</span>
+            <span class="score-icon" v-for="i in parseInt(comment.userscore)"></span>
+          </div>
+          <div class="comment-score-container display-flex">
+            <span>商家评分:</span>
+            <span class="score-icon" v-for="i in parseInt(comment.yyuserscore)"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="fixed-bottom display-flex" v-cloak>
     <div class="button-chat" @click="onClickChat"></div>
     <div class="button-book btn-submit" v-if="order.fkstate == 1" @click="toPay">去付款</div>

@@ -11,7 +11,9 @@ function initPage() {
         },
         userModel: null,
         reason: '',
+        comments: null,
         ddid: api.pageParam.id
+        // ddid: '9ba4714e-727d-40ea-89cf-7763679d229a'
       }
     },
     methods: {
@@ -55,6 +57,10 @@ function initPage() {
             })
           }
         })
+      },
+      viewUserPage: function(user) {
+        console.log(user.lUserId)
+        Helper.openWin('user_homepage', {uid: user.lUserId})
       },
       // === 评价 ===z
       toComment: function() {
@@ -149,14 +155,15 @@ function initPage() {
         $.ajax({
           url: BaseService.apiUrl + 'yyskillddinfo',
           data: {
-            // skillddid: 'a17db629-52b6-4b6a-a904-e6c1721e3a02'
-            skillddid: api.pageParam.id
+            skillddid: self.ddid
+            // skillddid: api.pageParam.id
           }
         }).then(function(res) {
           if (res.key === 'true') {
             var data = ParseJson(res.data)
             self.order = data[0]
             self.userModel = data[0].Skillmodel[0].sUsermodel[0]
+            self.comments = data[0].Evaluatemodel
             console.log(ParseJson(res.data))
           }
         })
