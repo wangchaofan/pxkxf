@@ -27,11 +27,11 @@ function initPage() {
         })
       },
       validate: function() {
-        if (!this.yydate) {
+        if (!this.formData.yydate) {
           api.toast({msg: '请填写邀约时间'})
           return false
         }
-        if (!this.yyaddress) {
+        if (!this.formData.yyaddress) {
           api.toast({msg: '请填写邀约地点'})
           return false
         }
