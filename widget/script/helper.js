@@ -313,6 +313,7 @@ function dateFormat(val, fmt) {
   if (typeof val === 'string') {
     val = parseInt(val.match(/\d+/)[0])
   }
+  console.log(val)
   var date = new Date(val)
   var o = {
     "M+": date.getMonth() + 1, //月份
