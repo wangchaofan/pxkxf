@@ -3,29 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>我的粉丝</title>
+  <title>我的供应</title>
   <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/user_avatar.css">
-  <style type="text/css">
-    .my-friends .user-center-top {
-      border-bottom: 1px solid #ddd;
-    }
-  </style>
+  <link rel="stylesheet" href="../css/mysupply.css">
   <script src="../script/adapter.js"></script>
 </head>
 <body>
 <div class="wrapper">
-  <my-header title="我的粉丝"></my-header>
-  <div class="my-friends" v-cloak>
-    <user-box  v-for="(item, index) in list" :user="item.usermodel[0]">
-    </user-box>
-    <div class="none-text" v-if="list.length === 0">还没有粉丝~</div>
+  <my-header :title="pageTitle">
+  </my-header>
+  <div class="supply-list" v-if="list">
+    <div class="none-text" v-if="list.length === 0" v-cloak>暂时没有供应~</div>
+    <ul v-else>
+      <list-item v-for="item in list" :my-data="item"></list-item>
+    </ul>
   </div>
 </div>
+<!-- 0已关闭， 1审核中，2通过，3不通过 -->
 <script src="../script/lib/jquery-3.1.1.min.js"></script>
 <script src="../script/lib/lodash.js"></script>
 <script src="../script/lib/vue.min.js"></script>
 <script src="../script/helper.js"></script>
-<script src="../script/page/follower.js"></script>
+<script src="../script/page/user_supply.js"></script>
 </body>
 </html>

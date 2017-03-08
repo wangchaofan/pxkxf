@@ -56,6 +56,11 @@ body {
 	bottom: 0;
 	font-size: 0.5rem;
 	color: #999;
+	line-height: 1;
+}
+.good-like__text {
+	display: inline-block;
+	vertical-align: bottom;
 }
 .good-like-pl {
 	display: inline-block;
@@ -212,7 +217,7 @@ body {
 .icon-notgood {
 	display: inline-block;
 	margin-right: 1px;
-	vertical-align: text-top;
+	vertical-align: top;
 	width: 0.6rem;
 	height: 0.6rem;
 }

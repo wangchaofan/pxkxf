@@ -17,33 +17,7 @@
 <div class="wrapper">
   <my-header title="我的好友"></my-header>
   <div class="my-friends" v-cloak>
-    <div class="user-center-top display-flex" v-for="item in list">
-      <div class="user-info">
-        <div class="user-avatar" style="background-image: url('../image/avatar_demo.png')"></div>
-        <div class="user-info-tj">
-          <div class="user-name"><span class="vam">YONGJIE123</span><span class="user-sex user-sex-man vam"></span></div>
-          <div class="online-status">在线</div>
-          <div class="user-pingjia">
-            <span class="vam">好评：</span>
-            <i class="icon-star"></i>
-            <i class="icon-star"></i>
-            <i class="icon-star no"></i>
-          </div>
-        </div>
-      </div>
-      <div class="user-info-rt">
-        <div></div>
-        <div class="user-level">
-          <div>用户等级：</div>
-          <div class="qulification display-flex">
-            <div class="qulification-name v1"></div>
-            <div class="qulification-name v2"></div>
-            <div class="qulification-name v3"></div>
-            <div class="qulification-name v4"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <user-box v-for="item in list" :user="item.usermodel[0]"></user-box>
     <div class="none-text" v-if="list.length === 0">暂时没有好友~</div>
   </div>
 </div>

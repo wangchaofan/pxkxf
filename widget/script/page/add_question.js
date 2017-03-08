@@ -50,7 +50,7 @@ function initPage() {
     }
   })
 }
-
+initPage()
 apiready = function(){
   initPage()
 }

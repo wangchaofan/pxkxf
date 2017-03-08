@@ -51,6 +51,9 @@ function initPage() {
           path: 'http://www.baidu.com'
         })
       },
+      handleViewAllSupplies: function() {
+        Helper.openWin('user_supply', { userInfo: this.supplyInfo.sUsermodel[0]})
+      },
 			onClickBook: function() {
 				if (this.booked) return
 				var self = this

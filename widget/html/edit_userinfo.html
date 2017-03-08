@@ -31,14 +31,14 @@
         </div>
       </div>
     </div>
-    <!--<div class="input-row">-->
-      <!--<label for="">出生日期</label>-->
-      <!--<input type="date" v-model="userInfo.birthDate" placeholder="请选择">-->
-    <!--</div>-->
     <div class="input-row">
+      <label for="">出生日期</label>
+      <input type="input" v-model="userInfo.birthDate" placeholder="请选择" @click="handleSelectDay" readonly>
+    </div>
+    <!-- <div class="input-row">
       <label for="">年龄</label>
       <input type="text" v-model="userInfo.age" placeholder="请输入年龄">
-    </div>
+    </div> -->
     <div class="input-row">
       <label for="">故乡</label>
       <input type="text" v-model="homeZone" @click="selectZone('home')" readonly>

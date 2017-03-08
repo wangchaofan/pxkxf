@@ -12,7 +12,7 @@
 <div class="wrapper">
   <my-header title="收藏的供应"></my-header>
   <div class="supply-list" v-cloak>
-    <div class="none-text" v-if="list.length === 0">你还没有收藏技能~</div>
+    <div class="none-text" v-if="list.length === 0">你还没有收藏供应哦~</div>
     <ul v-else>
       <li class="supply-list-item" v-for="item in list" @click="handleViewSupply(item)">
         <div class="supply-list-item__left">

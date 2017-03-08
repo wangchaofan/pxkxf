@@ -72,17 +72,7 @@
 
 .select-location {
 	width: 3.75rem;
-	padding-left: 0.6rem;
-}
-
-.select-location:after {
-	display: inline-block;
-	vertical-align: middle;
-	content: '';
-	width: 0.475rem;
-	height: 0.3rem;
-	background: url('../image/arrow_down.png') no-repeat;
-	background-size: cover;
+	text-align: center;
 }
 
 .top-banner-bottom__right {

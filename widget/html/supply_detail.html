@@ -23,18 +23,20 @@
 				<div class="fs28 text-999"><span class="text-warning">¥{{supplyInfo.smoney}}</span>{{supplyInfo.smoneytype}}</div>
 			</div>
 			<div class="supply-detail__desc fs24 text-999">{{supplyInfo.skilldetails}}</div>
+			<div class="fs24 text-666" style="margin-bottom: 0.2rem;">截止时间: {{supplyInfo.servertime}}</div>
+			<div class="fs24 text-666 supply-detail__zone">供应地点：{{supplyInfo.addressprovince + ' ' + supplyInfo.addresscity + ' ' + supplyInfo.addDistrict}}</div>
 			<div class="display-flex supply-detail-buttons" v-if="!isMe">
 				<div class="supply-detail__button" @click="onClickBook">{{booked ? '已收藏' : '感兴趣，并收藏'}}</div>
 				<div class="supply-detail__button" @click="onClickAdvise">不吸引，给TA建议</div>
 			</div>
 		</div>
 		<user-box :user="supplyInfo.sUsermodel[0]" v-if="supplyInfo" v-cloak>
-			<div slot="userRtTop" class="fs24 text-999" href="javascript:">共发布供应{{supplyInfo.fbnumber}}个</div>
+			<div slot="userRtTop" class="fs24 text-999" href="javascript:" @click="handleViewAllSupplies">共发布供应{{supplyInfo.fbnumber}}个</div>
 			<div slot="userRtBottom"></div>
 		</user-box>
-		<div class="fixed-bottom display-flex" v-if="!isMe">
-			<div class="button-chat" @click="goChat"></div>
-			<div class="button-book btn-submit" :disabled="buttonDisabled" @click="onSubmit">立即预约</div>
+		<div class="fixed-bottom deman-detail-bottom display-flex" v-if="!isMe">
+			<div class="button-chat" @click="goChat">聊一聊</div>
+			<div class="button-invite" @click="onSubmit" v-if="!buttonDisabled">立即预约</div>
 		</div>
 	</div>
 	<script src="../script/lib/jquery-3.1.1.min.js"></script>

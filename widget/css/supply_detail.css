@@ -13,7 +13,10 @@
 	margin-bottom: 0.4rem;
 }
 .supply-detail__desc {
-	margin-bottom: 1.05rem;
+	margin-bottom: 0.6rem;
+}
+.supply-detail__zone {
+	margin-bottom: 0.8rem;
 }
 .supply-detail-buttons {
 	margin-bottom: 0.8rem;
@@ -44,4 +47,35 @@
 }
 .button-book {
 	font-size: 0.7rem;
+}
+.deman-detail-bottom {
+    justify-content: space-around;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+.button-chat,
+.button-invite,
+.button-invite-noname {
+    padding-top: 1.35rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid #ffb657;
+    border-radius: 100%;
+    font-size: 0.5rem;
+    color: #666;
+    text-align: center;
+}
+.button-chat {
+    background: url(../image/icon_chat2.png) center 0.5rem no-repeat;
+    background-size: 0.75rem 0.75rem;
+}
+.button-invite {
+    color: #fff;
+    border-color: #ff9000;
+    background: #ff9000 url('../image/icon_invite.png') center 0.5rem no-repeat;
+    background-size: 0.8rem 0.8rem;
+}
+.button-invite-noname {
+    background: url('../image/icon_invite2.png') center 0.5rem no-repeat;
+    background-size: 0.8rem 0.8rem;
 }

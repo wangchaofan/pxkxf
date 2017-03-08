@@ -16,8 +16,8 @@ function initPage() {
             return '审核中'
           case 2:
             return '<span class="text-success">供应中</span>'
-          case 3:
-            return '<span class="text-warning">不通过</span>'
+          // case 3:
+            // return '<span class="text-warning">不通过</span>'
           default:
             return '已关闭'
         }

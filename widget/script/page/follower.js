@@ -22,14 +22,13 @@ function initPage() {
           if (res.key === 'true') {
             self.list = ParseJson(res.data)
             console.log(ParseJson(res.data))
-            self.posting = false
           }
         })
       }
     }
   })
 }
-
+// initPage()
 
 apiready = function(){
   initPage()

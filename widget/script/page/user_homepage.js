@@ -110,6 +110,9 @@ function initPage() {
         }).then(function(res) {
           if (res.key === 'true') {
             self.isFocus = !self.isFocus
+            api.sendEvent({
+              name: 'refreshFocusList',
+            })
           } else {
             api.toast({msg: res.mage})
           }

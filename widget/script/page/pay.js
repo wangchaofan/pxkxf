@@ -27,40 +27,47 @@ function initPage() {
       onSubmit: function() {
         if (this.submiting) return
         var self = this
-        this.submiting = true
-        // alert(api.pageParam.orderId)
-        var url = api.pageParam.orderType === 'demand' ? 'xqcz' :  'gyddcz';
-        $.ajax({
-          url: BaseService.apiUrl + url,
-          data: {
-            userid: Helper.getUserId(),
-            ddid: api.pageParam.orderId
+        api.confirm({
+            title: '提示',
+            msg: '是否确认支付',
+            buttons: ['确定', '取消']
+        }, function(ret, err) {
+          if (ret.buttonIndex == 1) {
+            this.submiting = true
+            var url = api.pageParam.orderType === 'demand' ? 'xqcz' :  'gyddcz';
+            $.ajax({
+              url: BaseService.apiUrl + url,
+              data: {
+                userid: Helper.getUserId(),
+                ddid: api.pageParam.orderId
+              }
+            }).done(function(res) {
+              if (res.key === 'true') {
+                api.toast({
+                    msg: '支付成功'
+                });
+                // 更新order
+                api.sendEvent({
+                  name: 'refreshOrder'
+                });
+                api.sendEvent({
+                  name: 'refreshMyDemand'
+                });
+                api.closeWin({name: 'add_order'});
+                api.closeWin({name: 'supply_detail'});
+                setTimeout(function() {
+                  api.closeWin()
+                }, 1000);
+              } else {
+                api.toast({
+                    msg: res.mage
+                });
+              }
+            }).always(function() {
+              self.submiting = false
+            })
           }
-        }).done(function(res) {
-          if (res.key === 'true') {
-            api.toast({
-                msg: '支付成功'
-            });
-            // 更新order
-            api.sendEvent({
-              name: 'refreshOrder'
-            });
-            api.sendEvent({
-              name: 'refreshMyDemand'
-            });
-            api.closeWin({name: 'add_order'});
-            api.closeWin({name: 'supply_detail'});
-            setTimeout(function() {
-              api.closeWin()
-            }, 1000);
-          } else {
-            api.toast({
-                msg: res.mage
-            });
-          }
-        }).always(function() {
-          self.submiting = false
-        })
+        });
       }
     }
   })

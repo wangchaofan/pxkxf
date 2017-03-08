@@ -18,6 +18,7 @@ function initPage() {
             userid: Helper.getUserId()
           }
         }).then(function(res) {
+          // alert(res.data)
           if (res.key === 'true') {
             self.list = ParseJson(res.data)
           }
@@ -26,6 +27,7 @@ function initPage() {
     }
   })
 }
+// initPage()
 
 apiready = function(){
   initPage()

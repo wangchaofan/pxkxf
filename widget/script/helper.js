@@ -121,7 +121,7 @@ Vue.component('user-box', {
             '    </div>' +
             '  </div>' +
             '  <div class="user-info-rt">' +
-            '    <div><slot name="userRtTop"></slot></div>' +
+            '    <div class="ar"><slot name="userRtTop"></slot></div>' +
             '    <slot name="userRtBottom">' +
             '      <user-roles :role="user.levle"></user-roles>' +
             '    </slot>' +
@@ -176,7 +176,7 @@ Vue.component('professor-box', {
 /* === 用户好评 === */
 Vue.component('user-good-level', {
   template: '<div class="good-like">' +
-            '  好评:' +
+            ' <div class="good-like__text">好评:</div>' +
             ' <div class="good-like-pl">' +
             '   <span v-for="i in 3" :class="getClass(i)"></span>' +
             ' </div>' +
