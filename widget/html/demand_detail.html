@@ -31,7 +31,7 @@
 			</div>
 			<div class="row">
 				<span class="row-label">有效期限</span>
-				<span class="content">{{demandInfo.effectiveTime}}</span>
+				<span class="content">{{demandInfo.effectiveTime | date('yyyy-MM-dd')}}</span>
 			</div>
 			<div class="row">
 				<span class="row-label">截止日期</span>
@@ -106,7 +106,7 @@
 						</div>
 						<div class="row" style="border-bottom: none;">
 							<span class="row-label">邀约地点</span>
-							<span class="content">{{demandInfo.addressprovince}}{{demandInfo.addressCity}} {{demandInfo.addressdistrct}}</span>
+							<span class="content">{{demandInfo.S_province}} {{demandInfo.s_City}} {{demandInfo.s_distrct}}</span>
 						</div>
 						<textarea id="describe" v-model="describe" placeholder="相信填写您的技能优势，增加您的应邀成功率"></textarea>
 					</div>

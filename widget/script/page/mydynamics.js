@@ -5,19 +5,16 @@ function initPage() {
       this.getData()
     },
     data: function() {
+      var title = api.pageParam.uid ? '他的动态' : '我的动态';
       return {
-        list: []
+        list: [],
+        title: title,
+        otherId: api.pageParam.uid
       }
     },
     methods: {
       viewDetail: function(item) {
-        api.openWin({
-            name: 'dynamic_detail',
-            url: 'widget://html/dynamic_detail.html',
-            pageParam: {
-                id: item.dynamicsId
-            }
-        });
+        Helper.openWin('dynamic_detail', { id: item.dynamicsId });
       },
       onClickDelete: function(item) {
         var self = this

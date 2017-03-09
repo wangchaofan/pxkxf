@@ -206,3 +206,7 @@
     border-bottom: 2px solid #e4353a;
     color: #e4353a;
 }
+
+.invite-list {
+    padding: 0 0.75rem;
+}

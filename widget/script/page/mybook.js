@@ -27,20 +27,28 @@ function initPage() {
       },
       handleCancel: function(item) {
         var self = this;
-        $.ajax({
-          url: BaseService.apiUrl + 'delCollection',
-          data: {
-            skillid: item.cSkillId,
-            userid: Helper.getUserId()
+        api.confirm({
+          title: '提示',
+          msg: '确定取消收藏？',
+          buttons: ['确定', '取消']
+        }, function(ret, err) {
+          if (ret.buttonIndex == 1) {
+            $.ajax({
+              url: BaseService.apiUrl + 'delCollection',
+              data: {
+                skillid: item.cSkillId,
+                userid: Helper.getUserId()
+              }
+            }).then(function(res) {
+              if (res.key == 'true') {
+                api.toast({msg: '取消成功'});
+                self.getData();
+              } else {
+                api.toast({msg: res.mage})
+              }
+            })
           }
-        }).then(function(res) {
-          if (res.key == 'true') {
-            api.toast({msg: '取消成功'});
-            self.getData();
-          } else {
-            api.toast({msg: res.mage})
-          }
-        })
+        });
       },
       getData: function() {
         var self = this

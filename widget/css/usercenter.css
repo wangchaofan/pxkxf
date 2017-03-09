@@ -95,6 +95,9 @@ body {
 .user-feature-add {
 	background-image: url('../image/features/f7.png');
 }
+.user-feature-book {
+	background-image: url('../image/features/f8.png');
+}
 .barcode-scan {
 	align-items: center;
 }

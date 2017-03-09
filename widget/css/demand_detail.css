@@ -9,15 +9,21 @@
 .user-info .user-avatar {
     flex-shrink: 0;
 }
+.user-info-tj {
+    position: static;
+}
+.user-center-top  {
+    position: relative;
+}
 .user-info .user-info-tj {
     width: 100%;
     overflow: hidden;
 }
 .demand-price {
     position: absolute;
-    bottom: 0;
+    bottom: 0.6rem;
     font-size: 0.5rem;
-    width: 100%;
+    width: 10rem;
     color: #999;
     line-height: 0.8rem;
     display: -webkit-box;

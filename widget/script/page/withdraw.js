@@ -38,8 +38,19 @@ function initPage() {
       }
     },
     methods: {
-      onSubmit: function () {
-        if (!this.canSubmit) return
+      onSubmit: function() {
+        if (!this.canSubmit) return;
+        api.confirm({
+            title: '提示',
+            msg: '请仔细核对提现信息，是否确认提现？',
+            buttons: ['确定', '取消']
+        }, function(ret, err) {
+          if (ret.buttonIndex === 1) {
+            this.goWithDraw();
+          }
+        }.bind(this));
+      },
+      goWithDraw: function () {
         var self = this
         this.submiting = true
         $.ajax({

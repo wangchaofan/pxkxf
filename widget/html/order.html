@@ -9,7 +9,7 @@
     <script src="../script/adapter.js"></script>
 </head>
 <body>
-<div class="wrapper" style="padding-top: 88px;">
+<div class="wrapper" :style="wrapperStyle">
     <header class="header">
         <div class="header-left">
         </div>
@@ -17,6 +17,7 @@
             <div class="remand-header">
                 <span :class="{selected: currentPage === 'my'}" @click="onClickNav('my')">预约订单</span>
                 <span :class="{selected: currentPage === 'service'}" @click="onClickNav('service')">服务订单</span>
+                <span :class="{selected: currentPage === 'invite'}" @click="onClickNav('invite')">我的应邀</span>
             </div>
         </div>
         <div class="header-right"></div>
@@ -70,6 +71,12 @@
                 <service-list-item v-for="item in serviceCancelList" :my-data="item"></service-list-item>
             </ul>
         </div>
+    </div>
+    <div class="invite-list" v-show="currentPage === 'invite'">
+        <div class="none-text" v-if="inviteList.length === 0" v-cloak>暂时没有应邀~</div>
+        <ul v-else>
+            <invite-item v-for="item in inviteList" :my-data="item"></invite-item>
+        </ul>
     </div>
 </div>
 <!-- 0已关闭， 1审核中，2通过，3不通过 -->

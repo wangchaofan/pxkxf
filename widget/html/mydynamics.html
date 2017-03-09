@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="wrapper">
-  <my-header title="我的动态"></my-header>
+  <my-header :title="title"></my-header>
   <div class="supply-list" v-cloak>
     <ul v-if="list.length > 0">
       <li class="supply-list-item" v-for="item in list" @click="viewDetail(item)">
@@ -18,7 +18,7 @@
           <img :src="item.Usermodel[0].pheadimgUrl" alt="">
         </div>
         <div class="supply-list-item__right">
-          <div class="button-edit" @click.stop="onClickDelete(item)">删除</div>
+          <div class="button-edit" v-if="!otherId" @click.stop="onClickDelete(item)">删除</div>
           <div class="supply-list-item__param">
             用户：<span class="text-black">{{item.Usermodel[0].pnickname}}</span>
           </div>

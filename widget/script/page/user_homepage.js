@@ -74,7 +74,7 @@ function initPage() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getuserinfo',
-          data: {uid: self.uid}
+          data: { uid: self.uid }
         }).then(function(res) {
           var data =  ParseJson(res.data)[0]
           self.userInfo = data

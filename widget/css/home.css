@@ -297,7 +297,7 @@
 	flex: 1;
 	font-size: 0.7rem;
 	color: #999;
-	line-height: 1;
+	line-height: 1.1;
 	overflow: hidden;
 }
 
@@ -325,22 +325,15 @@
 	display: flex;
 	font-size: 0.6rem;
 	color: #666;
-	line-height: 1;
+	height: 0.75rem;
+	line-height: 0.75rem;
 }
 
 .remand-info__other .user-name {
-	margin-right: 0.65rem
-}
-
-.remand-info__other .user-name:before {
-	margin-right: 0.25rem;
-	display: inline-block;
-	vertical-align: text-top;
-	content: '';
-	width: 0.75rem;
-	height: 0.75rem;
-	background: url('../image/icon_user_blue.png') no-repeat;
-	background-size: cover;
+	margin-right: 0.65rem;
+	padding-left: 0.85rem;
+	background: url('../image/icon_user_blue.png') left center no-repeat;
+	background-size: 0.75rem 0.75rem;
 }
 
 .remand-info__other .user-location:before {

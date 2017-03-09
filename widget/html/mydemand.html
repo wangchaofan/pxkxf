@@ -10,20 +10,21 @@
 </head>
 <body>
 <div class="wrapper" style="padding-bottom: 0;">
-  <header class="header">
-    <div class="header-left">
-      <span class="return-back" @click="returnBack"></span>
-    </div>
-    <div class="header-center">
-      <div class="remand-header">
-        <span :class="{selected: currentPage === 'demand'}" @click="onClickNav('demand')">我的需求</span>
-        <span :class="{selected: currentPage === 'invite'}" @click="onClickNav('invite')">我的应邀</span>
-      </div>
-    </div>
-    <div class="header-right">
-      <span class="fs24 white"></span>
-    </div>
-  </header>
+  <my-header title="我的需求"></my-header>
+  <!--<header class="header">-->
+    <!--<div class="header-left">-->
+      <!--<span class="return-back" @click="returnBack"></span>-->
+    <!--</div>-->
+    <!--<div class="header-center">-->
+      <!--<div class="remand-header">-->
+        <!--<span :class="{selected: currentPage === 'demand'}" @click="onClickNav('demand')">我的需求</span>-->
+        <!--<span :class="{selected: currentPage === 'invite'}" @click="onClickNav('invite')">我的应邀</span>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="header-right">-->
+      <!--<span class="fs24 white"></span>-->
+    <!--</div>-->
+  <!--</header>-->
   <div class="supply-list" v-if="currentPage === 'demand'" v-cloak>
     <div class="none-text" v-if="demandList.length === 0" v-cloak>暂时没有需求~</div>
     <ul v-else>

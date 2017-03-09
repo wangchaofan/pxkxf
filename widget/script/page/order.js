@@ -29,9 +29,6 @@ var ListItem = {
   computed: {
     usermodel: function() {
       return this.myData ? this.myData.Skillmodel[0].sUsermodel[0] : {}
-
-
-
     },
     skill: function() {
       return this.myData ? this.myData.Skillmodel[0] : {}
@@ -71,7 +68,9 @@ var ListItem = {
       }
     }
   }
-}
+};
+
+
 var ServiceListItem = {
   template: '<li class="supply-list-item" @click="viewDetail">' +
   '  <div class="supply-list-item__left" @click.stop="viewUserHomepage">' +
@@ -127,7 +126,73 @@ var ServiceListItem = {
       }
     }
   }
-}
+};
+
+var InviteItem = {
+  template: '<li class="supply-list-item" @click="viewDetail">' +
+  '  <div class="supply-list-item__left">' +
+  '    <img :src="avatar" alt="">' +
+  '  </div>' +
+  '  <div class="supply-list-item__right">' +
+  '    <div class="supply-list-item__param">' +
+  '      需求名称：<span class="text-black">{{demand.demandTitle}}</span>' +
+  '    </div>' +
+  '    <div class="supply-list-item__param">' +
+  '      需求价格：<strong class="text-warning">{{demand.dmoney}}</strong>元' +
+  '    </div>' +
+  '    <div class="supply-list-item__param">' +
+  '      需求状态：<span class="supply-status">{{getStateText(demand.orderState)}}</span>' +
+  '    </div>' +
+  '    <div class="supply-item-desc">描述：{{demand.ddetails}}</div>' +
+  '  </div>' +
+  '</li>',
+  props: ['myData'],
+  data: function() {
+    return {}
+  },
+  computed: {
+    demand: function() {
+      return this.myData.DemandOrder[0]
+    },
+    avatar: function() {
+      return this.myData ? this.myData.DemandOrder[0].Usermodel[0].pheadimgUrl : ''
+    }
+  },
+  methods: {
+    viewDetail: function() {
+      var self = this
+      api.openWin({
+        name: 'demand_detail',
+        url: 'widget://html/demand_detail.html',
+        pageParam: {
+          id: this.myData.demandorderId
+        }
+      })
+    },
+    getStateText: function(state) {
+      switch(state) {
+        case 1:
+          return '待支付'
+        case 2:
+          return '审核中'
+        case 3:
+          return '发布中'
+        case 4:
+          return '进行中'
+        case 5:
+          return '供应完成'
+        case 6:
+          return '待评价'
+        case 7:
+          return '订单已完成'
+        case 8:
+          return '已关闭'
+        default:
+          return '已删除'
+      }
+    }
+  }
+};
 
 function initPage() {
   var vm = new Vue({
@@ -137,7 +202,8 @@ function initPage() {
     },
     components: {
       'list-item': ListItem,
-      'service-list-item': ServiceListItem
+      'service-list-item': ServiceListItem,
+      'invite-item': InviteItem
     },
     data: function() {
       return {
@@ -147,6 +213,7 @@ function initPage() {
         serviceDoingList: [],
         serviceCancelList: [],
         serviceCompleteList: [],
+        inviteList: [],
         state: 1,
         serviceState: 1,
         currentPage: 'my'
@@ -155,6 +222,9 @@ function initPage() {
     computed: {
       uri: function() {
         return this.currentPage === 'my' ? 'skilldd' : 'getskillyyddfw'
+      },
+      wrapperStyle: function() {
+        return this.currentPage === 'invite' ? {'padding-top': '44px'} : {'padding-top': '88px'}
       }
     },
     watch: {
@@ -169,7 +239,7 @@ function initPage() {
       onSelectType: function(state) {
         if (this.currentPage === 'my') {
           this.state = state
-        } else {
+        } else if (this.currentPage === 'service') {
           this.serviceState = state
         }
       },
@@ -178,8 +248,10 @@ function initPage() {
         this.currentPage = val
         if (val === 'my') {
           this.getData(this.state)
-        } else {
+        } else if (this.currentPage === 'service') {
           this.getData(this.serviceState)
+        } else {
+          this.getInviteOrder();
         }
       },
       getData: function(state) {
@@ -193,6 +265,19 @@ function initPage() {
             console.log(ParseJson(res.data));
             self.setData(ParseJson(res.data));
           }
+        })
+      },
+      getInviteOrder: function() {
+        var self = this;
+        $.ajax({
+          url: BaseService.apiUrl + 'getXQInvited',
+          data: { userid: Helper.getUserId() }
+        }).then(function(res) {
+          self.inviteList = _.filter(ParseJson(res.data), function(item) {
+            return item.DemandOrder[0].orderState != -1;
+          });
+          api.refreshHeaderLoadDone();
+          console.log(ParseJson(res.data))
         })
       },
       setData: function(data) {
@@ -233,7 +318,13 @@ function initPage() {
     textLoading: '加载中...',
     showTime: false
   }, function(ret, err) {
-    vm.getData(vm.state)
+    if (vm.currentPage === 'my') {
+      vm.getData(vm.state)
+    } else if (vm.currentPage ===' service') {
+      vm.getData(vm.serviceState)
+    } else {
+      vm.getInviteOrder()
+    }
   })
 }
 

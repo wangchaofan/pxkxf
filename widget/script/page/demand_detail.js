@@ -15,6 +15,11 @@ function initPage() {
         isMe: true
       }
     },
+    watch: {
+      showDialog: function(val) {
+     
+      }
+    },
     computed: {
       userModel: function () {
         if (this.demandInfo) {

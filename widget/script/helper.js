@@ -307,14 +307,18 @@ function getUserId() {
 }
 
 function dateFormat(val, fmt) {
-  if (!val) {
+  if (!val || val === '长期') {
     return '长期';
   }
-  if (typeof val === 'string') {
+
+  if (val.indexOf('Date') >= 0) {
     val = parseInt(val.match(/\d+/)[0])
   }
-  console.log(val)
+
+  if (val === 0) return '长期';
+
   var date = new Date(val)
+
   var o = {
     "M+": date.getMonth() + 1, //月份
     "d+": date.getDate(), //日

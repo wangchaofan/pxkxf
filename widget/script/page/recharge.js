@@ -22,7 +22,7 @@ function initPage() {
     el: '.wrapper',
     data: function() {
       return {
-        money: 0.01,
+        money: '',
         payType: 'ali'
       }
     },

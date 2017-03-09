@@ -25,13 +25,17 @@ function initPage() {
         }).then(function(res) {
           if (res.key === 'true') {
             self.info = ParseJson(res.data)[0]
+            self.checkIsFocus()
             console.log(ParseJson(res.data)[0])
           }
         })
       },
       onClickFocus: function() {
         var self = this
-        if (this.focused) return
+        if (this.focused) {
+          this.cancelFocus()
+          return;
+        }
         $.ajax({
           url: BaseService.apiUrl + 'addFriends',
           data: {
@@ -41,7 +45,7 @@ function initPage() {
         }).then(function(res) {
           if (res.key === 'true') {
             api.toast({
-                msg: '关注成功'
+              msg: '关注成功'
             })
             self.focused = true
           } else {
@@ -49,6 +53,36 @@ function initPage() {
                 msg: res.mage
             });
           }
+        })
+      },
+      cancelFocus: function(index) {
+        var self = this;
+        $.ajax({
+          url: BaseService.apiUrl + 'delFriends',
+          data: {
+            userid: Helper.getUserId(),
+            hyuserid: self.info.userID
+          }
+        }).then(function(res) {
+          if (res.key === 'true') {
+            api.toast({msg: '取消成功'});
+            self.focused = false
+          } else {
+            api.toast({msg: res.mage});
+          }
+        })
+      },
+      checkIsFocus: function() {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'chaksfgz',
+          data: {hyuserid: self.info.userID, userid: Helper.getUserId()}
+        }).then(function(res) {
+          if (res.key === 'true') {
+            self.focused = res.data == 1
+          }
+        }, function(err) {
+          api.toast({msg: err.message});
         })
       },
       goPage: function(pageName) {
