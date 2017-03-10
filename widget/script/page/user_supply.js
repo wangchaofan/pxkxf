@@ -37,62 +37,16 @@ var ListItem = {
         case 1:
           return '审核中'
         case 2:
-          return '<span class="text-success">通过</span>'
-        case 3:
-          return '<span class="text-warning">不通过</span>'
-        default:
+          return '<span class="text-success">发布中</span>'
+        // case 3:
+        //   return '<span class="text-warning">不通过</span>'
+        // default:
           return '已关闭'
       }
     },
     viewDetail: function() {
-      Helper.openWin('supply_detail', {id: this.myData.skillID, user: 'self'})
+      Helper.openWin('supply_detail', {id: this.myData.skillID })
     },
-    delete: function() {
-      var self = this
-      api.confirm({
-        title: '提示',
-        msg: '确认删除？',
-        buttons: ['确定', '取消']
-      }, function(ret, err) {
-        if (ret.buttonIndex === 1) {
-          $.ajax({
-            url: BaseService.apiUrl + 'deleteskill',
-            data: {skillid: self.myData.skillID}
-          }).then(function(res) {
-            if (res.key === 'true') {
-              vm.getData()
-            } else {
-              api.toast({
-                  msg: res.mage
-              })
-            }
-          })
-        }
-      })
-    },
-    onClickEdit: function() {
-      var self = this
-      var buttons = ['删除']
-      if (this.canEdit) {
-        buttons.splice(0, 0, '修改')
-      }
-      api.actionSheet({
-        cancelTitle: '取消',
-        buttons: buttons
-      }, function(ret, err) {
-        if (self.canEdit) {
-          if (ret.buttonIndex === 1) {
-            Helper.openWin('add_edit_supply', {id: self.myData.skillID})
-          } else if (ret.buttonIndex === 2) {
-            self.delete()
-          }
-        } else {
-          if (ret.buttonIndex === 1) {
-            self.delete()
-          }
-        }
-      })
-    }
   }
 }
 
@@ -126,7 +80,7 @@ function initPage() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getuserSkill',
-          data: { userid: this.user.lUserId }
+          data: { userid: this.user.lUserId, type: 2 }
         }).then(function(res) {
           if (res.key === 'true') {
             self.list = ParseJson(res.data)

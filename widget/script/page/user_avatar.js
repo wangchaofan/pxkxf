@@ -85,7 +85,6 @@ function initPage() {
           url: BaseService.apiUrl + 'getuserinfo',
           data: {uid: Helper.getUserId()}
         }).then(function(res) {
-          alert(res.data)
           var data =  ParseJson(res.data)[0]
           self.userInfo = data
           console.log(ParseJson(res.data)[0])
