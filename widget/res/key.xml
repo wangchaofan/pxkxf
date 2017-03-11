@@ -7,6 +7,6 @@
     <item name="aliPay_notifyURL" value="http://120.26.116.143:809/WebServer/Callback.aspx"/>
     <item name="wxPay_appId" value="wx8e9a88ba16112813"/>
     <item name="wxPay_mchId" value="1252616501"/>
-    <item name="wxPay_partnerKey" value="***"/>
+    <item name="wxPay_partnerKey" value="weijfsEfsdlmv3297slvjcxcvEfcdDvc"/>
     <item name="wxPay_notifyUrl" value="http://120.26.116.143:809/WebServer/Callback.aspx"/>
 </security>
