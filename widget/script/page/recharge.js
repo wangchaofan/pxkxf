@@ -22,7 +22,7 @@ function initPage() {
     el: '.wrapper',
     data: function () {
       return {
-        money: '',
+        money: '1',
         payType: 'ali'
       }
     },
@@ -60,39 +60,39 @@ function initPage() {
       },
       payByWx: function () {
         var wxPay = api.require('wxPay');
-        wxPay.config({
-          apiKey: 'wx8e9a88ba16112813',
-          mchId: '1252616501',
-          partnerKey: 'weijfsEfsdlmv3297slvjcxcvEfcdDvc',
-          notifyUrl: 'http://120.26.116.143:809/WebServer/Callback.aspx'
-        }, function(ret, err) {
-          if (ret.status) {
-            alert('配置商户支付参数成功');
+        // wxPay.config({
+        //   apiKey: 'wx8e9a88ba16112813',
+        //   mchId: '1252616501',
+        //   partnerKey: 'weijfsEfsdlmv3297slvjcxcvEfcdDvc',
+        //   notifyUrl: 'http://120.26.116.143:809/WebServer/Callback.aspx'
+        // }, function(ret, err) {
+        //   if (ret.status) {
+        //     alert('配置商户支付参数成功');
             wxPay.pay({
               description: 'iPad mini 16G 白色',
-              totalFee: '888',
+              totalFee: '221',
               tradeNo: '1217752501201407033233368018',
               spbillCreateIP: '196.168.1.1',
-              deviceInfo: '013467007045764',
+              // deviceInfo: '013467007045764',
               detail: 'iPad mini 16G 白色',
               attach: '说明',
-              feeType: 'CNY',
-              timeStart: '20091225091010',
-              timeExpire: '20091227091010',
-              goodsTag: 'WXG',
-              productId: '12235413214070356458058',
-              openId: 'oUpF8uMuAJO_M2pxb1Q9zNjWeS6o'
+              // feeType: 'CNY',
+              // timeStart: 2017031214121010,
+              // timeExpire: 2017031214151010,
+              // goodsTag: 'WXG',
+              // productId: '12235413214070356458058',
+              // openId: 'oUpF8uMuAJO_M2pxb1Q9zNjWeS6o'
             }, function (ret, err) {
               if (ret.status) {
-                alert(ret.result);
+                alert(ret.msg)
               } else {
-                alert(err.code);
+                alert(JSON.stringify(err))
               }
             });
-          } else {
-            alert(err.code);
-          }
-        });
+          // } else {
+          //   alert(err.code);
+          // }
+        // });
       },
       payByAli: function () {
         var self = this

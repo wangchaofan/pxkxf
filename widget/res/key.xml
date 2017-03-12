@@ -5,8 +5,9 @@
     <item name="aliPay_rsaPriKey" value="MIICXQIBAAKBgQDBb06I8rSkMQE2g8/XD45xTeS0eDh0T26XZiZByvyB6mknZJzefLN8qRB4QE38FYOKxiV9PxRLmlolv2hVKWGpipidlm1aSyBtpAUwVmckfj+dxMh+ZFxdBm0U6EJvT2quxmWOIH3zpjJ7Dh3kYNps3+8wPAtDtBDAaJajRx8F3QIDAQABAoGAK3PXjogG8ENZ5Gcjz0ndU7KNx8Sh2e7mBviZa3ov0vdXe9PsMUaOA1jvLDQ10IT8sbXlQgdjhcA8s/IVe9v55fmy/Q79+n3cEMuxAgV2Fdcc8rZSeMBiEb0p40KGKm2ObzXXOK1ZMY7HjUoV7wYT1xARnyLNfYMuPtvNfR5SpcECQQDyxR5nJjR43FpFTWTDFw2BS0z4mjjzY1iK5UOh4SOHDFbLooiQaTXirF0ylJbrCWop2k7iyIVG6YP904JLN5w5AkEAy/npx3uRJhIocxnom1g9bn2NW8r2M9Gllkf+IZhVNlshelHPiviOMCaUoV3PmU9E7g/i1jTuek2zHPVDNW4+xQJAE4hqps/7HtJT7QmKFuxO6N0/Jy15cZPHtv01UNwFeMM0ZJQCOuRMMp29rekor2aFhTKMcFDD8G2vcgfHjve9eQJBAI1W6utTcEyVIHpBZbDfABJj5WPJy7g0eS0dTbcxuzojA5uivNFrUfuDgFIgkw2EpBrh3yjXHLiaxpY2TQ/lCJECQQCYCsIVMGjN0/JjCJPP1e6gqL5o6Kg//x9DZZgd/oihQSptmJysBbPGRuT+l9rpfoT5wZ/aZFJBCaxwYAimjlwO" />
     <item name="aliPay_rsaPubKey" value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB" />
     <item name="aliPay_notifyURL" value="http://120.26.116.143:809/WebServer/Callback.aspx"/>
+
     <item name="wxPay_appId" value="wx8e9a88ba16112813"/>
-    <item name="wxPay_mchId" value="1252616501"/>
-    <item name="wxPay_partnerKey" value="weijfsEfsdlmv3297slvjcxcvEfcdDvc"/>
+    <item name="wxPay_mchId" value="1436559402"/>
+    <item name="wxPay_partnerKey" value="85f1Y2WRbntf4i8taCIqRvHW9oWb3lb6"/>
     <item name="wxPay_notifyUrl" value="http://120.26.116.143:809/WebServer/Callback.aspx"/>
 </security>
