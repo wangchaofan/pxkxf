@@ -59,19 +59,19 @@ function initPage() {
           });
       },
       payByWx: function () {
+        var self = this;
         var wxPay = api.require('wxPay');
-        // wxPay.config({
-        //   apiKey: 'wx8e9a88ba16112813',
-        //   mchId: '1252616501',
-        //   partnerKey: 'weijfsEfsdlmv3297slvjcxcvEfcdDvc',
-        //   notifyUrl: 'http://120.26.116.143:809/WebServer/Callback.aspx'
-        // }, function(ret, err) {
-        //   if (ret.status) {
-        //     alert('配置商户支付参数成功');
+        wxPay.config({
+          apiKey: 'wx8e9a88ba16112813',
+          mchId: '1436559402',
+          partnerKey: '85f1Y2WRbntf4i8taCIqRvHW9oWb3lb6',
+          notifyUrl: 'http://120.26.116.143:809/WebServer/Callback.aspx'
+        }, function(ret, err) {
+          if (ret.status) {
             wxPay.pay({
               description: 'iPad mini 16G 白色',
-              totalFee: '221',
-              tradeNo: '1217752501201407033233368018',
+              totalFee: '11',
+              tradeNo: '12177525012014070332333',
               spbillCreateIP: '196.168.1.1',
               // deviceInfo: '013467007045764',
               detail: 'iPad mini 16G 白色',
@@ -84,15 +84,15 @@ function initPage() {
               // openId: 'oUpF8uMuAJO_M2pxb1Q9zNjWeS6o'
             }, function (ret, err) {
               if (ret.status) {
-                alert(ret.msg)
+                api.toast({msg: '支付成功'})
               } else {
                 alert(JSON.stringify(err))
               }
             });
-          // } else {
-          //   alert(err.code);
-          // }
-        // });
+          } else {
+            alert(err.code);
+          }
+        });
       },
       payByAli: function () {
         var self = this
