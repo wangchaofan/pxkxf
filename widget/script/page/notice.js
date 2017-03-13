@@ -18,7 +18,6 @@ function initPage() {
           data: { userid: Helper.getUserId() }
         }).done(function(res) {
           console.log(ParseJson(res.data))
-          alert(res.data)
           self.list = ParseJson(res.data)
         })
       },
