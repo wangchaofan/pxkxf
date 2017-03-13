@@ -157,13 +157,29 @@
 }
 
 .tab-header {
+	position: relative;
 	height: 2.025rem;
 	padding: 0.3rem 0.75rem 0;
 	color: #666;
 	border-bottom: 1px solid #ddd;
 }
 
-.tab-header span {
+.tab-header .sort-select {
+	position: absolute;
+	display: inline-block;
+	top: 0.4rem;
+	right: 1rem;
+	color: #666;
+	padding: 0 0.8rem 0 0.3rem;
+	font-size: 0.6rem;
+	border: 1px solid #ddd;
+	height: 1.2rem;
+	border-radius: 2px;
+	background: url('../image/icon_angle.png') right 0.1rem center no-repeat;
+	background-size: 0.6rem 0.5rem;
+}
+
+.tab-header > span {
 	display: inline-block;
 	padding: 0 0.8rem;
 	font-size: 0.8rem;

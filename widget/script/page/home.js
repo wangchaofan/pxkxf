@@ -26,12 +26,21 @@ function initPage() {
         temperature: '',
         demandNum: 1,
         supplyNum: 1,
+        zState: 0,
         nearByNum: 1
       }
     },
     filters: {
       number: function(val) {
         return parseFloat(val).toFixed(2)
+      }
+    },
+    watch: {
+      zState: function(val) {
+        this.hasMoreDemand = true
+        this.hasMoreSupply = true
+        this.getDemandList()
+        this.getSupplyList()
       }
     },
     methods: {
@@ -89,13 +98,7 @@ function initPage() {
         Helper.openWin('category_list', {category: t})
       },
       onClickSearchButton: function() {
-        api.openWin({
-            name: 'search',
-            url: 'widget://html/search.html',
-            pageParam: {
-                name: 'test'
-            }
-        });
+        Helper.openWin('search');
       },
       onClickTabHead: function(tabId) {
         this.currentTab = tabId
@@ -108,57 +111,6 @@ function initPage() {
           // this.getList('nearByList', 'getSkill')
         }
       },
-      onSelectCity: function() {
-        var self = this;
-        var UIActionSelector = api.require('UIActionSelector');
-        UIActionSelector.open({
-          datas: 'widget://res/city.json',
-          layout: {
-            row: 5,
-            col: 2,
-            height: 40,
-            size: 14,
-            sizeActive: 14,
-            rowSpacing: 5,
-            colSpacing: 10,
-            maskBg: 'rgba(0,0,0,0.2)',
-            bg: '#fff',
-            color: '#888',
-            colorActive: '#e4353a',
-            colorSelected: '#e4353a'
-          },
-          animation: true,
-          cancel: {
-            text: '取消',
-            size: 14,
-            w: 90,
-            h: 35,
-            bg: '#ddd',
-            bgActive: '#ddd',
-            color: '#fff',
-            colorActive: '#fff'
-          },
-          ok: {
-            text: '确定',
-            size: 14,
-            w: 90,
-            h: 35,
-            bg: '#e4353a',
-            bgActive: '#e4353a',
-            color: '#fff ',
-            colorActive: '#fff'
-          },
-          title: {
-            text: '请选择',
-            size: 14,
-            h: 44,
-            bg: '#eee',
-            color: '#333'
-          }
-        }, function(ret, err) {
-          self.city = ret.level2;
-        });
-      },
       viewDemandDetail: function(data) {
         Helper.openWin('demand_detail', {id: data.demandorderId});
       },
@@ -167,11 +119,12 @@ function initPage() {
       },
       getDemandList: function() {
         var self = this;
-        if (!this.hasMoreSupply) return;
+        if (!this.hasMoreDemand) return;
         var postData = {
           type: this.type,
           userid: Helper.getUserId(),
-          num: this.demandNum
+          num: this.demandNum,
+          zState: this.zState
         };
         $.ajax({
           url: BaseService.apiUrl + 'getdemaorder',
@@ -185,7 +138,7 @@ function initPage() {
               return u.fUserId !== data.userid;
             });
             if (data.length === 0) {
-              self.hasMoreSupply = false
+              self.hasMoreDemand = false
             }
             if (postData.num === 1) {
               self.demandList = data
@@ -203,11 +156,12 @@ function initPage() {
       },
       getSupplyList: function() {
         var self = this;
-        if (!this.hasMoreDemand) return;
+        if (!this.hasMoreSupply) return;
         var postData = {
           type: this.type,
           userid: Helper.getUserId(),
-          num: this.supplyNum
+          num: this.supplyNum,
+          zState: this.zState
         };
         $.ajax({
           url: BaseService.apiUrl + 'getSkill',
@@ -221,7 +175,7 @@ function initPage() {
               return u.sUserId !== data.userId;
             });
             if (data.length === 0) {
-              self.hasMoreDemand = false
+              self.hasMoreSupply = false
             }
             if (postData.num === 1) {
               self.supplyList = data
