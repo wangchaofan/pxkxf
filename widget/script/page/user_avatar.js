@@ -121,7 +121,7 @@ function initPage() {
           targetWidth: 200,
           targetHeight: 200,
           saveToPhotoAlbum: true
-        }, function(ret, err) { 
+        }, function(ret, err) {
           self.clipImage(ret.data)
         })
       },
@@ -132,9 +132,9 @@ function initPage() {
         FNImageClip.open({
           rect: {
             x: 0,
-            y: 48,
+            y: 44,
             w: api.winWidth,
-            h: api.winHeight - 48
+            h: api.winHeight - 44
           },
           srcPath: src,
           style: {
@@ -151,7 +151,7 @@ function initPage() {
           },
           mode: 'image'
         }, function(ret, err) {
-  
+
         })
       },
       clipImageComplete: function() {
@@ -163,9 +163,12 @@ function initPage() {
         }, function(ret, err) {
           if (ret) {
             self.userInfo.pheadimgUrl = ret.destPath
-            var skill = _.clone(self.skill)
-            skill.pheadimgUrl = ret.destPath
-            self.skill = skill
+            if (self.skill) {
+              var skill = _.clone(self.skill)
+              alert(JSON.stringify(skill))
+              skill.pheadimgUrl = ret.destPath
+              self.skill = skill
+            }
             self.FNImageClip.close()
             convertImgToBase64(ret.destPath, function(base64) {
               self.uploadAvatar(base64)
@@ -209,7 +212,7 @@ function initPage() {
       },
       handlerClickUserLevel: function() {
         Helper.openWin('qualification');
-      },  
+      },
       goPage: function(pageName) {
         var pageParam = {}
         if (pageName === 'phone_setting') {
