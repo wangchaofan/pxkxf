@@ -12,7 +12,7 @@
 <div class="wrapper">
   <my-header title="专家列表"></my-header>
   <section class="professors">
-    <professor-box v-for="item in list" :professor="item"></professor-box>
+    <professor-box v-for="item in list" :professor="item" @click="viewDetail(item)"></professor-box>
   </section>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>

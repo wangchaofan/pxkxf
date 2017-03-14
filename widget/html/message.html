@@ -9,7 +9,7 @@
     <script src="../script/adapter.js"></script>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper" style="padding-bottom: 0">
     <my-header title="我的消息"></my-header>
     <div class="message-list bg-white" v-cloak>
         <ul>
@@ -49,10 +49,10 @@
                     </div>
                 </div>
             </li>
-            <li @click="goNotice">
+            <li @click="updateSysNoticeStatus">
                 <div class="message-list-item">
                     <div class="message-list-item__avatar notice">
-                        <span class="has-new-notice" v-if="!hasNoReadNotice"></span>
+                        <span class="has-new-notice" v-show="!hasNoReadNotice"></span>
                     </div>
                     <div class="message-list-item__info" v-if="notice">
                         <div class="message-list-item__title">
@@ -68,6 +68,28 @@
                         </div>
                         <!--<div class="unread-number">12</div>-->
                     </div>
+                </div>
+            </li>
+            <li v-for="(item, index) in yyNotice">
+                <div class="message-list-item yynotice-item" @click="handleReadyynotice(item)">
+                    <div class="message-list-item__avatar yynotice">
+                        <span class="has-new-notice" v-if="item.state == 1"></span>
+                    </div>
+                    <div class="message-list-item__info" v-if="notice">
+                        <div class="message-list-item__title">
+                            应邀通知
+                        </div>
+                        <div class="message-list-item__content text-overflow-es">
+                            {{notice.noticecontent}}
+                        </div>
+                    </div>
+                    <div class="message-list-item__otherinfo">
+                        <div class="message-list-item__date">
+                            {{notice.noticetime | date('yyyy-MM-dd hh:mm:ss')}}
+                        </div>
+                        <!--<div class="unread-number">12</div>-->
+                    </div>
+                    <div class="delete-button" @click.stop="handleDeleteYynotice(item, index)">删除</div>
                 </div>
             </li>
         </ul>

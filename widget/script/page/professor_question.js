@@ -18,12 +18,11 @@ function initPage() {
       }
     },
     methods: {
+      toQues: function() {
+        Helper.openWin('questions')
+      },
       viewMoreProfessor: function() {
-        api.openWin({
-          name: 'professor_list',
-          url: 'widget://html/professor_list.html',
-          reload: true
-        });
+        Helper.openWin('professor_list')
       },
       viewMoreQuestion: function() {
         Helper.openWin('questions');

@@ -59,6 +59,22 @@ body {
     background: url('../image/icon_laba.png') center no-repeat;
     background-size: 2rem 2rem;
 }
+.message-list-item__avatar.yynotice {
+    position: relative;
+    background: url('../image/icon_notice_yy.png') center no-repeat;
+    background-size: 2rem 2rem;
+}
+.yynotice-item  {
+    position: relative;
+}
+.yynotice-item .delete-button {
+    position: absolute;
+    right: 0;
+    top: 1.6rem;
+    width: 2rem;
+    font-size: 0.6rem;
+    color: #666;
+}
 .message-list-item__avatar .has-new-notice {
     position: absolute;
     display: block;

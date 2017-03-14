@@ -16,12 +16,7 @@ function initPage() {
 		},
 		methods: {
 			forgetPassword: function() {
-				api.openWin({
-				    name: 'findPassword',
-				    url: 'widget://html/findPassword.html',
-				    pageParam: {
-				    }
-				})
+				Helper.openWin('findPassword', {}, { allowEdit: true })
 			},
 			toRegist: function() {
 				api.openWin({

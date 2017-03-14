@@ -11,6 +11,9 @@ function initPage() {
       }
     },
     methods: {
+      viewDetail: function(p) {
+        Helper.openWin('professor_detail', {id: p.expertId})
+      },
       getData: function () {
         var self = this
         $.ajax({

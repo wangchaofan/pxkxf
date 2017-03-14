@@ -112,7 +112,7 @@ Vue.component('user-box', {
             '    <div class="user-info-tj">' +
             '      <div class="user-name">' +
             '        <span class="vam">{{user.pnickname}}</span>' +
-            '        <span class="user-sex vam" :class="{woman: user.sex === \'女\'}"></span>' +
+            '        <span class="user-sex vam" :class="{woman: user.sex == \'女\'}"></span>' +
             '      </div>' +
             '      <div class="online-status" :class="{\'off-line\': user.onlineState === 2}">{{onlineText}}</div>' +
             '      <slot name="userLtBottom">' +
@@ -150,7 +150,7 @@ Vue.component('user-box', {
 
 /* === 专家box === */
 Vue.component('professor-box', {
-  template: '<div class="professor-box">' +
+  template: '<div class="professor-box" @click="handleClick">' +
               '<div class="professor-avatar">' +
               '  <img :src="professor.ephtourl" alt="">' +
               '</div>' +
@@ -170,7 +170,12 @@ Vue.component('professor-box', {
               '  </div>' +
               '</div>' +
             '</div>',
-  props: ['professor', 'showTheme']
+  props: ['professor', 'showTheme'],
+  methods: {
+    handleClick: function() {
+      this.$emit('click')
+    }
+  }
 })
 
 /* === 用户好评 === */

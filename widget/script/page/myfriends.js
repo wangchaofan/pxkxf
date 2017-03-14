@@ -26,6 +26,12 @@ function initPage() {
       }
     }
   })
+
+  api.addEventListener({
+    name: 'refreshFriend'
+  }, function(ret, err) {
+    vm.getData()    
+  });
 }
 // initPage()
 

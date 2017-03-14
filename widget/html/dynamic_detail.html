@@ -12,7 +12,7 @@
 <body>
 	<div class="wrapper">
 		<my-header title="动态详情">
-			<div class="fs24 white ac" slot="headerRight">分享</div>
+			<!-- <div class="fs24 white ac" slot="headerRight">分享</div> -->
 		</my-header>
 		<div class="dynamic-detail bg-white" v-cloak>
 			<div class="dynamic-detail-user display-flex">
@@ -21,7 +21,7 @@
 				</div>
 				<div class="flex-1">
 					<div class="dynamic-detail-user__name">{{user.pnickname}}</div>
-					<div class="icon-sex" :class="{woman: user.sex === '女'}"></div>
+					<div class="icon-sex" :class="{woman: user.sex == '女'}"></div>
 				</div>
 				<div class="dynamic-detail__date">{{dyInfo.dynamicTime | date('yyyy-MM-dd')}}</div>
 			</div>
@@ -30,7 +30,7 @@
 					{{dyInfo.dynamicContent}}
 				</p>
 				<div class="dynamic-detail-content__images">
-					<img v-for="item in images" :src="item.imgurl">
+					<img v-for="(item, index) in images" @click="viewImage(index)" :src="item.imgurl">
 				</div>
 			</div>
 			<div class="dynamic-detail-sl display-flex ac">

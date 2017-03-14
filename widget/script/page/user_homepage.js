@@ -113,6 +113,9 @@ function initPage() {
             api.sendEvent({
               name: 'refreshFocusList',
             })
+            api.sendEvent({
+              name: 'refreshFriend'
+            })
           } else {
             api.toast({msg: res.mage})
           }

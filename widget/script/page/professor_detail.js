@@ -30,6 +30,9 @@ function initPage() {
           }
         })
       },
+      viewUserHomepage: function() {
+        Helper.openWin('user_homepage', {uid: this.info.userID})
+      },
       onClickFocus: function() {
         var self = this
         if (this.focused) {

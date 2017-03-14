@@ -1,7 +1,7 @@
 /**
  * Created by chaofanw on 2017/1/9.
  */
-function initPage() {
+  function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     data: function() {
@@ -16,12 +16,21 @@ function initPage() {
       }
     },
     methods: {
-      onSelectImage: function(e) {
-        var file = e.target.files[0]
-        var self = this
-        if (file) {
-          Helper.imagePreview(file).then(function(img) { self.images.push(img) })
-        }
+      onSelectImage: function() {
+        var self = this;
+        api.getPicture({
+          sourceType: 'library',
+          encodingType: 'jpg',
+          mediaValue: 'pic',
+          destinationType: 'base64',
+          allowEdit: true,
+          quality: 50,
+          targetWidth: 200,
+          targetHeight: 200,
+          saveToPhotoAlbum: false
+        }, function(ret, err){ 
+          self.images.push(ret.base64Data)
+        });
       },
       deleteImage: function(index) {
         this.images.splice(index, 1)
@@ -35,14 +44,17 @@ function initPage() {
         }).then(function(res) {
           if (res.key === 'true') {
             api.toast({
-                msg: '添加成功'
+              msg: '添加成功'
             })
+            api.sendEvent({
+              name: 'refreshQuestion',
+            });
             setTimeout(function() {
               api.closeWin()
-            }, 3000)
+            }, 1000)
           } else {
             api.toast({
-                msg: res.mage
+              msg: res.mage
             })
           }
         })
@@ -50,7 +62,7 @@ function initPage() {
     }
   })
 }
-initPage()
+
 apiready = function(){
   initPage()
 }

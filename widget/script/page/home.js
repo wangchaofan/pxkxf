@@ -21,12 +21,12 @@ function initPage() {
         currentTab: 'demand',
         city: '成都市',
         type: '',
-        messageCount: '',
+        messageCount: 0,
         weatherText: '',
         temperature: '',
         demandNum: 1,
         supplyNum: 1,
-        zState: 0,
+        zState: 1,
         nearByNum: 1
       }
     },
@@ -90,9 +90,33 @@ function initPage() {
         var rong = api.require('rongCloud2');
         rong.getTotalUnreadCount(function(ret, err) {
           if (ret.status === 'success') {
-            self.messageCount = ret.result
+            self.messageCount += ret.result
           }
         });
+
+        // === 获取系统通知 ===
+        $.ajax({
+          url: BaseService.apiUrl + 'gettz',
+          data: { userid: Helper.getUserId() }
+        }).done(function(res) {
+          var data = ParseJson(res.data)
+          var count = _.filter(data, function(o) { 
+            return o.state == '1'
+          }).length
+          self.messageCount += count
+        })
+
+        // === 获取预约通知 ===
+        $.ajax({
+          url: BaseService.apiUrl + 'getyytz',
+          data: { userid: Helper.getUserId() }
+        }).then(function(res) {
+          var data = ParseJson(res.data)
+          var count = _.filter(data, function(o) { 
+            return o.state == '1'
+          }).length
+          self.messageCount += count
+        })
       },
       onClickType: function(t) {
         Helper.openWin('category_list', {category: t})

@@ -40,6 +40,15 @@ function initPage() {
           if (self.supplyInfo.State == 2) {
             self.buttonDisabled = false
           }
+          self.$nextTick(function() {
+            if (self.supplyInfo.Skillworksmodel.length > 0) {
+              new Swiper('.swiper-container', {
+                loop: true,
+                autoplay: 3000,
+                pagination: '.swiper-pagination'
+              })
+            }
+          })
     			console.log(ParseJson(res.data)[0])
     		})
     	},

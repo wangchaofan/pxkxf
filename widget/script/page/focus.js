@@ -48,7 +48,7 @@ function initPage() {
             userid: Helper.getUserId()
           }
         }).then(function(res) {
-          if (res.key === 'true') {
+          if (res.key == 'true') {
             self.list = ParseJson(res.data)
             console.log(ParseJson(res.data))
           }
@@ -63,8 +63,6 @@ function initPage() {
   //   vm.getData();
   // });
 }
-
-initPage();
 
 apiready = function(){
   initPage()

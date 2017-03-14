@@ -13,7 +13,7 @@
   <my-header title="专家详情"></my-header>
   <div class="professor-detail-page">
     <div class="professor-box-wrap bg-white" v-if="info">
-      <professor-box :professor="info"></professor-box>
+      <professor-box :professor="info" @click="viewUserHomepage"></professor-box>
     </div>
     <div class="professor-info-selections bg-white">
       <div class="professor-info-selections-1" @click="goPage('professor_intro')">

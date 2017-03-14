@@ -25,7 +25,7 @@
 				<div class="user-info-tj" v-if="userid">
 					<div class="user-name">
 						<span class="vam">{{userInfo.pnickname}}</span>
-						<span class="user-sex vam" :class="{'woman': userInfo.sex == 2}"></span>
+						<span class="user-sex vam" :class="{'woman': userInfo.sex == '女'}"></span>
 					</div>
 					<div class="online-status" :class="{'off-line': userInfo.onlineState == 2}">{{userInfo.onlineState == 1 ?  '在线' : '离线'}}</div>
 				</div>

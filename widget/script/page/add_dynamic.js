@@ -42,13 +42,18 @@ function initPage() {
 				this.imgarr.splice(index, 1)
 			},
 			onFileChange: function(event) {
-				var self = this
-				var file = event.target.files[0]
-				if (file) {
-					Helper.imagePreview(file).then(function(url) {
-						self.imgarr.push(url)
-					})
-				}
+				var self = this;
+        api.getPicture({
+          sourceType: 'library',
+          encodingType: 'jpg',
+          mediaValue: 'pic',
+          destinationType: 'base64',
+          allowEdit: true,
+          quality: 80,
+          saveToPhotoAlbum: false
+        }, function(ret, err){ 
+          self.imgarr.push(ret.base64Data)
+        });
 			}
 		}
 	})

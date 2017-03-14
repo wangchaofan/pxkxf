@@ -20,8 +20,7 @@
       <div class="button-delete" @click="deleteImage(index)"></div>
       <img :src="img" alt="">
     </div>
-    <div class="upload-box">
-      <input type="file" accept="image/jpeg, image/png" @change="onFileChange($event)">
+    <div class="upload-box" @click="onFileChange">
     </div>
   </section>
   <div class="remind ac fs24">提示</div>

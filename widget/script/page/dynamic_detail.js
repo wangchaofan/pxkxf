@@ -29,6 +29,23 @@ function initPage() {
       changeSee: function(t) {
         this.currentSee = t
       },
+      viewImage: function(index) {
+        if (this.photoBrowser) {
+          this.photoBrowser.setIndex({index: index});
+          this.photoBrowser.show();
+          return;
+        }
+        this.photoBrowser = api.require('photoBrowser');
+        this.photoBrowser.open({
+          images: _.map(this.images, function(item) { return item.imgurl; }),
+          activeIndex: index,
+          bgColor: '#000'
+        }, function(ret, err) {
+          if (ret.eventType == 'click') {
+            this.photoBrowser.hide()
+          }
+        }.bind(this));
+      },
       onClickZan: function() {
         var self = this
         if (this.hasZan) {

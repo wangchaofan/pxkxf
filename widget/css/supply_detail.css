@@ -79,3 +79,34 @@
     background: url('../image/icon_invite2.png') center 0.5rem no-repeat;
     background-size: 0.8rem 0.8rem;
 }
+
+.remand-detail .row {
+    display: flex;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #ddd;
+    line-height: 1rem;
+    font-size: 0.7rem;
+}
+.remand-detail .row:last-child {
+    border-bottom: none;
+}
+.remand-detail .content {
+    color: #666;
+    flex: 1;
+}
+.remand-detail .row-label {
+    flex-shrink: 0;
+    margin-right: 1rem;
+}
+.swiper-container {
+	height: 14rem;
+	border-bottom: 0.5rem solid #f0f1f5;
+	background: #eee;
+}
+.swiper-container img {
+	width: 100%;
+	line-height: 14rem;
+}
+.swiper-pagination-bullet-active {
+	background: #fff;
+}
