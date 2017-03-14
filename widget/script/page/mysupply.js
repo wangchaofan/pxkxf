@@ -121,12 +121,14 @@ function initPage() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getuserSkill',
-          data: { userid: api.pageParam.uid || Helper.getUserId() }
+          data: { userid: Helper.getUserId(), type: "" }
         }).then(function(res) {
           if (res.key === 'true') {
             self.list = ParseJson(res.data)
             console.log(ParseJson(res.data))
           }
+        }, function(err) {
+          console.log(JSON.stringify(err))
         })
       }
     }
