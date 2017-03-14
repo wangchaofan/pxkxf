@@ -10,6 +10,22 @@ apiready = function() {
 		}
 	})
 
+	api.addEventListener({
+    name: 'keyback'
+	}, function(ret, err) {
+		if (!ret.longPress) {
+			api.confirm({
+				title: '提示',
+				msg: '确认要退出程序吗？',
+				buttons: ['确定', '取消']
+			}, function(ret) {
+				if (ret.buttonIndex == 1) {
+					api.closeWidget({id: 'A6937824183587', silent: true})
+				}
+			})
+		}
+	})
+
 	if (!Helper.getUserId()) {
 		api.openWin({
 	    name: 'login',
