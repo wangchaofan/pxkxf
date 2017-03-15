@@ -19,12 +19,12 @@
       <span class="question-publisher">{{question.usermodel[0].pnickname}}</span>
     </div>
     <div class="question-content">{{question.twcontent}}</div>
-    <div class="is-focus" :class="{yes: isFocus}">
+    <!--<div class="is-focus" :class="{yes: isFocus}">
       <span @click="onFocus">
         <i class="icon-love"></i>
         {{focusText}}
       </span>
-    </div>
+    </div>-->
   </section>
   <section class="question-comment-list bg-white" v-cloak v-if="expertTWHDmodel">
     <div class="question-comment-item" v-for="item in expertTWHDmodel">

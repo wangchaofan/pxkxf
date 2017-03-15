@@ -71,10 +71,10 @@ function initPage() {
       onSelectDate: function() {
         var self = this
         api.openPicker({
-        type: 'date',
-        title: '选择时间'
-        }, function(ret, err) {
-        self.skill.servertime = ret.year + '/' + ret.month + '/' + ret.day + ' 00:00:00'
+          type: 'date',
+          title: '选择时间'
+          }, function(ret, err) {
+          self.skill.servertime = ret.year + '-' + ret.month + '-' + ret.day
         })
       },
       selectDistrict: function() {

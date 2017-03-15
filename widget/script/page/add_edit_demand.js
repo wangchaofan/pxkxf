@@ -59,6 +59,15 @@ function initPage() {
 					}
 				})
 			},
+			onSelectDate: function() {
+        var self = this
+        api.openPicker({
+          type: 'date',
+          title: '选择时间'
+          }, function(ret, err) {
+          self.demand.timenum = ret.year + '-' + ret.month + '-' + ret.day
+        })
+      },
 			onSubmit: function() {
 				if (this.demandId) {
 					this.handleEditDemand()

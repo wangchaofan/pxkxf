@@ -32,7 +32,7 @@
     </div>
     <div class="input-row">
       <label>有效期限</label>
-      <input type="date" v-model="demand.timenum">
+      <input type="input" v-model="demand.timenum" readonly @click="onSelectDate">
     </div>
     <div class="input-row supply-detail">
       <label for="ddetails">详情描述</label>
