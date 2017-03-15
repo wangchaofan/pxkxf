@@ -183,7 +183,12 @@ function initPage() {
         if (!this.hasMoreDemand) return;
         $.ajax({
           url: BaseService.apiUrl + 'getdemaorder',
-          data: {type: this.category, userid: Helper.getUserId(), num: this.pageNum},
+          data: {
+            type: this.category,
+            userid: Helper.getUserId(),
+            num: this.pageNum,
+            zState: 1
+          },
           success: function(res) {
             if (!res.data) return;
             var data = JSON.parse(res.data);
@@ -203,7 +208,12 @@ function initPage() {
         if (!this.hasMoreSupply) return;
         $.ajax({
           url: BaseService.apiUrl + 'getSkill',
-          data: {type: self.category, userid: Helper.getUserId(), num: this.pageNum},
+          data: {
+            type: self.category,
+            userid: Helper.getUserId(),
+            num: this.pageNum,
+            zState: 1
+          },
           success: function(res) {
             if (!res.data) return;
             var data = JSON.parse(res.data);

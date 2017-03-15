@@ -72,7 +72,7 @@ function initPage() {
       },
       handleReadyynotice: function(item) {
         if (item.state == 2) {
-          Helper.openWin('order_detail', {id: item.dataId})
+          Helper.openWin('demand_detail', {id: item.dataId})
           return
         }
         $.ajax({

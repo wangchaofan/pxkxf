@@ -66,11 +66,10 @@ body {
 	color: #999;
 	border-top: 1px solid #ddd;
 }
-.line-left,
-.line-right {
+.line-left {
 	position: absolute;
 	top: 0.75rem;
-	left: 33%;
+	left: 50%;
 	height: 1.05rem;
 	width: 0;
 	border-left: 1px solid #ddd;

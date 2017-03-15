@@ -39,6 +39,8 @@ function initPage() {
       zState: function(val) {
         this.hasMoreDemand = true
         this.hasMoreSupply = true
+        this.demandNum = 1
+        this.supplyNum = 1
         this.getDemandList()
         this.getSupplyList()
       }
@@ -100,7 +102,7 @@ function initPage() {
           data: { userid: Helper.getUserId() }
         }).done(function(res) {
           var data = ParseJson(res.data)
-          var count = _.filter(data, function(o) { 
+          var count = _.filter(data, function(o) {
             return o.state == '1'
           }).length
           self.messageCount += count
@@ -112,7 +114,7 @@ function initPage() {
           data: { userid: Helper.getUserId() }
         }).then(function(res) {
           var data = ParseJson(res.data)
-          var count = _.filter(data, function(o) { 
+          var count = _.filter(data, function(o) {
             return o.state == '1'
           }).length
           self.messageCount += count
