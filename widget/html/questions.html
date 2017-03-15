@@ -15,8 +15,8 @@
     <ul class="question-list fs28">
       <li v-for="item in list" @click="goQuestionDetail(item)">
         <div class="question-title text-overflow-es flex-1">{{item.twtitle}}</div>
-        <div class="answer-status" v-if="item.State === 2">待解答</div>
-        <div class="answer-status answered" v-if="item.State === 1">已解答</div>
+        <div class="answer-status" v-if="item.jdstate == 1">待解答</div>
+        <div class="answer-status answered" v-if="item.jdstate == 2">已解答</div>
       </li>
     </ul>
   </section>

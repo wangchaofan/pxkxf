@@ -64,7 +64,7 @@
 						<div class="comment-list-item__content">
 							<div class="comment-list-item__user-name">
 								<span>{{item.usermodel[0].pnickname}}</span>
-								<span class="icon-sex woman"></span>
+								<span class="icon-sex" class="{'woman': item.usermodel[0].sex == '女'}"></span>
 							</div>
 							<div class="comment-list-item__text">
 								{{item.commentContent}}

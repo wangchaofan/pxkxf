@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="wrapper">
-  <my-header title="我的供应">
+  <my-header :title="title">
   </my-header>
   <div class="supply-list">
     <div class="none-text" v-if="list.length === 0" v-cloak>暂时没有供应~</div>

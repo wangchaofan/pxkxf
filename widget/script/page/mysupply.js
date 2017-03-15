@@ -110,6 +110,7 @@ function initPage() {
     },
     data: function() {
       return {
+        title: api.pageParam.uid ? '他的供应' : '我的供应',
         list: []
       }
     },
@@ -121,7 +122,7 @@ function initPage() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'getuserSkill',
-          data: { userid: Helper.getUserId(), type: "" }
+          data: { userid: api.pageParam.uid || Helper.getUserId(), type: "" }
         }).then(function(res) {
           if (res.key === 'true') {
             self.list = ParseJson(res.data)

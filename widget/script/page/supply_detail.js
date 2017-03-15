@@ -5,38 +5,37 @@ function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     created: function() {
-    	this.getData()
+      this.getData()
     },
     data: function() {
       return {
-      	supplyInfo: null,
-				booked: false,
+        supplyInfo: null,
         isMe: api.pageParam.user === 'self',
         buttonDisabled: true
       }
     },
     computed: {
-    	userModel: function() {
-    		if (this.supplyInfo) {
-    			var userModel = this.supplyInfo.sUsermodel[0]
-    			userModel.avatarStyle = 'background-image: url('+ userModel.pheadimgUrl +')'
-  				return userModel
-  			}
-  			return null
-    	}
+      userModel: function() {
+        if (this.supplyInfo) {
+          var userModel = this.supplyInfo.sUsermodel[0]
+          userModel.avatarStyle = 'background-image: url(' + userModel.pheadimgUrl + ')'
+          return userModel
+        }
+        return null
+      }
     },
     methods: {
-    	getData: function() {
-    		var self = this
-    		$.ajax({
-    			url: BaseService.apiUrl + 'getskillinfo',
-    			data: {
-						skillid: api.pageParam.id,
+      getData: function() {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'getskillinfo',
+          data: {
+            skillid: api.pageParam.id,
             userid: Helper.getUserId()
-						// skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
-    			}
-    		}).done(function(res) {
-    			self.supplyInfo = ParseJson(res.data)[0]
+              // skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+          }
+        }).done(function(res) {
+          self.supplyInfo = ParseJson(res.data)[0]
           if (self.supplyInfo.State == 2) {
             self.buttonDisabled = false
           }
@@ -49,9 +48,9 @@ function initPage() {
               })
             }
           })
-    			console.log(ParseJson(res.data)[0])
-    		})
-    	},
+          console.log(ParseJson(res.data)[0])
+        })
+      },
       share: function() {
         var sharedModule = api.require('shareAction');
         sharedModule.share({
@@ -61,29 +60,29 @@ function initPage() {
         })
       },
       handleViewAllSupplies: function() {
-        Helper.openWin('user_supply', { userInfo: this.supplyInfo.sUsermodel[0]})
+        Helper.openWin('user_supply', { userInfo: this.supplyInfo.sUsermodel[0] })
       },
-			onClickBook: function() {
-				if (this.booked) return
-				var self = this
-				$.ajax({
-					url: BaseService.apiUrl + 'addCollection',
-					data: {
-						userid: Helper.getUserId(),
+      onClickBook: function() {
+        if (this.supplyInfo.scstate == '2') return
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'addCollection',
+          data: {
+            userid: Helper.getUserId(),
             skillid: api.pageParam.id
-						// skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
-					}
-				}).then(function(res) {
-					if (res.key === 'true') {
-						self.booked = true
-					} else {
-						api.toast({
-							msg: res.mage
-						})
-					}
-				})
-			},
-			onClickAdvise: function() {
+              // skillid: 'a17db629-52b6-4b6a-a904-e6c1721e3a03'
+          }
+        }).then(function(res) {
+          if (res.key === 'true') {
+            self.booked = true
+          } else {
+            api.toast({
+              msg: res.mage
+            })
+          }
+        })
+      },
+      onClickAdvise: function() {
         var self = this
         var dialogBox = api.require('dialogBox');
         dialogBox.input({
@@ -125,7 +124,7 @@ function initPage() {
           if (ret.eventType === 'right') {
             if (ret.text === '') {
               api.toast({
-                  msg: '请输入建议内容'
+                msg: '请输入建议内容'
               })
               return
             } else {
@@ -136,7 +135,7 @@ function initPage() {
             dialogName: 'input'
           })
         })
-			},
+      },
       putAdvise: function(content) {
         var self = this
         $.ajax({
@@ -150,7 +149,7 @@ function initPage() {
         }).then(function(res) {
           if (res.key === 'true') {
             api.toast({
-                msg: '建议已提交'
+              msg: '建议已提交'
             })
           } else {
             api.toast({
@@ -159,17 +158,17 @@ function initPage() {
           }
         })
       },
-    	goChat: function() {
-        Helper.openWin('chat_room', {targetId: this.supplyInfo.sUsermodel[0].lUserId})
-    	},
+      goChat: function() {
+        Helper.openWin('chat_room', { targetId: this.supplyInfo.sUsermodel[0].lUserId })
+      },
       onSubmit: function() {
         if (this.buttonDisabled) return;
-        Helper.openWin('add_order', {id: api.pageParam.id})
+        Helper.openWin('add_order', { id: api.pageParam.id })
       }
     }
   })
 }
 
-apiready = function(){
+apiready = function() {
   initPage()
 }
