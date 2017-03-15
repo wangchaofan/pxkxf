@@ -165,7 +165,6 @@ function initPage() {
             self.userInfo.pheadimgUrl = ret.destPath
             if (self.skill) {
               var skill = _.clone(self.skill)
-              alert(JSON.stringify(skill))
               skill.pheadimgUrl = ret.destPath
               self.skill = skill
             }
