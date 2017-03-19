@@ -55,7 +55,7 @@ function initPage() {
 					dtd.reject('请选择头像')
 				} else if (_.trim(userInfo.pnkname).length === 0) {
 					dtd.reject('请输入昵称')
-				} else if (!_.isNumber(userInfo.age)) {
+				} else if (!userInfo.age) {
 					dtd.reject('请输入正确的年龄')
 				} else {
 					dtd.resolve()
@@ -104,7 +104,7 @@ function initPage() {
 						})
 					})
 					.fail(function(err) {
-						api.toast({msg: err.message});
+						api.toast({msg: JSON.stringify(err)});
 					})
 					.always(function() {
 						this.submiting = false
