@@ -18,6 +18,20 @@ function initPage() {
 			selectSex: function(v) {
 				this.userInfo.sex = v
 			},
+			handleSelectDay: function() {
+				var self = this;
+				api.openPicker({
+					type: 'date',
+					title: '选择时间'
+				}, function(ret, err){
+					var date = ret.year + '-' + ret.month + '-' + ret.day;
+					if ((new Date(date)).getTime() > Date.now()) {
+						api.toast({msg: '不能大于当前时间'})
+					} else {
+						self.userInfo.age = date;
+					}
+				});
+			},
 			onUpload: function(e) {
 				var self = this
 				api.getPicture({
