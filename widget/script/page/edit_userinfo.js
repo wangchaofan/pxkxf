@@ -112,14 +112,16 @@ function initPage() {
 			handleSelectDay: function() {
 				var self = this;
 				api.openPicker({
-			    type: 'date',
-			    title: '选择时间'
-				}, function(ret, err){
+					type: 'date',
+					title: '选择时间'
+				}, function(ret, err) {
 					var date = ret.year + '-' + ret.month + '-' + ret.day;
 					if ((new Date(date)).getTime() > Date.now()) {
-						api.toast({msg: '不能大于当前时间'})
+						api.toast({
+							msg: '不能大于当前时间'
+						})
 					} else {
-				    self.userInfo.birthDate = date;
+						self.userInfo.birthDate = date;
 					}
 				});
 			},
@@ -127,7 +129,9 @@ function initPage() {
 				var self = this
 				$.ajax({
 					url: BaseService.apiUrl + 'getperuserinfo',
-					data: { uid: Helper.getUserId() }
+					data: {
+						uid: Helper.getUserId()
+					}
 				}).then(function(res) {
 					res = ParseJson(res.data)[0]
 					var userInfo = self.userInfo
@@ -147,90 +151,92 @@ function initPage() {
 				var self = this
 				var UIMultiSelector = api.require('UIMultiSelector');
 				UIMultiSelector.open({
-			    rect: {
-		        h: 244
-			    },
-			    max: 4,
-				    styles: {
-			        mask: 'rgba(0,0,0,0.5)',
-			        title: {
-								bg: '#eee',
-								size: 16,
-								h: 44
-		         	},
-		         	leftButton: {
-								w: 80,
-								h: 35,
-								marginT: 5,
-								marginL: 8,
-								color: 'rgb(0,0,0)',
-								size: 14
-		         	},
-							rightButton: {
-								w: 80,
-								h: 35,
-								marginT: 5,
-								marginR: 8,
-								color: 'rgb(0,0,0)',
-								size: 14
-							},
-							item: {
-								h: 44,
-								bg: '#fff',
-								bgActive: '#fff',
-								bgHighlight: '#eee',
-								color: '#333',
-								active: '#333',
-								highlight: '#333',
-								size: 14,
-								lineColor: '#ddd',
-								textAlign: 'center'
-							},
-							icon: {
-								w: 20,
-								h: 20,
-								marginT: 11,
-								marginH: 8,
-								bg: '#fff',
-				        bgActive: 'widget://image/icon_ok.png',
-				        bgHighlight: '#ddd',
-								align: 'right'
-							}
-				     },
-				     animation: true,
-				     items: [{
-				         text: 'Monday',
-				         status: 'normal'
-				     }, {
-				         text: 'Tuesday',
-				         status: 'normal'
-				     }, {
-				         text: 'Wednesday',
-				         status: 'normal'
-				     }, {
-				         text: 'Thursday',
-				         status: 'normal'
-				     }, {
-				         text: 'Friday',
-				         status: 'normal'
-				     }, {
-				         text: 'Saturday',
-				         status: 'normal'
-				     }, {
-				         text: 'Sunday',
-				         status: 'normal'
-				     }, {
-				         text: 'from Monday to Sunday',
-				         status: 'normal'
-				     }]
-				 }, function(ret, err) {
-				    if (ret.eventType === 'clickLeft') {
-				    	UIMultiSelector.hide()
-				    } else if (ret.eventType === 'clickRight') {
-				    	self.userInfo.pQualifications = _.map(ret.items, function(v) { return v.text }).join(',')
-				    	UIMultiSelector.hide()
-				    }
-				 })
+					rect: {
+						h: 244
+					},
+					max: 4,
+					styles: {
+						mask: 'rgba(0,0,0,0.5)',
+						title: {
+							bg: '#eee',
+							size: 16,
+							h: 44
+						},
+						leftButton: {
+							w: 80,
+							h: 35,
+							marginT: 5,
+							marginL: 8,
+							color: 'rgb(0,0,0)',
+							size: 14
+						},
+						rightButton: {
+							w: 80,
+							h: 35,
+							marginT: 5,
+							marginR: 8,
+							color: 'rgb(0,0,0)',
+							size: 14
+						},
+						item: {
+							h: 44,
+							bg: '#fff',
+							bgActive: '#fff',
+							bgHighlight: '#eee',
+							color: '#333',
+							active: '#333',
+							highlight: '#333',
+							size: 14,
+							lineColor: '#ddd',
+							textAlign: 'center'
+						},
+						icon: {
+							w: 20,
+							h: 20,
+							marginT: 11,
+							marginH: 8,
+							bg: '#fff',
+							bgActive: 'widget://image/icon_ok.png',
+							bgHighlight: '#ddd',
+							align: 'right'
+						}
+					},
+					animation: true,
+					items: [{
+						text: 'Monday',
+						status: 'normal'
+					}, {
+						text: 'Tuesday',
+						status: 'normal'
+					}, {
+						text: 'Wednesday',
+						status: 'normal'
+					}, {
+						text: 'Thursday',
+						status: 'normal'
+					}, {
+						text: 'Friday',
+						status: 'normal'
+					}, {
+						text: 'Saturday',
+						status: 'normal'
+					}, {
+						text: 'Sunday',
+						status: 'normal'
+					}, {
+						text: 'from Monday to Sunday',
+						status: 'normal'
+					}]
+				}, function(ret, err) {
+					if (ret.eventType === 'clickLeft') {
+						UIMultiSelector.hide()
+					} else if (ret.eventType === 'clickRight') {
+						self.userInfo.pQualifications = _.map(ret.items, function(v) {
+							return v.text
+						}).join(',')
+						UIMultiSelector.hide()
+					}
+				})
 			},
 			validate: function() {
 				var dtd = $.Deferred()
@@ -257,7 +263,7 @@ function initPage() {
 					.then(function(res) {
 						if (res.key === 'true') {
 							api.toast({
-							    msg: '修改成功'
+								msg: '修改成功'
 							})
 							api.sendEvent({
 								name: 'loginSuccess'
@@ -270,12 +276,14 @@ function initPage() {
 							}, 2000)
 						} else {
 							api.toast({
-							    msg: res.mage
+								msg: res.mage
 							})
 						}
 					})
 					.fail(function(err) {
-						api.toast({msg: err.message});
+						api.toast({
+							msg: err
+						});
 					})
 					.always(function() {
 						this.submiting = false
@@ -286,6 +294,6 @@ function initPage() {
 }
 
 
-apiready = function(){
-  initPage()
+apiready = function() {
+	initPage()
 }
