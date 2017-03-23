@@ -316,7 +316,7 @@ function dateFormat(val, fmt) {
     return '长期';
   }
 
-  if (val.indexOf('Date') >= 0) {
+  if (typeof val === 'string' && val.indexOf('Date') >= 0) {
     val = parseInt(val.match(/\d+/)[0])
   }
 

@@ -2,7 +2,10 @@ function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     created: function() {
-      this.getUserData()
+      this.getUserData();
+      api.closeWin({
+        name: 'add_edit_demand'
+      });
     },
     data: function() {
       return {
@@ -56,7 +59,10 @@ function initPage() {
                 api.closeWin({name: 'add_order'});
                 api.closeWin({name: 'supply_detail'});
                 setTimeout(function() {
-                  api.closeWin()
+                  if (api.pageParam.orderType === 'demand') {
+                    Helper.openWin('mydemand');
+                  }
+                  api.closeWin();
                 }, 1000);
               } else {
                 api.toast({

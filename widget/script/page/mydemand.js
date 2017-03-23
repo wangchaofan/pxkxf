@@ -176,6 +176,9 @@ function initPage() {
     el: '.wrapper',
     created: function() {
       this.getData()
+      api.closeWin({
+        name: 'pay'
+      });
     },
     components: {
       'list-item': ListItem,

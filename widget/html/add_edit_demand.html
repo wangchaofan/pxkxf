@@ -25,13 +25,13 @@
         <option value="消防产品">消防产品</option>
       </select>
     </div>
-    <div class="input-row">
+    <!-- <div class="input-row">
       <label>需求人次</label>
       <input type="number" v-model.number="demand.rnum" placeholder="请填写需求人数">
       <span>人</span>
-    </div>
+    </div> -->
     <div class="input-row">
-      <label>有效期限</label>
+      <label>有效日期</label>
       <input type="input" v-model="demand.timenum" readonly @click="onSelectDate">
     </div>
     <div class="input-row supply-detail">
@@ -45,7 +45,7 @@
     <div class="input-row" style="border-bottom: none;">
       <label for="dmoney">愿付酬金</label>
       <input id="dmoney" type="text" v-model="demand.money" placeholder="1元以上">
-      <span>元/人次</span>
+      <span>元</span>
     </div>
   </form>
   <div class="fixed-bottom">

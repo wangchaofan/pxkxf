@@ -55,7 +55,7 @@
 					<div class="demand-price fs24" slot="userLtBottom">技能描述：{{item.skillms}}</div>
 					<div class="user-info-rt" slot="userRtTop">
 						<a class="location-byme fs24 text-999" href="javascript:">{{item.xqdistance | number}}km</a>
-						<div class="confirm-button" :class="{selected: item.ystate == 2}">{{getStatusText(item)}}</div>
+						<div class="confirm-button" :class="{selected: item.ystate == 2, wait: item.ystate == 1}">{{getStatusText(item)}}</div>
 					</div>
 					<div slot="userRtBottom"></div>
 				</user-box>

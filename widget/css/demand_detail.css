@@ -184,6 +184,9 @@
     font-size: 0.6rem;
     color: #999;
 }
+.confirm-button.wait {
+    color: #e4353a;
+}
 .confirm-button.selected {
     color: green;
 }

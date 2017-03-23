@@ -52,8 +52,8 @@ function initPage() {
       getStatusText: function(invitor) {
         var orderState = this.demandInfo.orderState;
         var ystate = invitor.ystate;
-        if (ystate != 2) return '未选择';
-        if (invitor.State != 2) return '待完成';
+        if (ystate != 2) return '确认应邀';
+        if (invitor.State != 2) return '已选应邀';
         if (orderState == 4 || orderState == 5) {
           return '供应完成';
         }

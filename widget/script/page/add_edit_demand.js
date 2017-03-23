@@ -11,7 +11,7 @@ function initPage() {
 				demand: {
 					userid: Helper.getUserId(),
 					xqname: '',
-					rnum: '',
+					rnum: '1',
 					timenum: '',
 					xqdetails: '',
 					money: '',
@@ -92,22 +92,13 @@ function initPage() {
 							name: 'refreshMyDemand'
 						})
 						setTimeout(function() {
-							api.openWin({
-								name: 'pay',
-								url: 'widget://html/pay.html',
-								reload: true,
-								progress: {
-									type: 'page'
-								},
-								pageParam: {
-									mmoney: self.demand.money * self.demand.rnum,
-									orderId: res.data,
-									orderType: 'demand'
-								}
-							})
-							setTimeout(function() {
-								api.closeWin()
-							}, 500)
+							Helper.openWin('pay', {
+								mmoney: self.demand.money * self.demand.rnum,
+								orderId: res.data,
+								orderType: 'demand'
+							});
+
+							api.closeWin();
 						}, 1000)
 					} else {
 						api.toast({
