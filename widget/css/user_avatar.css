@@ -180,6 +180,9 @@ body {
 	color: #000;
 	background: #fff;
 }
+.user-func-head + .user-func-head {
+	border-top: 1px solid #ddd;
+}
 .user-func-head .free-time {
 	display: inline-block;
 	float: right;
@@ -248,5 +251,28 @@ body {
 }
 .newest-supply {
 	margin-top: 0.5rem;
+}
+.supply-list-item {
+	padding-left: 0.75rem;
+	padding-bottom: 0.75rem;
+}
+.supply-list-item:last-child {
+	border-bottom: none;
+}
+.p-title {
+	font-size: 0.7rem;
 	padding: 0 0.75rem;
+	line-height: 1.75rem;
+	height: 1.75rem;
+	border-bottom: 1px solid #ddd;
+}
+
+.comment-item {
+	font-size: 12px;
+	line-height: 1.5;
+	padding: 0.5rem 0.75rem;
+}
+
+.comment-item + .comment-item {
+	border-top: 1px solid #ddd;
 }

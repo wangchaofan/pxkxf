@@ -47,6 +47,10 @@
 					<span class="row-label">供应描述</span>
 					<span class="content">{{supplyInfo.skilldetails}}</span>
 				</div>
+				<div class="row">
+					<span class="row-label">供应备注</span>
+					<span class="content">{{supplyInfo.Remark}}</span>
+				</div>
 			</div>
 			<div class="display-flex supply-detail-buttons" v-if="!isMe">
 				<div class="supply-detail__button" @click="onClickBook">{{supplyInfo.scstate == '2' ? '已收藏' : '感兴趣，并收藏'}}</div>

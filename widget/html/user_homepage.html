@@ -39,13 +39,38 @@
 				</div>
 			</div>
 		</div>
-		<div class="newest-supply bg-white" v-if="skill" @click="goPage('mysupply')" v-cloak>
+		<!-- <div class="newest-supply bg-white" v-if="skill" @click="goPage('mysupply')" v-cloak>
 			<supply-box :my-data="skill"></supply-box>
+		</div> -->
+		<div class="newest-supply bg-white" v-if="demands.length > 0">
+			<div class="p-title">最新需求</div>
+			<demand-box v-for="demand in demands" :my-data="demand"></demand-box>
+		</div>
+
+		<div class="newest-supply bg-white" v-if="comments.length > 0">
+			<div class="p-title">最新评价</div>
+			<div class="comment-item" v-for="comment in comments">{{comment.describe}}</div>
 		</div>
 		<div class="user-func">
 			<div class="user-func-head">
 				<span>空闲时间</span>
 				<span class="free-time">{{userInfo.freeTime || '随时'}}</span>
+			</div>
+			<div class="user-func-head">
+				<span>学历</span>
+				<span class="free-time">{{userInfo.education}}</span>
+			</div>
+			<div class="user-func-head">
+				<span>职业</span>
+				<span class="free-time">{{userInfo.occupation}}</span>
+			</div>
+			<div class="user-func-head">
+				<span>个人资质</span>
+				<span class="free-time">{{userInfo.pQualifications}}</span>
+			</div>
+			<div class="user-func-head">
+				<span>擅长技能</span>
+				<span class="free-time">{{userInfo.scSkill}}</span>
 			</div>
 		</div>
 		<div class="fixed-bottom">

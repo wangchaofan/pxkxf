@@ -74,7 +74,7 @@ function initPage() {
           }
         }).then(function(res) {
           if (res.key === 'true') {
-            self.booked = true
+            self.supplyInfo.scstate = '2'
           } else {
             api.toast({
               msg: res.mage

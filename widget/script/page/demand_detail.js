@@ -73,17 +73,24 @@ function initPage() {
       },
       handlerComplete: function() {
         var self = this;
-        $.ajax({
-          url: BaseService.apiUrl + 'xqfwwc',
-          data: { xqyyid: api.pageParam.id, userid: Helper.getUserId() }
-        }).then(function(res) {
-          if (res.key == 'true') {
-            api.toast({msg: '提交成功'});
-            self.getData();
-          } else {
-            api.toast({msg: res.mage});
+        api.confirm({
+          title: '提示',
+          msg: '是否确定供应完成？',
+        }, function (ret, err) {
+          if (ret.buttonIndex == 2) {
+            $.ajax({
+              url: BaseService.apiUrl + 'xqfwwc',
+              data: { xqyyid: api.pageParam.id, userid: Helper.getUserId() }
+            }).then(function(res) {
+              if (res.key == 'true') {
+                api.toast({msg: '提交成功'});
+                self.getData();
+              } else {
+                api.toast({msg: res.mage});
+              }
+            })
           }
-        })
+        });
       },
       handlerClickConfirm: function(invitor) {
         if (invitor.State == 2) {
@@ -97,17 +104,25 @@ function initPage() {
       },
       handlerClickDemandComplete: function() {
         var self = this;
-        $.ajax({
-          url: BaseService.apiUrl + 'xqqrwc',
-          data: { xqid: api.pageParam.id, userid: Helper.getUserId() }
-        }).then(function(res) {
-          if (res.key == 'true') {
-            api.toast({msg: '提交成功'});
-            self.getData();
-          } else {
-            api.toast({msg: res.mage});
+        api.confirm({
+          title: '提示',
+          msg: '是否确定需求完成？',
+          buttons: ['确定', '取消']
+        }, function(ret, err) {
+          if (ret.buttonIndex == 2) {
+            $.ajax({
+              url: BaseService.apiUrl + 'xqqrwc',
+              data: { xqid: api.pageParam.id, userid: Helper.getUserId() }
+            }).then(function(res) {
+              if (res.key == 'true') {
+                api.toast({msg: '提交成功'});
+                self.getData();
+              } else {
+                api.toast({msg: res.mage});
+              }
+            })
           }
-        })
+        });
       },
       toPay: function () {
         Helper.openWin('pay', {

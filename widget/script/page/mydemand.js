@@ -64,7 +64,7 @@ var ListItem = {
         if (ret.buttonIndex === 2) {
           $.ajax({
             url: BaseService.apiUrl + 'deletexq',
-            data: {xqid: self.myData.demandorderId}
+            data: { xqid: self.myData.demandorderId }
           }).then(function(res) {
             if (res.key === 'true') {
               vm.getData()
@@ -212,7 +212,7 @@ function initPage() {
         if (this.currentPage === 'demand') {
           $.ajax({
             url: BaseService.apiUrl + 'getDemandOrder',
-            data: { userid: Helper.getUserId() }
+            data: { userid: Helper.getUserId(), type: 1 }
           }).then(function(res) {
             if (res.key === 'true') {
               self.demandList = _.filter(ParseJson(res.data), function(item) {
