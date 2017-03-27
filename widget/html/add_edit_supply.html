@@ -52,8 +52,7 @@
           <div class="button-delete" @click="deleteImage(index)"></div>
           <img :src="img"  alt="">
         </div>
-        <div class="upload-box">
-          <input type="file" accept="image/jpg,image/png" @change="onFileChange">
+        <div class="upload-box" @click="handleSelectImage">
         </div>
       </div>
     </div>

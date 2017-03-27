@@ -130,15 +130,6 @@ function initPage() {
           self.skill.District = ret.level3;
         });
       },
-      onFileChange: function(e) {
-        var self = this
-        var file = e.target.files[0]
-        if (file) {
-          Helper.imagePreview(file).then(function(url) {
-            self.images.push(url)
-          })
-        }
-      },
       deleteImage: function(index) {
         this.images.splice(index, 1)
       },
@@ -211,6 +202,20 @@ function initPage() {
         }).always(function() {
           self.submiting = false
         })
+      },
+      handleSelectImage: function () {
+        var self = this;
+        api.getPicture({
+          sourceType: 'library',
+          encodingType: 'jpg',
+          mediaValue: 'pic',
+          destinationType: 'base64',
+          allowEdit: true,
+          quality: 80,
+          saveToPhotoAlbum: false
+        }, function(ret, err){ 
+          self.images.push(ret.base64Data)
+        });
       }
     }
   })

@@ -31,6 +31,10 @@ function initPage() {
           api.toast({msg: '请填写邀约时间'})
           return false
         }
+        if (this.order.servertime !== '长期' && new Date(this.formData.yydate).getTime() > new Date(this.order.servertime).getTime()) {
+          api.toast({ msg: '邀约时间不能大于截止时间 '});
+          return false;
+        }
         if (!this.formData.yyaddress) {
           api.toast({msg: '请填写邀约地点'})
           return false

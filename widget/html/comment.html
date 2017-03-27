@@ -22,12 +22,12 @@
                 <i v-for="n in 5" :class="{bad: n > comment.jlpj, good: n <= comment.jlpj}" @click="selectGyScore(n)"></i>
             </span>
         </div>
-        <div class="pingfen-row display-flex">
+        <!-- <div class="pingfen-row display-flex">
             <span class="pingfen-row-name">供应人评分</span>
             <span class="display-flex">
                 <i v-for="n in 5" :class="{bad: n > comment.rpj, good: n <= comment.rpj}" @click="selectGpScore(n)"></i>
             </span>
-        </div>
+        </div> -->
     </div>
     <div class="fixed-bottom">
         <div class="btn-submit" @click="onSubmit">提交</div>
