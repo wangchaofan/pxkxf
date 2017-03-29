@@ -71,6 +71,14 @@ function initPage() {
           path: 'http://www.baidu.com'
         })
       },
+      handlerCancelOrder: function() {
+        api.alert({
+          title: '提示',
+          msg: '请拨打客服电话：028-84315565',
+        }, function(ret, err) {
+
+        });
+      },
       handlerComplete: function() {
         var self = this;
         api.confirm({

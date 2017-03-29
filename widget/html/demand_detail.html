@@ -70,6 +70,7 @@
 			<div class="btn-submit" v-if="demandInfo.orderState == 1" @click="toPay">立即支付</div>
 			<div class="btn-submit" v-else-if="!isMe && demandInfo.orderState == 4" @click="handlerComplete">供应完成</div>
 			<div class="btn-submit" v-else-if="isMe && demandInfo.orderState == 5" @click="handlerClickDemandComplete">需求完成</div>
+			<div class="btn-submit" v-else-if="demandInfo.orderState == 5 || demandInfo.orderState == 4" @click="handlerCancelOrder">取消订单</div>
 			<div class="btn-submit" v-else-if="demandInfo.orderState == 7 || demandInfo.orderState == 7" disabled>订单已完成</div>
 			<div class="btn-submit" v-else-if="demandInfo.orderState == 8" disabled>订单已关闭</div>
 		</div>

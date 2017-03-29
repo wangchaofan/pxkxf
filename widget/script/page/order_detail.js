@@ -32,6 +32,15 @@ function initPage() {
           }
         })
       },
+      // 取消订单
+      handleCancelOrder: function() {
+        api.alert({
+          title: '提示',
+          msg: '请拨打客服电话：028-84315565',
+        }, function(ret, err) {
+
+        });
+      },
       // === 确认完成 ===
       toConfirm: function() {
         var self = this
