@@ -4,16 +4,16 @@ function initPage() {
     el: '.wrapper',
     data: function() {
       return {
-        supplyer: api.pageParam.user.usermodel[0],
+        supplyer: api.pageParam.user,
         comment: {
           userid: Helper.getUserId(),
           xqid: api.pageParam.orderId,
-          pprid: api.pageParam.user.usermodel[0].lUserId,
+          pprid: api.pageParam.user.lUserId,
           fraction  : 0, // 供应评分
           userscore: 0, // 供应人评分
           describe: ''
         }
-        }
+      };
     },
     methods: {
       selectGyScore: function(n) {

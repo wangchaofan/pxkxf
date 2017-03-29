@@ -15,11 +15,6 @@ function initPage() {
         isMe: true
       }
     },
-    watch: {
-      showDialog: function(val) {
-     
-      }
-    },
     computed: {
       userModel: function () {
         if (this.demandInfo) {
@@ -53,14 +48,7 @@ function initPage() {
         var orderState = this.demandInfo.orderState;
         var ystate = invitor.ystate;
         if (ystate != 2) return '确认应邀';
-        if (invitor.State != 2) return '已选应邀';
-        if (orderState == 4 || orderState == 5) {
-          return '供应完成';
-        }
-        if (orderState == 6) {
-          return this.isMe ? '去评价' : '待评价';
-        }
-        if (orderState == 7) return '已完成';
+        if (invitor.State == 2) return '已选应邀';
         return '';
       },
       share: function () {
@@ -84,8 +72,9 @@ function initPage() {
         api.confirm({
           title: '提示',
           msg: '是否确定供应完成？',
+          buttons: ['确定', '取消']
         }, function (ret, err) {
-          if (ret.buttonIndex == 2) {
+          if (ret.buttonIndex == 1) {
             $.ajax({
               url: BaseService.apiUrl + 'xqfwwc',
               data: { xqyyid: api.pageParam.id, userid: Helper.getUserId() }
@@ -101,14 +90,24 @@ function initPage() {
         });
       },
       handlerClickConfirm: function(invitor) {
-        if (invitor.State == 2) {
-          this.toComment(invitor);
-        } else {
+        if (invitor.State != 2) {
           this.confirmInvite(invitor);
         }
       },
-      toComment: function(invitor) {
-        Helper.openWin('demand_comment', {orderId: api.pageParam.id, user: invitor});
+      toComment: function() {
+        var selectedInvitor;
+        if (this.isMe) {
+          var invitors = this.demandInfo.XQInvitedmodel;
+          for (var i = 0; i < invitors.length; i++) {
+            if (invitors[i].State == 2) {
+              selectedInvitor = invitors[i].usermodel[0];
+              break;
+            }
+          }
+        } else {
+          selectedInvitor = this.demandInfo.Usermodel[0];
+        }
+        Helper.openWin('demand_comment', {orderId: api.pageParam.id, user: selectedInvitor});
       },
       handlerClickDemandComplete: function() {
         var self = this;
@@ -117,7 +116,7 @@ function initPage() {
           msg: '是否确定需求完成？',
           buttons: ['确定', '取消']
         }, function(ret, err) {
-          if (ret.buttonIndex == 2) {
+          if (ret.buttonIndex == 1) {
             $.ajax({
               url: BaseService.apiUrl + 'xqqrwc',
               data: { xqid: api.pageParam.id, userid: Helper.getUserId() }
@@ -128,6 +127,8 @@ function initPage() {
               } else {
                 api.toast({msg: res.mage});
               }
+            }, function(err) {
+              alert(JSON.stringify(err));
             })
           }
         });

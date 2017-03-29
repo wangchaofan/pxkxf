@@ -2,8 +2,8 @@ body {
     background: #f0f1f5;
 }
 .more-func-list {
-    height: 10rem;
-    background: #fff url('../image/more_func_icons.jpg') 0.8rem center no-repeat;
+    height: 7.5rem;
+    background: #fff url('../image/more_func_icons.jpg') 0.8rem top no-repeat;
     background-size: 1.6rem 10rem;
 }
 .more-func-list li {

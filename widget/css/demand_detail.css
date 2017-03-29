@@ -191,3 +191,19 @@
     color: green;
 }
 
+.button-cancel {
+    margin-left: 0.4rem;
+    font-size: 0.9rem;
+    background: none;
+    color: #ff9000;
+    flex: 1;
+    border: 1px solid #ff9000;
+}
+
+.btn-submit {
+    flex: 1;
+    width: auto;
+}
+.fixed-bottom {
+    padding: 0 0.75rem;
+}

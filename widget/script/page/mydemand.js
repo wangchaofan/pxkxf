@@ -60,8 +60,9 @@ var ListItem = {
       api.confirm({
         title: '提示',
         msg: '确认删除？',
+        buttons: ['确定', '取消']
       }, function(ret, err) {
-        if (ret.buttonIndex === 2) {
+        if (ret.buttonIndex === 1) {
           $.ajax({
             url: BaseService.apiUrl + 'deletexq',
             data: { xqid: self.myData.demandorderId }

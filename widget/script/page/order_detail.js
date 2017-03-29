@@ -35,7 +35,7 @@ function initPage() {
       // 取消订单
       handleCancelOrder: function() {
         api.alert({
-          title: '提示',
+          title: '温馨提示',
           msg: '请拨打客服电话：028-84315565',
         }, function(ret, err) {
 
@@ -46,9 +46,10 @@ function initPage() {
         var self = this
         api.confirm({
           title: '提示',
-          msg: '是否确定完成？'
+          msg: '是否确定完成？',
+          buttons: ['确定', '取消']
         }, function (ret, err) {
-          if (ret.buttonIndex == 2) {
+          if (ret.buttonIndex == 1) {
             $.ajax({
               url: BaseService.apiUrl + 'yygyddwc',
               data: {

@@ -92,7 +92,7 @@ function initPage() {
           data: {wtid: self.wtid}
         }).then(function(res) {
           if (res.key === 'true') {
-            self.question = ParseJson(res.data)[0]
+            self.question = ParseJson(res.data)[0];
             self.expertTWHDmodel = self.question.ExpertTWHDmodel
             self.getRelate(self.question.twtitle)
             console.log(ParseJson(res.data)[0])

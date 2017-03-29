@@ -3,9 +3,6 @@ function initPage() {
     el: '.wrapper',
     created: function() {
       this.getUserData();
-      api.closeWin({
-        name: 'add_edit_demand'
-      });
     },
     data: function() {
       return {

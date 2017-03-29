@@ -269,8 +269,9 @@ apiready = function() {
 			api.confirm({
 				title: '提示',
 				msg: '发布需要实名认证，是否立即认证？',
+				buttons: ['确定', '取消']
 			}, function (ret, err) {
-				if (ret.buttonIndex === 2) {
+				if (ret.buttonIndex === 1) {
 					Helper.openWin('qualification')
 				}
 			});

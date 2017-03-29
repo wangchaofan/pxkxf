@@ -36,13 +36,13 @@
     <div class="button-chat" @click="onClickChat"></div>
     <div class="button-book btn-submit" v-if="order.mstate == 1" @click="onClickAccept">接受订单</div>
     <div class="button-cancel btn-submit" v-if="order.mstate == 1" @click="onClickRefuse">拒绝订单</div>
-    <div class="button-cancel btn-submit" v-if="order.mstate == 2" @click="onClickComplete">供应完成</div>
-    <div class="button-cancel btn-submit" v-if="order.mstate == 2 || order.mstate == 3" @click="handleCancelOrder">取消订单</div>
+    <div class="button-book btn-submit" v-if="order.mstate == 2" @click="onClickComplete">供应完成</div>
     <div class="button-book btn-submit" v-if="order.mstate == 3" disabled>等待确认完成</div>
     <div class="button-book btn-submit" v-if="order.mstate == 4" disabled>等待评价</div>
     <div class="button-book btn-submit" v-if="order.mstate == 5" disabled>订单已完成</div>
     <div class="button-book btn-submit" v-if="order.mstate == 6" disabled>订单已取消</div>
     <div class="button-book btn-submit" v-if="order.mstate == 7" disabled>订单被拒绝</div>
+    <div class="button-cancel btn-submit" v-if="order.mstate == 2 || order.mstate == 3" @click="handleCancelOrder">取消订单</div>
   </div>
 </div>
 <script src="../script/lib/jquery-3.1.1.min.js"></script>
