@@ -23,7 +23,7 @@ function initPage() {
       getData: function() {
         $.ajax({
           url: BaseService.apiUrl + 'getczjl',
-          data: {userid: MockData.userid},
+          data: {userid: Helpter.getUserId()},
           context: this
         }).done(function(res) {
           console.log(ParseJson(res.data))
