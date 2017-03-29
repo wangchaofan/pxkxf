@@ -35,6 +35,14 @@
       <label for="">出生日期</label>
       <input type="input" v-model="userInfo.birthDate" placeholder="请选择" @click="handleSelectDay" readonly>
     </div>
+    <div class="input-row">
+      <label for="">联系手机</label>
+      <input type="number" maxlength="11" v-model="userInfo.phoneNumber" placeholder="请输入手机号">
+    </div>
+    <div class="input-row">
+      <label for="">电子邮箱</label>
+      <input type="email" v-model="userInfo.email" placeholder="请输入电子邮箱">
+    </div>
     <!-- <div class="input-row">
       <label for="">年龄</label>
       <input type="text" v-model="userInfo.age" placeholder="请输入年龄">
@@ -46,14 +54,6 @@
     <div class="input-row">
       <label for="">所在地</label>
       <input type="text" v-model="nowZone" @click="selectZone('now')" readonly>
-    </div>
-    <div class="input-row">
-      <label for="">联系手机</label>
-      <input type="number" maxlength="11" v-model="userInfo.phoneNumber" placeholder="请输入手机号">
-    </div>
-    <div class="input-row">
-      <label for="">电子邮箱</label>
-      <input type="email" v-model="userInfo.email" placeholder="请输入电子邮箱">
     </div>
     <div class="input-row">
       <label for="">毕业院校</label>

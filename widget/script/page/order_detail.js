@@ -58,6 +58,7 @@ function initPage() {
               api.toast({msg: '供应完成'});
               if (res.key === 'true') {
                 self.getData();
+                Helper.openWin('comment', { id: api.pageParam.id });
               } else {
                 api.toast({msg: res.mage})
               }
@@ -74,7 +75,6 @@ function initPage() {
       // === 评价 ===z
       toComment: function() {
         Helper.openWin('comment', { id: api.pageParam.id });
-
       },
       // ===取消 ===
       onCancel: function () {

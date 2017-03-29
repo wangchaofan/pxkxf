@@ -87,7 +87,8 @@ function initPage() {
               }
             }).done(function(res) {
               if (res.key === 'true') {
-                self.getData()
+                self.getData();
+                Helper.openWin('comment', { id: api.pageParam.id });
               } else {
                 api.toast({msg: res.mage})
               }
