@@ -14,7 +14,7 @@ function initPage() {
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'gettxjl',
-          data: { userid: MockData.userid }
+          data: { userid: Helpter.getUserId() }
         }).done(function(res) {
           self.list = ParseJson(res.data)
           console.log(ParseJson(res.data))
