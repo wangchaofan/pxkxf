@@ -62,7 +62,7 @@
     <div class="button-book btn-submit" v-if="order.fkstate == 1" @click="toPay">去付款</div>
     <div class="button-cancel btn-submit" v-if="order.mstate == 1" @click="onCancel">取消邀约</div>
     <div class="button-book btn-submit" v-if="order.mstate == 2" disabled>进行中</div>
-    <div class="button-book btn-submit" v-if="order.mstate == 2 || order.mstate == 5" @click="handleCancelOrder">取消订单</div>
+    <div class="button-cancel btn-submit" v-if="order.mstate == 2 || order.mstate == 4" @click="handleCancelOrder">取消订单</div>
     <div class="button-book btn-submit" v-if="order.mstate == 3" @click="toConfirm">确认供应完成</div>
     <div class="button-cancel btn-submit" v-if="order.mstate == 4" @click="toComment">去评价</div>
     <div class="button-book btn-submit" v-if="order.mstate == 5" disabled>订单已完成</div>

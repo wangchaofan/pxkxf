@@ -19,6 +19,14 @@ function initPage() {
       onClickChat: function() {
         Helper.openWin('chat_room', {targetId: this.userModel.lUserId})
       },
+      handleCancelOrder: function() {
+        api.alert({
+          title: '提示',
+          msg: '请拨打客服电话：028-84315565',
+        }, function(ret, err) {
+
+        });
+      },
       // === 接受订单 ===
       onClickAccept: function () {
         var self = this
