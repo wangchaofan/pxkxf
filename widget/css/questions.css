@@ -26,6 +26,9 @@ body {
     background: url('../image/icon_interrogation.png') left center no-repeat;
     background-size: 0.75rem 0.75rem;
 }
+.question-list li .answer-status.professor {
+    background-image: url('../image/icon_ok_red.png');
+}
 .question-list li .answer-status.answered {
     background-image: url('../image/icon_ok.png');
 }

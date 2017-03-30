@@ -17,6 +17,7 @@
         <div class="question-title text-overflow-es flex-1">{{item.twtitle}}</div>
         <div class="answer-status" v-if="item.jdstate == 1">待解答</div>
         <div class="answer-status answered" v-if="item.jdstate == 2">已解答</div>
+        <div class="answer-status professor" v-if="item.jdstate == 3">已解答</div>
       </li>
     </ul>
   </section>
