@@ -10,7 +10,7 @@ var MockData = {
 
 /* === api 基础服务 === */
 var BaseService = {
-  apiUrl: 'http://120.26.116.143:809/WebServer/userServer.asmx/'
+  apiUrl: 'http://112.74.181.171:801/WebServer/userServer.asmx/'
 }
 
 /* === 辅助方法 === */
