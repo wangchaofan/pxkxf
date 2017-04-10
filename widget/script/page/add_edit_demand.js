@@ -80,8 +80,10 @@ function initPage() {
           error = '请选择需求类别';          
         } else if (demand.xqdetails === '') {
           error = '请输入详情描述';
-        } else if (isNaN(Number(demand.money))) {
+        } else if (isNaN(Number(demand.money)) || demand.money === '') {
           error = '请输入正确金额';
+        } else if (demand.money < 1) {
+          error = '金额不能小于1元';
         } else if (this.zone === '') {
           error = '请选择地区';
         }

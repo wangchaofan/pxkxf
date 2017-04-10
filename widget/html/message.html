@@ -14,7 +14,7 @@
     <div class="message-list bg-white" v-cloak>
         <ul>
             <li v-for="item in list" @touchstart="onClickMessage(item)" tapmode="hover">
-                <div class="message-list-item" v-if="item.targetId === uid">
+                <div class="message-list-item" v-if="item.senderUserId !== uid">
                     <div class="message-list-item__avatar">
                         <img :src="item.latestMessage.extra.sender.avatar" alt="">
                     </div>
@@ -59,11 +59,11 @@
                             系统通知
                         </div>
                         <div class="message-list-item__content text-overflow-es">
-                            {{notice.noticecontent}}
+                            {{notice.noticecontent ? notice.noticecontent : '暂无通知' }}
                         </div>
                     </div>
                     <div class="message-list-item__otherinfo">
-                        <div class="message-list-item__date">
+                        <div class="message-list-item__date" v-if="notice.noticetime">
                             {{notice.noticetime | date('yyyy-MM-dd hh:mm:ss')}}
                         </div>
                         <!--<div class="unread-number">12</div>-->

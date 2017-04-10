@@ -33,7 +33,7 @@ function initPage() {
           data: { userid: Helper.getUserId() }
         }).done(function(res) {
           var data = ParseJson(res.data)
-          self.notice = data[0]
+          self.notice = data[0] || {};
           self.hasNoReadNotice = _.every(data, function(o) { 
             return o.state == '2'
           })

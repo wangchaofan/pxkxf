@@ -4,7 +4,7 @@ var ListItem = {
             '    <img :src="avatar" alt="">' +
             '  </div>' +
             '  <div class="supply-list-item__right">' +
-            '    <div class="button-edit" @click.stop="onClickEdit">操作</div>' +
+            '    <div class="button-edit" v-if="isMe" @click.stop="onClickEdit">操作</div>' +
             '    <div class="supply-list-item__param">' +
             '      需求名称：<span class="text-black">{{myData.demandTitle}}</span>' +
             '    </div>' +
@@ -19,7 +19,9 @@ var ListItem = {
             '</li>',
   props: ['myData'],
   data: function() {
-    return {}
+    return {
+      isMe: !api.pageParam.uid || api.pageParam.uid === Helper.getUserId(),
+    };
   },
   computed: {
     avatar: function() {
@@ -187,7 +189,9 @@ function initPage() {
     },
     data: function() {
       return {
+        title: api.pageParam.uid ? '他的需求' : '我的需求',
         currentPage: 'demand',
+        isMe: !api.pageParam.uid,
         demandList: [],
         inviteList: []
       }
@@ -213,7 +217,7 @@ function initPage() {
         if (this.currentPage === 'demand') {
           $.ajax({
             url: BaseService.apiUrl + 'getDemandOrder',
-            data: { userid: Helper.getUserId(), type: 1 }
+            data: { userid: api.pageParam.uid || Helper.getUserId(), type: this.isMe ? 1 : 2 }
           }).then(function(res) {
             if (res.key === 'true') {
               self.demandList = _.filter(ParseJson(res.data), function(item) {

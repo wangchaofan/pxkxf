@@ -2,6 +2,7 @@
  * Created by chaofanw on 2016/12/23.
  */
 var vm
+var Fn = function() {};
 function initPage() {
   vm = new Vue({
     el: '#mainPage',
@@ -99,7 +100,8 @@ function initPage() {
         // === 获取系统通知 ===
         $.ajax({
           url: BaseService.apiUrl + 'gettz',
-          data: { userid: Helper.getUserId() }
+          data: { userid: Helper.getUserId() },
+          beforeSend: Fn,
         }).done(function(res) {
           var data = ParseJson(res.data)
           var count = _.filter(data, function(o) {
@@ -111,7 +113,8 @@ function initPage() {
         // === 获取预约通知 ===
         $.ajax({
           url: BaseService.apiUrl + 'getyytz',
-          data: { userid: Helper.getUserId() }
+          data: { userid: Helper.getUserId() },
+          beforeSend: Fn,
         }).then(function(res) {
           var data = ParseJson(res.data)
           var count = _.filter(data, function(o) {
