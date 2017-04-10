@@ -103,8 +103,8 @@ apiready = function() {
 				name: 'home',
 				url: 'html/home.html'
 			}, {
-				name: 'order',
-				url: 'html/order.html'
+				name: 'publish',
+				url: 'html/publish.html'
 			}, {
 				name: 'consult',
 				url: 'html/professor_question.html'
@@ -132,7 +132,7 @@ apiready = function() {
 			selected: '#ec3c41',
 			marginB: 6.0
 		}
-		var nvTabBarWidth = api.winWidth / 5.0
+		var nvTabBarWidth = api.winWidth / 4.0
 		var NVTabBar = api.require('NVTabBar')
 		var currentIndex = 0
 		NVTabBar.open({
@@ -178,24 +178,26 @@ apiready = function() {
 					highlight: 'widget://image/nvtab/icon_order_selected.png',
 					selected: 'widget://image/nvtab/icon_order_selected.png'
 				},
-				title: _.assign({}, nvTabBarCommonTitle, { text: '订单'})
-			}, {
+				title: _.assign({}, nvTabBarCommonTitle, { text: '发布'})
+			}, 
+			// {
+			// 	w: nvTabBarWidth,
+			// 	bg: {
+			// 		marginB: 12
+			// 	},
+			// 	iconRect: {
+			// 		w: 44,
+			// 		h: 44
+			// 	},
+			// 	icon: {
+			// 		normal: 'widget://image/nvtab/icon_add.png',
+			// 		highlight: 'widget://image/nvtab/icon_add.png',
+			// 		selected: 'widget://image/nvtab/icon_add.png'
+			// 	},
+			// 	title: _.assign({}, nvTabBarCommonTitle, { text: '发布', selected: '#333'})
+			// }, 
+			{
 				w: nvTabBarWidth,
-				bg: {
-					marginB: 12
-				},
-				iconRect: {
-					w: 44,
-					h: 44
-				},
-				icon: {
-					normal: 'widget://image/nvtab/icon_add.png',
-					highlight: 'widget://image/nvtab/icon_add.png',
-					selected: 'widget://image/nvtab/icon_add.png'
-				},
-				title: _.assign({}, nvTabBarCommonTitle, { text: '发布', selected: '#333'})
-			}, {
-				w: api.winWidth / 5.0,
 				bg: {
 					marginB: -4
 				},
@@ -228,37 +230,7 @@ apiready = function() {
 			selectedIndex: 0
 		}, function(ret, err) {
 			if (ret && ret.eventType === 'click') {
-				if (ret.index < 2) {
-					switchFrame(ret.index)
-				} else if (ret.index === 2) {
-					api.actionSheet({
-				    cancelTitle: '取消',
-				    buttons: ['发布供应', '发布需求', '发布动态'],
-				    style: {
-			    		itemNormalColor: '#fafafa',
-			    		fontNormalColor: '#4abdff',
-			    		fontPressColor: '#e4353a'
-				    }
-					}, function(ret, err) {
-				    var index = ret.buttonIndex;
-						if (index !== 4 && !judgeAuthority()) return;
-				    if (index === 1) {
-							Helper.openWin('add_edit_supply', {type: 'add'});
-				    } else if (index === 2) {
-							Helper.openWin('add_edit_demand', {type: 'add'});
-				    } else if (index === 3) {
-							Helper.openWin('add_dynamic', {type: 'add'});
-				    }
-						if (currentIndex >= 2) {
-							currentIndex = currentIndex + 1
-						}
-				    NVTabBar.setSelect({
-					    index: currentIndex
-						})
-					})
-				} else {
-					switchFrame(ret.index - 1)
-				}
+				switchFrame(ret.index)
 			}
 		})
   }

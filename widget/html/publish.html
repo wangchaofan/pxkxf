@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>更多功能</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/morefunc.css">
+  <script src="../script/adapter.js"></script>
+  <style>
+    .more-func-list {
+      background: #fff;
+    }
+    .more-func-list li {
+      padding-left: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="mainPage" class="wrapper">
+  <header class="header">
+			<div class="header-left">
+				<!--<span class="return-back"></span>-->
+			</div>
+			<div class="header-center">
+				<span class="header-center-text">发布</span>
+			</div>
+			<div class="header-right"></div>
+		</header>
+  <div class="more-func-list container">
+    <ul>
+      <li @click="goPage('add_edit_supply')">
+        <span>发布供应</span>
+      </li>
+      <li @click="goPage('add_edit_demand')">
+        <span>发布需求</span>
+      </li>
+      <li @click="goPage('add_dynamic')">
+        <span>发布动态</span>
+      </li>
+    </ul>
+  </div>
+</div>
+  <script src="../script/lib/jquery-3.1.1.min.js"></script>  
+  <script src="../script/lib/lodash.js"></script>
+  <script src="../script/lib/vue.min.js"></script>
+  <script src="../script/helper.js"></script>
+  <script src="../script/page/publish.js"></script>
+</body>
+</html>

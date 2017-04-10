@@ -119,11 +119,11 @@ function initPage() {
             api.sendEvent({
               name: 'refreshMyDemand'
             })
-            Helper.openWin('pay', {
-              mmoney: self.demand.money * self.demand.rnum,
-              orderId: res.data,
-              orderType: 'demand'
-            });
+            // Helper.openWin('pay', {
+            //   mmoney: self.demand.money * self.demand.rnum,
+            //   orderId: res.data,
+            //   orderType: 'demand'
+            // });
             setTimeout(function() {
               api.closeWin()
             }, 1500);

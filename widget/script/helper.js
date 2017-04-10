@@ -116,7 +116,7 @@ Vue.component('user-box', {
             '      </div>' +
             '      <div class="online-status" :class="{\'off-line\': user.onlineState === 2}">{{onlineText}}</div>' +
             '      <slot name="userLtBottom">' +
-            '        <user-good-level :good-level="user.evaluate"></user-good-level>' +
+            // '        <user-good-level :good-level="user.evaluate"></user-good-level>' +
             '      </slot>' +
             '    </div>' +
             '  </div>' +

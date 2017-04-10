@@ -31,7 +31,7 @@
 					<span class="user-sex vam"  :class="{woman: userInfo.sex == '女'}"></span>
 					</div>
 					<div class="online-status" :class="{'off-line': userInfo.onlineState !== 1}">{{userInfo.onlineState === 1 ? '在线' : '离线'}}</div>
-					<user-good-level v-bind:good-level="userInfo.evaluate"></user-good-level>
+					<!--<user-good-level v-bind:good-level="userInfo.evaluate"></user-good-level>-->
 				</div>
 			</div>
 			<div class="user-info-rt">

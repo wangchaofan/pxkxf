@@ -179,13 +179,15 @@ function initPage() {
           url: BaseService.apiUrl + 'getuserSkill',
           data: { userid: self.uid, type: 2 }
         }).then(function(res) {
+          // alert(JSON.stringify(res))
           if (res.key === 'true') {
+            alert(res.data)
             self.supplies = _.filter(JSON.parse(res.data), function(item) {
               return item.State === 2;
             }).slice(0, 2);
           }
         }, function(err) {
-          console.log(JSON.stringify(err))
+          alert(JSON.stringify(err))
         })
       },
       getComments: function() {
