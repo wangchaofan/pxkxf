@@ -183,18 +183,17 @@ Vue.component('user-good-level', {
   template: '<div class="good-like">' +
             ' <div class="good-like__text">好评:</div>' +
             ' <div class="good-like-pl">' +
-            '   <span v-for="i in 3" :class="getClass(i)"></span>' +
+            '   <span v-for="i in level" class="icon-good"></span>' +
             ' </div>' +
             '</div>',
   props: ['goodLevel'],
-  data: function() {
-    return {
-      level: parseInt(this.goodLevel) > 3 ? 3 : parseInt(this.goodLevel)
-    }
-  },
-  methods: {
-    getClass: function(n) {
-      return n <= this.level ? 'icon-good' : 'icon-notgood'
+  computed: {
+    level: function() {
+      var level = parseInt(this.goodLevel);
+      if (!isNaN(level)) {
+        return level > 3 ? 3 : level
+      }
+      return 0;
     }
   }
 })

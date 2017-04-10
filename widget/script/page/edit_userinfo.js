@@ -46,6 +46,9 @@ function initPage() {
 					return this.userInfo.nowProvince + ' ' + this.userInfo.nowCity + ' ' + this.userInfo.nowDistrict
 				}
 				return '请选择地区'
+			},
+			educationStyle: function() {
+				return this.userInfo.education ? {} : { color: '#999' };
 			}
 		},
 		methods: {
@@ -242,9 +245,13 @@ function initPage() {
 				var dtd = $.Deferred()
 				var userInfo = this.userInfo
 				if (_.trim(userInfo.pnckname).length === 0) {
-					dtd.reject('昵称不能为空')
+					dtd.reject('昵称不能为空');
 				} else if (_.trim(userInfo.birthDate).length === 0) {
-					dtd.reject('出生日期不能为空')
+					dtd.reject('出生日期不能为空');
+				} else if (!/^1\d{10}$/.test(userInfo.phoneNumber)) {
+					dtd.reject('请输入正确的手机号码');
+				} else if (!/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(userInfo.email)) {
+					dtd.reject('请输入正确的邮箱地址');
 				} else {
 					dtd.resolve()
 				}

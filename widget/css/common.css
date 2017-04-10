@@ -469,7 +469,7 @@ template {
 
 html {
   font-size: 20px;
-  font-family: 'PingFang SC Light', Helvetica, Helvetica Neue, Arial, sans-serif, serif;
+  font-family: 'microsoft yahei', 'PingFang SC Light', Helvetica, Helvetica Neue, Arial, sans-serif, serif;
   -webkit-font-smoothing: antialiased;
 }
 body {
@@ -522,6 +522,9 @@ a {
 }
 .ar {
   text-align: right;
+}
+.pull-right {
+  float: right;
 }
 .fs24 {
   font-size: 0.6rem;

@@ -44,7 +44,7 @@
     </div>
     <div class="input-row" style="border-bottom: none;">
       <label for="dmoney">愿付酬金</label>
-      <input id="dmoney" type="text" v-model="demand.money" placeholder="1元以上">
+      <input id="dmoney" type="tel" v-model.number="demand.money" placeholder="1元以上">
       <span>元</span>
     </div>
   </form>

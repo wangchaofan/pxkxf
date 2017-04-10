@@ -133,16 +133,34 @@ function initPage() {
       deleteImage: function(index) {
         this.images.splice(index, 1)
       },
+      validate: function() {
+        var error = '';
+        var skill = this.skill;
+        if (skill.skillName === '') {
+          error = '请输入供应名称';
+        } else if (skill.skillName.length > 10) {
+          error = '供应名称最大长度为10个字';
+        } else if (skill.skilltype === '') {
+          error = '请选择供应类别';          
+        } else if (skill.skilldetails === '') {
+          error = '请输入详情描述';
+        } else if (isNaN(Number(skill.money))) {
+          error = '请输入正确金额';
+        } else if (skill.money < 1) {
+          error = '价格不能小于1元';
+        } else if (skill.Province === '') {
+          error = '请选择地区';
+        } else if (skill.servertime && new Date(skill.servertime).getTime() < Date.now()) {
+          error = '有效时间不能小于当前时间'
+        }
+        
+        return error;
+      },
       onSubmit: function() {
         if (this.submiting) return
-        if (this.skill.servertime && new Date(this.skill.servertime).getTime() < Date.now()) {
-          api.toast({
-            msg: '有效时间不能小于当前时间'
-          })
-          return
-        }
-        if (this.skill.money < 1) {
-          api.toast({msg: '价格不能小于1元'});
+        var error = this.validate();
+        if (error) {
+          api.toast({ msg: error });
           return;
         }
         this.skill.imgarr = _.map(this.images, Helper.transformImageData).join(',')

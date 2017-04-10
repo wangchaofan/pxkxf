@@ -8,6 +8,11 @@
 	<link rel="stylesheet" href="../css/mysupply.css">
 	<link rel="stylesheet" href="../css/user_avatar.css">
   <script src="../script/adapter.js"></script>
+	<style type="text/css">
+		.user-func-head {
+			margin-top: 0;
+		}
+	</style>
 </head>
 <body>
 	<div class="wrapper">
@@ -39,21 +44,23 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div class="newest-supply bg-white" v-if="skill" @click="goPage('mysupply')" v-cloak>
-			<supply-box :my-data="skill"></supply-box>
-		</div> -->
 		<div class="newest-supply bg-white" v-if="demands.length > 0">
-			<div class="p-title">最新需求</div>
+			<div class="p-title">最新需求<span class="pull-right" @click="goPage('mydemand')">更多</span></div>
 			<demand-box v-for="demand in demands" :my-data="demand"></demand-box>
 		</div>
 
+		<div class="newest-supply bg-white" v-if="supplies.length > 0">
+			<div class="p-title">最新供应<span class="pull-right" @click="goPage('mysupply')">更多</span></div>
+			<supply-box v-for="(skill,index) in supplies" :my-data="skill"></supply-box>
+		</div>
+
 		<div class="newest-supply bg-white" v-if="comments.length > 0">
-			<div class="p-title">最新评价</div>
+			<div class="p-title">最新评价<span class="pull-right">更多</span></div>
 			<div class="comment-item" v-for="comment in comments">{{comment.describe}}</div>
 		</div>
 		<div class="user-func">
 			<div class="user-func-head">
-				<span>空闲时间</span>
+				<span>空闲时间</span> 
 				<span class="free-time">{{userInfo.freeTime || '随时'}}</span>
 			</div>
 			<div class="user-func-head">
@@ -73,7 +80,7 @@
 				<span class="free-time">{{userInfo.scSkill}}</span>
 			</div>
 		</div>
-		<div class="fixed-bottom">
+		<div class="fixed-bottom" v-if="!isMe">
 			<div class="btn-submit" @click="onFocus" v-cloak>{{isFocus ? '取消关注' : '关注'}}</div>
 		</div>
 	</div>

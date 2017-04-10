@@ -12,7 +12,7 @@ function initPage() {
           userid: Helper.getUserId(),
           xqname: '',
           rnum: '1',
-          timenum: '',
+          timenum: '长期',
           xqdetails: '',
           money: '',
           perid: '', // 省
@@ -69,7 +69,31 @@ function initPage() {
           self.demand.timenum = ret.year + '-' + ret.month + '-' + ret.day
         })
       },
+      validate: function() {
+        var error = '';
+        var demand = this.demand;
+        if (demand.xqname === '') {
+          error = '请输入需求名称';
+        } else if (demand.xqname.length > 10) {
+          error = '需求名称最大长度为10个字';
+        } else if (demand.xqtype === '') {
+          error = '请选择需求类别';          
+        } else if (demand.xqdetails === '') {
+          error = '请输入详情描述';
+        } else if (isNaN(Number(demand.money))) {
+          error = '请输入正确金额';
+        } else if (this.zone === '') {
+          error = '请选择地区';
+        }
+        
+        return error;
+      },
       onSubmit: function() {
+        var error = this.validate();
+        if (error) {
+          api.toast({msg: error});
+          return;
+        }
         if (this.demandId) {
           this.handleEditDemand()
         } else {
@@ -79,8 +103,11 @@ function initPage() {
       handleAddDemand: function() {
         var self = this
         var data = _.clone(this.demand)
-        if (data.timenum)
+        if (data.timenum !== '长期') {
           data.timenum = new Date(data.timenum).getTime()
+        } else {
+          data.timenum = '';
+        }
         $.ajax({
           url: BaseService.apiUrl + 'getaddDemandOrder',
           data: data
