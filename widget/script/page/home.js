@@ -259,6 +259,12 @@ function initPage() {
   }, function (ret, err) {
     vm.getList()
   });
+
+  api.addEventListener({
+    name: 'refreshMsgCount'
+  }, function(ret, err) {
+    vm.getMessageCount();
+  });
 }
 
 apiready = function() {

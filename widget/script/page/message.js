@@ -48,6 +48,9 @@ function initPage() {
         }).done(function(res) {
           if (res.key == 'true') {
             self.hasNoReadNotice = true
+            api.sendEvent({
+              name: 'refreshMsgCount',
+            });
             Helper.openWin('notice')
           }
         })

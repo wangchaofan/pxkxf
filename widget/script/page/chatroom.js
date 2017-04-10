@@ -8,14 +8,12 @@ $.ajax({
   dataType: 'json',
   type: 'get',
   beforeSend: function() {
-
   },
   dataFilter: function (ret) { return ret },
   success: function (res) {
     imageJson = res
   },
   complete: function() {
-
   }
 });
 
@@ -25,7 +23,9 @@ function clearUnreadStatus() {
     targetId: api.pageParam.targetId
   }, function (ret, err) {
     if (ret.status === 'success') {
-
+      api.sendEvent({
+        name: 'refreshMsgCount',
+      });
     }
   })
 }
