@@ -49,7 +49,7 @@
 				<span class="row-label invited-number">{{demandInfo.yynum}}应邀</span>
 			</div> -->
 		</div>
-		<div class="has-invited-person" v-if="demandInfo" v-cloak>
+		<!-- <div class="has-invited-person" v-if="demandInfo" v-cloak>
 			<div v-for="item in demandInfo.XQInvitedmodel" @click="handlerClickConfirm(item)">
 				<user-box :user="item.usermodel[0]">
 					<div class="demand-price fs24" slot="userLtBottom">技能描述：{{item.skillms}}</div>
@@ -60,11 +60,11 @@
 					<div slot="userRtBottom"></div>
 				</user-box>
 			</div>
-		</div>
-		<!-- <div class="fixed-bottom deman-detail-bottom display-flex" v-if="inviteButtonVisible">
-			<div class="button-chat" @click="goChat">聊一聊</div>
-			<div class="button-invite" v-if="demandInfo.ifstate != 1" @click="goInvite">应邀</div>
 		</div> -->
+		<div class="fixed-bottom deman-detail-bottom display-flex" v-if="inviteButtonVisible">
+			<div class="button-chat" @click="goChat" style="margin: 0 auto;">聊一聊</div>
+			<!-- <div class="button-invite" v-if="demandInfo.ifstate != 1" @click="goInvite">应邀</div> -->
+		</div>
 		<!-- <div class="fixed-bottom display-flex" v-if="buttonVisible">
 			<div class="btn-submit" v-if="demandInfo.orderState == 1" @click="toPay">立即支付</div>
 			<div class="btn-submit" v-if="!isMe && demandInfo.orderState == 4" @click="handlerComplete">供应完成</div>
@@ -74,7 +74,7 @@
 			<div class="btn-submit" v-if="demandInfo.orderState == 8" disabled>订单已关闭</div>
 			<div class="button-cancel btn-submit" v-if="demandInfo.orderState == 6" @click="toComment">去评价</div>
 		</div> -->
-		<div class="mask" v-show="showDialog" v-if="demandInfo" v-cloak>
+		<!-- <div class="mask" v-show="showDialog" v-if="demandInfo" v-cloak>
 			<div class="yy-dialog">
 				<div class="dialog-head">
 					<div>
@@ -117,7 +117,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<script src="../script/lib/jquery-3.1.1.min.js"></script>
 	<script src="../script/lib/lodash.js"></script>
