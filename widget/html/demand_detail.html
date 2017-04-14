@@ -45,9 +45,9 @@
 				<span class="row-label">详情描述</span>
 				<span class="content">{{demandInfo.ddetails}}</span>
 			</div>
-			<div class="row">
+			<!-- <div class="row">
 				<span class="row-label invited-number">{{demandInfo.yynum}}应邀</span>
-			</div>
+			</div> -->
 		</div>
 		<div class="has-invited-person" v-if="demandInfo" v-cloak>
 			<div v-for="item in demandInfo.XQInvitedmodel" @click="handlerClickConfirm(item)">
