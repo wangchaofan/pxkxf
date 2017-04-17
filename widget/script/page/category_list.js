@@ -111,8 +111,7 @@ function initPage() {
         this.getSearchResult(api.pageParam.searchContent);
       } else {
         this.getDemand();
-        this.getSupply();
-        this.pageNum += 1;
+        this.demandPageNum += 1;
       }
     },
     components: {
@@ -127,7 +126,8 @@ function initPage() {
         hasMoreDemand: true,
         hasMoreSupply: true,
         posting: false,
-        pageNum: 1,
+        demandPageNum: 1,
+        supplyPageNum: 1,
         category: api.pageParam.category,
         title: api.pageParam.category
       }
@@ -186,7 +186,7 @@ function initPage() {
           data: {
             type: this.category,
             userid: Helper.getUserId(),
-            num: this.pageNum,
+            num: this.demandPageNum,
             zState: 1
           },
           success: function(res) {
@@ -211,7 +211,7 @@ function initPage() {
           data: {
             type: self.category,
             userid: Helper.getUserId(),
-            num: this.pageNum,
+            num: this.supplyPageNum,
             zState: 1
           },
           success: function(res) {
@@ -237,9 +237,13 @@ function initPage() {
       threshold: 50     //设置距离底部多少距离时触发，默认值为0，数字类型
     }
   }, function (ret, err) {
-    vm.getDemand();
-    vm.getSupply();
-    vm.pageNum += 1;
+    if (this.currentPage === 'demand') {
+      vm.demandPageNum += 1;
+      vm.getDemand();
+    } else {
+      vm.supplyPageNum += 1;
+      vm.getSupply();
+    }
   });
 }
 

@@ -170,7 +170,7 @@ function initPage() {
         }).then(function(res) {
           self.demands = JSON.parse(res.data).slice(0, 2);
         }, function(err) {
-          alert(JSON.stringify(err))
+          // alert(JSON.stringify(err))
         })
       },
       getSupplies: function() {
@@ -185,7 +185,7 @@ function initPage() {
             }).slice(0, 2);
           }
         }, function(err) {
-          alert(JSON.stringify(err))
+          // alert(JSON.stringify(err))
         })
       },
       getComments: function() {

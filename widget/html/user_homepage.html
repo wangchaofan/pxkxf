@@ -58,7 +58,7 @@
 			<div class="p-title">最新评价<span class="pull-right">更多</span></div>
 			<div class="comment-item" v-for="comment in comments">{{comment.describe}}</div>
 		</div>-->
-		<div class="user-func">
+		<div class="user-func" v-cloak>
 			<div class="user-func-head">
 				<span>空闲时间</span> 
 				<span class="free-time">{{userInfo.freeTime || '随时'}}</span>
