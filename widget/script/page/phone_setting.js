@@ -22,6 +22,9 @@ function initPage() {
         }).then(function(res) {
           if (res.key === 'true') {
             self.phonestate = state
+            api.sendEvent({
+              name: 'refreshUserInfo',
+            });
           } else {
             api.toast({
               msg: res.mage

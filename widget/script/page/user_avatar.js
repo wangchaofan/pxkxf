@@ -225,14 +225,14 @@ function initPage() {
         })
       }
     }
-  })
+  });
 
   api.addEventListener({
     name: 'refreshUserInfo'
   }, function (ret, err) {
     vm.getData()
   })
-}
+};
 
 apiready = function(){
   initPage()
