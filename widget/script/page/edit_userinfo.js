@@ -101,6 +101,7 @@ function initPage() {
 						color: '#333'
 					}
 				}, function(ret, err) {
+					if (ret.eventType === 'cancel') return;
 					if (t === 'home') {
 						userInfo.homeProvince = ret.level1;
 						userInfo.homeCity = ret.level2;
