@@ -18,8 +18,9 @@ function initPage() {
     computed: {
       userModel: function () {
         if (this.demandInfo) {
-          var userModel = this.demandInfo.Usermodel[0]
-          userModel.avatarStyle = 'background-image: url(' + userModel.pheadimgUrl + ')'
+          var userModel = this.demandInfo.Usermodel[0];
+          userModel.avatarStyle = 'background-image: url(' + userModel.pheadimgUrl + ')';
+          userModel.level = userModel.levle === '普通用户' ? 1 : 2;
           return userModel
         }
         return null
@@ -189,6 +190,12 @@ function initPage() {
               })
           }
         })
+      },
+      onClickPhoneButton: function() {
+        api.call({
+          type: 'tel',
+          number: this.userModel.Phone
+        });
       },
       onClickCancel: function () {
         this.showDialog = false

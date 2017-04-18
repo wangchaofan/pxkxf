@@ -17,9 +17,10 @@ function initPage() {
     computed: {
       userModel: function() {
         if (this.supplyInfo) {
-          var userModel = this.supplyInfo.sUsermodel[0]
-          userModel.avatarStyle = 'background-image: url(' + userModel.pheadimgUrl + ')'
-          return userModel
+          var userModel = this.supplyInfo.sUsermodel[0];
+          userModel.avatarStyle = 'background-image: url(' + userModel.pheadimgUrl + ')';
+          userModel.level = userModel.levle === '普通用户' ? 1 : 2;
+          return userModel;
         }
         return null
       }
@@ -135,6 +136,12 @@ function initPage() {
             dialogName: 'input'
           })
         })
+      },
+      onClickPhoneButton: function() {
+        api.call({
+          type: 'tel',
+          number: this.userModel.Phone
+        });
       },
       putAdvise: function(content) {
         var self = this

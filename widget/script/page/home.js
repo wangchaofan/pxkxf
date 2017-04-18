@@ -268,6 +268,12 @@ function initPage() {
   }, function(ret, err) {
     vm.getMessageCount();
   });
+
+  api.addEventListener({
+    name: 'receiveMessage'
+  }, function(ret, err) {
+    vm.messageCount = vm.messageCount + 1;
+  });
 }
 
 apiready = function() {

@@ -207,3 +207,15 @@
 .fixed-bottom {
     padding: 0 0.75rem;
 }
+.button-phone {
+    padding-top: 1.35rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid #ffb657;
+    border-radius: 100%;
+    font-size: 0.5rem;
+    color: #666;
+    text-align: center;
+    background: url('../image/phone_2.png') center 0.3rem no-repeat;
+    background-size: 0.9rem 0.9rem;
+}

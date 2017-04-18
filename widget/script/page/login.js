@@ -88,7 +88,7 @@ function initPage() {
 						}
 					})
 					.fail(function(err) {
-						Helper.alert(err)
+						Helper.alert('登陆失败');
 					})
 					.always(function() {
 						this.submiting = false

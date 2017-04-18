@@ -33,7 +33,7 @@ function initPage() {
         if (skill.Province) {
           return skill.Province + ' ' + skill.City + ' ' + skill.District
         }
-        return '请选择地区(默认为任何地区)'
+        return '请选择地区'
       }
     },
     methods: {
