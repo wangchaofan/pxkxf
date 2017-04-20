@@ -19,16 +19,32 @@ body {
 }
 .question-list li .answer-status {
     height: 0.75rem;
-    padding-left: 0.85rem;
     font-size: 0.6rem;
     line-height: 0.75rem;
     color: #666;
+}
+.question-list li .answer-status:before {
+    margin-right: 0.1rem;
+    vertical-align: top;
+    display: inline-block;
+    content: '';
+    width: 0.75rem;
+    height: 0.75rem;
     background: url('../image/icon_interrogation.png') left center no-repeat;
     background-size: 0.75rem 0.75rem;
 }
-.question-list li .answer-status.professor {
-    background-image: url('../image/icon_ok_red.png');
+.question-list li .answer-status.answered:before {
+    background-image: url('../image/icon_ok.jpg');
 }
-.question-list li .answer-status.answered {
-    background-image: url('../image/icon_ok.png');
+.question-list li .answer-status.professor:before {
+    content: '专';
+    display: inline-block;
+    padding-top: 1px;
+    width: 0.7rem;
+    height: 0.7rem;
+    background: #ec3c41;
+    border-radius: 100%;
+    font-size: 0.45rem;
+    text-align: center;
+    color: #fff;
 }

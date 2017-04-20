@@ -106,15 +106,16 @@ body {
 .user-name {
     margin-top: 0.35rem;
     margin-bottom: 0.15rem;
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     color: #666;
 }
 .comment-date {
-    font-size: 0.5rem;
+    font-size: 0.55rem;
     color: #999;
 }
 .comment-content {
     margin-top: 0.35rem;
+    font-size: 0.6rem;
     line-height: 0.8rem;
 }
 .relate-question-wrap {
@@ -164,4 +165,16 @@ body {
 }
 .btn-send[disabled] {
     background: #ddd;
+}
+.professor-tag {
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 2px;
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    font-size: 8px;
+    text-align: center;
+    color: #fff;
+    background: #ec3c41;
 }

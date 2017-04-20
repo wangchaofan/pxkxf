@@ -32,7 +32,7 @@
         <img :src="item.usermodel[0].pheadimgUrl" alt="">
       </div>
       <div class="question-comment-item__right">
-        <div class="user-name">{{item.usermodel[0].pnickname}}</div>
+        <div class="user-name">{{item.usermodel[0].pnickname}} <span class="professor-tag" v-if="item.hdstate == 1">专</span></div>
         <div class="comment-date">{{item.hdtime | date('yyyy-MM-dd')}}</div>
         <div class="comment-content fs24">
           {{item.hdcontent}}
