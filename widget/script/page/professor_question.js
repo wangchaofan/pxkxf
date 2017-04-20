@@ -6,6 +6,7 @@ function initPage() {
     el: '.wrapper',
     created: function() {
       this.getQuestions();
+      this.getHostQuestions();
       this.getProfessors();
       this.getBestProfessors();
     },
@@ -43,10 +44,23 @@ function initPage() {
         }).then(function(res) {
           if (res.key === 'true') {
             var list = ParseJson(res.data)
-            self.hotQuestions = list.slice(0, 2)
             self.newQuestions = list.slice(0, 2)
           }
         })
+      },
+      getHostQuestions: function() {
+        var self = this
+        $.ajax({
+          url: BaseService.apiUrl + 'zuiewt',
+          data: {
+            userid: self.userid
+          }
+        }).then(function(res) {
+          if (res.key === 'true') {
+            var list = ParseJson(res.data)
+            self.hotQuestions = list.slice(0, 2)
+          }
+        });
       },
       getProfessors: function() {
         var self = this
