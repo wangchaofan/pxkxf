@@ -11,7 +11,9 @@ function initPage() {
     },
     methods: {
       setPhoneState: function(state) {
-        if (state == this.phonestate) return
+        if (state == this.phonestate) {
+          state = 0;
+        }
         var self = this
         $.ajax({
           url: BaseService.apiUrl + 'phonstate',

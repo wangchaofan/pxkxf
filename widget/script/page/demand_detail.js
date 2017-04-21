@@ -5,7 +5,7 @@ function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     created: function () {
-      this.getData()
+      this.getData();
     },
     data: function () {
       return {
@@ -143,11 +143,10 @@ function initPage() {
         })
       },
       getData: function () {
-        var self = this
+        var self = this;
         $.ajax({
             url: BaseService.apiUrl + 'getxqinfo',
             data: { xqid: api.pageParam.id, userid: Helper.getUserId() }
-            //data: { xqid: 'a17db629-52b6-4b6a-a904-e6c1721e3a00', userid: Helper.getUserId()}
           })
           .done(function (res) {
             self.demandInfo = ParseJson(res.data)[0]
@@ -155,6 +154,8 @@ function initPage() {
               self.isMe = false
             }
             console.log(ParseJson(res.data)[0])
+          }).catch(function(err) {
+            console.log(JSON.stringify(err));
           })
       },
       // 确定选择应邀人

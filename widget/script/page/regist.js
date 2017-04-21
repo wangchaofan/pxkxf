@@ -54,10 +54,7 @@ function initPage() {
 							api.toast({
 								msg: '注册成功'
 							});
-							api.setPrefs({
-								key: 'userid',
-								value: res.data
-							});
+							window.localStorage.setItem('userid', res.data);
 							Helper.openWin('edit_basicinfo', {phone: self.regphone, pwd: self.pwd});
 							setTimeout(function() {
 								api.closeWin()

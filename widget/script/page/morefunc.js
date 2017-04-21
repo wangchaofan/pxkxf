@@ -72,9 +72,7 @@ function initPage() {
             api.toast({
                 msg: '退出登录成功'
             });
-            api.removePrefs({
-                key: 'userid'
-            });
+            window.localStorage.removeItem('userid');
             api.sendEvent({
               name: 'logoutSuccess'
             })

@@ -244,10 +244,7 @@ function initPage() {
       token: res.data
     }, function(ret, err) {
       if (ret.status == 'success') {
-        api.setPrefs({
-          key: 'rongUserId',
-          value: ret.result.userId
-        })
+        window.localStorage.setItem('rongUserId', ret.result.userId);
       }
     })
   }, function(err) {

@@ -168,8 +168,9 @@ function initPage() {
               skill.pheadimgUrl = ret.destPath
               self.skill = skill
             }
-            self.FNImageClip.close()
+            self.FNImageClip.close();
             convertImgToBase64(ret.destPath, function(base64) {
+              alert(111);
               self.uploadAvatar(base64)
             })
           } else {

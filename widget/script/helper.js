@@ -290,24 +290,18 @@ function setUserInfo() {
     url: BaseService.apiUrl + 'getuserinfo',
     data: { uid: getUserId() }
   }).then(function(res) {
-    api.setPrefs({
-      key: 'userInfo',
-      value: ParseJson(res.data)[0]
-    })
+    window.localStorage.setItem('userInfo', ParseJson(res.data)[0]);
   }, function(err) {
     console.log(err)
   })
 }
 
 function getUserInfo() {
-  return JSON.parse(api.getPrefs({key: 'userInfo', sync: true}))
+  return JSON.parse(window.localStorage.getItem('userInfo'));
 }
 
 function getUserId() {
-  if (window.api) {
-    return api.getPrefs({key: 'userid', sync: true})
-  }
-  return MockData.userid
+  return window.localStorage.getItem('userid');
 }
 
 function dateFormat(val, fmt) {
@@ -339,19 +333,22 @@ function dateFormat(val, fmt) {
 }
 
 function convertImgToBase64(url, callback, outputFormat){
-  var canvas = document.createElement('CANVAS'),
-    ctx = canvas.getContext('2d'),
-    img = new Image;
-    img.crossOrigin = 'Anonymous';
-    img.onload = function(){
-      canvas.height = img.height;
-      canvas.width = img.width;
-      ctx.drawImage(img,0,0);
-      var dataURL = canvas.toDataURL(outputFormat || 'image/png');
-      callback.call(this, dataURL);
-      canvas = null;
-    };
-    img.src = url;
+  var canvas = document.createElement('canvas'),
+      ctx = canvas.getContext('2d'),
+      img = new Image();
+  image.setAttribute('crossOrigin', 'anonymous');
+  img.addEventListener('load', function() {
+    canvas.height = img.height;
+    canvas.width = img.width;
+     alert(1)
+    ctx.drawImage(img, 0, 0);
+    alert(canvas)
+    var dataURL = canvas.toDataURL('image/png');
+    alert(dataURL)
+    callback.call(this, dataURL);
+    canvas = null;
+  }, false);
+  img.src = url;
 }
 
 function getRongcloudToken() {

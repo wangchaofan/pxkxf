@@ -80,10 +80,7 @@ apiready = function() {
 			url: BaseService.apiUrl + 'getuserinfo',
 			data: { uid: getUserId() }
 		}).then(function(res) {
-			api.setPrefs({
-				key: 'userInfo',
-				value: ParseJson(res.data)[0]
-			});
+			window.localStorage.setItem('userInfo', ParseJson(res.data)[0]);
 		}, function(err) {
 			console.log(err)
 		});

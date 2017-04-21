@@ -57,18 +57,12 @@ function initPage() {
 							api.toast({
 							    msg: '登录成功'
 							});
-							api.setPrefs({
-								key: 'userid',
-								value: res.data
-							});
+							window.localStorage.setItem('userid', res.data);
 							$.ajax({
 								url: BaseService.apiUrl + 'getuserinfo',
 								data: { uid: getUserId() }
 							}).then(function(res) {
-								api.setPrefs({
-									key: 'userInfo',
-									value: ParseJson(res.data)[0]
-								});
+								window.localStorage.setItem('userInfo', ParseJson(res.data)[0]);
 								api.sendEvent({
 									name: 'initHomePage'
 								});
