@@ -336,15 +336,12 @@ function convertImgToBase64(url, callback, outputFormat){
   var canvas = document.createElement('canvas'),
       ctx = canvas.getContext('2d'),
       img = new Image();
-  image.setAttribute('crossOrigin', 'anonymous');
+  img.setAttribute('crossOrigin', 'anonymous');
   img.addEventListener('load', function() {
     canvas.height = img.height;
     canvas.width = img.width;
-     alert(1)
     ctx.drawImage(img, 0, 0);
-    alert(canvas)
     var dataURL = canvas.toDataURL('image/png');
-    alert(dataURL)
     callback.call(this, dataURL);
     canvas = null;
   }, false);

@@ -110,19 +110,31 @@ function initPage() {
         });
       },
       selectImage: function(sourceType) {
-        var self = this
+        var self = this;
+        var isIos = api.systemType === 'ios';
         api.getPicture({
           sourceType: sourceType,
           encodingType: 'png',
           mediaValue: 'pic',
-          destinationType: 'url',
+          destinationType: isIos ? 'base64' : 'url',
           allowEdit: true,
           quality: 50,
           targetWidth: 200,
           targetHeight: 200,
           saveToPhotoAlbum: true
         }, function(ret, err) {
-          self.clipImage(ret.data)
+          if (isIos) {
+            self.userInfo.pheadimgUrl = ret.data
+            if (self.skill) {
+              var skill = _.clone(self.skill)
+              skill.pheadimgUrl = ret.data
+              self.skill = skill
+            }
+            alert(ret.data);
+            self.uploadAvatar(ret.base64Data);
+          } else {
+            self.clipImage(ret.data)
+          }
         })
       },
       clipImage: function(src) {
@@ -168,9 +180,8 @@ function initPage() {
               skill.pheadimgUrl = ret.destPath
               self.skill = skill
             }
-            self.FNImageClip.close();
+            self.FNImageClip.close()
             convertImgToBase64(ret.destPath, function(base64) {
-              alert(111);
               self.uploadAvatar(base64)
             })
           } else {
@@ -195,7 +206,7 @@ function initPage() {
           api.hideProgress()
           if (res.key === 'true') {
             api.toast({
-              msg: '上传成功'
+              msg: '修改成功'
             })
             api.sendEvent({
               name: 'editAvatarSuccess',
