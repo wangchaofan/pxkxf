@@ -40,6 +40,7 @@ var Helper = {
       reload: true,
       useWKWebView: true,
       scrollToTop: true,
+      slidBackType: 'edge',
       progress: {
         type: 'page'
       },

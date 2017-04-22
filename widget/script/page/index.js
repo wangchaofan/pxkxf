@@ -30,10 +30,13 @@ apiready = function() {
 		api.openWin({
 	    name: 'login',
 	    url: 'widget://html/login.html',
+	    useWKWebView: false,
+	    historyGestureEnabled: false,
+	    slidBackEnabled: false,
 	    pageParam: {
         name: 'value'
 	    }
-		})
+		});
 	} else {
 		initPage()
 
