@@ -64,7 +64,7 @@
 		</div> -->
 		<div class="fixed-bottom deman-detail-bottom display-flex" v-if="inviteButtonVisible">
 			<div class="button-chat" @click="goChat">聊一聊</div>
-			<div class="button-phone" @click="onClickPhoneButton" v-if="userModel && userModel.level > 1">电话联系</div>
+			<div class="button-phone" @click="onClickPhoneButton" v-if="demandInfo.xqphonexsstr == 1">电话联系</div>
 			<!-- <div class="button-invite" v-if="demandInfo.ifstate != 1" @click="goInvite">应邀</div> -->
 		</div>
 		<!-- <div class="fixed-bottom display-flex" v-if="buttonVisible">
