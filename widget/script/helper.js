@@ -316,7 +316,8 @@ function dateFormat(val, fmt) {
 
   if (val === 0) return '长期';
 
-  var date = new Date(val)
+  val = val.replace(/-/g, '/');
+  var date = new Date(val);
 
   var o = {
     "M+": date.getMonth() + 1, //月份

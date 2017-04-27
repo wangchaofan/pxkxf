@@ -165,7 +165,7 @@ function initPage() {
         }
         this.skill.imgarr = _.map(this.images, Helper.transformImageData).join(',')
         var data = _.clone(this.skill)
-        data.servertime = data.servertime ? new Date(data.servertime).getTime() : ''
+        data.servertime = data.servertime ? new Date(data.servertime.replace(/-/g, '/')).getTime() : ''
         if (!data.District) {
           data.District = data.City
           data.City = data.Province
