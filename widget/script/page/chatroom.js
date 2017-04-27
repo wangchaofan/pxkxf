@@ -86,8 +86,8 @@ function initPage() {
         var self = this;
         rong.getHistoryMessages({
           conversationType: 'PRIVATE',
-          targetId: api.pageParam.targetId,
-          //oldestMessageId: 40,
+          targetId: api.pageParam.targetId + '',
+          oldestMessageId: 0,
           count: 40
         }, function (ret, err) {
           if (ret.status === 'success') {
@@ -98,6 +98,12 @@ function initPage() {
               $('body')
                 .scrollTop(1000000)
             })
+          } else {
+            api.toast({
+              msg: err.code,
+              duration: 2000,
+              location: 'middle'
+            });
           }
         })
       },
@@ -107,12 +113,13 @@ function initPage() {
           conversationType: 'PRIVATE',
           targetId: api.pageParam.targetId,
           text: msg,
-          extra: {
+          extra: JSON.stringify({
             sender: self.myInfo,
             receiver: self.targetInfo
-          }
+          })
         }, function (ret, err) {
           if (ret.status == 'prepare') {
+            ret.result.message.receivedTime = ret.result.message.receivedTime == 0 ? Date.now() : ret.result.message.receivedTime;
             self.messages.push(ret.result.message);
             Vue.nextTick(function () {
               $('body').scrollTop(1000000)
@@ -121,7 +128,7 @@ function initPage() {
           } else if (ret.status == 'success') {
             //api.toast({ msg: ret.result.message.messageId });
           } else if (ret.status == 'error') {
-            api.toast({ msg: err.code });
+            api.toast({ msg: err.code, location: 'middle' });
           }
         });
       },
@@ -149,23 +156,25 @@ function initPage() {
         });
       },
       sendImageMessage: function (imageUrl) {
+        var self = this;
         rong.sendImageMessage({
           conversationType: 'PRIVATE',
           targetId: api.pageParam.targetId,
           imagePath: imageUrl,
-          extra: {
+          extra: JSON.stringify({
             sender: self.myInfo,
             receiver: self.targetInfo
-          }
+          })
         }, function(ret, err) {
-          //if (ret.status == 'prepare')
-          //  api.toast({ msg: JSON.stringify(ret.result.message) });
-          //else if (ret.status == 'progress')
-          //  api.toast({ msg: ret.result.progress });
-          //else if (ret.status == 'success')
-          //  api.toast({ msg: ret.result.message.messageId });
-          //else if (ret.status == 'error')
-          //  api.toast({ msg: err.code });
+          if (ret.status == 'prepare') {
+
+          } else if (ret.status == 'progress') {
+           // api.toast({ msg: ret.result.progress });
+          } else if (ret.status == 'success') {
+           // api.toast({ msg: ret.result.message.messageId });
+          } else if (ret.status == 'error') {
+           api.toast({ msg: err.code, location: 'middle' });
+          }
         });
       },
       getUserInfo: function (uid, type) {
@@ -268,8 +277,7 @@ apiready = function () {
   }, function (ret, err) {
     vm.messages.push(ret.value.data)
     Vue.nextTick(function () {
-      $('body')
-        .scrollTop(1000000)
+      $('body').scrollTop(1000000)
     })
   })
 }

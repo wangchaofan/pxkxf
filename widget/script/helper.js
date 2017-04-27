@@ -314,9 +314,11 @@ function dateFormat(val, fmt) {
     val = parseInt(val.match(/\d+/)[0])
   }
 
-  if (val === 0) return '长期';
+  if ((val + '').indexOf('-') >= 0) {
+    val = val.replace(/-/g, '/');
+  }
 
-  val = val.replace(/-/g, '/');
+  if (val === 0) return '长期';  
   var date = new Date(val);
 
   var o = {
