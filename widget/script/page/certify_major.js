@@ -28,7 +28,7 @@ function initPage() {
           allowEdit: false,
           saveToPhotoAlbum: false
         }, function (ret, err) {
-          if (ret.base64Data) {
+          if (ret && ret.base64Data) {
             self.images.push(ret.base64Data)
           }
         });

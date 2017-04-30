@@ -123,6 +123,7 @@ function initPage() {
           targetHeight: 200,
           saveToPhotoAlbum: true
         }, function(ret, err) {
+          if (!ret) return;
           if (isIos) {
             if (!ret.base64Data) return;
             self.userInfo.pheadimgUrl = ret.base64Data

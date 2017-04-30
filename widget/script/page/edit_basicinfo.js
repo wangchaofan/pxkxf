@@ -46,7 +46,7 @@ function initPage() {
 					targetHeight: 200,
 					saveToPhotoAlbum: true
 				}, function(ret, err) {
-					if (ret.base64Data)
+					if (ret && ret.base64Data)
 						self.avatarImg = ret.base64Data
 				})
 			},
