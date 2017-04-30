@@ -29,7 +29,8 @@
           targetHeight: 200,
           saveToPhotoAlbum: false
         }, function(ret, err){ 
-          self.images.push(ret.base64Data)
+          if (ret.base64Data)
+            self.images.push(ret.base64Data)
         });
       },
       deleteImage: function(index) {

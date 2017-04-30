@@ -25,7 +25,8 @@ function initPage() {
 					title: '选择时间'
 				}, function(ret, err){
 					var date = ret.year + '-' + ret.month + '-' + ret.day;
-					if ((new Date(date)).getTime() > Date.now()) {
+					var date2 = ret.year + '/' + ret.month + '/' + ret.day;
+					if ((new Date(date2)).getTime() > Date.now()) {
 						api.toast({msg: '不能大于当前时间'})
 					} else {
 						self.userInfo.age = date;
@@ -45,7 +46,8 @@ function initPage() {
 					targetHeight: 200,
 					saveToPhotoAlbum: true
 				}, function(ret, err) {
-					self.avatarImg = ret.base64Data
+					if (ret.base64Data)
+						self.avatarImg = ret.base64Data
 				})
 			},
 			validate: function() {

@@ -28,7 +28,9 @@ function initPage() {
           allowEdit: false,
           saveToPhotoAlbum: false
         }, function (ret, err) {
-          self.images.push(ret.base64Data)
+          if (ret.base64Data) {
+            self.images.push(ret.base64Data)
+          }
         });
       },
       onSubmit: function () {

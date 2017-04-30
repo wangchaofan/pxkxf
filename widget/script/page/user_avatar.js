@@ -124,15 +124,16 @@ function initPage() {
           saveToPhotoAlbum: true
         }, function(ret, err) {
           if (isIos) {
-            self.userInfo.pheadimgUrl = ret.data
+            if (!ret.base64Data) return;
+            self.userInfo.pheadimgUrl = ret.base64Data
             if (self.skill) {
               var skill = _.clone(self.skill)
-              skill.pheadimgUrl = ret.data
+              skill.pheadimgUrl = ret.base64Data
               self.skill = skill
             }
-            alert(ret.data);
             self.uploadAvatar(ret.base64Data);
           } else {
+            if (!ret.data) return;
             self.clipImage(ret.data)
           }
         })

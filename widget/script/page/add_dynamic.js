@@ -51,8 +51,9 @@ function initPage() {
           allowEdit: true,
           quality: 80,
           saveToPhotoAlbum: false
-        }, function(ret, err){ 
-          self.imgarr.push(ret.base64Data)
+        }, function(ret, err) {
+          if (ret.base64Data)
+            self.imgarr.push(ret.base64Data)
         });
 			}
 		}
