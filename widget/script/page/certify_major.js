@@ -34,11 +34,19 @@ function initPage() {
         });
       },
       onSubmit: function () {
+        if (this.images.length === 0) {
+          api.toast({
+            msg: '请至少上传一张证书图片',
+            duration: 2000,
+            location: 'middle'
+          });
+          return;
+        }
         $.ajax({
           url: BaseService.apiUrl + 'addUserZs',
           data: {
             userid: Helper.getUserId(),
-            imgarr: _.map(Helper.transformImageData).join(',')
+            imgarr: _.map(this.images, Helper.transformImageData).join(',')
           }
         }).then(function(ret) {
           if (ret.key == 'true') {
