@@ -1,6 +1,6 @@
 .upload-wrap {
     margin-bottom: 0.5rem;
-    height: 12rem;
+    /* height: 12rem; */
     background: #fff;
     overflow: hidden;
     border-bottom: 0.5rem solid #f0f1f5;
@@ -69,4 +69,8 @@
     font-size: 0.6rem;
     color: #666;
     line-height: 1.5;
+}
+.certify-status {
+    font-size: 0.7rem;
+    text-align: center;
 }

@@ -12,18 +12,29 @@
   <div class="wrapper" v-cloak>
     <my-header title="专业认证"></my-header>
     <!-- <div class="has-renzheng" v-if="holdCarId">已认证</div> -->
-    <div class="">
-      <div class="upload-desc">请您上传您的专业证书<span>最多10张</span></div>
-      <section class="upload-wrap some-images display-flex">
-        <img v-for="img in images" :src="img">
-        <div class="upload-box" @click="handlerClickUpload">
-          <div class="upload-box-name">上传证书</div>
-          <!--<input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'Idzm')">-->
-        </div>
-      </section>
+    <div v-if="!zsData">
+      <div class="">
+        <div class="upload-desc">请您上传您的专业证书<span>最多10张</span></div>
+        <section class="upload-wrap some-images display-flex">
+          <img v-for="img in images" :src="img">
+          <div class="upload-box" @click="handlerClickUpload">
+            <div class="upload-box-name">上传证书</div>
+            <!--<input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'Idzm')">-->
+          </div>
+        </section>
+      </div>
+      <div class="fixed-bottom" v-if="!zsData">
+        <div class="btn-submit" @click="onSubmit">提交</div>
+      </div>
     </div>
-    <div class="fixed-bottom">
-      <div class="btn-submit" @click="onSubmit">提交</div>
+    <div v-else>
+      <section class="upload-wrap some-images display-flex">
+      <img v-for="img in images" :src="img">
+      </section>
+      <div class="certify-status">
+        <span v-if="zsData.urlstate == 1">认证成功</span>
+        <span v-if="zsData.urlstate == 2">审核中...</span>
+      </div>
     </div>
   </div>
   <script src="../script/lib/jquery-3.1.1.min.js"></script>

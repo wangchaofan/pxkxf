@@ -5,14 +5,29 @@ function initPage() {
   var vm = new Vue({
     el: '.wrapper',
     created: function() {
+      this.getData();
     },
     data: function() {
       return {
         images: [],
+        zsData: null,
         posting: true
       }
     },
     methods: {
+      getData: function() {
+        var self = this;
+        $.ajax({
+          url: BaseService.apiUrl + 'gethuUserZs',
+          data: { userid: Helper.getUserId() }
+        }).then(function(res) {
+          var data = JSON.parse(res.data);
+          if (data && data.url) {
+            self.images = data.url.split(',');
+            self.zsData = data;
+          }
+        })
+      },
       handlerClickUpload: function() {
         if (this.images.lenth >= 10) {
           api.toast({
