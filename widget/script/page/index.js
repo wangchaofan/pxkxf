@@ -39,6 +39,17 @@ apiready = function() {
 		});
 	} else {
 		initPage()
+	}
+
+	function initPage() {
+		$.ajax({
+			url: BaseService.apiUrl + 'getuserinfo',
+			data: { uid: getUserId() }
+		}).then(function(res) {
+			window.localStorage.setItem('userInfo', ParseJson(res.data)[0]);
+		}, function(err) {
+			console.log(err)
+		});
 
 		baiduLocation.getLocation(function(ret) {
 			if (ret.status) {
@@ -52,19 +63,19 @@ apiready = function() {
 				}).then(function(res) {
 				})
 			}
-		})
+		});
 
 		/* 断网事件 */
 		api.addEventListener({
 			name:'offline'
 		}, function(ret, err) {
 			Helper.alert('网络已断开！')
-		})
+		});
 
 		var rong = api.require('rongCloud2');
 		// 初始化融云
 		rong.init(function(ret, err) {
-			console(JSON.stringify(ret));
+			console.log(JSON.stringify(ret));
       if (ret.status == 'success') {
 				rong.setOnReceiveMessageListener(function(ret, err) {
 					api.sendEvent({
@@ -77,18 +88,7 @@ apiready = function() {
       } else {
       	alert(JSON.stringify(ret));
       }
-    })
-	}
-
-	function initPage() {
-		$.ajax({
-			url: BaseService.apiUrl + 'getuserinfo',
-			data: { uid: getUserId() }
-		}).then(function(res) {
-			window.localStorage.setItem('userInfo', ParseJson(res.data)[0]);
-		}, function(err) {
-			console.log(err)
-		});
+    });
 
 		api.openFrameGroup({
 			name: 'group',

@@ -55,7 +55,7 @@ function initPage() {
 						if (res.key === 'true') {
 							self.setLocation(res.data)
 							api.toast({
-							    msg: '登录成功'
+							  msg: '登录成功'
 							});
 							window.localStorage.setItem('userid', res.data);
 							$.ajax({
