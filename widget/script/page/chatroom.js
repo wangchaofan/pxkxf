@@ -251,11 +251,13 @@ function initChatbox() {
         title: '图片',
         normalImg: 'widget://res/img/icon_image.png',
         activeImg: 'widget://res/img/icon_image.png'
-        }, {
-        title: '拍照',
-        normalImg: 'widget://res/img/chatBox_cam1.png',
-        activeImg: 'widget://res/img/chatBox_cam2.png'
-        }]
+        }, 
+        // {
+        // title: '拍照',
+        // normalImg: 'widget://res/img/chatBox_cam1.png',
+        // activeImg: 'widget://res/img/chatBox_cam2.png'
+        // }
+      ]
     }
   }, function (ret, err) {
     if (ret.eventType === 'send') {
