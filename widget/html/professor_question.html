@@ -19,12 +19,13 @@
   <div class="professor-part">
     <div class="display-flex">
       <h4>专家排期</h4>
-      <span class="button-more-professor text-666" @click="viewMoreProfessor">更多</span>
+      <span v-if="freeProfessors && freeProfessors.length > 0" class="button-more-professor text-666" @click="viewMoreProfessor">更多</span>
     </div>
     <div class="professors" v-cloak>
       <div v-for="item in freeProfessors" @click="viewProfessorDetail(item)">
         <professor-box :show-theme="true"  :professor="item"></professor-box>
       </div>
+      <div v-if="freeProfessors.length === 0" class="none-text">暂时没有专家排期，敬请期待！</div>
     </div>
   </div>
   <div class="professor-part great-professor">
@@ -33,6 +34,7 @@
       <div v-for="item in bestProfessors" @click="viewProfessorDetail(item)">
         <professor-box  :professor="item"></professor-box>
       </div>
+      <div v-if="bestProfessors.length === 0" class="none-text">暂时没有资深专家，敬请期待！</div>
     </div>
   </div>
   <div class="consult-list newest" v-cloak>

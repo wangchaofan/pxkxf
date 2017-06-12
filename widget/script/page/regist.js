@@ -52,7 +52,8 @@ function initPage() {
 					.then(function(res) {
 						if (res.key === 'true') {
 							api.toast({
-								msg: '注册成功'
+						    msg: '注册成功',
+						    location: 'middle'
 							});
 							window.localStorage.setItem('userid', res.data);
 							Helper.openWin('edit_basicinfo', {phone: self.regphone, pwd: self.pwd});
@@ -64,7 +65,7 @@ function initPage() {
 						}
 					})
 					.fail(function(err) {
-						api.toast({msg: err.message});
+						api.toast({msg: err});
 					})
 					.always(function() {
 						self.submiting = false

@@ -106,7 +106,7 @@ function initPage() {
 						})
 					})
 					.fail(function(err) {
-						api.toast({msg: JSON.stringify(err)});
+						api.toast({msg: err});
 					})
 					.always(function() {
 						this.submiting = false

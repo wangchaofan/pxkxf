@@ -48,3 +48,22 @@ body {
     text-align: center;
     color: #fff;
 }
+.question-section {
+    margin-bottom: 0.5rem;
+    padding: 0 0.6rem;
+    background: #fff;
+}
+.question-section h2 {
+    margin: 0;
+    padding: 0.6rem 0;
+    font-size: 0.8rem;
+    color: #333;
+    font-weight: 400;
+    border-bottom: 1px solid #e0e0e0;
+}
+.nonedata {
+    font-size: 0.6rem;
+    text-align: center;
+    line-height: 2rem;
+    color: #999;
+}

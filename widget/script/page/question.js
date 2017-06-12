@@ -6,7 +6,8 @@ function initPage() {
     },
     data: function() {
       return {
-        list: []
+        list: [],
+        userQslist: []
       }
     },
     methods: {
@@ -18,11 +19,21 @@ function initPage() {
       },
       getData: function () {
         var self = this
+        self.list = []
+        self.userQslist = []
         $.ajax({
           url: BaseService.apiUrl + 'getTW'
         }).then(function(res) {
           if (res.key === 'true') {
-            self.list = ParseJson(res.data)
+            var result = ParseJson(res.data);
+            var userId = Helper.getUserId();
+            _.map(result, function(item) {
+              if (item.twUseriD === userId) {
+                self.userQslist.push(item);
+              } else {
+                self.list.push(item);
+              }
+            });
             console.log(ParseJson(res.data)[0])
           }
         })
