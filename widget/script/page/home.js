@@ -296,15 +296,4 @@ apiready = function() {
     autoplay: 3000,
     pagination: '.swiper-pagination'
   })
-
-  var $header = $('.top-banner-bottom');
-  var ScorllTop = 272 * window.innerWidth / 720
-
-  $(window).on('scroll', function() {
-    if (window.scrollY >= ScorllTop) {
-      $header.addClass('fixed')
-    } else {
-      $header.removeClass('fixed')
-    }
-  })
 }

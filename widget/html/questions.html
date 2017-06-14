@@ -10,23 +10,35 @@
 </head>
 <body>
 <div class="wrapper">
-  <my-header title="咨询列表"></my-header>
-  <div class="question-section" v-cloak>
-    <h2>我的问题</h2>
+  <my-header :title="pageTitle"></my-header>
+  <div v-if="!isOnlyMy">
+    <div class="question-section" v-cloak>
+      <h2>我的问题</h2>
+      <ul class="question-list fs28">
+        <li v-for="item in userQslist" @click="goQuestionDetail(item)">
+          <div class="question-title text-overflow-es flex-1">{{item.twtitle}}</div>
+          <div class="answer-status" v-if="item.jdstate == 1">待解答</div>
+          <div class="answer-status answered" v-if="item.jdstate == 2">已解答</div>
+          <div class="answer-status professor" v-if="item.jdstate == 3">已解答</div>
+        </li>
+      </ul>
+      <div v-if="userQslist.length === 0" class="nonedata">您还没有提交问题哦~</div>
+    </div>
+    <div class="question-section" v-cloak>
+      <h2>其它问题</h2>
+      <ul class="question-list fs28">
+        <li v-for="item in list" @click="goQuestionDetail(item)">
+          <div class="question-title text-overflow-es flex-1">{{item.twtitle}}</div>
+          <div class="answer-status" v-if="item.jdstate == 1">待解答</div>
+          <div class="answer-status answered" v-if="item.jdstate == 2">已解答</div>
+          <div class="answer-status professor" v-if="item.jdstate == 3">已解答</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="container" v-else>
     <ul class="question-list fs28">
       <li v-for="item in userQslist" @click="goQuestionDetail(item)">
-        <div class="question-title text-overflow-es flex-1">{{item.twtitle}}</div>
-        <div class="answer-status" v-if="item.jdstate == 1">待解答</div>
-        <div class="answer-status answered" v-if="item.jdstate == 2">已解答</div>
-        <div class="answer-status professor" v-if="item.jdstate == 3">已解答</div>
-      </li>
-    </ul>
-    <div v-if="userQslist.length === 0" class="nonedata">您还没有提交问题哦~</div>
-  </div>
-  <div class="question-section" v-cloak>
-    <h2>其它问题</h2>
-    <ul class="question-list fs28">
-      <li v-for="item in list" @click="goQuestionDetail(item)">
         <div class="question-title text-overflow-es flex-1">{{item.twtitle}}</div>
         <div class="answer-status" v-if="item.jdstate == 1">待解答</div>
         <div class="answer-status answered" v-if="item.jdstate == 2">已解答</div>

@@ -7,7 +7,13 @@ function initPage() {
     data: function() {
       return {
         list: [],
-        userQslist: []
+        userQslist: [],
+        isOnlyMy: api.pageParam.isOnlyMy,
+      }
+    },
+    computed: {
+      pageTitle: function() {
+        return this.isOnlyMy ? '我的咨询' : '咨询列表'
       }
     },
     methods: {

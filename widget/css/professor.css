@@ -142,3 +142,7 @@
 .newest {
     margin-bottom: 1.1rem;
 }
+.header-left,
+.header-right {
+    width: 80px;
+}

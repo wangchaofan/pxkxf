@@ -20,7 +20,7 @@ function initPage() {
     },
     methods: {
       toQues: function() {
-        Helper.openWin('questions')
+        Helper.openWin('questions',  { isOnlyMy: true })
       },
       viewMoreProfessor: function() {
         Helper.openWin('professor_list')

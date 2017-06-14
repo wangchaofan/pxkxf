@@ -15,10 +15,10 @@ function initPage() {
         wx.shareWebpage({
           apiKey: 'wx8e9a88ba16112813',
           scene: scene,
-          title: '测试标题',
-          description: '分享内容的描述',
+          title: '三岔口消防APP',
+          description: '全国消防产品、设计、施工供应需求',
           thumb: 'widget://a.jpg',
-          contentUrl: 'http://apicloud.com'
+          contentUrl: 'http://www.sckxiaofang.com/'
         }, function(ret, err) {
           if (ret.status) {
             api.toast({msg: '分享成功'});
