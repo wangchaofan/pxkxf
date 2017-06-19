@@ -12,18 +12,18 @@
 <body>
 <div class="wrapper">
     <my-header :title="title"></my-header>
-    <div v-if="title !== '搜索结果'">
-      <div class="type-select" style="padding-left: 0; padding-right: 0;">
+    <div>
+        <div class="type-select" style="padding-left: 0; padding-right: 0;">
         <span class="flex-1" :class="{current: currentPage === 'demand'}" @click="onClickNav('demand')">需求</span>
         <span class="flex-1" :class="{current: currentPage === 'supply'}" @click="onClickNav('supply')">供应</span>
-      </div>
-      <div style="padding-top: 44px;" v-cloak>
+        </div>
+        <div style="padding-top: 44px;" v-cloak>
         <div class="remand-list" v-show="currentPage === 'demand'">
             <ul v-if="demandList.length > 0">
                 <demand-item v-for="item in demandList" :item="item"></demand-item>
             </ul>
             <div v-if="demandList.length === 0 && !posting" class="none-text">
-              没有相关内容
+                没有相关内容
             </div>
         </div>
         <div class="remand-list" v-show="currentPage === 'supply'">
@@ -31,12 +31,12 @@
                 <supply-item v-for="item in supplyList" :item="item"></supply-item>
             </ul>
             <div v-if="supplyList.length === 0 && !posting" class="none-text">
-              没有相关内容
+                没有相关内容
             </div>
         </div>
-      </div>
+        </div>
     </div>
-    <div v-else>
+    <!--<div v-else>
         <div class="remand-list" v-if="currentPage === 'demand'">
             <ul v-if="demandList.length > 0">
                 <demand-item v-for="item in demandList" :item="item"></demand-item>
@@ -50,7 +50,7 @@
         <div v-if="demandList.length === 0 && supplyList.length === 0 && !posting" class="none-text">
             没有相关内容
         </div>
-    </div>
+    </div>-->
 </div>
 <!-- 订单状态（1待支付,2审核中,3发布中,4进行中,5供应完成,6待评价,7订单完成,0已关闭,-1已删除） -->
 <!-- 待支付和，发布中的可以修改 -->

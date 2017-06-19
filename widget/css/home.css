@@ -28,10 +28,7 @@
 }
 
 .top-banner-bottom {
-	position: -webkit-sticky;
-	position: sticky;
 	top: 0;
-	left: 0;
 	z-index: 11;
 	display: flex;
 	height: 2.2rem;
@@ -370,4 +367,7 @@
 
 .swiper-pagination-bullet-active {
 	background: #fff;
+}
+.fixedsticky {
+	top: 0;
 }

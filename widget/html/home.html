@@ -13,7 +13,7 @@
   <script src="../script/adapter.js"></script>
 </head>
 <body style="background: #fff;">
-<div id="mainPage" class="main-wrap">
+<div id="mainPage" class="main-wrap fixed-supported">
   <div class="top-banner">
     <div class="logo"></div>
     <div class="weather" v-cloak>
@@ -21,7 +21,7 @@
       <div class="ar">空气良</div>
     </div>
   </div>
-  <div class="top-banner-bottom">
+  <div class="top-banner-bottom fixedsticky">
     <div class="select-location fs24 white">
       <span>{{city}}</span>
     </div>
@@ -178,7 +178,9 @@
 <script src="../script/lib/fixedsticky.js"></script>
 <script src="../script/page/home.js"></script>
 <script>
-  $('.top-banner-bottom').fixedsticky();
+  setTimeout(function() {
+    $('.top-banner-bottom').fixedsticky();
+  }, 2000);
 </script>
 </body>
 </html>

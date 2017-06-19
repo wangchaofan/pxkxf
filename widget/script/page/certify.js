@@ -66,7 +66,7 @@ function initPage() {
         }).then(function(res) {
           if (res.key === 'true') {
             api.toast({
-                msg: '认证成功'
+                msg: '提交认证成功'
             })
             setTimeout(function() {
               api.closeWin();
