@@ -178,3 +178,24 @@ body {
     color: #fff;
     background: #ec3c41;
 }
+.question-comment-item__right {
+    position: relative;
+    flex: 1;
+}
+.confirm-button {
+    position: absolute;
+    right: 0;
+    top: 0.6rem;
+    padding: 0 0.5rem;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 0.6rem;
+    color: #ec3c41;
+    border: 1px solid #ec3c41;
+    text-align: center;
+    border-radius: 4px;
+}
+.confirm-button.right {
+    color: #009900;
+    border: none;
+}

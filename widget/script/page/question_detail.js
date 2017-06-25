@@ -10,13 +10,13 @@ function initPage() {
     },
     data: function() {
       return {
-        // wtid: '073cb677-da3b-45ad-8536-9030e3ac5376',
         wtid: api.pageParam.id,
         question: null,
         relateQuestion: null,
         expertTWHDmodel: null,
         isFocus: false,
-        commentContent: ''
+        commentContent: '',
+        isMyQuestion: false
       }
     },
     computed: {
@@ -85,6 +85,26 @@ function initPage() {
           api.toast({msg: err.message});
         })
       },
+      handleConfirmAnswer: function(answer) {
+        api.confirm({
+          title: '提示',
+          msg: '是否确认选择此回答？',
+          buttons: ['确定', '取消']
+        }, function(ret, err) {
+          if (ret.buttonIndex === 1) {
+            $.ajax({
+              url: BaseService.apiUrl + 'getuodatehd',
+              data: { hdid: answer.expertTWHD }
+            }).then(function(res) {
+              if (res.key === 'true') {
+              } else {
+                api.toast({msg: err.message});
+              }
+            }).catch(function(err) {
+            })
+          }
+        })
+      },
       getData: function() {
         var self = this
         $.ajax({
@@ -94,6 +114,7 @@ function initPage() {
           if (res.key === 'true') {
             self.question = ParseJson(res.data)[0];
             self.expertTWHDmodel = self.question.ExpertTWHDmodel
+            selft.isMyQuestion = self.question.twUseriD === Helper.getUserId()
             self.getRelate(self.question.twtitle)
             console.log(ParseJson(res.data)[0])
           }
