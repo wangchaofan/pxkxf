@@ -146,7 +146,7 @@ function initPage() {
           error = '请输入详情描述';
         } else if (isNaN(Number(skill.money))) {
           error = '请输入正确金额';
-        } else if (skill.money < 1) {
+        } else if (!!skill.money && skill.money < 1) {
           error = '价格不能小于1元';
         } else if (skill.Province === '') {
           error = '请选择地区';
