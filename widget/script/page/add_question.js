@@ -38,6 +38,14 @@
       },
       onSubmit: function() {
         var self = this
+        if (this.question.title === '') {
+          api.toast({ msg: '标题不能为空' })
+          return
+        }
+        if (this.question.content === '') {
+          api.toast({ msg: '内容不能为空' })
+          return
+        }
         this.question.imgarr = _.map(this.images, Helper.transformImageData).join(',')
         $.ajax({
           url: BaseService.apiUrl + 'addtwinfo',

@@ -80,7 +80,7 @@ function initPage() {
           error = '请选择需求类别';          
         } else if (demand.xqdetails === '') {
           error = '请输入详情描述';
-        } else if (isNaN(Number(demand.money)) || demand.money === '') {
+        } else if (isNaN(Number(demand.money))) {
           error = '请输入正确金额';
         } else if (!!demand.money && demand.money < 1) {
           error = '金额不能小于1元';
@@ -139,7 +139,35 @@ function initPage() {
         })
       },
       handleEditDemand: function() {
-
+        var self = this
+        var data = _.clone(this.demand)
+        if (data.timenum !== '长期') {
+          data.timenum = new Date(data.timenum).getTime()
+        } else {
+          data.timenum = '';
+        }
+        $.ajax({
+          url: BaseService.apiUrl + 'getaddDemandOrder',
+          data: data
+        }).then(function(res) {
+          if (res.key === 'true') {
+            api.toast({
+              msg: '修改成功'
+            })
+            api.sendEvent({
+              name: 'refreshMyDemand'
+            })
+            setTimeout(function() {
+              api.closeWin()
+            }, 1500);
+          } else {
+            api.toast({
+              msg: res.mage
+            })
+          }
+        }, function(err) {
+          api.toast({msg: err.message});
+        })
       },
       getDemand: function() {
         var self = this
@@ -211,9 +239,11 @@ function initPage() {
             color: '#333'
           }
         }, function(ret, err) {
-          self.demand.perid = ret.level1;
-          self.demand.cid = ret.level2
-          self.demand.diid = ret.level3;
+          if (ret.eventType === 'ok') {
+            self.demand.perid = ret.level1;
+            self.demand.cid = ret.level2
+            self.demand.diid = ret.level3;
+          }
         });
       }
     }

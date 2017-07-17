@@ -9,7 +9,8 @@ var ListItem = {
             '      需求名称：<span class="text-black">{{myData.demandTitle}}</span>' +
             '    </div>' +
             '    <div class="supply-list-item__param">' +
-            '      需求价格：<strong class="text-warning">{{myData.dmoney}}</strong>元' +
+            '      需求价格：<span v-if="myData.dmoney"><strong class="text-warning">{{myData.dmoney}}</strong>元</span>' +
+            '     <span class="text-warning" v-else>面议</span>' +
             '    </div>' +
             '    <div class="supply-list-item__param">' +
             '      需求状态：<span class="supply-status">{{getStateText(myData.orderState)}}</span>' +

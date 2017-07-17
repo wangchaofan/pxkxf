@@ -16,7 +16,7 @@
 			<div class="fs24 white ac" slot="headerRight" @click="share">分享</div>
 		</my-header>
 		<div class="supply-detail bg-white container" v-if="supplyInfo" v-cloak>
-			<div id="swiper" class="swiper-container supply-detail__images" v-if="supplyInfo.Skillworksmodel.length > 0">
+			<div id="swiper" class="swiper-container supply-detail__images" v-if="supplyInfo.Skillworksmodel.length > 1">
 		    <div class="swiper-wrapper">
 		      <div class="swiper-slide" v-for="item in supplyInfo.Skillworksmodel">
 		        <img :src="item.skillwoksurl" alt="">
@@ -24,7 +24,10 @@
 		    </div>
 		    <!-- 如果需要分页器 -->
 		    <div class="swiper-pagination"></div>
-		  </div>
+			</div>
+			<div v-if="supplyInfo.Skillworksmodel.length == 1" style="overflow: hidden;">
+				<img style="width:100%" :src="supplyInfo.Skillworksmodel[0].skillwoksurl" alt="">
+			</div>
 			<div class="remand-detail bg-white" v-cloak>
 				<div class="row">
 					<span class="row-label">供应名称</span>

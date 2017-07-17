@@ -117,6 +117,9 @@ function clearUnreadStatus() {
     if (ret.status === 'success') {
       api.sendEvent({
         name: 'refreshMsgCount',
+        extra: {
+          count: 0 - api.pageParam.unreadCount
+        }
       });
     }
   })
@@ -294,6 +297,9 @@ function initPage() {
               }
             }
           })
+      },
+      viewHomePage: function(target) {
+        Helper.openWin('user_homepage', { uid: api.pageParam.targetId });
       }
     }
   })

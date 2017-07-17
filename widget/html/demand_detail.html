@@ -18,7 +18,12 @@
 		<user-box v-if="demandInfo" :user="demandInfo.Usermodel[0]">
 			<a slot="userRtTop" class="location-byme fs24 text-999" href="javascript:">{{demandInfo.distance | number}}km</a>
 			<div slot="userRtBottom"></div>
-			<div slot="userLtBottom" class="demand-price fs24">愿付酬金：<span class="text-warning">{{demandInfo.dmoney}}</span>元/人 <span class="warrant">(酬金已担保)</span></div>
+			<div slot="userLtBottom" class="demand-price fs24">
+				<span>愿付酬金：</span>
+				<span v-if="demandInfo.dmoney > 0"><strong class="text-warning">{{demandInfo.dmoney}}</strong>元/人 </span>
+				<span v-else class="text-warning">面议</span>
+				<span class="warrant">(酬金已担保)</span>
+			</div>
 		</user-box>
 		<div class="remand-detail bg-white container" v-if="demandInfo" v-cloak>
 			<div class="row">

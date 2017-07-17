@@ -41,7 +41,7 @@ function initPage() {
             self.buttonDisabled = false
           }
           self.$nextTick(function() {
-            if (self.supplyInfo.Skillworksmodel.length > 0) {
+            if (self.supplyInfo.Skillworksmodel.length > 1) {
               new Swiper('.swiper-container', {
                 loop: true,
                 autoplay: 3000,

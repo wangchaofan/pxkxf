@@ -19,7 +19,7 @@
                 <span>{{msg.receivedTime | date('yyyy-MM-dd hh:mm')}}</span>
             </div>
             <div v-if="msg.messageDirection == 'RECEIVE'" class="msg-box left">
-                <div class="user-avatar">
+                <div class="user-avatar" @click="viewHomePage">
                     <img :src="targetInfo.avatar" alt="">
                 </div>
                 <div class="msg-content-wrap">

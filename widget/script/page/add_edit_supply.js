@@ -125,9 +125,11 @@ function initPage() {
             color: '#333'
           }
         }, function(ret, err) {
-          self.skill.Province = ret.level1;
-          self.skill.City = ret.level2;
-          self.skill.District = ret.level3;
+          if (ret.eventType === 'ok') {
+            self.skill.Province = ret.level1;
+            self.skill.City = ret.level2;
+            self.skill.District = ret.level3;
+          }
         });
       },
       deleteImage: function(index) {
@@ -136,6 +138,8 @@ function initPage() {
       validate: function() {
         var error = '';
         var skill = this.skill;
+        var dateNow = new Date()
+        var servertime = skill.servertime.replace(/-/g, '/')
         if (skill.skillName === '') {
           error = '请输入供应名称';
         } else if (skill.skillName.length > 10) {
@@ -150,7 +154,7 @@ function initPage() {
           error = '价格不能小于1元';
         } else if (skill.Province === '') {
           error = '请选择地区';
-        } else if (skill.servertime && new Date(skill.servertime).getTime() < Date.now()) {
+        } else if (skill.servertime && new Date(servertime).getTime() < new Date(dateNow.getFullYear() + '/' + (dateNow.getMonth() + 1) + '/' + dateNow.getDate()).getTime()) {
           error = '有效时间不能小于当前时间'
         }
         
@@ -211,7 +215,7 @@ function initPage() {
           } else {
             api.toast({
               msg: res.mage
-            });
+            })
           }
         }, function(err) {
           api.toast({

@@ -9,7 +9,8 @@ var ListItem = {
   '      供应名称：<span class="text-black">{{myData.skillName}}</span>' +
   '    </div>' +
   '    <div class="supply-list-item__param">' +
-  '      供应价格：<strong class="text-warning">{{myData.smoney}}</strong>元' +
+  '      供应价格：<span v-if="myData.smoney"><strong class="text-warning">{{myData.smoney}}</strong>元</span>' +
+  '     <span class="text-warning" v-else>面议</span>' +
   '    </div>' +
   '    <div class="supply-list-item__param">' +
   '      供应状态：<span class="supply-status" v-html="getStateText(myData.State)"></span>' +

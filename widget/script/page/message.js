@@ -23,8 +23,9 @@ function initPage() {
     methods: {
       onClickMessage: function(msg) {
         var targetId = msg.senderUserId === this.uid ? msg.targetId : msg.senderUserId;
-        msg.unreadMessageCount = 0;
-        Helper.openWin('chat_room', {targetId: targetId})
+        var count = msg.unreadMessageCount
+        msg.unreadMessageCount = 0
+        Helper.openWin('chat_room', { targetId: targetId, unreadCount: count })
       },
       getNotice: function() {
         var self = this

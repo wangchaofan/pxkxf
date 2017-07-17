@@ -13,7 +13,7 @@
     <my-header title="我的消息"></my-header>
     <div class="message-list bg-white" v-cloak>
         <ul>
-            <li v-for="item in list" @touchstart="onClickMessage(item)" tapmode="hover">
+            <li v-for="item in list" @click="onClickMessage(item)" tapmode="hover">
                 <div class="message-list-item" v-if="item.senderUserId !== uid">
                     <div class="message-list-item__avatar">
                         <img :src="item.latestMessage.extra.sender.avatar" alt="">
