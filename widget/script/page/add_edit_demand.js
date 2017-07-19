@@ -141,13 +141,14 @@ function initPage() {
       handleEditDemand: function() {
         var self = this
         var data = _.clone(this.demand)
+        data.orderid = api.pageParam.id
         if (data.timenum !== '长期') {
           data.timenum = new Date(data.timenum).getTime()
         } else {
           data.timenum = '';
         }
         $.ajax({
-          url: BaseService.apiUrl + 'getaddDemandOrder',
+          url: BaseService.apiUrl + 'UpdateDemandOrder',
           data: data
         }).then(function(res) {
           if (res.key === 'true') {
@@ -166,7 +167,7 @@ function initPage() {
             })
           }
         }, function(err) {
-          api.toast({msg: err.message});
+          alert(JSON.stringify(err))
         })
       },
       getDemand: function() {

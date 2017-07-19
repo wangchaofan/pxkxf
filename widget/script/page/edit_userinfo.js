@@ -250,9 +250,9 @@ function initPage() {
 					dtd.reject('昵称不能为空');
 				} else if (_.trim(userInfo.birthDate).length === 0) {
 					dtd.reject('出生日期不能为空');
-				} else if (!/^1\d{10}$/.test(userInfo.phoneNumber)) {
+				} else if (!!userInfo.phoneNumber && !/^1\d{10}$/.test(userInfo.phoneNumber)) {
 					dtd.reject('请输入正确的手机号码');
-				} else if (!/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(userInfo.email)) {
+				} else if (!!userInfo.email && !/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(userInfo.email)) {
 					dtd.reject('请输入正确的邮箱地址');
 				} else {
 					dtd.resolve()

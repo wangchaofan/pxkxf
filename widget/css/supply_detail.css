@@ -115,9 +115,13 @@
 	border-bottom: 0.5rem solid #f0f1f5;
 	background: #eee;
 }
+.swiper-slide {
+    line-height: 14rem;
+    text-align: center;
+}
 .swiper-container img {
-	width: 100%;
-	line-height: 14rem;
+    vertical-align: middle;
+	width: 100%; 
 }
 .swiper-pagination-bullet-active {
 	background: #fff;

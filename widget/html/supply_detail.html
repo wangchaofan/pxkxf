@@ -19,7 +19,7 @@
 			<div id="swiper" class="swiper-container supply-detail__images" v-if="supplyInfo.Skillworksmodel.length > 1">
 		    <div class="swiper-wrapper">
 		      <div class="swiper-slide" v-for="item in supplyInfo.Skillworksmodel">
-		        <img :src="item.skillwoksurl" alt="">
+		        <img :src="item.skillwoksurl" :style="item.style" alt="">
 		      </div>
 		    </div>
 		    <!-- 如果需要分页器 -->
