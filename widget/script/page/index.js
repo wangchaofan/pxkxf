@@ -51,6 +51,14 @@ apiready = function() {
 			console.log(err)
 		});
 
+		$.ajax({
+			url: BaseService.apiUrl + 'strhttp',
+		}).then(function(res) {
+			$api.setStorage('hostname', res.data)
+		}, function(err) {
+			console.log(err)
+		});
+
 		baiduLocation.getLocation(function(ret) {
 			if (ret.status) {
 				$.ajax({

@@ -7,10 +7,15 @@ var ParseJson = JSON.parse
 var MockData = {
   userid: 'a17db629-52b6-4b6a-a904-e6c1721e3a05'
 }
+var DEFAULT_HOST_NAME = 'http://www.sckxiaofang.com:801'
 
 /* === api 基础服务 === */
 var BaseService = {
-  apiUrl: 'http://119.23.224.25:801/WebServer/userServer.asmx/'
+  apiUrl: DEFAULT_HOST_NAME + '/WebServer/userServer.asmx/'
+}
+
+if ($api && $api.getStorage('hostname')) {
+  BaseService.apiUrl = $api.getStorage('hostname') + '/WebServer/userServer.asmx/'
 }
 
 /* === 辅助方法 === */
