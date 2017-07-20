@@ -140,7 +140,7 @@ function initPage() {
         var skill = this.skill;
         var dateNow = new Date()
         var servertime = skill.servertime.replace(/-/g, '/')
-        if (skill.skillName === '') {
+        if (_.trim(skill.skillName) === '') {
           error = '请输入供应名称';
         } else if (skill.skillName.length > 10) {
           error = '供应名称最大长度为10个字';

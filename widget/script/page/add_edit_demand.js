@@ -72,7 +72,7 @@ function initPage() {
       validate: function() {
         var error = '';
         var demand = this.demand;
-        if (demand.xqname === '') {
+        if (_.trim(demand.xqname) === '') {
           error = '请输入需求名称';
         } else if (demand.xqname.length > 10) {
           error = '需求名称最大长度为10个字';

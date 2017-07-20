@@ -66,7 +66,7 @@ var SupplyItem = {
             '	    </div>' +
             '	    <user-roles :role="item.slevel"></user-roles>' +
             '	    <user-good-level :good-level="item.sUsermodel[0].evaluate"></user-good-level>' +
-            '	    <div class="publish-number">发布数量:<span class="text-blue">{{item.fbnum}}</span>条</div>' +
+            '	    <div class="publish-number">发布数量:<span class="text-blue">{{item.sfbnum}}</span>条</div>' +
             '	  </div>' +
             '	  <div class="remand-info">' +
             '	    <div class="remand-info__title">' +
@@ -215,6 +215,7 @@ function initPage() {
             zState: 1
           },
           success: function(res) {
+            alert(res.data)
             if (!res.data) return;
             var data = JSON.parse(res.data);
             if (!data || data.length === 0) {
