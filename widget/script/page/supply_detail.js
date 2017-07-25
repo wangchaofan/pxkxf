@@ -40,7 +40,6 @@ function initPage() {
           if (self.supplyInfo.State == 2) {
             self.buttonDisabled = false
           }
-          _.forEach(self.supplyInfo.Skillworksmodel, self.setImageStyle)
           self.$nextTick(function() {
             if (self.supplyInfo.Skillworksmodel.length > 1) {
               new Swiper('.swiper-container', {
@@ -50,21 +49,7 @@ function initPage() {
               })
             }
           })
-          console.log(ParseJson(res.data)[0])
         })
-      },
-      setImageStyle: function(item, index, source) {
-        var self = this
-        var img = new Image()
-        img.onload = function() {
-          if (this.width > this.height) {
-            source[index].style = { width: '100%', height: 'auto'}
-          } else {
-            source[index].style = { width: 'auto', height: '100%'}
-          }
-          self.$forceUpdate()
-        }
-        img.src = item.skillwoksurl
       },
       share: function() {
         var sharedModule = api.require('shareAction');

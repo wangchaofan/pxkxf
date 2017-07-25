@@ -43,6 +43,9 @@ function initPage() {
           }
         })
       },
+      goUserHomepage: function(user) {
+        Helper.openWin('user_homepage', {uid: user.hdUserId})
+      },
       getRelate: function(title) {
         var self = this
         $.ajax({
@@ -93,14 +96,16 @@ function initPage() {
         }, function(ret, err) {
           if (ret.buttonIndex === 1) {
             $.ajax({
-              url: BaseService.apiUrl + 'getuodatehd',
-              data: { hdid: answer.expertTWHD }
+              url: BaseService.apiUrl + 'getupdatehd',
+              data: { hdid: answer.expertTWHDID }
             }).then(function(res) {
               if (res.key === 'true') {
+                answer.State = 2
               } else {
-                api.toast({msg: err.message});
+                api.toast({msg: res.mage});
               }
             }).catch(function(err) {
+              alert(JSON.stringify(err))
             })
           }
         })
@@ -114,10 +119,12 @@ function initPage() {
           if (res.key === 'true') {
             self.question = ParseJson(res.data)[0];
             self.expertTWHDmodel = self.question.ExpertTWHDmodel
-            selft.isMyQuestion = self.question.twUseriD === Helper.getUserId()
+            self.isMyQuestion = self.question.twUseriD === Helper.getUserId()
             self.getRelate(self.question.twtitle)
             console.log(ParseJson(res.data)[0])
           }
+        }).catch(function(err) {
+          console.log(JSON.stringify(err))
         })
       }
     }

@@ -28,7 +28,7 @@
   </section>
   <section class="question-comment-list bg-white" v-cloak v-if="expertTWHDmodel">
     <div class="question-comment-item" v-for="item in expertTWHDmodel">
-      <div class="question-comment-item__left">
+      <div class="question-comment-item__left" @click="goUserHomepage(item)">
         <img :src="item.usermodel[0].pheadimgUrl" alt="">
       </div>
       <div class="question-comment-item__right">

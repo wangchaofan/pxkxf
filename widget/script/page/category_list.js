@@ -215,7 +215,6 @@ function initPage() {
             zState: 1
           },
           success: function(res) {
-            alert(res.data)
             if (!res.data) return;
             var data = JSON.parse(res.data);
             if (!data || data.length === 0) {

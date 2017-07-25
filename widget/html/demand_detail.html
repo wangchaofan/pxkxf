@@ -22,7 +22,7 @@
 				<span>愿付酬金：</span>
 				<span v-if="demandInfo.dmoney > 0"><strong class="text-warning">{{demandInfo.dmoney}}</strong>元/人 </span>
 				<span v-else class="text-warning">面议</span>
-				<span class="warrant">(酬金已担保)</span>
+				<!-- <span class="warrant">(酬金已担保)</span> -->
 			</div>
 		</user-box>
 		<div class="remand-detail bg-white container" v-if="demandInfo" v-cloak>
@@ -31,9 +31,9 @@
 				<span class="content">{{demandInfo.demandTitle}}</span>
 			</div>
 			<div class="row">
-				<span class="row-label">需求人数</span>
+				<span class="row-label">需求数量</span>
 				<span class="content">{{demandInfo.demandNum}}人</span>
-				<span class="fs24 text-warning">已选{{demandInfo.yxnum}}人</span>
+				<span class="fs24 text-warning">已选{{demandInfo.yxnum}}</span>
 			</div>
 			<div class="row">
 				<span class="row-label">有效期限</span>
@@ -44,7 +44,7 @@
 				<span class="content">{{demandInfo.dtime | date('yyyy-MM-dd')}}</span>
 			</div>
 			<div class="row">
-				<span class="row-label">邀约地点</span>
+				<span class="row-label">需求地点</span>
 				<span class="content">{{demandInfo.S_province}} {{demandInfo.s_City}} {{demandInfo.s_distrct}}</span>
 			</div>
 			<div class="row">

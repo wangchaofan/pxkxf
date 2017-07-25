@@ -19,13 +19,13 @@
 			<div id="swiper" class="swiper-container supply-detail__images" v-if="supplyInfo.Skillworksmodel.length > 1">
 		    <div class="swiper-wrapper">
 		      <div class="swiper-slide" v-for="item in supplyInfo.Skillworksmodel">
-		        <img :src="item.skillwoksurl" :style="item.style" alt="">
+		        <img :src="item.skillwoksurl" alt="">
 		      </div>
 		    </div>
 		    <!-- 如果需要分页器 -->
 		    <div class="swiper-pagination"></div>
 			</div>
-			<div v-if="supplyInfo.Skillworksmodel.length == 1" style="overflow: hidden;">
+			<div v-if="supplyInfo.Skillworksmodel.length == 1" style="overflow: hidden;height: 14rem;">
 				<img style="width:100%" :src="supplyInfo.Skillworksmodel[0].skillwoksurl" alt="">
 			</div>
 			<div class="remand-detail bg-white" v-cloak>
@@ -35,8 +35,13 @@
 				</div>
 				<div class="row">
 					<span class="row-label">供应价格</span>
-					<span class="content">{{supplyInfo.smoney}}</span>
-					<span class="fs24">元</span>
+					<template v-if="supplyInfo.smoney == 0">
+						<span class="content">面议</span>
+					</template>
+					<template v-else>
+						<span class="content">{{supplyInfo.smoney}}</span>
+						<span class="fs24">元</span>
+					</template>
 				</div>
 				<div class="row">
 					<span class="row-label">截止时间</span>
