@@ -13,8 +13,11 @@ var DemandItem = {
             '      <div class="remand-info">' +
             '        <div class="remand-info__title">' +
             '          他的需求：<span class="text-black">{{item.demandTitle}}</span></div>' +
-            '        <div class="remand-info__price">愿付酬金：<strong class="text-warning">{{item.dmoney}}</strong>元/套/天（酬金已担保）</div>' +
-            '        <div class="remand-info__persons">需求人数：<strong class="text-warning">{{item.demandNum}}</strong>人</div>' +
+            '        <div class="remand-info__price">愿付酬金：' +
+            '           <template v-if="item.dmoney == 0"><span class="text-warning">面议</span></template>' +
+            '           <template v-else><strong class="text-warning">{{item.dmoney}}</strong>元/套/天</template>' +
+            '        </div>' +
+            '        <div class="remand-info__persons">需求人数：<strong class="text-warning">{{item.demandNum}}</strong></div>' +
             '        <div class="remand-info__detail">' +
             '          需求详情：{{item.ddetails}}' +
             '        </div>' +
@@ -71,8 +74,11 @@ var SupplyItem = {
             '	  <div class="remand-info">' +
             '	    <div class="remand-info__title">' +
             '	      他的供应：<span class="text-black">{{item.skillName}}</span></div>' +
-            '	    <div class="remand-info__price">价格：<strong class="text-warning">{{item.smoney}}</strong>{{item.smoneytype}}</div>' +
-            '	    <div class="remand-info__persons">服务时间：<strong class="text-warning">{{item.servertime | date(\'yyyy-MM-dd\')}}</strong></div>' +
+            '	    <div class="remand-info__price">价格：' +
+            '        <template v-if="item.smoneytype == 0"><span class="text-warning">面议</span></template>' +
+            '        <template v-else><strong class="text-warning">{{item.smoney}}</strong>{{item.smoneytype}}</template>' +
+            '     </div>' +
+            '	    <div class="remand-info__persons">截止时间：<strong class="text-warning">{{item.servertime | date(\'yyyy-MM-dd\')}}</strong></div>' +
             '	    <div class="remand-info__detail">' +
             '	      供应详情：{{item.skilldetails}}' +
             '	    </div>' +
