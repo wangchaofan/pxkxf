@@ -377,3 +377,8 @@
 .fixedsticky {
 	top: 0;
 }
+
+.swiper-slide img {
+	height: 100%;
+	width: 100%;
+}
