@@ -17,7 +17,7 @@ var DemandItem = {
             '           <template v-if="item.dmoney == 0"><span class="text-warning">面议</span></template>' +
             '           <template v-else><strong class="text-warning">{{item.dmoney}}</strong>元/套/天</template>' +
             '        </div>' +
-            '        <div class="remand-info__persons">需求人数：<strong class="text-warning">{{item.demandNum}}</strong></div>' +
+            '        <div class="remand-info__persons">数量：<strong class="text-warning">{{item.demandNum}}</strong></div>' +
             '        <div class="remand-info__detail">' +
             '          需求详情：{{item.ddetails}}' +
             '        </div>' +
@@ -68,7 +68,7 @@ var SupplyItem = {
             '	      <div class="p-tag supply">供应</div>' +
             '	    </div>' +
             '	    <user-roles :role="item.slevel"></user-roles>' +
-            '	    <user-good-level :good-level="item.sUsermodel[0].evaluate"></user-good-level>' +
+            // '	    <user-good-level :good-level="item.sUsermodel[0].evaluate"></user-good-level>' +
             '	    <div class="publish-number">发布数量:<span class="text-blue">{{item.sfbnum}}</span>条</div>' +
             '	  </div>' +
             '	  <div class="remand-info">' +
