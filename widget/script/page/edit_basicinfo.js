@@ -4,7 +4,7 @@ function initPage() {
 		data: function() {
 			return {
 				userInfo: {
-					userid: Helper.getUserId(),
+					userid: api.pageParam.uid,
 					imgarr: '',
 					pnkname: '',
 					age: '',
@@ -86,7 +86,6 @@ function initPage() {
 							}
 						}).then(function() {
 							if (res.key === 'true') {
-								api.toast({msg: '设置成功'});
 								setTimeout(function() {
 									api.sendEvent({
 										name: 'initHomePage'

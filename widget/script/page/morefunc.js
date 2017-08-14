@@ -72,17 +72,21 @@ function initPage() {
             api.toast({
                 msg: '退出登录成功'
             });
-            window.localStorage.removeItem('userid');
+            $api.rmStorage('userid');
             api.sendEvent({
               name: 'logoutSuccess'
             })
             api.openWin({
               name: 'login',
+              useWKWebView: false,
+              historyGestureEnabled: false,
+              slidBackEnabled: false,
               url: 'widget://html/login.html'
             })
-					}
+					} else {
+            alert(res.mage)
+          }
 				}, function(err) {
-
 				})
 			}
 		}

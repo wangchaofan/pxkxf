@@ -296,18 +296,18 @@ function setUserInfo() {
     url: BaseService.apiUrl + 'getuserinfo',
     data: { uid: getUserId() }
   }).then(function(res) {
-    window.localStorage.setItem('userInfo', ParseJson(res.data)[0]);
+    $api.setStorage('userInfo', ParseJson(res.data)[0])
   }, function(err) {
     console.log(err)
   })
 }
 
 function getUserInfo() {
-  return JSON.parse(window.localStorage.getItem('userInfo'));
+  return JSON.parse($api.getStorage('userInfo'));
 }
 
 function getUserId() {
-  return window.localStorage.getItem('userid');
+  return $api.getStorage('userid');
 }
 
 function dateFormat(val, fmt) {

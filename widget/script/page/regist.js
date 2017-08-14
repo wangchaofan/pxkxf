@@ -55,8 +55,8 @@ function initPage() {
 						    msg: '注册成功',
 						    location: 'middle'
 							});
-							window.localStorage.setItem('userid', res.data);
-							Helper.openWin('edit_basicinfo', {phone: self.regphone, pwd: self.pwd});
+							$api.setStorage('userid', res.data);
+							Helper.openWin('edit_basicinfo', {phone: self.regphone, pwd: self.pwd, uid: res.data});
 							setTimeout(function() {
 								api.closeWin()
 							}, 1000)

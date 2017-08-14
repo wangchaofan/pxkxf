@@ -25,7 +25,6 @@ function initPage() {
           data: { uid: Helper.getUserId() }
         }).then(function(res) {
           res = ParseJson(res.data)[0]
-          console.log(res)
           if (!!res.holdCarId) {
             self.holdCarId = res.holdCarId
             self.inverseCarId = res.inverseCarId

@@ -46,7 +46,7 @@ apiready = function() {
 			url: BaseService.apiUrl + 'getuserinfo',
 			data: { uid: getUserId() }
 		}).then(function(res) {
-			window.localStorage.setItem('userInfo', ParseJson(res.data)[0]);
+			$api.setStorage('userInfo', ParseJson(res.data)[0]);
 		}, function(err) {
 			console.log(err)
 		});

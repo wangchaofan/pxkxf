@@ -2,7 +2,7 @@ body {
     background: #f0f1f5;
 }
 .more-func-list {
-    height: 7.5rem;
+    height: 5rem;
     background: #fff url('../image/more_func_icons.jpg') 0.8rem top no-repeat;
     background-size: 1.6rem 10rem;
 }

@@ -244,7 +244,7 @@ function initPage() {
       token: res.data
     }, function(ret, err) {
       if (ret.status == 'success') {
-        window.localStorage.setItem('rongUserId', ret.result.userId);
+        $api.setStorage('rongUserId', ret.result.userId);
       }
     })
   }, function(err) {
