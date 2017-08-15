@@ -11,7 +11,7 @@
 <body>
 <div id="mainPage" class="wrapper">
   <my-header title="更多功能"></my-header>
-  <div class="more-func-list container">
+  <div class="more-func-list container" style="{heigth: hasUpdate ? '7.5rem' : '5rem'}">
     <ul>
       <li @click="goPage('edit_password')">
         <span>修改密码</span>
@@ -22,9 +22,9 @@
      <!--  <li @click="goPage('questions')">
         <span>常见问题</span>
       </li> -->
-      <!-- <li @click="checkUpdate">
+      <li v-if="hasUpdate" @click="checkUpdate">
         <span>检测更新</span>
-      </li> -->
+      </li>
     </ul>
   </div>
   <div class="button-logout ac" @click="logout">注销当前账号</div>
