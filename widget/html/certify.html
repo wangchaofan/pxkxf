@@ -11,7 +11,7 @@
 <body>
   <div class="wrapper" v-cloak>
     <my-header title="身份认证"></my-header>
-    <div class="has-renzheng" v-if="holdCarId">
+    <div class="has-renzheng" v-if="!holdCarId">
       <div>已认证</div>
     </div>
     <!-- <div>
@@ -22,28 +22,25 @@
     <div v-else>
       <section class="upload-wrap">
         <div class="upload-desc">请您上传您的身份证正面照片：</div>
-        <div class="upload-box">
-          <img :src="Idzm" alt="" v-if="!!Idzm" v-cloak>
+        <div class="upload-box" @click="selectPic('Idzm')">
+          <img :src="IdzmPath" alt="" v-if="!!Idzm" v-cloak>
           <div class="upload-box-name" v-else>上传身份证正面</div>
-          <input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'Idzm')">
         </div>
         <div class="fs24 ac text-warning">请保证所有信息真实有效而且清晰可见</div>
       </section>
       <section class="upload-wrap">
         <div class="upload-desc">请您上传您的身份证反面照片：</div>
-        <div class="upload-box">
-          <img :src="Idbm" alt="" v-if="!!Idbm" v-cloak>
+        <div class="upload-box" @click="selectPic('Idbm')">
+          <img :src="IdbmPath" alt="" v-if="!!Idbm" v-cloak>
           <div class="upload-box-name" v-else>上传身份证反面</div>
-          <input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'Idbm')">
         </div>
         <div class="fs24 ac text-warning">请保证所有信息真实有效而且清晰可见</div>
       </section>
       <section class="upload-wrap">
         <div class="upload-desc">请上传您的手持身份证照片：</div>
-        <div class="upload-box">
-          <img :src="scId" alt="" v-if="!!scId" v-cloak>
+        <div class="upload-box" @click="selectPic('scId')">
+          <img :src="scIdPath" alt="" v-if="!!scId" v-cloak>
           <div class="upload-box-name" v-else>上传手持身份证</div>
-          <input type="file" accept="image/jpeg,image/png" @change="onFileChange($event, 'scId')">
         </div>
         <div class="fs24 ac text-warning">请保证持件人的五官真实有效而且清晰可见</div>
       </section>

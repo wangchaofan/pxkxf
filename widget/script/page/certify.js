@@ -12,6 +12,9 @@ function initPage() {
         Idzm: '',
         Idbm: '',
         scId: '',
+        IdzmPath: '',
+        IdbmPath: '',
+        scIdPath: '',
         holdCarId: '',
         inverseCarId: '',
         positiveCarId: ''
@@ -32,14 +35,21 @@ function initPage() {
           }
         })
       },
-      onFileChange: function(e, key) {
+      selectPic: function(key) {
         var self = this
-        var file = e.target.files[0]
-        if (file) {
-          ImagePreview(file).then(function(res) {
-            self[key] = res
-          })
-        }
+        api.getPicture({
+          sourceType: 'library',
+          encodingType: 'jpg',
+          mediaValue: 'pic',
+          destinationType: 'base64',
+          allowEdit: true,
+          quality: 80,
+          saveToPhotoAlbum: false
+        }, function(ret, err) {
+          if (ret && ret.base64Data)
+            self[key + 'Path'] = ret.data
+            self[key] = ret.base64Data
+        });
       },
       onSubmit: function() {
         var self = this
