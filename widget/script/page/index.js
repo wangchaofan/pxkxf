@@ -1,5 +1,6 @@
 apiready = function() {
 	var baiduLocation = api.require('baiduLocation');
+	var isloaded = false
 	baiduLocation.startLocation({
 		accuracy: '100m',
 		filter: 1,
@@ -50,6 +51,8 @@ apiready = function() {
 		}, function(err) {
 			console.log(err)
 		});
+
+		if (isloaded) return
 
 		$.ajax({
 			url: BaseService.apiUrl + 'strhttp',
@@ -126,7 +129,8 @@ apiready = function() {
 			var index = ret.index;
 		})
 
-    initTabBar();
+		initTabBar();
+		isloaded = true
 	}
 
   function initTabBar() {

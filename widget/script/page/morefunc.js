@@ -3,7 +3,8 @@ function initPage() {
 		el: '.wrapper',
 		data: function() {
 			return {
-        hasUpdate: BaseService.apiUrl.startsWith('https')
+        hasUpdate: BaseService.apiUrl.startsWith('https'),
+        version: api.version
 			}
 		},
 		methods: {
@@ -88,6 +89,7 @@ function initPage() {
             alert(res.mage)
           }
 				}, function(err) {
+          api.toast({msg: JSON.stringify(err)})
 				})
 			}
 		}

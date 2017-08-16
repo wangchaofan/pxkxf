@@ -43,7 +43,7 @@ var Helper = {
       name: winName,
       url: 'widget://html/' + winName + '.html',
       reload: true,
-      useWKWebView: true,
+      // useWKWebView: true,
       scrollToTop: true,
       slidBackType: 'edge',
       progress: {
