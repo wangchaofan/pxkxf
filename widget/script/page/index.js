@@ -86,7 +86,6 @@ apiready = function() {
 		var rong = api.require('rongCloud2');
 		// 初始化融云
 		rong.init(function(ret, err) {
-			console.log(JSON.stringify(ret));
       if (ret.status == 'success') {
 				rong.setOnReceiveMessageListener(function(ret, err) {
 					api.sendEvent({

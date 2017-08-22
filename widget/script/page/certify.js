@@ -9,15 +9,9 @@ function initPage() {
     },
     data: function() {
       return {
-        Idzm: '',
-        Idbm: '',
-        scId: '',
-        IdzmPath: '',
-        IdbmPath: '',
-        scIdPath: '',
-        holdCarId: '',
-        inverseCarId: '',
-        positiveCarId: ''
+        EnterpriseAuthentication: '',
+        EnterpriseAuthenticationPath: '',
+        state: 0
       }
     },
     methods: {
@@ -28,10 +22,10 @@ function initPage() {
           data: { uid: Helper.getUserId() }
         }).then(function(res) {
           res = ParseJson(res.data)[0]
-          if (!!res.holdCarId) {
-            self.holdCarId = res.holdCarId
-            self.inverseCarId = res.inverseCarId
-            self.positiveCarId = res.positiveCarId
+          self.state = res.usermodel[0].eaState
+          if (!!res.EnterpriseAuthentication) {
+            self.EnterpriseAuthentication = res.EnterpriseAuthentication
+            self.EnterpriseAuthenticationPath = res.EnterpriseAuthentication
           }
         })
       },
@@ -53,40 +47,32 @@ function initPage() {
       },
       onSubmit: function() {
         var self = this
-        if (!this.Idzm) {
-          api.toast({msg: '请上传身份证正面'});
-          return
-        } else if (!this.Idbm) {
-          api.toast({msg: '请上传身份证反面'});
-          return
-        } else if (!this.scId) {
-          api.toast({msg: '请上传手持身份证照片'});
+        if (!this.EnterpriseAuthentication) {
+          api.toast({msg: '请上传营业执照照片'});
           return
         }
         var data = {
           userid: Helper.getUserId(),
-          Idzm: TransformImageData(self.Idzm),
-          Idbm: TransformImageData(self.Idbm),
-          scId: TransformImageData(self.scId)
-        };
+          EaImg: TransformImageData(self.EnterpriseAuthentication)
+        }
         $.ajax({
-          url: BaseService.apiUrl + 'getID',
+          url: BaseService.apiUrl + 'getEnterpriseAuthentication',
           data: data
         }).then(function(res) {
           if (res.key === 'true') {
             api.toast({
-                msg: '提交认证成功'
+              msg: '提交认证成功'
             })
             setTimeout(function() {
               api.closeWin();
             }, 2000);
           } else {
             api.toast({
-                msg: res.mage
+              msg: res.mage
             });
           }
         }, function(err) {
-          api.toast({msg: '上传失败'});
+          alert(JSON.stringify(err))
         })
       }
     }

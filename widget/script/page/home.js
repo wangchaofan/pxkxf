@@ -19,7 +19,7 @@ function initPage() {
         nearByList: [],
         hasMoreDemand: true,
         hasMoreSupply: true,
-        currentTab: 'demand',
+        currentTab: 'supply',
         city: '成都市',
         type: '',
         messageCount: 0,

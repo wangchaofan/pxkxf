@@ -74,3 +74,14 @@
     font-size: 0.7rem;
     text-align: center;
 }
+.doing-renzheng {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+}
+.doing-renzheng > img {
+    width: 10rem;
+    height: 6rem;
+    margin: 1rem auto;
+    display:block;
+}

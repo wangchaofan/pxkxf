@@ -11,8 +11,12 @@
 <body>
   <div class="wrapper" v-cloak>
     <my-header title="企业认证"></my-header>
-    <div class="has-renzheng" v-if="!holdCarId">
+    <div class="has-renzheng" v-if="state == 3">
       <div>已认证</div>
+    </div>
+    <div class="doing-renzheng" v-else-if="state == 2">
+      <img :src="EnterpriseAuthenticationPath" alt="">
+      <div >正在审核中...</div>
     </div>
     <!-- <div>
       <img :src="positiveCarId" alt="">
@@ -22,9 +26,9 @@
     <div v-else>
       <section class="upload-wrap" style="padding-bottom: 8px;">
         <div class="upload-desc">请上传企业营业执照：</div>
-        <div class="upload-box" @click="selectPic('Idzm')">
-          <img :src="IdzmPath" alt="" v-if="!!Idzm" v-cloak>
-          <!-- <div class="upload-box-name" v-else>上传身份证正面</div> -->
+        <div class="upload-box" @click="selectPic('EnterpriseAuthentication')">
+          <img :src="EnterpriseAuthenticationPath" alt="" v-if="EnterpriseAuthentication" v-cloak>
+          <div class="upload-box-name" v-else>营业执照</div>
         </div>
         <div class="fs24 ac text-warning">请保证所有信息真实有效而且清晰可见</div>
       </section>

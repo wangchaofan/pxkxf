@@ -66,8 +66,8 @@
   </div>
   <div class="tab">
     <div class="tab-header">
+      <span v-bind:class="{current: currentTab === 'supply'}" @click="onClickTabHead('supply')">供应</span>        
       <span v-bind:class="{current: currentTab === 'demand'}" @click="onClickTabHead('demand')">需求</span>
-      <span v-bind:class="{current: currentTab === 'supply'}" @click="onClickTabHead('supply')">供应</span>
       <select class="sort-select" v-model="zState">
         <option value="1">最新</option>
         <option value="2">附近</option>

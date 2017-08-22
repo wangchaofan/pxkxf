@@ -115,12 +115,18 @@ function clearUnreadStatus() {
     targetId: api.pageParam.targetId
   }, function (ret, err) {
     if (ret.status === 'success') {
-      api.sendEvent({
-        name: 'refreshMsgCount',
-        extra: {
-          count: 0 - api.pageParam.unreadCount
-        }
-      });
+      if (api.pageParam.unreadCount) {
+        api.sendEvent({
+          name: 'refreshMsgCount',
+          extra: {
+            count: 0 - api.pageParam.unreadCount
+          }
+        })
+      } else {
+        api.sendEvent({
+          name: 'refreshMsgCount',
+        })
+      }
     }
   })
 }
@@ -195,8 +201,7 @@ function initPage() {
               self.messages = _.reverse(ret.result)
             }
             Vue.nextTick(function () {
-              $('body')
-                .scrollTop(1000000)
+              $('body').scrollTop(1000000)
             })
           } else {
             api.toast({
