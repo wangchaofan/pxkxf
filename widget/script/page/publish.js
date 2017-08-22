@@ -11,7 +11,7 @@ function initPage() {
 		      name: pageName,
 		      url: 'widget://html/' + pageName + '.html',
 		      pageParam: {
-
+						allowEdit: true
 		      }
 			  });
 			}

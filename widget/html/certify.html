@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>身份认证</title>
+  <title>企业认证</title>
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/certify.css">
   <script src="../script/adapter.js"></script>
 </head>
 <body>
   <div class="wrapper" v-cloak>
-    <my-header title="身份认证"></my-header>
+    <my-header title="企业认证"></my-header>
     <div class="has-renzheng" v-if="!holdCarId">
       <div>已认证</div>
     </div>
@@ -20,29 +20,13 @@
       <img :src="holdCarId" alt="">
     </div> -->
     <div v-else>
-      <section class="upload-wrap">
-        <div class="upload-desc">请您上传您的身份证正面照片：</div>
+      <section class="upload-wrap" style="padding-bottom: 8px;">
+        <div class="upload-desc">请上传企业营业执照：</div>
         <div class="upload-box" @click="selectPic('Idzm')">
           <img :src="IdzmPath" alt="" v-if="!!Idzm" v-cloak>
-          <div class="upload-box-name" v-else>上传身份证正面</div>
+          <!-- <div class="upload-box-name" v-else>上传身份证正面</div> -->
         </div>
         <div class="fs24 ac text-warning">请保证所有信息真实有效而且清晰可见</div>
-      </section>
-      <section class="upload-wrap">
-        <div class="upload-desc">请您上传您的身份证反面照片：</div>
-        <div class="upload-box" @click="selectPic('Idbm')">
-          <img :src="IdbmPath" alt="" v-if="!!Idbm" v-cloak>
-          <div class="upload-box-name" v-else>上传身份证反面</div>
-        </div>
-        <div class="fs24 ac text-warning">请保证所有信息真实有效而且清晰可见</div>
-      </section>
-      <section class="upload-wrap">
-        <div class="upload-desc">请上传您的手持身份证照片：</div>
-        <div class="upload-box" @click="selectPic('scId')">
-          <img :src="scIdPath" alt="" v-if="!!scId" v-cloak>
-          <div class="upload-box-name" v-else>上传手持身份证</div>
-        </div>
-        <div class="fs24 ac text-warning">请保证持件人的五官真实有效而且清晰可见</div>
       </section>
       <section class="remind fs24 ac">
         <p>我们承诺上传的身份证仅供系统信息审核使用，任何人不可见</p>

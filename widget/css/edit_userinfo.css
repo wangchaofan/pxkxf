@@ -21,18 +21,23 @@
     display: flex;
     overflow: hidden;
     justify-content: flex-start;
+    flex-wrap: wrap;
 }
 .person-credentials-image-wrap {
     position: relative;
-    margin-right: 0.5rem;
+    margin-right: 0.4rem;
     margin-top: 0.5rem;
     width: 3.75rem;
     height: 3.75rem;
+}
+.person-credentials-image-wrap:nth-child(4n+4) {
+    margin-right: 0;
 }
 .person-credentials-image-wrap .button-delete {
     position: absolute;
     right: -0.35rem;
     top: -0.35rem;
+    z-index: 2;
     width: 0.8rem;
     height: 0.8rem;
     background: url('../image/icon_delete.png') no-repeat;

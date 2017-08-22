@@ -58,7 +58,8 @@ function initPage() {
           skill.District = data.addDistrict
           skill.money = data.smoney
           skill.Remark = data.Remark
-          skill.servertime = data.servertime
+          var serverTime = Helper.dateFormat(data.servertime, 'yyyy-MM-dd')
+          skill.servertime = serverTime === '长期' ? '' : serverTime
           _.forEach(data.Skillworksmodel, function(v) {
             convertImgToBase64(v.skillwoksurl, function(base64) {
               self.images.push(base64)
@@ -73,7 +74,7 @@ function initPage() {
         api.openPicker({
           type: 'date',
           title: '选择时间'
-          }, function(ret, err) {
+        }, function(ret, err) {
           self.skill.servertime = ret.year + '-' + ret.month + '-' + ret.day
         })
       },
