@@ -52,7 +52,7 @@
           <div class="button-delete" @click="deleteImage(index)"></div>
           <img :src="img"  alt="">
         </div>
-        <div class="upload-box" @click="handleSelectImage">
+        <div class="upload-box" v-show="images.length < 8" @click="handleSelectImage">
         </div>
       </div>
     </div>
