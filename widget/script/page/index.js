@@ -119,7 +119,7 @@ apiready = function() {
 				url: 'html/publish.html'
 			}, {
 				name: 'consult',
-				url: 'html/professor_question.html'
+				url: 'html/questions.html'
 			}, {
 				name: 'usercenter',
 				url: 'html/usercenter.html'

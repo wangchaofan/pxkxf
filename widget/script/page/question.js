@@ -20,6 +20,9 @@ function initPage() {
       toAdd: function() {
         Helper.openWin('add_question');
       },
+      toQues: function() {
+        Helper.openWin('questions',  { isOnlyMy: true })
+      },
       goQuestionDetail: function(item) {
         Helper.openWin('questions_detail', {id: item.expertTWId});
       },

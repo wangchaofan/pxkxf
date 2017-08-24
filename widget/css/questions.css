@@ -67,3 +67,8 @@ body {
     line-height: 2rem;
     color: #999;
 }
+
+.header-left,
+.header-right {
+    width: 70px;
+}
