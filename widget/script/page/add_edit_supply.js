@@ -234,7 +234,7 @@ function initPage() {
           mediaValue: 'pic',
           destinationType: 'base64',
           allowEdit: true,
-          quality: 80,
+          quality: 50,
           saveToPhotoAlbum: false
         }, function(ret, err) {
           if (ret && ret.base64Data)
