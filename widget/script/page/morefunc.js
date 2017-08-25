@@ -4,7 +4,7 @@ function initPage() {
 		data: function() {
 			return {
         hasUpdate: BaseService.apiUrl.startsWith('https'),
-        version: api.version
+        version: api.appVersion
 			}
 		},
 		methods: {
