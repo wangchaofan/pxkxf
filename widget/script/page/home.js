@@ -10,7 +10,7 @@ function initPage() {
       this.getList();
       this.getMessageCount();
       this.getLocation();
-      this.getWeather();
+      // this.getWeather();
     },
     data: function() {
       return {

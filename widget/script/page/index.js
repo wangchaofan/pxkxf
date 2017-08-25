@@ -63,7 +63,7 @@ apiready = function() {
 		});
 
 		baiduLocation.getLocation(function(ret) {
-			if (ret.status) {
+			if (ret.status && ret.longitude != '5e-324') {
 				$.ajax({
 					url: BaseService.apiUrl + 'updateGoldenlatitude',
 					data: {
