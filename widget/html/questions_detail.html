@@ -42,12 +42,12 @@
       </div>
     </div>
   </section>
-  <div class="relate-question-wrap container bg-white" v-if="relateQuestion" v-cloak>
+  <!-- <div class="relate-question-wrap container bg-white" v-if="relateQuestion" v-cloak>
     <h3>相关问题</h3>
     <div class="relate-question" v-for="item in relateQuestion" @click="viewQuestion(item)">
       {{item.twtitle}}
     </div>
-  </div>
+  </div> -->
   <div class="fixed-bottom send-comment">
     <input class="send-comment-input" type="text" v-model="commentContent" placeholder="回答问题">
     <div class="btn-send" @click="sendComment" :disabled="commentContent.length === 0">发送</div>

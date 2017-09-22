@@ -14,8 +14,8 @@
     <my-header :title="title"></my-header>
     <div>
         <div class="type-select" style="padding-left: 0; padding-right: 0;">
+        <span class="flex-1" :class="{current: currentPage === 'supply'}" @click="onClickNav('supply')">供应</span>        
         <span class="flex-1" :class="{current: currentPage === 'demand'}" @click="onClickNav('demand')">需求</span>
-        <span class="flex-1" :class="{current: currentPage === 'supply'}" @click="onClickNav('supply')">供应</span>
         </div>
         <div style="padding-top: 44px;" v-cloak>
         <div class="remand-list" v-show="currentPage === 'demand'">

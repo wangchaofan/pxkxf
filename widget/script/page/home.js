@@ -33,7 +33,10 @@ function initPage() {
     },
     filters: {
       number: function(val) {
-        return parseFloat(val).toFixed(2)
+        if (val > 10000) {
+          return '未定位'
+        }
+        return parseFloat(val).toFixed(2) + 'km'
       }
     },
     watch: {
@@ -61,6 +64,8 @@ function initPage() {
         }, function (ret, err) {
           if (ret) {
             self.city = ret.content.address_detail.city
+          } else {
+            api.toast({msg: '定位失败'});
           }
         })
       },

@@ -34,7 +34,6 @@
         <div v-if="userQslist.length === 0" class="nonedata">您还没有提交问题哦~</div>
       </div> -->
       <div class="question-section">
-        <!-- <h2>其它问题</h2> -->
         <ul class="question-list fs28">
           <li v-for="item in list" @click="goQuestionDetail(item)">
             <div class="question-title text-overflow-es flex-1">{{item.twtitle}}</div>

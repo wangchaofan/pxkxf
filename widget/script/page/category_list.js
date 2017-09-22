@@ -126,7 +126,7 @@ function initPage() {
     },
     data: function() {
       return {
-        currentPage: 'demand',
+        currentPage: 'supply',
         demandList: [],
         supplyList: [],
         hasMoreDemand: true,
