@@ -116,7 +116,7 @@ function initPage() {
         this.title = '搜索结果';
         this.getSearchResult(api.pageParam.searchContent);
       } else {
-        this.getDemand();
+        this.getSupply();
         this.demandPageNum += 1;
       }
     },
