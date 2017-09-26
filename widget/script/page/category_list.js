@@ -117,7 +117,7 @@ function initPage() {
         this.getSearchResult(api.pageParam.searchContent);
       } else {
         this.getSupply();
-        this.demandPageNum += 1;
+        this.supplyPageNum += 1;
       }
     },
     components: {
